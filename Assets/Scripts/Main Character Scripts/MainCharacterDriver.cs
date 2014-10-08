@@ -79,10 +79,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (currentForm.projectile.tag != col.gameObject.tag) {
+		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.tag == "Ship") {
 			Destroy (gameObject);
 			Debug.Log("MISSION FAILED");
-			Application.Quit();
 		} 
 		Destroy (col.gameObject);
 	}
