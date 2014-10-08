@@ -583,7 +583,7 @@ GameObject:
   - 23: {fileID: 1964295430}
   - 114: {fileID: 1964295434}
   - 54: {fileID: 1964295435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
