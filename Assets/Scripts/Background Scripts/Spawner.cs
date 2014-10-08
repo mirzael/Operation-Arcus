@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
 			currentRate = spawnRate;
 			GameObject spawn = copyEnemyToSpawn.Next();
 			var ship = (GameObject)Instantiate(spawn, transform.position + Vector3.left * 2, spawn.transform.rotation);
-			ship.rigidbody.velocity = Vector3.left * 10;
+			ship.rigidbody.velocity = Vector3.left * 10 + Vector3.up * Random.Range(-2f, 2f);
 		}
 	}
 }

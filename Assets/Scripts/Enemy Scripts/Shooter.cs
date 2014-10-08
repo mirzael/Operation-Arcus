@@ -18,7 +18,7 @@ public class Shooter : MonoBehaviour {
 		currentCooldown -= Time.deltaTime;
 
 		if (currentCooldown <= 0) {
-			var proj = (GameObject)Instantiate(projectile, transform.position + Vector3.left * 2, projectile.transform.rotation);
+			var proj = (GameObject)Instantiate(projectile, transform.position + Vector3.left * 2, transform.rotation);
 			proj.rigidbody.velocity = Vector3.left * 25;
 			currentCooldown = cooldown;
 		}
