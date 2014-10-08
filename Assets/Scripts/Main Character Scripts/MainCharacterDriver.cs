@@ -77,4 +77,13 @@ public class MainCharacterDriver : MonoBehaviour {
 			currentCooldown = currentForm.cooldown;
 		}
 	}
+
+	void OnCollisionEnter(Collision col){
+		if (currentForm.projectile.tag != col.gameObject.tag) {
+			Destroy (gameObject);
+			Debug.Log("MISSION FAILED");
+			Application.Quit();
+		} 
+		Destroy (col.gameObject);
+	}
 }

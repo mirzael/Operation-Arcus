@@ -3,6 +3,10 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - Blue
+  - Red
+  - Yellow
+  - Ship
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
