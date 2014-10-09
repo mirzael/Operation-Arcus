@@ -17,6 +17,26 @@ namespace MainCharacter
 			this.projectileSpeed = projectileSpeed;
 			this.material = material;
 		}
+
+		public float getCooldown()
+		{
+			return this.cooldown;
+		}
+
+		public float getSpeed()
+		{
+			return this.projectileSpeed;
+		}
+
+		public void setCooldown(float cooldown)
+		{
+			this.cooldown = cooldown;
+		}
+
+		public void setSpeed(float speed)
+		{
+			this.projectileSpeed = speed;
+		}
 	}
 }
 

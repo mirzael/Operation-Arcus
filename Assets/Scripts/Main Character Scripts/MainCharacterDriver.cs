@@ -46,9 +46,9 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
-		for(int i = 0; i < projectiles.Count; i++){
-			forms.Add (new Form (shipSpeed,0.25f, projectiles[i], 50f, mats[i]));
-		}
+		forms.Add (new Form (shipSpeed,0.2f, projectiles[0], 50f, mats[0]));
+		forms.Add (new Form (shipSpeed*0.5f,0.4f, projectiles[1], 50f, mats[1]));
+		forms.Add (new Form (shipSpeed*2.0f,0.75f, projectiles[2], 50f, mats[2]));
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -68,20 +68,40 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		//FIRE!!!
 		if (Input.GetKey(KeyCode.Space) && currentCooldown <= 0) {
-			currentCooldown = currentForm.cooldown;
-			GameObject projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.right * currentForm.projectileSpeed;
+			currentCooldown = currentForm.getCooldown();
+			GameObject projectile;
+			switch (forms.IndexOf(currentForm))
+			{
+			case 0:
+				projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+				projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+				break;
+			case 1:
+				projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+				projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+				break;
+			case 2:
+				int size = 3 + (int)powerYellow;
+				GameObject[] blast = new GameObject[size];
+				Debug.Log (currentForm.projectile.transform.rotation.x);
+				for (int i = 0; i < (3 + powerYellow); i++)
+				{
+					blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+					blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
+				}
+				break;
+			}
 		}
 		//Switch to Previous Form
 		if (Input.GetKeyDown(KeyCode.Q)){
 			currentForm = forms.Previous();
 			renderer.material = currentForm.material;
-			currentCooldown = currentForm.cooldown;
+			currentCooldown = currentForm.getCooldown();
 		//Switch to Next Form
 		} else if(Input.GetKeyDown(KeyCode.E)){
 			currentForm = forms.Next();
 			renderer.material = currentForm.material;
-			currentCooldown = currentForm.cooldown;
+			currentCooldown = currentForm.getCooldown();
 		}
 	}
 
@@ -93,6 +113,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
 					powerRed += POWER_INC;
+					currentForm.setSpeed(currentForm.getSpeed() + powerRed);
 					if (powerRed > POWER_MAX) {
 						powerRed = POWER_MAX;
 					}
@@ -101,6 +122,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (col.gameObject.tag == "Blue") {
 				if (powerBlue < POWER_MAX) {
 					powerBlue += POWER_INC;
+					currentForm.setCooldown(currentForm.getCooldown() - 0.01f * powerBlue);
 					if (powerBlue > POWER_MAX) {
 						powerBlue = POWER_MAX;
 					}
