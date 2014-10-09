@@ -67,17 +67,18 @@ public class MainCharacterDriver : MonoBehaviour {
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (Input.GetKeyDown(KeyCode.Space) && currentCooldown <= 0) {
+		if (Input.GetKey(KeyCode.Space) && currentCooldown <= 0) {
 			currentCooldown = currentForm.cooldown;
 			GameObject projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.right * currentForm.projectileSpeed;
+		}
 		//Switch to Previous Form
-		}else if(Input.GetKeyDown(KeyCode.Q)){
+		if (Input.GetKeyDown(KeyCode.Q)){
 			currentForm = forms.Previous();
 			renderer.material = currentForm.material;
 			currentCooldown = currentForm.cooldown;
 		//Switch to Next Form
-		}else if(Input.GetKeyDown(KeyCode.E)){
+		} else if(Input.GetKeyDown(KeyCode.E)){
 			currentForm = forms.Next();
 			renderer.material = currentForm.material;
 			currentCooldown = currentForm.cooldown;
