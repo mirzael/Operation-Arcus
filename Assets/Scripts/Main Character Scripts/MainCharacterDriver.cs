@@ -25,6 +25,12 @@ public class MainCharacterDriver : MonoBehaviour {
 	 */
 	RotatingList<Form> forms;
 
+	const float POWER_MAX = 100.0f;
+	const float POWER_INC = 1.0f;
+	float powerRed = 0.0f;
+	float powerBlue = 0.0f;
+	float powerYellow = 0.0f;
+
 	//This is the current form the ship is using
 	Form currentForm;
 
@@ -32,7 +38,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	void Start () {
 		if (projectiles.Count != mats.Count) {
 			Debug.Log ("You must have an equal amount of projectiles and materials!");
-			Application.Quit ();
+			Application.Quit();
 		} else if (projectiles.Count == 0) {
 			Debug.Log("You must have at least one projectile!");
 			Application.Quit();
@@ -82,7 +88,33 @@ public class MainCharacterDriver : MonoBehaviour {
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.tag == "Ship") {
 			Destroy (gameObject);
 			Debug.Log("MISSION FAILED");
-		} 
+		} else {
+			if (col.gameObject.tag == "Red") {
+				if (powerRed < POWER_MAX) {
+					powerRed += POWER_INC;
+					if (powerRed > POWER_MAX) {
+						powerRed = POWER_MAX;
+					}
+				}
+				Debug.Log("Absorbed red bullet, Red Power at " + powerRed);
+			} else if (col.gameObject.tag == "Blue") {
+				if (powerBlue < POWER_MAX) {
+					powerBlue += POWER_INC;
+					if (powerBlue > POWER_MAX) {
+						powerBlue = POWER_MAX;
+					}
+				}
+				Debug.Log("Absorbed blue bullet, Blue Power at " + powerBlue);
+			} else if (col.gameObject.tag == "Yellow") {
+				if (powerYellow < POWER_MAX) {
+					powerYellow += POWER_INC;
+					if (powerYellow > POWER_MAX) {
+						powerYellow = POWER_MAX;
+					}
+				}
+				Debug.Log("Absorbed yellow bullet, Yellow Power at " + powerYellow);
+			}
+		}
 		Destroy (col.gameObject);
 	}
 }
