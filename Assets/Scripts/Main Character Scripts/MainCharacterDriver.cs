@@ -38,8 +38,8 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	//These are the special ship forms
 	Form orangeForm;
-	Form greenForm;
 	Form purpleForm;
+	Form greenForm;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +60,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
 		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
+		greenForm = new Form (shipSpeed * 1.5f, 0.5f, projectiles [5], 0f, mats [5], ShipColor.GREEN);
 
 		//Set the current form to the first form
 		currentForm = forms[0];

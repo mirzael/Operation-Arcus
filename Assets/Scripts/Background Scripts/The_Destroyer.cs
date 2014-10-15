@@ -14,6 +14,10 @@ public class The_Destroyer : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider collision){
-		Destroy (collision.gameObject);
+		if (collision.gameObject.tag == "Green") {
+			Destroy (collision.gameObject, 3);
+		} else {
+			Destroy (collision.gameObject);
+		}
 	}
 }
