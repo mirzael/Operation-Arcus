@@ -141,48 +141,4 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		Destroy (col.gameObject);
 	}
-<<<<<<< Updated upstream
-=======
-
-	void Fire(){
-		GameObject projectile;
-		switch (currentForm.shipColor)
-		{
-		case ShipColor.BLUE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
-			break;
-		case ShipColor.RED:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
-			break;
-		case ShipColor.YELLOW:
-			int size = 3 + (int)powerYellow;
-			GameObject[] blast = new GameObject[size];
-			Debug.Log (currentForm.projectile.transform.rotation.x);
-			for (int i = 0; i < (3 + powerYellow / 5); i++)
-			{
-				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
-			} 
-			break;
-		case ShipColor.ORANGE:
-			var oBlast = new GameObject[10];
-			for(int i = 0; i < 10; i++){
-				oBlast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-				oBlast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
-			}
-			break;
-		case ShipColor.PURPLE:
-			break;
-		}
-	}
-
-	void switchForm(Form form){
-		currentForm = form;
-		renderer.material = currentForm.material;
-		currentCooldown = currentForm.getCooldown();
-	}
-
->>>>>>> Stashed changes
 }
