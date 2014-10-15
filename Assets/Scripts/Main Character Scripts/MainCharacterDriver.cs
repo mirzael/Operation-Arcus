@@ -152,11 +152,11 @@ public class MainCharacterDriver : MonoBehaviour {
 			} 
 			break;
 		case ShipColor.ORANGE:
-			var oBlast = new GameObject[10];
-			for(int i = 0; i < 10; i++){
-				oBlast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-				oBlast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
-			}
+			var oBlast = new GameObject[2];
+			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2 + Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[0].gameObject.AddComponent<HomingMissile>();
+			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2 - Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[1].gameObject.AddComponent<HomingMissile>();
 			break;
 		}
 	}
