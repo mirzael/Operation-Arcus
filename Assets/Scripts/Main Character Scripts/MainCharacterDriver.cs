@@ -29,6 +29,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	const float POWER_MAX = 100.0f;
 	const float POWER_INC = 5.0f;
 	const int PROJECTILE_DISTANCE = 2;
+	const int GREEN_PROJECTILE_DISTANCE = 50;
 	public static float powerRed = 0.0f;
 	public static float powerBlue = 0.0f;
 	public static float powerYellow = 0.0f;
@@ -86,15 +87,19 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Switch to Previous Form
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			switchForm (forms.Previous ());
-			//Switch to Next Form
+		//Switch to Next Form
 		} else if (Input.GetKeyDown (KeyCode.E)) {
 			switchForm (forms.Next ());
-			//Switch to ORANGE Form
+		//Switch to ORANGE Form
 		} else if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			switchForm (orangeForm);
+		//Switch to PURPLE FORM
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			switchForm (purpleForm);
-		}
+		//Switch to GREEN FORM
+		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			switchForm(greenForm);
+		}	
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -167,6 +172,9 @@ public class MainCharacterDriver : MonoBehaviour {
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			var moveScript = projectile.AddComponent<MoveProjectile>();
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
+			break;
+		case ShipColor.GREEN:
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * GREEN_PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			break;
 		}
 	}

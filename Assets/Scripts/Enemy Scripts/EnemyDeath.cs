@@ -37,7 +37,7 @@ public class EnemyDeath : MonoBehaviour {
 			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
 		}
 
-		if (col.gameObject.tag != "Purple") {
+		if (col.gameObject.tag != "Purple" && col.gameObject.tag != "Green") {
 			Destroy (col.gameObject);
 		}
 		Destroy (gameObject);
