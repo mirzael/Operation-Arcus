@@ -26,10 +26,10 @@ public class MainCharacterDriver : MonoBehaviour {
 	RotatingList<Form> forms;
 
 	const float POWER_MAX = 100.0f;
-	const float POWER_INC = 1.0f;
-	float powerRed = 0.0f;
-	float powerBlue = 0.0f;
-	float powerYellow = 0.0f;
+	const float POWER_INC = 5.0f;
+	public static float powerRed = 0.0f;
+	public static float powerBlue = 0.0f;
+	public static float powerYellow = 0.0f;
 
 	//This is the current form the ship is using
 	Form currentForm;
