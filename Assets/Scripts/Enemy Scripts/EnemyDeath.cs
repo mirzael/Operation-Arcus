@@ -24,7 +24,10 @@ public class EnemyDeath : MonoBehaviour {
 				CreateAoe (col.contacts[0].point, (Material) Resources.Load("Materials/AoeBlasts/OrangeBlast", typeof(Material)), 4f, 0.5f);
 			}
 		}
-		Destroy (col.gameObject);
+
+		if (col.gameObject.tag != "Purple") {
+			Destroy (col.gameObject);
+		}
 		Destroy (gameObject);
 	}
 

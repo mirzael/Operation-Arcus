@@ -28,6 +28,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	const float POWER_MAX = 100.0f;
 	const float POWER_INC = 5.0f;
+	const int PROJECTILE_DISTANCE = 2;
 	public static float powerRed = 0.0f;
 	public static float powerBlue = 0.0f;
 	public static float powerYellow = 0.0f;
@@ -57,7 +58,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		forms.Add (new Form (shipSpeed*2.0f,0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW));
 
 		//Create the special forms
-		orangeForm = new Form (shipSpeed * 1.0f, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
+		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
+		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -81,14 +83,16 @@ public class MainCharacterDriver : MonoBehaviour {
 			Fire();
 		}
 		//Switch to Previous Form
-		if (Input.GetKeyDown(KeyCode.Q)){
-			switchForm(forms.Previous());
-		//Switch to Next Form
-		} else if(Input.GetKeyDown(KeyCode.E)){
-			switchForm(forms.Next());
-		//Switch to ORANGE Form
-		} else if(Input.GetKeyDown(KeyCode.Alpha1)){
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			switchForm (forms.Previous ());
+			//Switch to Next Form
+		} else if (Input.GetKeyDown (KeyCode.E)) {
+			switchForm (forms.Next ());
+			//Switch to ORANGE Form
+		} else if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			switchForm (orangeForm);
+		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
+			switchForm (purpleForm);
 		}
 	}
 
@@ -134,11 +138,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		switch (currentForm.shipColor)
 		{
 		case ShipColor.BLUE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
 			break;
 		case ShipColor.RED:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
 			break;
 		case ShipColor.YELLOW:
@@ -147,16 +151,21 @@ public class MainCharacterDriver : MonoBehaviour {
 			Debug.Log (currentForm.projectile.transform.rotation.x);
 			for (int i = 0; i < (3 + powerYellow / 5); i++)
 			{
-				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
 			} 
 			break;
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
-			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2 + Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE + Vector3.up, currentForm.projectile.transform.rotation);
 			oBlast[0].gameObject.AddComponent<HomingMissile>();
-			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2 - Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE - Vector3.up, currentForm.projectile.transform.rotation);
 			oBlast[1].gameObject.AddComponent<HomingMissile>();
+			break;
+		case ShipColor.PURPLE:
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			var moveScript = projectile.AddComponent<MoveProjectile>();
+			moveScript.projectileSpeed = currentForm.projectileSpeed;
 			break;
 		}
 	}

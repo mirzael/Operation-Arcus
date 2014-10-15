@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 186611215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -63.8900833, y: 3.38980293, z: -30.3267574}
-  m_LocalScale: {x: 40.2296562, y: 47.1925545, z: 57.5980492}
+  m_LocalScale: {x: 40.2296562, y: 47.1925545, z: 100}
   m_Children: []
   m_Father: {fileID: 1126529355}
   m_RootOrder: 1
@@ -266,7 +266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1215482624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.5073318, y: 3.48577213, z: -.834076405}
+  m_LocalPosition: {x: 37.5073318, y: 3.48577213, z: -.5}
   m_LocalScale: {x: .351202428, y: 1, z: .139416978}
   m_Children: []
   m_Father: {fileID: 0}
@@ -407,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 1563650533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.5573502, y: 3.38980293, z: -30.3267574}
-  m_LocalScale: {x: 40.2296562, y: 47.1925545, z: 57.5980492}
+  m_LocalScale: {x: 40.2296562, y: 47.1925545, z: 100}
   m_Children: []
   m_Father: {fileID: 1126529355}
   m_RootOrder: 0
@@ -565,7 +565,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1951599134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -11.5134153}
+  m_LocalPosition: {x: 0, y: 1, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1964295433}
@@ -652,7 +652,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1964295429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 10.7815981}
+  m_LocalPosition: {x: -10, y: 0, z: 19.4192619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1951599139}
@@ -674,11 +674,13 @@ MonoBehaviour:
   - {fileID: 100000, guid: 7c7271d5b582ccb498ddccb0a7336abc, type: 2}
   - {fileID: 100000, guid: aaf74b2359023774ca9cbb2cbf12fba2, type: 2}
   - {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  - {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
   mats:
   - {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
   - {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
   - {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
   - {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
+  - {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
 --- !u!54 &1964295435
 Rigidbody:
   m_ObjectHideFlags: 0
