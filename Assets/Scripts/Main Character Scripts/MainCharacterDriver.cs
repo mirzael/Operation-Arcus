@@ -96,6 +96,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.tag == "Ship") {
 			Destroy (gameObject);
 			Debug.Log("MISSION FAILED");
+			Application.Quit();
 		} else {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
