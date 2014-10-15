@@ -11,8 +11,7 @@ public class ColorBarDrawer : MonoBehaviour {
 	public Texture2D blueBarFull;
 	public Texture2D yellowBarFull;
 
-
-	public ColorBarDrawer(){
+	void Awake(){
 		style = new GUIStyle();
 		style.stretchHeight = true;
 		style.stretchWidth = true;

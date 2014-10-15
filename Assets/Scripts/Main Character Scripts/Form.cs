@@ -3,19 +3,23 @@ using UnityEngine;
 
 namespace MainCharacter
 {
+	public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE};
+
 	public class Form {
 		public float cooldown;
 		public GameObject projectile;
 		public float projectileSpeed;
 		public Material material;
 		public float formSpeed;
+		public ShipColor shipColor;
 		
-		public Form(float formSpeed, float cooldown, GameObject projectile, float projectileSpeed, Material material){
+		public Form(float formSpeed, float cooldown, GameObject projectile, float projectileSpeed, Material material, ShipColor shipColor){
 			this.formSpeed = formSpeed;
 			this.cooldown = cooldown;
 			this.projectile = projectile;
 			this.projectileSpeed = projectileSpeed;
 			this.material = material;
+			this.shipColor = shipColor;
 		}
 
 		public float getCooldown()

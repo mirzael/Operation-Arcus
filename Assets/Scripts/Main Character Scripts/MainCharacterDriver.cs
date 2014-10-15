@@ -25,6 +25,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	 */
 	RotatingList<Form> forms;
 
+
 	const float POWER_MAX = 100.0f;
 	const float POWER_INC = 5.0f;
 	public static float powerRed = 0.0f;
@@ -33,6 +34,11 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	//This is the current form the ship is using
 	Form currentForm;
+
+	//These are the special ship forms
+	Form orangeForm;
+	Form greenForm;
+	Form purpleForm;
 
 	// Use this for initialization
 	void Start () {
@@ -46,9 +52,12 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
-		forms.Add (new Form (shipSpeed,0.2f, projectiles[0], 50f, mats[0]));
-		forms.Add (new Form (shipSpeed*0.5f,0.4f, projectiles[1], 50f, mats[1]));
-		forms.Add (new Form (shipSpeed*2.0f,0.75f, projectiles[2], 50f, mats[2]));
+		forms.Add (new Form (shipSpeed,0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE));
+		forms.Add (new Form (shipSpeed*0.5f,0.4f, projectiles[1], 50f, mats[1], ShipColor.RED));
+		forms.Add (new Form (shipSpeed*2.0f,0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW));
+
+		//Create the special forms
+		orangeForm = new Form (shipSpeed * 1.0f, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -69,39 +78,17 @@ public class MainCharacterDriver : MonoBehaviour {
 		//FIRE!!!
 		if (Input.GetKey(KeyCode.Space) && currentCooldown <= 0) {
 			currentCooldown = currentForm.getCooldown();
-			GameObject projectile;
-			switch (forms.IndexOf(currentForm))
-			{
-			case 0:
-				projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-				projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
-				break;
-			case 1:
-				projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-				projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
-				break;
-			case 2:
-				int size = 3 + (int)powerYellow;
-				GameObject[] blast = new GameObject[size];
-				Debug.Log (currentForm.projectile.transform.rotation.x);
-				for (int i = 0; i < (3 + powerYellow); i++)
-				{
-					blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
-					blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
-				}
-				break;
-			}
+			Fire();
 		}
 		//Switch to Previous Form
 		if (Input.GetKeyDown(KeyCode.Q)){
-			currentForm = forms.Previous();
-			renderer.material = currentForm.material;
-			currentCooldown = currentForm.getCooldown();
+			switchForm(forms.Previous());
 		//Switch to Next Form
 		} else if(Input.GetKeyDown(KeyCode.E)){
-			currentForm = forms.Next();
-			renderer.material = currentForm.material;
-			currentCooldown = currentForm.getCooldown();
+			switchForm(forms.Next());
+		//Switch to ORANGE Form
+		} else if(Input.GetKeyDown(KeyCode.Alpha1)){
+			switchForm (orangeForm);
 		}
 	}
 
@@ -140,4 +127,43 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		Destroy (col.gameObject);
 	}
+
+	void Fire(){
+		GameObject projectile;
+		switch (currentForm.shipColor)
+		{
+		case ShipColor.BLUE:
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+			break;
+		case ShipColor.RED:
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+			break;
+		case ShipColor.YELLOW:
+			int size = 3 + (int)powerYellow;
+			GameObject[] blast = new GameObject[size];
+			Debug.Log (currentForm.projectile.transform.rotation.x);
+			for (int i = 0; i < (3 + powerYellow / 5); i++)
+			{
+				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
+			} 
+			break;
+		case ShipColor.ORANGE:
+			var oBlast = new GameObject[10];
+			for(int i = 0; i < 10; i++){
+				oBlast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * 2, currentForm.projectile.transform.rotation);
+				oBlast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
+			}
+			break;
+		}
+	}
+
+	void switchForm(Form form){
+		currentForm = form;
+		renderer.material = currentForm.material;
+		currentCooldown = currentForm.getCooldown();
+	}
+
 }
