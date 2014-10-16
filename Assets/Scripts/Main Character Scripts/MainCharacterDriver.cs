@@ -164,13 +164,18 @@ public class MainCharacterDriver : MonoBehaviour {
 			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
 			break;
 		case ShipColor.YELLOW:
-			int size = 3 + (int)powerYellow;
-			GameObject[] blast = new GameObject[size];
+			int numProjectiles = 3 + (int)(powerYellow / POWER_INC);
+			int projectileSpreadAngle = 30;
+			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
+			float radToDeg =  Mathf.PI / 180;
+			GameObject[] blast = new GameObject[numProjectiles];
 			Debug.Log (currentForm.projectile.transform.rotation.x);
-			for (int i = 0; i < (3 + powerYellow / 5); i++)
+			for (int i = 0; i < numProjectiles; i++)
 			{
+				float trajectoryDegree = 90 + (projectileSpreadAngle / 2 - angleBetweenProjectiles * i);
+				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
 				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.right * currentForm.getSpeed() + Vector3.up * Random.Range(-8f, 8f));
+				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.up * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
 			} 
 			break;
 		case ShipColor.ORANGE:
