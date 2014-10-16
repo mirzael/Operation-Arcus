@@ -17,7 +17,7 @@ public class HomingMissile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (target != null && transform.position.x < target.position.x) {
+		if (target != null && transform.position.x < target.position.x + target.renderer.bounds.max.x - target.renderer.bounds.center.x) {
 			myTransform.rotation = Quaternion.Slerp(myTransform.rotation,
 				Quaternion.LookRotation(target.position - myTransform.position), rotationSpeed*Time.deltaTime);
 			
@@ -35,7 +35,6 @@ public class HomingMissile : MonoBehaviour {
 		
 		//RenderVolume (transform.position + Vector3.up, transform.position - Vector3.up, 2f, -transform.up, 100);
 		if (Physics.CapsuleCast (transform.position + Vector3.up * 0.5f, transform.position - Vector3.up * 0.5f, 10f, Vector3.right, out hit, Mathf.Infinity, layermask)) {
-			Debug.Log ("I HIT AN ENEMY");
 			target = hit.transform;
 		} else {
 			Destroy (gameObject);

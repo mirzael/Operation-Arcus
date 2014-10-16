@@ -219,7 +219,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 65b914e2f01e63d4fb4d6fe9bd20357e, type: 2}
   - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
   projectilesEnemySpawns: []
-  spawnRate: 2
+  spawnRate: 1
 --- !u!23 &1215482626
 Renderer:
   m_ObjectHideFlags: 0

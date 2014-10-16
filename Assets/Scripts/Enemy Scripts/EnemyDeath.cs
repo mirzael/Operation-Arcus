@@ -35,6 +35,13 @@ public class EnemyDeath : MonoBehaviour {
 			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
 			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
 			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
+		} else if(col.gameObject.tag == "Green" && gameObject.tag == "Red"){
+			int layerMask = 1 << 8;
+			Debug.Log ("HIT RED");
+			foreach(Collider collider in Physics.OverlapSphere(transform.position, 10f, layerMask)){
+				Debug.Log ("SPHEREHIT");
+				collider.gameObject.AddComponent<Disabler>();
+			}
 		}
 
 		if (col.gameObject.tag != "Purple" && col.gameObject.tag != "Green") {
