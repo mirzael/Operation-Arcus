@@ -108,9 +108,17 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-			Destroy (gameObject);
-			Debug.Log("MISSION FAILED");
-			Application.Quit();
+			if(currentForm.shipColor == ShipColor.PURPLE){
+				switchForm(forms[1]);
+			}else if(currentForm.shipColor == ShipColor.ORANGE){
+				switchForm(forms[2]);
+			}else if(currentForm.shipColor == ShipColor.GREEN){
+				switchForm(forms[0]);
+			}else{
+				Destroy (gameObject);
+				Debug.Log("MISSION FAILED");
+				Application.Quit();
+			}
 		} else {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
