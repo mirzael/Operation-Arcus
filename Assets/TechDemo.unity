@@ -266,7 +266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1215482624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.5073318, y: 3.48577213, z: -.5}
+  m_LocalPosition: {x: 33.4687843, y: 3.48577213, z: -.5}
   m_LocalScale: {x: .351202428, y: 1, z: .139416978}
   m_Children: []
   m_Father: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   - 54: {fileID: 1964295435}
   m_Layer: 9
   m_Name: Main Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
