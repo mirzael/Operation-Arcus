@@ -48,6 +48,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	Form purpleForm;
 	Form greenForm;
 
+	//Used for returning to the form we were in before switching to secondary
+	Form previousForm;
+
 	// Use this for initialization
 	void Start () {
 		if (projectiles.Count != mats.Count) {
@@ -98,9 +101,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Switch to Previous Form
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			switchForm (forms.Previous ());
+			previousForm = currentForm;
 		//Switch to Next Form
 		} else if (Input.GetKeyDown (KeyCode.E)) {
 			switchForm (forms.Next ());
+			previousForm = currentForm;
 		//Switch to ORANGE Form
 		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerRed -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
@@ -123,13 +128,13 @@ public class MainCharacterDriver : MonoBehaviour {
 				redForm.setSpeed(redForm.getSpeed() + powerRed);
 				blueForm.resetCooldown();
 				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
-				switchForm(forms[1]);
+				switchForm(previousForm);
 			}else if(currentForm.shipColor == ShipColor.ORANGE){
-				switchForm(forms[2]);
+				switchForm(previousForm);
 				redForm.resetSpeed();
 				redForm.setSpeed(redForm.getSpeed() + powerRed);
 			}else if(currentForm.shipColor == ShipColor.GREEN){
-				switchForm(forms[0]);
+				switchForm(previousForm);
 				blueForm.resetCooldown();
 				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
 			}else{
