@@ -59,8 +59,8 @@ public class EnemyDeath : MonoBehaviour {
 			sphere.AddComponent<GravityField>();
 		}else{
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
-			Destroy(gameObject);
 		}
+		Destroy(gameObject);
 		Destroy (sphere, duration);
 	}
 }
