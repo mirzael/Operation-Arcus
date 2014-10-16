@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shooter : MonoBehaviour {
+public class TrackShooter : MonoBehaviour {
 	public float cooldown;
-	public GameObject projectile;
-	float offset;
+	public GameObject projectile;	
+	GameObject player;
 	float currentCooldown;
-
 
 
 	// Use this for initialization
 	void Start () {
 		currentCooldown = cooldown;
-		offset = 5;
+		player = GameObject.FindWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -21,24 +20,14 @@ public class Shooter : MonoBehaviour {
 
 		if (currentCooldown > 0) 
 		{
+			var heading = player.transform.position - transform.position;
+			var distance = heading.magnitude;
+			var direction = heading / distance;
 			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, transform.rotation);
-			proj.rigidbody.velocity = Vector3.left * 15 + Vector3.down * offset;
-			int aVal = (int) currentCooldown % 3;
-			switch (aVal)
-			{
-			case 0:
-				offset = 5;
-				break;
-			case 1:
-				offset = 0;
-				break;
-			case 2:
-				offset = -5;
-				break;
-			}
+			proj.rigidbody.velocity = direction * 10;
 		}
 		currentCooldown = currentCooldown - 1;
 		if (currentCooldown < (cooldown * -2))
-			currentCooldown = cooldown;
+				currentCooldown = cooldown;
 	}
 }
