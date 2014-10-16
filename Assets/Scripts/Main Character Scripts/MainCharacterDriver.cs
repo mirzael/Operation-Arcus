@@ -27,7 +27,8 @@ public class MainCharacterDriver : MonoBehaviour {
 
 
 	const float POWER_MAX = 100.0f;
-	const float POWER_INC = 5.0f;
+	const float POWER_INC = 25.0f;
+	const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_PROJECTILE_DISTANCE = 50;
 	public static float powerRed = 0.0f;
@@ -91,13 +92,16 @@ public class MainCharacterDriver : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.E)) {
 			switchForm (forms.Next ());
 		//Switch to ORANGE Form
-		} else if (Input.GetKeyDown (KeyCode.Alpha1)) {
+		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			powerRed -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm (orangeForm);
 		//Switch to PURPLE FORM
-		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
+		} else if (Input.GetKeyDown (KeyCode.Alpha2) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
+			powerRed -= TRANSFORM_AMOUNT; powerBlue -= TRANSFORM_AMOUNT;
 			switchForm (purpleForm);
 		//Switch to GREEN FORM
-		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
+		} else if (Input.GetKeyDown (KeyCode.Alpha3) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			powerBlue -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm(greenForm);
 		}	
 	}
