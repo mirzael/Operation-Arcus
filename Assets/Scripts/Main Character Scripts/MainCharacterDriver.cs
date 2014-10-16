@@ -38,6 +38,11 @@ public class MainCharacterDriver : MonoBehaviour {
 	//This is the current form the ship is using
 	Form currentForm;
 
+	//The base forms
+	Form redForm;
+	Form blueForm;
+	Form yellowForm;
+
 	//These are the special ship forms
 	Form orangeForm;
 	Form purpleForm;
@@ -55,9 +60,14 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
-		forms.Add (new Form (shipSpeed,0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE));
-		forms.Add (new Form (shipSpeed*0.5f,0.4f, projectiles[1], 50f, mats[1], ShipColor.RED));
-		forms.Add (new Form (shipSpeed*2.0f,0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW));
+		
+		redForm = new Form (shipSpeed * 0.5f, 0.4f, projectiles[1], 50f, mats[1], ShipColor.RED);
+		blueForm = new Form (shipSpeed, 0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE);
+		yellowForm = new Form (shipSpeed * 2.0f, 0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW);
+		
+		forms.Add (blueForm);
+		forms.Add (redForm);
+		forms.Add (yellowForm);
 
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
@@ -109,11 +119,19 @@ public class MainCharacterDriver : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(currentForm.shipColor == ShipColor.PURPLE){
+				redForm.resetSpeed();
+				redForm.setSpeed(redForm.getSpeed() + powerRed);
+				blueForm.resetCooldown();
+				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
 				switchForm(forms[1]);
 			}else if(currentForm.shipColor == ShipColor.ORANGE){
 				switchForm(forms[2]);
+				redForm.resetSpeed();
+				redForm.setSpeed(redForm.getSpeed() + powerRed);
 			}else if(currentForm.shipColor == ShipColor.GREEN){
 				switchForm(forms[0]);
+				blueForm.resetCooldown();
+				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
 			}else{
 				Destroy (gameObject);
 				Debug.Log("MISSION FAILED");
