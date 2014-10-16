@@ -23,18 +23,18 @@ public class EnemyDeath : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		//AOE, BABY
 		if (col.gameObject.tag == "Red") {
-			CreateAoe (col.contacts [0].point, redBlast, MainCharacterDriver.powerRed/100+2.5f, 0.5f);
+			CreateAoe (col.contacts [0].point, redBlast, MainCharacterDriver.powerRed/100+2.5f, 0.5f, false);
 		} else if (col.gameObject.tag == "Orange") {
 			if (gameObject.tag == "Blue") {
 				CreateAoe (col.contacts [0].point, orangeBlast, 10f, 0.25f, true);
 			} else {
-				CreateAoe (col.contacts [0].point, orangeBlast, 4f, 0.5f);
+				CreateAoe (col.contacts [0].point, orangeBlast, 4f, 0.5f, false);
 			}
 		} else if (col.gameObject.tag == "Purple" && gameObject.tag == "Yellow") {
-			CreateAoe(col.contacts[0].point + (Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
-			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
-			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
-			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f);
+			CreateAoe(col.contacts[0].point + (Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
+			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
+			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
+			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
 		} else if(col.gameObject.tag == "Green" && gameObject.tag == "Red"){
 			int layerMask = 1 << 8;
 			Debug.Log ("HIT RED");
@@ -50,7 +50,7 @@ public class EnemyDeath : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity = false){
+	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
 		var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		sphere.renderer.material = mat;
 		sphere.transform.position = center;
