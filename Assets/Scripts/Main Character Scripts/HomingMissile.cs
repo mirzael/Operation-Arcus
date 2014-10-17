@@ -17,16 +17,12 @@ public class HomingMissile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (target != null && transform.position.y < target.position.y + target.renderer.bounds.size.y/2) {
-			myTransform.rotation = Quaternion.Slerp(myTransform.rotation,
-				Quaternion.LookRotation(target.position - myTransform.position), rotationSpeed*Time.deltaTime);
-			
-			//move towards the player
-			myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
-
-		} else {
-			findTarget();
+		if (target != null && transform.position.y < target.position.y + target.renderer.bounds.size.y / 2) {
+			myTransform.rotation = Quaternion.Slerp (myTransform.rotation,
+			Quaternion.LookRotation (target.position - myTransform.position), rotationSpeed * Time.deltaTime);
 		}
+		//move towards the player
+		myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
 	}
 
 	void findTarget(){

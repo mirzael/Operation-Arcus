@@ -205,9 +205,9 @@ public class MainCharacterDriver : MonoBehaviour {
 			break;
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
-			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[0].gameObject.AddComponent<HomingMissile>();
-			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE - Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[1].gameObject.AddComponent<HomingMissile>();
 			break;
 		case ShipColor.PURPLE:

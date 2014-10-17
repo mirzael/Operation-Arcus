@@ -57,6 +57,7 @@ public class EnemyDeath : MonoBehaviour {
 		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		if(gravity){ 
 			sphere.AddComponent<GravityField>();
+			Destroy (sphere.collider);
 		}else{
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
 		}
