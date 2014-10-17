@@ -79,6 +79,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		//Set the current form to the first form
 		currentForm = forms[0];
+		previousForm = forms [0];
 	}
 	
 	// Update is called once per frame
