@@ -29,7 +29,7 @@ public class HomingMissile : MonoBehaviour {
 		RaycastHit hit;
 		int layermask = 1 << 8;
 		
-		RenderVolume (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 2f, Vector3.up, 100);
+		//RenderVolume (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 2f, Vector3.up, 100);
 		if (Physics.CapsuleCast (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 10f, Vector3.up, out hit, Mathf.Infinity, layermask)) {
 			target = hit.transform;
 		} else {
