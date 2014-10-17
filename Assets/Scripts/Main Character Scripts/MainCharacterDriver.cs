@@ -107,7 +107,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			switchForm (forms.Next ());
 			previousForm = currentForm;
 		//Switch to ORANGE Form
-		} else if (Input.GetKeyDown (KeyCode.Alpha1)) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerRed -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm (orangeForm);
 		//Switch to PURPLE FORM
