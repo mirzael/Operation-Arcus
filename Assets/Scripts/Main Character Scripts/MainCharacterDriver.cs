@@ -75,7 +75,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
 		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
-		greenForm = new Form (shipSpeed * 1.5f, 0.5f, projectiles [5], 0f, mats [5], ShipColor.GREEN);
+		greenForm = new Form (shipSpeed * 1.5f, 0.1f, projectiles [5], 0f, mats [5], ShipColor.GREEN);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -118,7 +118,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.Alpha3) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerBlue -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm(greenForm);
-		}	
+		} else if(Input.GetKeyDown (KeyCode.PageDown)){
+			powerRed = powerYellow = powerBlue = 100;
+		}
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -214,7 +216,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
 			break;
 		case ShipColor.GREEN:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * GREEN_PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			break;
 		}
 	}
