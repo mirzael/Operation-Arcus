@@ -30,7 +30,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	const float POWER_INC = 25.0f;
 	const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
-	const int GREEN_PROJECTILE_DISTANCE = 50;
+	const int GREEN_DEGREES_PER_SEC = 720;
 	public static float powerRed = 0.0f;
 	public static float powerBlue = 0.0f;
 	public static float powerYellow = 0.0f;
@@ -75,10 +75,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
 		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
-		greenForm = new Form (shipSpeed * 1.5f, 0.5f, projectiles [5], 0f, mats [5], ShipColor.GREEN);
+		greenForm = new Form (shipSpeed * 1.5f, 0.1f, projectiles [5], 50f, mats [5], ShipColor.GREEN);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
+		previousForm = forms [0];
 	}
 	
 	// Update is called once per frame
@@ -118,7 +119,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.Alpha3) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerBlue -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm(greenForm);
-		}	
+		} else if(Input.GetKeyDown (KeyCode.PageDown)){
+			powerRed = powerYellow = powerBlue = 100;
+		}
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -179,12 +182,12 @@ public class MainCharacterDriver : MonoBehaviour {
 		switch (currentForm.shipColor)
 		{
 		case ShipColor.BLUE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
 			break;
 		case ShipColor.RED:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.right * currentForm.getSpeed();
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
 			break;
 		case ShipColor.YELLOW:
 			int numProjectiles = 3 + (int)(powerYellow / POWER_INC);
@@ -193,28 +196,34 @@ public class MainCharacterDriver : MonoBehaviour {
 			float radToDeg =  Mathf.PI / 180;
 			GameObject[] blast = new GameObject[numProjectiles];
 			Debug.Log (currentForm.projectile.transform.rotation.x);
-			for (int i = 0; i < numProjectiles; i++)
-			{
+			for(int i = 0; i < numProjectiles; i++){
 				float trajectoryDegree = 90 + (projectileSpreadAngle / 2 - angleBetweenProjectiles * i);
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
-				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.up * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
 			} 
 			break;
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
-			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE + Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[0].gameObject.AddComponent<HomingMissile>();
-			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE - Vector3.up, currentForm.projectile.transform.rotation);
+			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[1].gameObject.AddComponent<HomingMissile>();
 			break;
 		case ShipColor.PURPLE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			var moveScript = projectile.AddComponent<MoveProjectile>();
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
 			break;
 		case ShipColor.GREEN:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.right * GREEN_PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			var gProj = new GameObject[3];
+			gProj[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			gProj[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			gProj[2] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			sinBullet(gProj[0].AddComponent<GreenWeapon>(), false);
+			sinBullet(gProj[1].AddComponent<GreenWeapon>(), true);
+			var gmoveScript = gProj[2].AddComponent<MoveProjectile>();
+			gmoveScript.projectileSpeed = currentForm.projectileSpeed;
 			break;
 		}
 	}
@@ -223,6 +232,12 @@ public class MainCharacterDriver : MonoBehaviour {
 		currentForm = form;
 		renderer.material = currentForm.material;
 		currentCooldown = currentForm.getCooldown();
+	}
+
+	void sinBullet(GreenWeapon weapon, bool isNegative){
+		weapon.amplitude = isNegative ? -weapon.amplitude : weapon.amplitude;
+		weapon.ySpeed = currentForm.getSpeed();
+		weapon.degreesPerSec = GREEN_DEGREES_PER_SEC;
 	}
 
 }
