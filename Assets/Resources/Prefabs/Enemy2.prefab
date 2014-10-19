@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 20
   projectile: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:

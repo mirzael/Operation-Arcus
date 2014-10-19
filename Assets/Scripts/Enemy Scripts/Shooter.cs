@@ -4,41 +4,38 @@ using System.Collections;
 public class Shooter : MonoBehaviour {
 	public float cooldown;
 	public GameObject projectile;
-	float offset;
+	public int pattern;
 	float currentCooldown;
-
+	Wave bulletWave;
 
 
 	// Use this for initialization
 	void Start () {
 		currentCooldown = cooldown;
-		offset = 5;
+		int wave = Random.Range (0, 1);
+		switch (pattern)
+		{
+		case 0:
+			bulletWave = gameObject.AddComponent<Wave> ();
+			break;
+		case 1:
+			bulletWave = gameObject.AddComponent<TrackWave> ();
+			break;
+		case 2:
+			bulletWave = gameObject.AddComponent<NetWave> ();
+			break;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//currentCooldown -= Time.deltaTime;
 
-		if (currentCooldown > 0) 
+		if (currentCooldown == 0) 
 		{
-			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, transform.rotation);
-			proj.rigidbody.velocity = Vector3.left * 15 + Vector3.down * offset;
-			int aVal = (int) currentCooldown % 3;
-			switch (aVal)
-			{
-			case 0:
-				offset = 5;
-				break;
-			case 1:
-				offset = 0;
-				break;
-			case 2:
-				offset = -5;
-				break;
-			}
+			bulletWave.resetCooldown ();
+			currentCooldown = cooldown;
 		}
 		currentCooldown = currentCooldown - 1;
-		if (currentCooldown < (cooldown * -2))
-			currentCooldown = cooldown;
 	}
 }
