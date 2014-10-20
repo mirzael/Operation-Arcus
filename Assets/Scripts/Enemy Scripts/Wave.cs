@@ -25,16 +25,16 @@ public class Wave : MonoBehaviour {
 			switch (aVal)
 				{
 				case 0:
-					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.left * 2, transform.rotation);
-					proj.rigidbody.velocity = Vector3.left * 25 + Vector3.up * 5;
+					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.down * 2, transform.rotation);
+					proj.rigidbody.velocity = Vector3.down * 25 + Vector3.left * 5;
 					break;
 				case 1:
-					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.left * 2, transform.rotation);
-					proj.rigidbody.velocity = Vector3.left * 25 + Vector3.up;
+					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.down * 2, transform.rotation);
+					proj.rigidbody.velocity = Vector3.down * 25 + Vector3.left;
 					break;
 				case 2:
-					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.left * 2, transform.rotation);
-					proj.rigidbody.velocity = Vector3.left * 25 + Vector3.up * -5;
+					proj = (GameObject)Instantiate (projectile, gameObject.transform.position + Vector3.down * 2, transform.rotation);
+					proj.rigidbody.velocity = Vector3.down * 25 + Vector3.left * -5;
 					break;
 				}
 			}
