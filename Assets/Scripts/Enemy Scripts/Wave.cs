@@ -19,7 +19,7 @@ public class Wave : MonoBehaviour {
 	void Update () {
 		if (currentCooldown < cooldown) 
 			{
-			var proj = new GameObject();
+			GameObject proj;
 			currentCooldown = currentCooldown + 1;
 			int aVal = (int) currentCooldown % 10;
 			switch (aVal)
