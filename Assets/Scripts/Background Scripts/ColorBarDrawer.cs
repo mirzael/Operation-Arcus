@@ -4,8 +4,8 @@ using System.Collections;
 public class ColorBarDrawer : MonoBehaviour {
 
 	GUIStyle style;
-	Vector2 pos = new Vector2(0,0);
-	Vector2 size  = new Vector2(60,20);
+	public Vector2 pos = new Vector2(0,0);
+	public Vector2 size  = new Vector2(60,20);
 	public Texture2D barEmpty;
 	public Texture2D redBarFull;
 	public Texture2D blueBarFull;
