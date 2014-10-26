@@ -13,6 +13,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public List<GameObject> projectiles;
 	//These are the different colors of the ship
 	public List<Material> mats;
+	GameObject[] colorPieces;
 	float currentCooldown = 0;
 
 	/*These are the Forms of the ship
@@ -53,6 +54,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
 		if (projectiles.Count != mats.Count) {
 			Debug.Log ("You must have an equal amount of projectiles and materials!");
 			Application.Quit();
@@ -80,15 +82,16 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Set the current form to the first form
 		currentForm = forms[0];
 		previousForm = forms [0];
+		switchForm (currentForm);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Get where to move given user input
-		float hspeed = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+		float hspeed = Input.GetAxisRaw("Horizontal") * -(Time.deltaTime);
 		float vspeed = Input.GetAxisRaw ("Vertical") * Time.deltaTime;
 
-		var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.up * vspeed * currentForm.formSpeed;
+		var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
 		transform.Translate(toMoveVector);
 
 		//change the cooldown of the main weapon, as one frame has passed
@@ -200,7 +203,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				float trajectoryDegree = 90 + (projectileSpreadAngle / 2 - angleBetweenProjectiles * i);
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
 				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.up * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
+				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
 			} 
 			break;
 		case ShipColor.ORANGE:
@@ -230,8 +233,11 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void switchForm(Form form){
 		currentForm = form;
-		renderer.material = currentForm.material;
-		currentCooldown = currentForm.getCooldown();
+		for (int i = 0; i < colorPieces.Length; i++) 
+		{
+			colorPieces[i].renderer.material = currentForm.material;
+		}
+			currentCooldown = currentForm.getCooldown();
 	}
 
 	void sinBullet(GreenWeapon weapon, bool isNegative){
