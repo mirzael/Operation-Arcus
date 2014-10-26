@@ -7,9 +7,11 @@ public class EnemyDeath : MonoBehaviour {
 	Material redBlast;
 	Material orangeBlast;
 	Material purpleBlast;
+	PointMaster points;
 
 	// Use this for initialization
 	void Start () {
+		points = Component.FindObjectOfType<PointMaster> ();
 		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
 		orangeBlast = (Material)Resources.Load ("Materials/AoeBlasts/OrangeBlast", typeof(Material));
 		purpleBlast = (Material)Resources.Load ("Materials/AoeBlasts/PurpleBlast", typeof(Material));
@@ -17,7 +19,6 @@ public class EnemyDeath : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -47,6 +48,7 @@ public class EnemyDeath : MonoBehaviour {
 		if (col.gameObject.tag != "Purple" && col.gameObject.tag != "Green") {
 			Destroy (col.gameObject);
 		}
+		points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = col.gameObject.tag} );
 		Destroy (gameObject);
 	}
 

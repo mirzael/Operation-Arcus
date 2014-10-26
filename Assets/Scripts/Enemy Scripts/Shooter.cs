@@ -12,7 +12,6 @@ public class Shooter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentCooldown = cooldown;
-		int wave = Random.Range (0, 1);
 		switch (pattern)
 		{
 		case 0:
