@@ -16,6 +16,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
 
+	public float timeToWin = 15f;
+	public bool gameOver = false;
+
 	/*These are the Forms of the ship
 	 *The forms comprise of
 	 *	- Projectile Cooldown
@@ -87,6 +90,16 @@ public class MainCharacterDriver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (gameOver) return;
+		timeToWin -= Time.deltaTime;
+		if (timeToWin <= 0.0f) {
+			WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
+			gui.win = true;
+			gameOver = true;
+			Application.Quit();
+			return;
+		}
+		
 		//Get where to move given user input
 		float hspeed = Input.GetAxisRaw("Horizontal") * -(Time.deltaTime);
 		float vspeed = Input.GetAxisRaw ("Vertical") * Time.deltaTime;
@@ -144,8 +157,13 @@ public class MainCharacterDriver : MonoBehaviour {
 				blueForm.resetCooldown();
 				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
 			}else{
+				if (gameOver) return;
 				Destroy (gameObject);
 				Debug.Log("MISSION FAILED");
+				
+				WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
+				gui.win = false;
+				gameOver = true;
 				Application.Quit();
 			}
 		} else {

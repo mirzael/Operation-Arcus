@@ -17,7 +17,7 @@ public class TrackWave : Wave {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentCooldown % 20 == 0 && currentCooldown < cooldown) 
+		if (player != null && currentCooldown % 20 == 0 && currentCooldown < cooldown) 
 			{
 			var heading = player.transform.position - transform.position;
 			var distance = heading.magnitude;
