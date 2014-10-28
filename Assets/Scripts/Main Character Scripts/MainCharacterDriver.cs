@@ -66,6 +66,10 @@ public class MainCharacterDriver : MonoBehaviour {
 			Application.Quit();
 		}
 
+		powerRed = 0.0f;
+		powerBlue = 0.0f;
+		powerYellow = 0.0f;
+
 		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
 		
