@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
+	public int pattern = 0;
 	public Vector3 dir;
 	public float speed;
 	public float timeBeforeStopOnScreen;
@@ -12,27 +13,18 @@ public class EnemyMovement : MonoBehaviour {
 		speed = 10;
 		Vector3 pos = transform.position;
 		
-		int moveType = Random.Range(0, 3);
-		switch (moveType) {
-		case 0:
-			transform.position = new Vector3(pos.x + Random.Range(-5f, 5f), pos.y, pos.z);
+		switch (pattern) {
+		case 1: // diagonal left
 			timeBeforeStopOnScreen = 0.5f;
 			timeStayOnScreen = 3.0f;
 			dir = Vector3.down * speed + Vector3.left * speed;
 			break;
-		case 1:
-			transform.position = new Vector3(pos.x + Random.Range(-5f, 5f), pos.y, pos.z);
+		case 2: // diagonal right
 			timeBeforeStopOnScreen = 0.5f;
 			timeStayOnScreen = 3.0f;
 			dir = Vector3.down * speed + Vector3.right * speed;
 			break;
-		case 2:
-			transform.position = new Vector3(pos.x + Random.Range(-10f, 10f), pos.y, pos.z);
-			timeBeforeStopOnScreen = 0.5f;
-			timeStayOnScreen = 3.0f;
-			dir = Vector3.down * speed;
-			break;
-		case 3:
+		case 3: // straight down
 			timeBeforeStopOnScreen = 0.5f;
 			timeStayOnScreen = 3.0f;
 			dir = Vector3.down * speed;

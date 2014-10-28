@@ -1,0 +1,11 @@
+# format: enemyType,whenToAppear,xPos (relative to center of screen),movementPattern
+# movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
+Enemy1,0.0,0.0,2
+Enemy2,3.5,0.0,1
+Enemy3,5.0,2.0,3
+Enemy3,5.0,-2.0,3
+# a comment for testing
+Enemy2,8.0,-3.0,1
+Enemy2,8.0,3.0,2
+Enemy1,8.0,0.0,3
+Enemy3,10.0,0.0,2
