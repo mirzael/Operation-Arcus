@@ -48,7 +48,7 @@ public class EnemyDeath : MonoBehaviour {
 		if (col.gameObject.tag != "Purple" && col.gameObject.tag != "Green") {
 			Destroy (col.gameObject);
 		}
-		points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = col.gameObject.tag} );
+		points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = col.gameObject.tag, shipPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z)} );
 		Destroy (gameObject);
 	}
 

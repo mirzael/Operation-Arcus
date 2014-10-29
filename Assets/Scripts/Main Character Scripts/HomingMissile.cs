@@ -17,7 +17,7 @@ public class HomingMissile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (target != null && transform.position.y < target.position.y + target.renderer.bounds.size.y / 2) {
+		if (target != null && target.renderer != null && transform.position.y < target.position.y + target.renderer.bounds.size.y / 2) {
 			myTransform.rotation = Quaternion.Slerp (myTransform.rotation,
 			Quaternion.LookRotation (target.position - myTransform.position), rotationSpeed * Time.deltaTime);
 		}

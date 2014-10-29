@@ -2093,6 +2093,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
   - {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
   - {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
+  timeToWin: 15
+  gameOver: 0
 --- !u!95 &1120953523
 Animator:
   serializedVersion: 3
@@ -2246,6 +2248,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
   projectilesEnemySpawns: []
   spawnRate: 1
+  level: 1
 --- !u!23 &1215482626
 Renderer:
   m_ObjectHideFlags: 0
@@ -3547,65 +3550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df254dac930dc840adaec8b8eb8f44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointStyle:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
+  orange: {r: 1, g: .68275857, b: 0, a: 0}
+  purple: {r: .801470578, g: .253406137, b: .71831584, a: 0}
+  yellow: {r: 1, g: .945740402, b: .213235319, a: 0}
   pos: {x: 1000, y: 0}
   size: {x: 100, y: 30}
 --- !u!1 &1957762739
