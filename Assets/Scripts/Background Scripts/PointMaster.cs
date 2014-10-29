@@ -5,9 +5,8 @@ using System.Collections.Generic;
 public class PointMaster : MonoBehaviour {
 	GUIStyle pointStyle;
 	float points = 0;
-	public Color orange;
-	public Color purple;
-	public Color yellow;
+	public Color orange = new Color();
+	public Color purple = new Color();
 	public Vector2 pos = new Vector2(0, 50);
 	public Vector2 size  = new Vector2(100, 100);
 	const float POINTS_PER_KILL = 1000;
@@ -23,6 +22,7 @@ public class PointMaster : MonoBehaviour {
 		pointStyle.normal.textColor = Color.white;
 
 		foreach (PointInfo info in displayArray) {
+			Debug.Log("Changing Color to: " + info.color.ToString());
 			pointStyle.normal.textColor = info.color;
 		}
 		GUI.Label (new Rect (pos.x, pos.y, size.x, size.y), "POINTS:\t\t\t" + points, pointStyle);
@@ -84,7 +84,7 @@ public class PointMaster : MonoBehaviour {
 						pointInfo.color = Color.green;
 						break;
 					case "Yellow":
-						pointInfo.color = yellow;
+						pointInfo.color = Color.yellow;
 						break;
 				}
 				break;
