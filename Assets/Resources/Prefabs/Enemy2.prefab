@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 150
+  cooldown: 600
   projectile: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   pattern: 0
 --- !u!114 &11400002
@@ -124,7 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feebe3b382029b840ac6887ef0060572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pattern: 0
+  stops: 0
   dir: {x: 0, y: 0, z: 0}
+  newDir: {x: 0, y: 0, z: 0}
   speed: 10
   timeBeforeStopOnScreen: 0
   timeStayOnScreen: 0

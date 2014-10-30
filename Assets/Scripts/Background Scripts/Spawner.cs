@@ -50,9 +50,9 @@ public class Spawner : MonoBehaviour {
 				if (line != null && line[0] != '#') {
 					string[] entries = line.Split(',');
 					if (entries.Length > 0) {
-						// format: enemyType, whenToAppear, xPos, movementPattern
+						// format: enemyType, whenToAppear, xPos, yPos, movementPattern, stop
 						float timeToAppear = float.Parse(entries[1]);
-						string otherDetails = entries[0] + "," + entries[2] + "," + entries[3];
+						string otherDetails = entries[0] + "," + entries[2] + "," + entries[3] + "," + entries[4] + "," + entries[5];
 						enemySpawnTimes.Enqueue(timeToAppear);
 						enemyDetails.Enqueue(otherDetails);
 					}
@@ -101,10 +101,17 @@ public class Spawner : MonoBehaviour {
 			}
 			
 			float xPos = float.Parse(details[1]);
-			int movementPattern = int.Parse(details[2]);
+			float yPos = float.Parse(details[2]);
+			int movementPattern = int.Parse(details[3]);
+			bool stops;
+			if (int.Parse(details[4]) == 1)
+				stops = true;
+			else
+				stops = false;
 			
-			GameObject ship = (GameObject)Instantiate(spawn, transform.position + Vector3.down * 2 + Vector3.right * xPos, spawn.transform.rotation);
+			GameObject ship = (GameObject)Instantiate(spawn, transform.position + Vector3.down * (2 + yPos) + Vector3.right * xPos, spawn.transform.rotation);
 			ship.GetComponent<EnemyMovement>().pattern = movementPattern;
+			ship.GetComponent<EnemyMovement>().stops = stops;
 		}
 		
 		//*/

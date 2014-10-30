@@ -22,7 +22,7 @@ public class TrackWave : Wave {
 			var heading = player.transform.position - transform.position;
 			var distance = heading.magnitude;
 			var direction = heading / distance;
-			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, transform.rotation);
+			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.down * 2, transform.rotation);
 			proj.rigidbody.velocity = direction * 10;
 			}
 		currentCooldown = currentCooldown + 1;

@@ -75,7 +75,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
 		
-		redForm = new Form (shipSpeed * 0.5f, 0.4f, projectiles[1], 50f, mats[1], ShipColor.RED);
+		redForm = new Form (shipSpeed * 0.75f, 0.4f, projectiles[1], 50f, mats[1], ShipColor.RED);
 		blueForm = new Form (shipSpeed, 0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE);
 		yellowForm = new Form (shipSpeed * 2.0f, 0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW);
 		
@@ -85,7 +85,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
-		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
+		purpleForm = new Form (shipSpeed * 1.1f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
 		greenForm = new Form (shipSpeed * 1.5f, 0.1f, projectiles [5], 50f, mats [5], ShipColor.GREEN);
 		rainbowForm = new Form (shipSpeed * 1.5f, 0.05f, projectiles [6], 50f, mats [6], ShipColor.RAINBOW);
 
@@ -162,7 +162,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (currentForm.shipColor == ShipColor.RAINBOW) return;
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(currentForm.shipColor == ShipColor.PURPLE){
 				redForm.resetSpeed();
@@ -178,7 +177,12 @@ public class MainCharacterDriver : MonoBehaviour {
 				switchForm(previousForm);
 				blueForm.resetCooldown();
 				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
-			}else{
+			}else if (currentForm.shipColor == ShipColor.RAINBOW)
+				{
+					Destroy (col.gameObject);
+					return;
+				}
+			 else{
 				if (gameOver) return;
 				Destroy (gameObject);
 				Debug.Log("MISSION FAILED");
@@ -274,11 +278,13 @@ public class MainCharacterDriver : MonoBehaviour {
 			gmoveScript.projectileSpeed = currentForm.projectileSpeed;
 			break;
 		case ShipColor.RAINBOW:
-			GameObject[] rainboom = new GameObject[36];
+			GameObject[] rainboom = new GameObject[15];
+			int rainbowSpreadAngle = 50;
+			int rainbowBetweenProjectiles = (rainbowSpreadAngle / (15 - 1));
 			float rToD =  Mathf.PI / 180;
 			Debug.Log (currentForm.projectile.transform.rotation.x);
-			for(int i = 0; i < 36; i++){
-				float trajectoryDegree = (10*i);
+			for(int i = 0; i < rainboom.Length; i++){
+				float trajectoryDegree = 90 + (rainbowSpreadAngle / 2 - rainbowBetweenProjectiles * i);
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * rToD);
 				rainboom[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 				rainboom[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());

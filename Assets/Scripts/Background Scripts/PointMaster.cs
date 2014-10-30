@@ -16,7 +16,7 @@ public class PointMaster : MonoBehaviour {
 	void Start () {
 		pointStyle = new GUIStyle ();
 		pointStyle.normal.textColor = Color.white;
-		Screen.SetResolution (600, 800, false);
+		Screen.SetResolution (1200, 1600, true);
 	}
 
 	void OnGUI(){		
@@ -50,6 +50,9 @@ public class PointMaster : MonoBehaviour {
 		float deathPoints = POINTS_PER_KILL;
 		PointInfo pointInfo = new PointInfo ();
 		switch (shipDeath.bulletTag) {
+			case "Rainbow":
+				pointInfo.color = Color.white;
+				break;
 			case "Red":
 				switch(shipDeath.shipTag){
 					case "Blue":
