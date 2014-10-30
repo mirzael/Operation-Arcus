@@ -15,6 +15,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public List<Material> mats;
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
+	int rainbowCooldown = 2;
 
 	public float timeToWin = 15f;
 	public bool gameOver = false;
@@ -51,6 +52,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	Form orangeForm;
 	Form purpleForm;
 	Form greenForm;
+	Form rainbowForm;
 
 	//Used for returning to the form we were in before switching to secondary
 	Form previousForm;
@@ -85,6 +87,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
 		purpleForm = new Form (shipSpeed * 0.75f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
 		greenForm = new Form (shipSpeed * 1.5f, 0.1f, projectiles [5], 50f, mats [5], ShipColor.GREEN);
+		rainbowForm = new Form (shipSpeed * 1.5f, 0.05f, projectiles [6], 50f, mats [6], ShipColor.RAINBOW);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -119,6 +122,20 @@ public class MainCharacterDriver : MonoBehaviour {
 			currentCooldown = currentForm.getCooldown();
 			Fire();
 		}
+		if (currentForm.shipColor == ShipColor.RAINBOW) 
+		{
+			rainbowCooldown = rainbowCooldown - 1;
+			if (rainbowCooldown <= 0)
+			{
+				rainbowCooldown = 2;
+				powerBlue = powerBlue - 1;
+				powerYellow = powerYellow - 1;
+				powerRed = powerRed - 1;
+			}
+			if (powerBlue == 0)
+				switchForm (previousForm);
+			return;
+		}
 		//Switch to Previous Form
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			switchForm (forms.Previous ());
@@ -145,6 +162,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
+		if (currentForm.shipColor == ShipColor.RAINBOW) return;
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(currentForm.shipColor == ShipColor.PURPLE){
 				redForm.resetSpeed();
@@ -200,6 +218,11 @@ public class MainCharacterDriver : MonoBehaviour {
 			}
 		}
 		Destroy (col.gameObject);
+		if (powerYellow == POWER_MAX && powerBlue == POWER_MAX && powerRed == POWER_MAX) 
+		{
+			previousForm = currentForm;
+			switchForm (rainbowForm);
+		}
 	}
 
 	void Fire(){
@@ -249,6 +272,17 @@ public class MainCharacterDriver : MonoBehaviour {
 			sinBullet(gProj[1].AddComponent<GreenWeapon>(), true);
 			var gmoveScript = gProj[2].AddComponent<MoveProjectile>();
 			gmoveScript.projectileSpeed = currentForm.projectileSpeed;
+			break;
+		case ShipColor.RAINBOW:
+			GameObject[] rainboom = new GameObject[36];
+			float rToD =  Mathf.PI / 180;
+			Debug.Log (currentForm.projectile.transform.rotation.x);
+			for(int i = 0; i < 36; i++){
+				float trajectoryDegree = (10*i);
+				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * rToD);
+				rainboom[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+				rainboom[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
+			} 
 			break;
 		}
 	}

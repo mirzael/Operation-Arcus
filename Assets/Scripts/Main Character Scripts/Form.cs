@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MainCharacter
 {
-	public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE};
+	public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW};
 
 	public class Form {
 		public float cooldown;
