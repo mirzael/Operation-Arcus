@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public class EnemyDeath : MonoBehaviour {
 	float purpleDist = .75f;
+	const float SPHERE_DURATION = 0.5f;
+	const float SPHERE_RADIUS = 1f;
 	Material redBlast;
 	Material orangeBlast;
 	Material purpleBlast;
+	Material greenBlast;
 	PointMaster points;
 
 	// Use this for initialization
@@ -15,6 +18,7 @@ public class EnemyDeath : MonoBehaviour {
 		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
 		orangeBlast = (Material)Resources.Load ("Materials/AoeBlasts/OrangeBlast", typeof(Material));
 		purpleBlast = (Material)Resources.Load ("Materials/AoeBlasts/PurpleBlast", typeof(Material));
+		greenBlast = (Material)Resources.Load ("Materials/AoeBlasts/GreenBlast", typeof(Material));
 	}
 	
 	// Update is called once per frame
@@ -32,15 +36,21 @@ public class EnemyDeath : MonoBehaviour {
 				CreateAoe (col.contacts [0].point, orangeBlast, 4f, 0.5f, false);
 			}
 		} else if (col.gameObject.tag == "Purple" && gameObject.tag == "Yellow") {
-			CreateAoe(col.contacts[0].point + (Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
-			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
-			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
-			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, 1f, .5f, false);
+			CreateAoe(col.contacts[0].point + (Vector3.up + Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
+			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
+			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
+			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
 		} else if(col.gameObject.tag == "Green" && gameObject.tag == "Red"){
 			int layerMask = 1 << 8;
-			Debug.Log ("HIT RED");
-			foreach(Collider collider in Physics.OverlapSphere(transform.position, 10f, layerMask)){
-				Debug.Log ("SPHEREHIT");
+			//Create the green Sphere
+			var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			sphere.renderer.material = greenBlast;
+			sphere.transform.position = transform.position;
+			sphere.transform.localScale = new Vector3(SPHERE_RADIUS*10f, SPHERE_RADIUS*10f, SPHERE_RADIUS*10f);
+			Destroy(sphere.collider);
+			Destroy (sphere, SPHERE_DURATION);
+			//Add the disabler script - enemy can't move or shoot
+			foreach(Collider collider in Physics.OverlapSphere(transform.position, SPHERE_RADIUS*10f, layerMask)){
 				collider.gameObject.AddComponent<Disabler>();
 			}
 		}

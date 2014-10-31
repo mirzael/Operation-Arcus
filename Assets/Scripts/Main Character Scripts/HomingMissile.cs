@@ -4,36 +4,18 @@ using System.Collections;
 public class HomingMissile : MonoBehaviour {
 	Transform shape;
 	Transform target;
-	Transform myTransform;
 
-	float startTime;
-	float journeyLength;
 	float moveSpeed = 25f;
 	float rotationSpeed = 15f;
 
 	// Use this for initialization
 	void Start () {
-		
-		// Keep a note of the time the movement started.
-		startTime = Time.time;
-
-		myTransform = transform;
 		findTarget ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (target != null && transform.position.y < target.position.y + 1) {
-						/*
-			// Distance moved = time * speed.
-			var distCovered = (Time.time - startTime) * moveSpeed;
-			
-			// Fraction of journey completed = current distance divided by total distance.
-			var fracJourney = distCovered / journeyLength;
-			
-			// Set our position as a fraction of the distance between the markers.
-			transform.position = Vector3.Lerp(myTransform.position, target.position, fracJourney);
-			*/
 
 			//find the vector pointing from our position to the target
 			var _direction = (target.position - transform.position).normalized;
@@ -56,9 +38,6 @@ public class HomingMissile : MonoBehaviour {
 		//RenderVolume (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 2f, Vector3.up, 100);
 		if (Physics.CapsuleCast (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 10f, Vector3.up, out hit, Mathf.Infinity, layermask)) {
 			target = hit.transform;
-
-			// Calculate the journey length.
-			journeyLength = Vector3.Distance(transform.position, target.position);
 		} else {
 			Destroy (gameObject);
 		}

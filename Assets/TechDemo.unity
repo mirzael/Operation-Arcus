@@ -2160,22 +2160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSpeed: 10.1999998
-  projectiles:
-  - {fileID: 100000, guid: 8ae4fb95e3d8b1c4384a908d4b7634f2, type: 2}
-  - {fileID: 100000, guid: 7c7271d5b582ccb498ddccb0a7336abc, type: 2}
-  - {fileID: 100000, guid: aaf74b2359023774ca9cbb2cbf12fba2, type: 2}
-  - {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
-  - {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
-  - {fileID: 100000, guid: a9975fbe213c6af4ca1ab32902a07035, type: 2}
-  - {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
-  mats:
-  - {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
-  - {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
-  - {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
-  - {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
-  - {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-  - {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
-  - {fileID: 2100000, guid: 2e5d11e0dccd4a240b0cb3baed1c79b4, type: 2}
+  projectiles: []
+  mats: []
   timeToWin: 15
   gameOver: 0
 --- !u!95 &1120953523
@@ -2332,7 +2318,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
   projectilesEnemySpawns: []
   spawnRate: 1
-  level: 1
 --- !u!23 &1215482626
 Renderer:
   m_ObjectHideFlags: 0
@@ -2506,11 +2491,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: mats.Array.size
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: projectiles.Array.size
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2872,6 +2857,10 @@ Prefab:
       propertyPath: projectiles.Array.data[6]
       value: 
       objectReference: {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: shipSpeed
+      value: 10.1999998
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
   m_RootGameObject: {fileID: 1120953520}

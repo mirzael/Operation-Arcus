@@ -13,6 +13,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public List<GameObject> projectiles;
 	//These are the different colors of the ship
 	public List<Material> mats;
+
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
@@ -28,7 +29,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	 *	- Color of ship
 	 *	- Speed of ship
 	 */
-	RotatingList<Form> forms;
+	public Form[] forms;
 
 
 	const float POWER_MAX = 100.0f;
@@ -57,6 +58,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Used for returning to the form we were in before switching to secondary
 	Form previousForm;
 
+
 	// Use this for initialization
 	void Start () {
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
@@ -71,17 +73,15 @@ public class MainCharacterDriver : MonoBehaviour {
 		powerRed = 0.0f;
 		powerBlue = 0.0f;
 		powerYellow = 0.0f;
-
-		forms = new RotatingList<Form> ();
 		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
 		
 		redForm = new Form (shipSpeed * 0.75f, 0.4f, projectiles[1], 50f, mats[1], ShipColor.RED);
 		blueForm = new Form (shipSpeed, 0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE);
 		yellowForm = new Form (shipSpeed * 2.0f, 0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW);
 		
-		forms.Add (blueForm);
-		forms.Add (redForm);
-		forms.Add (yellowForm);
+		//forms.Add (blueForm);
+		//forms.Add (redForm);
+		//forms.Add (yellowForm);
 
 		//Create the special forms
 		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
@@ -138,11 +138,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		//Switch to Previous Form
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			switchForm (forms.Previous ());
+			//switchForm (forms.Previous ());
 			previousForm = currentForm;
 		//Switch to Next Form
 		} else if (Input.GetKeyDown (KeyCode.E)) {
-			switchForm (forms.Next ());
+			//switchForm (forms.Next ());
 			previousForm = currentForm;
 		//Switch to ORANGE Form
 		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
@@ -258,7 +258,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
 			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			oBlast[0].gameObject.AddComponent<HomingMissile>();
+			var missileScript = oBlast[0].gameObject.AddComponent<HomingMissile>();
 			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[1].gameObject.AddComponent<HomingMissile>();
 			break;
