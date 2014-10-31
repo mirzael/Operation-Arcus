@@ -29,6 +29,11 @@ public class WinLoseGUI : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Debug.Log("Restarting game");
+			if (win) {
+				Spawner.level++;
+			} else {
+				Spawner.level = 1;
+			}
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
