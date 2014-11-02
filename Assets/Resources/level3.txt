@@ -1,0 +1,14 @@
+# format: enemyType,whenToAppear,xPos (relative to center of screen), yPos, movementPattern, stop
+# movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
+Enemy3,0.0,0.0,0.0,2,0
+Enemy2,2.0,-12.0,0.0,8,1
+Enemy1,3.5,0.0,5.5,1,0
+Enemy1,5.0,3.0,5.5,2,0
+Enemy3,5.0,0.0,5.5,2,0
+Enemy3,6.0,0.0,10.0,3,0
+Enemy3,7.0,15.0,10.0,5,0
+Enemy1,7.5,15.0,18.0,6,0
+Enemy3,7.0,-15.0,20.0,8,1
+Enemy3,8.0,-3.0,10.0,1,0
+Enemy2,9.0,-15.0,13.5,4,0
+Enemy2,11.0,-15.0,17.0,7,0

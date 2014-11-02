@@ -16,13 +16,22 @@ public class Spawner : MonoBehaviour {
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
 	private float levelTimeCounter;
-	public int level = 1;
+	public static int level = 1;
+	public const int MAX_LEVELS = 3;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		currentRate = spawnRate;
 		copyEnemyToSpawn = new RotatingList<GameObject> (enemyToSpawn);
 		levelTimeCounter = 0;
+		
+		if (level > MAX_LEVELS) {
+			Debug.Log("You won the game!");
+			Application.Quit();
+			return;
+		}
+		
+		Debug.Log("Loading level " + level);
 		
 		if (!Load("level" + level)) {
 			Debug.Log("Failed to read spawn data for level " + level);

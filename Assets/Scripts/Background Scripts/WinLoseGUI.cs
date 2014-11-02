@@ -15,7 +15,11 @@ public class WinLoseGUI : MonoBehaviour {
 		guiStyle.alignment = TextAnchor.UpperCenter;
 		Rect textArea = new Rect(0, 0, Screen.width, Screen.height);
 		if (win) {
-			GUI.Label(textArea, "You Won! Press R to play again", guiStyle);
+			if (Spawner.level < Spawner.MAX_LEVELS) {
+				GUI.Label(textArea, "You Won! Press R to play again", guiStyle);
+			} else {
+				GUI.Label(textArea, "You won the war! Press R to continue", guiStyle);
+			}
 		} else {
 			GUI.Label(textArea, "You Lost! Press R to play again", guiStyle);
 		}
@@ -29,6 +33,15 @@ public class WinLoseGUI : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Debug.Log("Restarting game");
+			if (win) {
+				Spawner.level++;
+				if (Spawner.level > Spawner.MAX_LEVELS) {
+					Application.LoadLevel("Credits");
+					return;
+				}
+			} else {
+				Spawner.level = 1;
+			}
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
