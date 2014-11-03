@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HomingMissile : MonoBehaviour {
+public class OrangeWeapon : MonoBehaviour {
 	Transform shape;
 	Transform target;
 
-	float moveSpeed = 25f;
-	float rotationSpeed = 15f;
+	public float moveSpeed;
+	public float rotationSpeed;
+	public float explosionRadius;
+	public float gravityRadius;
+	public float gravityForce;
+
+	Material orangeBlast;
 
 	// Use this for initialization
 	void Start () {
+		orangeBlast = (Material)Resources.Load ("Materials/AoeBlasts/OrangeBlast", typeof(Material));
 		findTarget ();
 	}
 	
@@ -35,7 +41,7 @@ public class HomingMissile : MonoBehaviour {
 		RaycastHit hit;
 		int layermask = 1 << 8;
 		
-		//RenderVolume (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 2f, Vector3.up, 100);
+		//RenderVolume (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 10f, Vector3.up, 100);
 		if (Physics.CapsuleCast (transform.position + Vector3.left * 0.5f, transform.position + Vector3.right * 0.5f, 10f, Vector3.up, out hit, Mathf.Infinity, layermask)) {
 			target = hit.transform;
 		} else {
@@ -59,5 +65,30 @@ public class HomingMissile : MonoBehaviour {
 		shape.position = (p1 + p2 + dir.normalized * distance) / 2;
 		shape.rotation = Quaternion.LookRotation(dir, p2 - p1);
 		shape.renderer.enabled = true; // show it
+	}
+
+	void OnCollisionEnter(Collision col){
+		if (col.gameObject.tag == "Blue") {
+			CreateAoe (col.contacts [0].point, orangeBlast, gravityRadius, 1f, true);
+		} else {
+			CreateAoe (col.contacts [0].point, orangeBlast, explosionRadius, 0.5f, false);
+		}
+	}
+
+	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
+		var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		sphere.renderer.material = mat;
+		sphere.transform.position = center;
+		sphere.transform.localScale = new Vector3(radius, radius, radius);
+		if(gravity){ 
+			var field = sphere.AddComponent<GravityField>();
+			field.GRAVITY_FIELD = gravityRadius;
+			field.GRAVITY_FORCE = gravityForce;
+			Destroy (sphere.collider);
+		}else{
+			sphere.layer = LayerMask.NameToLayer("Character Bullet");
+		}
+		Destroy (sphere, duration);
+		Destroy(gameObject);
 	}
 }

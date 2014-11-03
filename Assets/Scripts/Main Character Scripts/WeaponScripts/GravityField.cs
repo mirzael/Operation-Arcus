@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class GravityField : MonoBehaviour {
-	public const float GRAVITY_FIELD = 100f;
-	public const float GRAVITY_FORCE = 350f;
+	public float GRAVITY_FIELD = 100f;
+	public float GRAVITY_FORCE = 350f;
 
 	// Use this for initialization
 	void Start () {

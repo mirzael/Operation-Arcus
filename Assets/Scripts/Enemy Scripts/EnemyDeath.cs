@@ -26,12 +26,6 @@ public class EnemyDeath : MonoBehaviour {
 		//AOE, BABY
 		if (col.gameObject.tag == "Red") {
 			CreateAoe (col.contacts [0].point, redBlast, MainCharacterDriver.powerRed/100+2.5f, 0.5f, false);
-		} else if (col.gameObject.tag == "Orange") {
-			if (gameObject.tag == "Blue") {
-				CreateAoe (col.contacts [0].point, orangeBlast, 10f, 0.25f, true);
-			} else {
-				CreateAoe (col.contacts [0].point, orangeBlast, 4f, 0.5f, false);
-			}
 		} else if(col.gameObject.tag == "Green" && gameObject.tag == "Red"){
 			int layerMask = 1 << 8;
 			//Create the green Sphere

@@ -7,7 +7,6 @@ namespace MainCharacter
 	[CustomEditor(typeof(MainCharacterDriver))]
 	public class MainCharacterDriverEditor : Editor
 	{
-
 		public override void OnInspectorGUI() {
 			var driver = (MainCharacterDriver)target;
 			driver.timeToWin = EditorGUILayout.FloatField ("Time To Win", driver.timeToWin);
@@ -16,8 +15,8 @@ namespace MainCharacter
 			ShowWeaponDropdown ("Blue", ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, null);
 			ShowWeaponDropdown ("Yellow", ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, null);
 			ShowWeaponDropdown ("Green", ref driver.greenForm.formSpeed, ref driver.greenForm.cooldown, ref driver.greenForm.projectileSpeed, ref driver.greenForm.material, ref driver.greenForm.projectile, null);
-			ShowWeaponDropdown ("Orange", ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile, null);
-			ShowWeaponDropdown ("Purple", ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile, ShowMirvWeapon);
+			ShowWeaponDropdown ("Orange", ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile, OrangeWeaponLayout);
+			ShowWeaponDropdown ("Purple", ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile, PurpleWeaponLayout);
 			ShowWeaponDropdown ("Rainbow", ref driver.rainbowForm.formSpeed, ref driver.rainbowForm.cooldown, ref driver.rainbowForm.projectileSpeed, ref driver.rainbowForm.material, ref driver.rainbowForm.projectile, null);
 
 			if (GUI.changed)EditorUtility.SetDirty (target);
@@ -36,10 +35,18 @@ namespace MainCharacter
 			EditorGUI.indentLevel--;
 		}
 
-		public void ShowMirvWeapon(){
+		public void PurpleWeaponLayout(){
 			var driver = (MainCharacterDriver)target;
 			driver.purpleMirv = (GameObject)EditorGUILayout.ObjectField("Mirv Bullet", driver.purpleMirv, typeof(GameObject), !EditorUtility.IsPersistent(target));
 			driver.purpleTimeBeforeExplosion = EditorGUILayout.FloatField ("Time before explosion", driver.purpleTimeBeforeExplosion);
+		}	
+
+		public void OrangeWeaponLayout(){
+			var driver = (MainCharacterDriver)target;
+			driver.orangeRotationSpeed = EditorGUILayout.FloatField ("Rotation Speed", driver.orangeRotationSpeed);
+			driver.orangeExplosionRadius = EditorGUILayout.FloatField ("Orange explosion radius", driver.orangeExplosionRadius);
+			driver.orangeGravityRadius = EditorGUILayout.FloatField ("Orange gravity field radius", driver.orangeGravityRadius);
+			driver.orangeGravityForce = EditorGUILayout.FloatField ("Orange gravity field force", driver.orangeGravityForce);
 		}
 	}
 }

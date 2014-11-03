@@ -47,6 +47,11 @@ public class MainCharacterDriver : MonoBehaviour {
 	//These are the special ship forms
 	[SerializeField]
 	public Form orangeForm;
+	//Orange Weapon
+	public float orangeRotationSpeed;
+	public float orangeExplosionRadius;
+	public float orangeGravityRadius;
+	public float orangeGravityForce;
 	[SerializeField]
 	public Form purpleForm;
 	//Purple weapon
@@ -250,9 +255,19 @@ public class MainCharacterDriver : MonoBehaviour {
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
 			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			oBlast[0].gameObject.AddComponent<HomingMissile>();
+			var oWep = oBlast[0].gameObject.AddComponent<OrangeWeapon>();
+			oWep.moveSpeed = currentForm.projectileSpeed;
+			oWep.rotationSpeed = orangeRotationSpeed;
+			oWep.explosionRadius = orangeExplosionRadius;
+			oWep.gravityRadius = orangeGravityRadius;
+			oWep.gravityForce = orangeGravityForce;
 			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			oBlast[1].gameObject.AddComponent<HomingMissile>();
+			oWep = oBlast[1].gameObject.AddComponent<OrangeWeapon>();
+			oWep.moveSpeed = currentForm.projectileSpeed;
+			oWep.rotationSpeed = orangeRotationSpeed;
+			oWep.explosionRadius = orangeExplosionRadius;
+			oWep.gravityRadius = orangeGravityRadius;
+			oWep.gravityForce = orangeGravityForce;
 			break;
 		case ShipColor.PURPLE:
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
