@@ -6,13 +6,6 @@ using System.Threading;
 using MainCharacter;
 
 public class MainCharacterDriver : MonoBehaviour {
-	//Right now all forms have the same ship speed
-	public float shipSpeed;
-	//These are the projectiles that the ship will fire
-	public List<GameObject> projectiles;
-	//These are the different colors of the ship
-	public List<Material> mats;
-
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
@@ -56,6 +49,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	public Form orangeForm;
 	[SerializeField]
 	public Form purpleForm;
+	//Purple weapon
+	public GameObject purpleMirv;
+	public float purpleTimeBeforeExplosion;
 	[SerializeField]
 	public Form greenForm;
 	[SerializeField]
@@ -68,13 +64,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
-		if (projectiles.Count != mats.Count) {
-			Debug.Log ("You must have an equal amount of projectiles and materials!");
-			Application.Quit();
-		} else if (projectiles.Count == 0) {
-			Debug.Log("You must have at least one projectile!");
-			Application.Quit();
-		}
 
 		powerRed = 0.0f;
 		powerBlue = 0.0f;
@@ -269,6 +258,10 @@ public class MainCharacterDriver : MonoBehaviour {
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			var moveScript = projectile.AddComponent<MoveProjectile>();
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
+			var mirvStuff = projectile.AddComponent<PurpleWeapon>();
+			mirvStuff.mirvBullet = purpleMirv;
+			mirvStuff.bulletSpeed = currentForm.projectileSpeed;
+			mirvStuff.timeBeforeExplosion = purpleTimeBeforeExplosion;
 			break;
 		case ShipColor.GREEN:
 			var gProj = new GameObject[3];

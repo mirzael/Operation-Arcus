@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemyDeath : MonoBehaviour {
-	float purpleDist = .75f;
 	const float SPHERE_DURATION = 0.5f;
 	const float SPHERE_RADIUS = 1f;
 	Material redBlast;
 	Material orangeBlast;
-	Material purpleBlast;
 	Material greenBlast;
 	PointMaster points;
 
@@ -17,7 +15,6 @@ public class EnemyDeath : MonoBehaviour {
 		points = Component.FindObjectOfType<PointMaster> ();
 		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
 		orangeBlast = (Material)Resources.Load ("Materials/AoeBlasts/OrangeBlast", typeof(Material));
-		purpleBlast = (Material)Resources.Load ("Materials/AoeBlasts/PurpleBlast", typeof(Material));
 		greenBlast = (Material)Resources.Load ("Materials/AoeBlasts/GreenBlast", typeof(Material));
 	}
 	
@@ -35,11 +32,6 @@ public class EnemyDeath : MonoBehaviour {
 			} else {
 				CreateAoe (col.contacts [0].point, orangeBlast, 4f, 0.5f, false);
 			}
-		} else if (col.gameObject.tag == "Purple" && gameObject.tag == "Yellow") {
-			CreateAoe(col.contacts[0].point + (Vector3.up + Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
-			CreateAoe(col.contacts[0].point + (-Vector3.up + Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
-			CreateAoe(col.contacts[0].point + (Vector3.up - Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
-			CreateAoe(col.contacts[0].point + (-Vector3.up - Vector3.right) * purpleDist, purpleBlast, SPHERE_RADIUS, SPHERE_DURATION, false);
 		} else if(col.gameObject.tag == "Green" && gameObject.tag == "Red"){
 			int layerMask = 1 << 8;
 			//Create the green Sphere
@@ -73,7 +65,7 @@ public class EnemyDeath : MonoBehaviour {
 		}else{
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
 		}
-		Destroy(gameObject);
 		Destroy (sphere, duration);
+		Destroy(gameObject);
 	}
 }

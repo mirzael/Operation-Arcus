@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MoveProjectile : MonoBehaviour {
@@ -13,4 +13,5 @@ public class MoveProjectile : MonoBehaviour {
 	void Update () {
 		transform.position += Vector3.up * projectileSpeed/100;
 	}
+
 }
