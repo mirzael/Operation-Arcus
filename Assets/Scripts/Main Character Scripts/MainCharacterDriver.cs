@@ -39,6 +39,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	//The base forms
 	[SerializeField]
 	public Form redForm;
+	//Red Weapon
+	public float redExplosionRadius;
+	public float redRadiusPerPoint;
 	[SerializeField]
 	public Form blueForm;
 	[SerializeField]
@@ -59,6 +62,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float purpleTimeBeforeExplosion;
 	[SerializeField]
 	public Form greenForm;
+	//Green Weapon
+	public float greenEmpRadius;
+	public float greenEmpDuration;
 	[SerializeField]
 	public Form rainbowForm;
 
@@ -155,6 +161,8 @@ public class MainCharacterDriver : MonoBehaviour {
 			switchForm(greenForm);
 		} else if(Input.GetKeyDown (KeyCode.PageDown)){
 			powerRed = powerYellow = powerBlue = 100;
+			forms[0].setSpeed(forms[0].getSpeed() + powerRed);
+			forms[1].setCooldown(forms[1].getCooldown() - 0.01f * powerBlue);
 		}
 	}
 
@@ -237,6 +245,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		case ShipColor.RED:
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
+			var rWep = projectile.AddComponent<RedWeapon>();
+			rWep.baseExplosionRadius = redExplosionRadius;
+			rWep.radiusPerPoint = redRadiusPerPoint;
 			break;
 		case ShipColor.YELLOW:
 			int numProjectiles = 3 + (int)(powerYellow / POWER_INC);
@@ -284,8 +295,11 @@ public class MainCharacterDriver : MonoBehaviour {
 			gProj[2] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			sinBullet(gProj[0].AddComponent<GreenWeapon>(), false);
 			sinBullet(gProj[1].AddComponent<GreenWeapon>(), true);
-			var gmoveScript = gProj[2].AddComponent<MoveProjectile>();
-			gmoveScript.projectileSpeed = currentForm.projectileSpeed;
+			var gWep = gProj[2].AddComponent<GreenWeapon>();
+			gWep.isStraight = true;
+			gWep.ySpeed = currentForm.getSpeed();
+			gWep.sphereRadius = greenEmpRadius;
+			gWep.empDuration = greenEmpDuration;
 			break;
 		case ShipColor.RAINBOW:
 			GameObject[] rainboom = new GameObject[15];
@@ -316,6 +330,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		weapon.amplitude = isNegative ? -weapon.amplitude : weapon.amplitude;
 		weapon.ySpeed = currentForm.getSpeed();
 		weapon.degreesPerSec = GREEN_DEGREES_PER_SEC;
+		weapon.sphereRadius = greenEmpRadius;
+		weapon.empDuration = greenEmpDuration;
 	}
 
 }

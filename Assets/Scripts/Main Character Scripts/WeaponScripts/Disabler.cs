@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Disabler : MonoBehaviour {
 
-	float disabledTime = 1f;
+	public float disabledTime = 1f;
 	Vector3 initVelocity;
 	Shooter shooting;
 	EnemyMovement movement;

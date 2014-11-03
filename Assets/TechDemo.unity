@@ -2170,6 +2170,8 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
     formSpeed: 8
     shipColor: 0
+  redExplosionRadius: 2.5
+  redRadiusPerPoint: .100000001
   blueForm:
     cooldown: .200000003
     originalCooldown: 0
@@ -2192,11 +2194,15 @@ MonoBehaviour:
     cooldown: .800000012
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
-    projectileSpeed: 50
+    projectileSpeed: 30
     originalSpeed: 0
     material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
     formSpeed: 20
     shipColor: 0
+  orangeRotationSpeed: 15
+  orangeExplosionRadius: 4
+  orangeGravityRadius: 35
+  orangeGravityForce: 1500
   purpleForm:
     cooldown: .600000024
     originalCooldown: 0
@@ -2217,6 +2223,8 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
     formSpeed: 30
     shipColor: 0
+  greenEmpRadius: 20
+  greenEmpDuration: 1
   rainbowForm:
     cooldown: .0500000007
     originalCooldown: 0
@@ -2741,7 +2749,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeForm.projectileSpeed
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleForm.formSpeed
@@ -2773,6 +2781,38 @@ Prefab:
       objectReference: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleTimeBeforeExplosion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: orangeRotationSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: orangeExplosionRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: orangeGravityRadius
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: orangeGravityForce
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: redExplosionRadius
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: redRadiusPerPoint
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: greenEmpRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: greenEmpDuration
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
