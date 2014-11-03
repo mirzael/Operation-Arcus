@@ -23,6 +23,18 @@ public class Shooter : MonoBehaviour {
 		case 2:
 			bulletWave = gameObject.AddComponent<NetWave> ();
 			break;
+		case 3:
+			bulletWave = gameObject.AddComponent<TrackNetWave> ();
+			break;
+		case 4:
+			bulletWave = gameObject.AddComponent<MachineGunWave> ();
+			break;
+		case 5:
+			bulletWave = gameObject.AddComponent<DualPulseWave> ();
+			break;
+		case 6:
+			bulletWave = gameObject.AddComponent<CascadeWave> ();
+			break;
 		}
 	}
 	

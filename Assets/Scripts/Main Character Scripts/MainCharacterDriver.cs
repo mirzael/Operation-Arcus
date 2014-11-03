@@ -228,7 +228,6 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void Fire(){
 		GameObject projectile;
-		Debug.Log (currentForm.shipColor);
 		switch (currentForm.shipColor)
 		{
 		case ShipColor.BLUE:

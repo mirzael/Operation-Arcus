@@ -2198,7 +2198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 400
   projectile: {fileID: 100000, guid: 2f940a40cfaa8344d9e3da42a3fecd59, type: 2}
-  pattern: 2
+  pattern: 5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

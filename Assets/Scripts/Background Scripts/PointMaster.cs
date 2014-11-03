@@ -23,17 +23,17 @@ public class PointMaster : MonoBehaviour {
 		pointStyle.normal.textColor = Color.white;
 
 		foreach (PointInfo info in displayArray) {
-			Debug.Log("Changing Color to: " + info.color.ToString());
 			pointStyle.normal.textColor = info.color;
 		}
 		GUI.Label (new Rect (pos.x, pos.y, size.x, size.y), "POINTS:\t\t\t" + points, pointStyle);
 
 
-		foreach(PointInfo info in displayArray){
+		/* CURRENTLY BUGGY - PRINTING POINTS ABOVE CHARACTER
+		 * foreach(PointInfo info in displayArray){
 			Debug.Log("PRINTING AT " + info.positionToDisplay.x + ", " + info.positionToDisplay.y + "WITH COLOR: " + info.color.ToString());
 			pointStyle.normal.textColor = info.color;
 			GUI.Label(new Rect(info.positionToDisplay.z, info.positionToDisplay.x, size.x, size.y), info.pointValue.ToString(), pointStyle);
-		}
+		} */
 	}
 	// Update is called once per frame
 	void Update () {
