@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Threading;
-using HelperClasses;
 using MainCharacter;
 
 public class MainCharacterDriver : MonoBehaviour {
@@ -29,7 +28,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	 *	- Color of ship
 	 *	- Speed of ship
 	 */
-	public Form[] forms;
+	public RotatingList<Form> forms = new RotatingList<Form>();
 
 
 	const float POWER_MAX = 100.0f;
@@ -45,15 +44,22 @@ public class MainCharacterDriver : MonoBehaviour {
 	Form currentForm;
 
 	//The base forms
-	Form redForm;
-	Form blueForm;
-	Form yellowForm;
+	[SerializeField]
+	public Form redForm;
+	[SerializeField]
+	public Form blueForm;
+	[SerializeField]
+	public Form yellowForm;
 
 	//These are the special ship forms
-	Form orangeForm;
-	Form purpleForm;
-	Form greenForm;
-	Form rainbowForm;
+	[SerializeField]
+	public Form orangeForm;
+	[SerializeField]
+	public Form purpleForm;
+	[SerializeField]
+	public Form greenForm;
+	[SerializeField]
+	public Form rainbowForm;
 
 	//Used for returning to the form we were in before switching to secondary
 	Form previousForm;
@@ -73,21 +79,18 @@ public class MainCharacterDriver : MonoBehaviour {
 		powerRed = 0.0f;
 		powerBlue = 0.0f;
 		powerYellow = 0.0f;
-		//Based on what is given in the unity editor, create the different forms (see "Main Character" in scene)
-		
-		redForm = new Form (shipSpeed * 0.75f, 0.4f, projectiles[1], 50f, mats[1], ShipColor.RED);
-		blueForm = new Form (shipSpeed, 0.2f, projectiles[0], 50f, mats[0], ShipColor.BLUE);
-		yellowForm = new Form (shipSpeed * 2.0f, 0.75f, projectiles[2], 50f, mats[2], ShipColor.YELLOW);
-		
-		//forms.Add (blueForm);
-		//forms.Add (redForm);
-		//forms.Add (yellowForm);
 
-		//Create the special forms
-		orangeForm = new Form (shipSpeed, 0.6f, projectiles [3], 100f, mats [3], ShipColor.ORANGE);
-		purpleForm = new Form (shipSpeed * 1.1f, 0.2f, projectiles [4], 75f, mats [4], ShipColor.PURPLE);
-		greenForm = new Form (shipSpeed * 1.5f, 0.1f, projectiles [5], 50f, mats [5], ShipColor.GREEN);
-		rainbowForm = new Form (shipSpeed * 1.5f, 0.05f, projectiles [6], 50f, mats [6], ShipColor.RAINBOW);
+		redForm.shipColor = ShipColor.RED;
+		blueForm.shipColor = ShipColor.BLUE;
+		yellowForm.shipColor = ShipColor.YELLOW;
+		greenForm.shipColor = ShipColor.GREEN;
+		orangeForm.shipColor = ShipColor.ORANGE;
+		purpleForm.shipColor = ShipColor.PURPLE;
+		rainbowForm.shipColor = ShipColor.RAINBOW;
+
+		forms.Add (redForm);
+		forms.Add (blueForm);
+		forms.Add (yellowForm);
 
 		//Set the current form to the first form
 		currentForm = forms[0];
@@ -138,11 +141,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		//Switch to Previous Form
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			//switchForm (forms.Previous ());
+			switchForm (forms.Previous ());
 			previousForm = currentForm;
 		//Switch to Next Form
 		} else if (Input.GetKeyDown (KeyCode.E)) {
-			//switchForm (forms.Next ());
+			switchForm (forms.Next ());
 			previousForm = currentForm;
 		//Switch to ORANGE Form
 		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
@@ -231,6 +234,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void Fire(){
 		GameObject projectile;
+		Debug.Log (currentForm.shipColor);
 		switch (currentForm.shipColor)
 		{
 		case ShipColor.BLUE:
@@ -247,7 +251,6 @@ public class MainCharacterDriver : MonoBehaviour {
 			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
 			float radToDeg =  Mathf.PI / 180;
 			GameObject[] blast = new GameObject[numProjectiles];
-			Debug.Log (currentForm.projectile.transform.rotation.x);
 			for(int i = 0; i < numProjectiles; i++){
 				float trajectoryDegree = 90 + (projectileSpreadAngle / 2 - angleBetweenProjectiles * i);
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
@@ -258,7 +261,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		case ShipColor.ORANGE:
 			var oBlast = new GameObject[2];
 			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			var missileScript = oBlast[0].gameObject.AddComponent<HomingMissile>();
+			oBlast[0].gameObject.AddComponent<HomingMissile>();
 			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oBlast[1].gameObject.AddComponent<HomingMissile>();
 			break;

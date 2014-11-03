@@ -2,7 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace HelperClasses
+namespace MainCharacter
 {
 	public class RotatingList<T> : Collection<T> {
 		int selectedIndex;

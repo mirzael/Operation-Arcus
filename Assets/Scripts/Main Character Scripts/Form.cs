@@ -3,18 +3,32 @@ using UnityEngine;
 
 namespace MainCharacter
 {
+	[System.Serializable]
 	public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW};
 
+	[System.Serializable]
 	public class Form {
+		[SerializeField]
 		public float cooldown;
+		[SerializeField]
 		private float originalCooldown;
+		[SerializeField]
 		public GameObject projectile;
+		[SerializeField]
 		public float projectileSpeed;
+		[SerializeField]
 		private float originalSpeed;
+		[SerializeField]
 		public Material material;
+		[SerializeField]
 		public float formSpeed;
+		[SerializeField]
 		public ShipColor shipColor;
-		
+
+		public Form(ShipColor color){
+			shipColor = color;
+		}
+
 		public Form(float formSpeed, float cooldown, GameObject projectile, float projectileSpeed, Material material, ShipColor shipColor){
 			this.formSpeed = formSpeed;
 			this.cooldown = cooldown;

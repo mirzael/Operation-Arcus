@@ -5,41 +5,34 @@ using UnityEngine;
 namespace MainCharacter
 {
 	[CustomEditor(typeof(MainCharacterDriver))]
-	[CanEditMultipleObjects]
 	public class MainCharacterDriverEditor : Editor
 	{
-		SerializedProperty shipSpeed;
-		SerializedProperty timeToWin;
-		SerializedProperty forms;
-
-		void OnEnable () {
-			// Setup the SerializedProperties
-			shipSpeed = serializedObject.FindProperty ("shipSpeed");
-			timeToWin = serializedObject.FindProperty ("timeToWin");
-			forms = serializedObject.FindProperty ("forms");
-		}
 
 		public override void OnInspectorGUI() {
-			// Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
-			serializedObject.Update ();
+			var driver = (MainCharacterDriver)target;
+			driver.timeToWin = EditorGUILayout.FloatField ("Time To Win", driver.timeToWin);
 
-			EditorGUILayout.FloatField ("Ship Speed", shipSpeed.floatValue);
-			EditorGUILayout.FloatField ("Time To Win", timeToWin.floatValue);
-			EditorGUILayout.Toggle("Forms size", forms.isArray);
-			/*
-			// Show the custom GUI controls
-			EditorGUILayout.IntSlider (damageProp, 0, 100, new GUIContent ("Damage"));
-			// Only show the damage progress bar if all the objects have the same damage value:
-			if (!damageProp.hasMultipleDifferentValues)
-				ProgressBar (damageProp.intValue / 100.0, "Damage");
-			EditorGUILayout.IntSlider (armorProp, 0, 100, new GUIContent ("Armor"));
-			// Only show the armor progress bar if all the objects have the same armor value:
-			if (!armorProp.hasMultipleDifferentValues)
-				ProgressBar (armorProp.intValue / 100.0, "Armor");
-			EditorGUILayout.PropertyField (gunProp, new GUIContent ("Gun Object"));
-			// Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI. */
-			serializedObject.ApplyModifiedProperties ();
+			ShowWeaponDropdown ("Red", ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.material, ref driver.redForm.projectile);
+			ShowWeaponDropdown ("Blue", ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile);
+			ShowWeaponDropdown ("Yellow", ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile);
+			ShowWeaponDropdown ("Green", ref driver.greenForm.formSpeed, ref driver.greenForm.cooldown, ref driver.greenForm.projectileSpeed, ref driver.greenForm.material, ref driver.greenForm.projectile);
+			ShowWeaponDropdown ("Orange", ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile);
+			ShowWeaponDropdown ("Purple", ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile);
+			ShowWeaponDropdown ("Rainbow", ref driver.rainbowForm.formSpeed, ref driver.rainbowForm.cooldown, ref driver.rainbowForm.projectileSpeed, ref driver.rainbowForm.material, ref driver.rainbowForm.projectile);
+
+			if (GUI.changed)EditorUtility.SetDirty (target);
+		}
+
+		public void ShowWeaponDropdown(string label, ref float shipSpeed, ref float cooldown, ref float projectileSpeed, ref Material material, ref GameObject bullet){
+			EditorGUILayout.LabelField (label);
+			EditorGUI.indentLevel++;
+			shipSpeed = EditorGUILayout.FloatField ("Ship Speed", shipSpeed);
+			cooldown = EditorGUILayout.FloatField ("Cooldown", cooldown);
+			projectileSpeed = EditorGUILayout.FloatField ("Projectile Speed", projectileSpeed);
+			var allowSceneObjects = !EditorUtility.IsPersistent (target);
+			material = (Material)EditorGUILayout.ObjectField("Ship Material", material, typeof(Material), allowSceneObjects);
+			bullet = (GameObject)EditorGUILayout.ObjectField ("Bullet", bullet, typeof(GameObject), allowSceneObjects);
+			EditorGUI.indentLevel--;
 		}
 	}
 }
-
