@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class WinLoseGUI : MonoBehaviour {
 
@@ -6,7 +7,6 @@ public class WinLoseGUI : MonoBehaviour {
 	public bool displaying = false;
 
 	public void Start() {
-		
 	}
 
 	public void OnGUI() {
@@ -45,4 +45,5 @@ public class WinLoseGUI : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
+
 }

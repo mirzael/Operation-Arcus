@@ -25,7 +25,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 
 	const float POWER_MAX = 100.0f;
-	const float POWER_INC = 25.0f;
+	const float POWER_INC = 5.0f;
 	const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_DEGREES_PER_SEC = 720;
@@ -75,10 +75,15 @@ public class MainCharacterDriver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
-
-		powerRed = 0.0f;
-		powerBlue = 0.0f;
-		powerYellow = 0.0f;
+		bool formSet = false;
+		if (powerRed != 0.0f || powerBlue != 0.0f || powerYellow != 0.0f) {
+			formSet = true;
+		} else {
+						powerRed = 0.0f;
+						powerBlue = 0.0f;
+						powerYellow = 0.0f;
+						
+				}
 
 		redForm.shipColor = ShipColor.RED;
 		blueForm.shipColor = ShipColor.BLUE;
@@ -91,10 +96,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		forms.Add (redForm);
 		forms.Add (blueForm);
 		forms.Add (yellowForm);
-
-		//Set the current form to the first form
-		currentForm = forms[0];
 		previousForm = forms [0];
+		//Set the current form to the first form
+		currentForm = forms [0];
 		switchForm (currentForm);
 	}
 	
@@ -130,7 +134,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			rainbowCooldown = rainbowCooldown - 1;
 			if (rainbowCooldown <= 0)
 			{
-				rainbowCooldown = 2;
+				rainbowCooldown = 10;
 				powerBlue = powerBlue - 1;
 				powerYellow = powerYellow - 1;
 				powerRed = powerRed - 1;
@@ -162,7 +166,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		} else if(Input.GetKeyDown (KeyCode.PageDown)){
 			powerRed = powerYellow = powerBlue = 100;
 			forms[0].setSpeed(forms[0].getSpeed() + powerRed);
-			forms[1].setCooldown(forms[1].getCooldown() - 0.01f * powerBlue);
+			forms[1].setCooldown(forms[1].getCooldown() - 0.00015f * powerBlue);
 		}
 	}
 
@@ -172,7 +176,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				redForm.resetSpeed();
 				redForm.setSpeed(redForm.getSpeed() + powerRed);
 				blueForm.resetCooldown();
-				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
+				blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
 				switchForm(previousForm);
 			}else if(currentForm.shipColor == ShipColor.ORANGE){
 				switchForm(previousForm);
@@ -181,7 +185,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			}else if(currentForm.shipColor == ShipColor.GREEN){
 				switchForm(previousForm);
 				blueForm.resetCooldown();
-				blueForm.setCooldown(blueForm.getCooldown() - 0.01f * powerBlue);
+				blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
 			}else if (currentForm.shipColor == ShipColor.RAINBOW)
 				{
 					Destroy (col.gameObject);
@@ -190,6 +194,9 @@ public class MainCharacterDriver : MonoBehaviour {
 			 else{
 				if (gameOver) return;
 				Destroy (gameObject);
+				powerRed = 0.0f;
+				powerBlue = 0.0f;
+				powerYellow = 0.0f;
 				Debug.Log("MISSION FAILED");
 				
 				WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
@@ -210,7 +217,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (col.gameObject.tag == "Blue") {
 				if (powerBlue < POWER_MAX) {
 					powerBlue += POWER_INC;
-					currentForm.setCooldown(currentForm.getCooldown() - 0.01f * powerBlue);
+					currentForm.setCooldown(currentForm.getCooldown() - 0.00015f * powerBlue);
 					if (powerBlue > POWER_MAX) {
 						powerBlue = POWER_MAX;
 					}
@@ -333,5 +340,39 @@ public class MainCharacterDriver : MonoBehaviour {
 		weapon.sphereRadius = greenEmpRadius;
 		weapon.empDuration = greenEmpDuration;
 	}
+
+	public float[] getPowers()
+	{
+		float[] powerLevels = new float[4];
+		powerLevels [0] = powerRed;
+		powerLevels [1] = powerBlue;
+		powerLevels [2] = powerYellow;
+		switch (currentForm.shipColor) 
+		{
+		case ShipColor.RED:
+			powerLevels[3] = 0f;
+			break;
+		case ShipColor.BLUE:
+			powerLevels[3] = 1f;
+			break;
+		case ShipColor.YELLOW:
+			powerLevels[3] = 2f;
+			break;
+		case ShipColor.ORANGE:
+			powerLevels[3] = 3f;
+			break;
+		case ShipColor.PURPLE:
+			powerLevels[3] = 4f;
+			break;
+		case ShipColor.GREEN:
+			powerLevels[3] = 5f;
+			break;
+		case ShipColor.RAINBOW:
+			powerLevels[3] = 6f;
+			break;
+		}
+		return powerLevels;
+	}
+
 
 }

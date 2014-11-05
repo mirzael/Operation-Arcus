@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400000}
+  - 135: {fileID: 13500000}
   m_Layer: 0
   m_Name: MainArcus
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +374,7 @@ GameObject:
   - 23: {fileID: 2300020}
   m_Layer: 0
   m_Name: polySurface21
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - 23: {fileID: 2300030}
   m_Layer: 0
   m_Name: polySurface19
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   - 23: {fileID: 2300002}
   m_Layer: 0
   m_Name: polySurface18
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +425,7 @@ GameObject:
   - 23: {fileID: 2300052}
   m_Layer: 0
   m_Name: polySurface20
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,7 +752,7 @@ GameObject:
   - 23: {fileID: 2300016}
   m_Layer: 0
   m_Name: polySurface12
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -769,7 +769,7 @@ GameObject:
   - 23: {fileID: 2300034}
   m_Layer: 0
   m_Name: polySurface11
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,7 +786,7 @@ GameObject:
   - 23: {fileID: 2300006}
   m_Layer: 0
   m_Name: polySurface10
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -803,7 +803,7 @@ GameObject:
   - 23: {fileID: 2300048}
   m_Layer: 0
   m_Name: polySurface8
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +837,7 @@ GameObject:
   - 23: {fileID: 2300046}
   m_Layer: 0
   m_Name: polySurface5
-  m_TagString: Untagged
+  m_TagString: ArcusColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,7 +1173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: 0, y: -9.83018684, z: 19.5}
+  m_LocalPosition: {x: 0, y: -18.9013653, z: 35.5185776}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 400076}
@@ -2871,32 +2871,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11400000
-MonoBehaviour:
+--- !u!135 &13500000
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62474b05b5b63e44995abe038df66532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipSpeed: 10.1999998
-  projectiles:
-  - {fileID: 100000, guid: 8ae4fb95e3d8b1c4384a908d4b7634f2, type: 2}
-  - {fileID: 100000, guid: 7c7271d5b582ccb498ddccb0a7336abc, type: 2}
-  - {fileID: 100000, guid: aaf74b2359023774ca9cbb2cbf12fba2, type: 2}
-  - {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
-  - {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
-  - {fileID: 100000, guid: a9975fbe213c6af4ca1ab32902a07035, type: 2}
-  mats:
-  - {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
-  - {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
-  - {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
-  - {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
-  - {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-  - {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
+  serializedVersion: 2
+  m_Radius: .0780000016
+  m_Center: {x: 0, y: .0350000001, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
