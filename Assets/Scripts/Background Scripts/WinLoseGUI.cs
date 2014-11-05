@@ -1,12 +1,22 @@
 using UnityEngine;
-using System.Collections;
 
 public class WinLoseGUI : MonoBehaviour {
 
 	public bool win = false;
 	public bool displaying = false;
-
+	
+	private string message;
+	
 	public void Start() {
+		if (win) {
+			if (Spawner.level < Spawner.MAX_LEVELS) {
+				message = "You the battle! Press R to continue";
+			} else {
+				message = "You won the war! Press R to continue";
+			}
+		} else {
+			message = "You lost! Press R to play again";
+		}
 	}
 
 	public void OnGUI() {
@@ -14,15 +24,7 @@ public class WinLoseGUI : MonoBehaviour {
 		guiStyle.normal.textColor = Color.white;
 		guiStyle.alignment = TextAnchor.UpperCenter;
 		Rect textArea = new Rect(0, 0, Screen.width, Screen.height);
-		if (win) {
-			if (Spawner.level < Spawner.MAX_LEVELS) {
-				GUI.Label(textArea, "You Won! Press R to play again", guiStyle);
-			} else {
-				GUI.Label(textArea, "You won the war! Press R to continue", guiStyle);
-			}
-		} else {
-			GUI.Label(textArea, "You Lost! Press R to play again", guiStyle);
-		}
+		GUI.Label(textArea, message, guiStyle);
 		displaying = true;
 	}
 
@@ -45,5 +47,4 @@ public class WinLoseGUI : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
-
 }
