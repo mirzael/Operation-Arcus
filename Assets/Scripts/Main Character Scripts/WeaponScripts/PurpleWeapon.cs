@@ -12,7 +12,8 @@ public class PurpleWeapon : MonoBehaviour {
 	public float timeBeforeExplosion;
 	Material explosionMat;
 	float purpleDist = .75f;
-
+	private bool releasedMirvs = false;
+	
 	// Use this for initialization
 	void Start () {
 		explosionMat = (Material)Resources.Load ("Materials/AoeBlasts/PurpleBlast", typeof(Material));
@@ -20,7 +21,9 @@ public class PurpleWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timeBeforeExplosion -= Time.deltaTime;
+		if (releasedMirvs) {
+			timeBeforeExplosion -= Time.deltaTime;
+		}
 
 		if (timeBeforeExplosion >= 0) {
 			foreach (GameObject obj in bullets) {
@@ -39,6 +42,7 @@ public class PurpleWeapon : MonoBehaviour {
 				bullets.RemoveAt(i);
 				i--;
 			}
+			Destroy(gameObject);
 		}
 	}
 
@@ -53,6 +57,12 @@ public class PurpleWeapon : MonoBehaviour {
 			bullets[1].transform.Rotate(0,0,-135);
 			bullets[2].transform.Rotate(0,0,45);
 			bullets[3].transform.Rotate(0,0,135);
+			
+			for (int i = 0; i < bullets.Count; i++) {
+				bullets[i].AddComponent<MirvBullet>();
+			}
+			
+			releasedMirvs = true;
 		}
 	}
 }

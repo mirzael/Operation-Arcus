@@ -15,7 +15,7 @@ public class Disabler : MonoBehaviour {
 		movement = GetComponent<EnemyMovement> ();
 		shooting = GetComponent<Shooter> ();
 		movement.enabled = false;
-		shooting.enabled = false;
+		shooting.bulletWave.enabled = false;
 	}
 	
 	// Update is called once per frame

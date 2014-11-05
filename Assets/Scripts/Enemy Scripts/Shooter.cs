@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour {
 	public GameObject projectile;
 	public int pattern;
 	float currentCooldown;
-	Wave bulletWave;
+	public Wave bulletWave;
 
 
 	// Use this for initialization
