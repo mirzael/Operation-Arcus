@@ -22,6 +22,7 @@ public class PlayButton : MonoBehaviour {
 	
 	public void OnMouseDown() {
 		if (gameObject.name.Equals("btnPlay")) {
+			Spawner.level = 1;
 			Application.LoadLevel("TechDemo");
 		} else if (gameObject.name.Equals("btnInstr")) {
 			Debug.Log("Displaying Instructions");
