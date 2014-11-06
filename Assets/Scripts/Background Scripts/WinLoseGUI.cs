@@ -15,7 +15,7 @@ public class WinLoseGUI : MonoBehaviour {
 				message = "You won the war! Press R to continue";
 			}
 		} else {
-			message = "You lost! Press R to play again";
+			message = "You lost! Press R to play again, or ESC to quit";
 		}
 	}
 
@@ -45,6 +45,8 @@ public class WinLoseGUI : MonoBehaviour {
 				Spawner.level = 1;
 			}
 			Application.LoadLevel(Application.loadedLevel);
+		} else if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.LoadLevel("MainMenu");
 		}
 	}
 }
