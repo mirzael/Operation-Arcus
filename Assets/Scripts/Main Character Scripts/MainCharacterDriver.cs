@@ -11,6 +11,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	int rainbowCooldown = 2;
 
 	public float timeToWin = 15f;
+	public float timeToWinCounter;
 	public bool gameOver = false;
 
 	/*These are the Forms of the ship
@@ -100,17 +101,18 @@ public class MainCharacterDriver : MonoBehaviour {
 		//Set the current form to the first form
 		currentForm = forms [0];
 		switchForm (currentForm);
+		
+		timeToWinCounter = timeToWin;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (gameOver) return;
-		timeToWin -= Time.deltaTime;
-		if (timeToWin <= 0.0f) {
+		timeToWinCounter -= Time.deltaTime;
+		if (timeToWinCounter <= 0.0f) {
 			WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
 			gui.win = true;
 			gameOver = true;
-			Application.Quit();
 			return;
 		}
 		
@@ -202,7 +204,6 @@ public class MainCharacterDriver : MonoBehaviour {
 				WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
 				gui.win = false;
 				gameOver = true;
-				Application.Quit();
 			}
 		} else {
 			if (col.gameObject.tag == "Red") {

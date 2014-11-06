@@ -41,10 +41,16 @@ public class WinLoseGUI : MonoBehaviour {
 					Application.LoadLevel("Credits");
 					return;
 				}
+				var driver = GameObject.Find("Arcus v1").GetComponent<MainCharacterDriver>();
+				driver.gameOver = false;
+				driver.timeToWinCounter = driver.timeToWin;
+				
+				GameObject.Find("WaveSpawner").GetComponent<Spawner>().Start();
+				Destroy(this);
 			} else {
 				Spawner.level = 1;
+				Application.LoadLevel(Application.loadedLevel);
 			}
-			Application.LoadLevel(Application.loadedLevel);
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.LoadLevel("MainMenu");
 		}
