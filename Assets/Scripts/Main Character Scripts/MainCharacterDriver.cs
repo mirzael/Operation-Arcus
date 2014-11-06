@@ -121,7 +121,15 @@ public class MainCharacterDriver : MonoBehaviour {
 		float vspeed = Input.GetAxisRaw ("Vertical") * Time.deltaTime;
 
 		var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
+		Vector3 orig = transform.position;
 		transform.Translate(toMoveVector);
+		
+		float posX = transform.position.x;
+		float posY = transform.position.y;
+		Vector3 extents = gameObject.collider.bounds.extents;
+		if (posX + extents.x > 20 || posX - extents.x < -20 || posY + extents.y > 20 || posY - extents.y < -20) {
+			transform.position = orig;
+		}
 
 		//change the cooldown of the main weapon, as one frame has passed
 		currentCooldown -= Time.deltaTime;
@@ -173,6 +181,8 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
+		Debug.Log(col.gameObject.name);
+		
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(currentForm.shipColor == ShipColor.PURPLE){
 				redForm.resetSpeed();
