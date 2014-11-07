@@ -202,8 +202,9 @@ public class MainCharacterDriver : MonoBehaviour {
 			switchForm(greenForm);
 		} else if(Input.GetKeyDown (KeyCode.PageDown)){
 			powerRed = powerYellow = powerBlue = 100;
-			forms[0].setSpeed(forms[0].getSpeed() + powerRed);
-			forms[1].setCooldown(forms[1].getCooldown() - 0.00015f * powerBlue);
+			forms[0].setSpeed(forms[0].getSpeed() + powerRed/30
+);
+			forms[1].setCooldown(forms[1].getCooldown() - 0.15f);
 		}
 	}
 
