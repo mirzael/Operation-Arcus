@@ -10,7 +10,8 @@ namespace MainCharacter
 		public override void OnInspectorGUI() {
 			var driver = (MainCharacterDriver)target;
 			driver.timeToWin = EditorGUILayout.FloatField ("Time To Win", driver.timeToWin);
-
+			driver.lives = EditorGUILayout.IntField ("Ship Lives", driver.lives);
+			driver.invulnTime = EditorGUILayout.FloatField ("Time of Invulnerability", driver.invulnTime);
 			ShowWeaponDropdown ("Red", ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.material, ref driver.redForm.projectile, RedWeaponLayout);
 			ShowWeaponDropdown ("Blue", ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, null);
 			ShowWeaponDropdown ("Yellow", ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, null);

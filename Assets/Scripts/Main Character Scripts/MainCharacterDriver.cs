@@ -12,6 +12,9 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	public float timeToWin = 15f;
 	public float timeToWinCounter;
+	public float invulnTime;
+	public float invulnCounter = 0;
+	public int lives;
 	public bool gameOver = false;
 
 	/*These are the Forms of the ship
@@ -30,9 +33,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_DEGREES_PER_SEC = 720;
-	public static float powerRed = 0.0f;
-	public static float powerBlue = 0.0f;
-	public static float powerYellow = 0.0f;
+	public float powerRed = 0.0f;
+	public float powerBlue = 0.0f;
+	public float powerYellow = 0.0f;
 
 	//This is the current form the ship is using
 	Form currentForm;
@@ -80,11 +83,10 @@ public class MainCharacterDriver : MonoBehaviour {
 		if (powerRed != 0.0f || powerBlue != 0.0f || powerYellow != 0.0f) {
 			formSet = true;
 		} else {
-						powerRed = 0.0f;
-						powerBlue = 0.0f;
-						powerYellow = 0.0f;
-						
-				}
+			powerRed = 0.0f;
+			powerBlue = 0.0f;
+			powerYellow = 0.0f;
+		}
 
 		redForm.shipColor = ShipColor.RED;
 		blueForm.shipColor = ShipColor.BLUE;
@@ -109,6 +111,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	void Update () {
 		if (gameOver) return;
 		timeToWinCounter -= Time.deltaTime;
+		invulnCounter -= Time.deltaTime;
 		if (timeToWinCounter <= 0.0f) {
 			WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
 			gui.win = true;
@@ -184,36 +187,42 @@ public class MainCharacterDriver : MonoBehaviour {
 		Debug.Log(col.gameObject.name);
 		
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-			if(currentForm.shipColor == ShipColor.PURPLE){
-				redForm.resetSpeed();
-				redForm.setSpeed(redForm.getSpeed() + powerRed);
-				blueForm.resetCooldown();
-				blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
-				switchForm(previousForm);
-			}else if(currentForm.shipColor == ShipColor.ORANGE){
-				switchForm(previousForm);
-				redForm.resetSpeed();
-				redForm.setSpeed(redForm.getSpeed() + powerRed);
-			}else if(currentForm.shipColor == ShipColor.GREEN){
-				switchForm(previousForm);
-				blueForm.resetCooldown();
-				blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
-			}else if (currentForm.shipColor == ShipColor.RAINBOW)
+			if(invulnCounter <= 0){
+				invulnCounter = invulnTime;
+				if(currentForm.shipColor == ShipColor.PURPLE){
+					redForm.resetSpeed();
+					redForm.setSpeed(redForm.getSpeed() + powerRed);
+					blueForm.resetCooldown();
+					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
+					switchForm(previousForm);
+				}else if(currentForm.shipColor == ShipColor.ORANGE){
+					switchForm(previousForm);
+					redForm.resetSpeed();
+					redForm.setSpeed(redForm.getSpeed() + powerRed);
+				}else if(currentForm.shipColor == ShipColor.GREEN){
+					switchForm(previousForm);
+					blueForm.resetCooldown();
+					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
+				}else if (currentForm.shipColor == ShipColor.RAINBOW)
 				{
 					Destroy (col.gameObject);
 					return;
 				}
-			 else{
-				if (gameOver) return;
-				Destroy (gameObject);
-				powerRed = 0.0f;
-				powerBlue = 0.0f;
-				powerYellow = 0.0f;
-				Debug.Log("MISSION FAILED");
-				
-				WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
-				gui.win = false;
-				gameOver = true;
+				 else{
+					lives--;
+					if(lives < 0){
+						if (gameOver) return;
+						Destroy (gameObject);
+						powerRed = 0.0f;
+						powerBlue = 0.0f;
+						powerYellow = 0.0f;
+						Debug.Log("MISSION FAILED");
+						
+						WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
+						gui.win = false;
+						gameOver = true;
+					}
+				}
 			}
 		} else {
 			if (col.gameObject.tag == "Red") {
@@ -261,11 +270,20 @@ public class MainCharacterDriver : MonoBehaviour {
 			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
 			break;
 		case ShipColor.RED:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left/2, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
 			var rWep = projectile.AddComponent<RedWeapon>();
 			rWep.baseExplosionRadius = redExplosionRadius;
 			rWep.radiusPerPoint = redRadiusPerPoint;
+			rWep.driver = this;
+
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.right/2, currentForm.projectile.transform.rotation);
+			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
+			rWep = projectile.AddComponent<RedWeapon>();
+			rWep.baseExplosionRadius = redExplosionRadius;
+			rWep.radiusPerPoint = redRadiusPerPoint;
+			rWep.driver = this;
+
 			break;
 		case ShipColor.YELLOW:
 			int numProjectiles = 3 + (int)(powerYellow / POWER_INC);

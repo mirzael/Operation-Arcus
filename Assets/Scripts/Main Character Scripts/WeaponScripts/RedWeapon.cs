@@ -4,6 +4,7 @@ using System.Collections;
 public class RedWeapon : MonoBehaviour {
 	public float baseExplosionRadius;
 	public float radiusPerPoint;
+	public MainCharacterDriver driver;
 
 	Material redBlast;
 
@@ -18,7 +19,7 @@ public class RedWeapon : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		CreateAoe (col.contacts [0].point, redBlast, MainCharacterDriver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
+		CreateAoe (col.contacts [0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
 	}
 
 	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
