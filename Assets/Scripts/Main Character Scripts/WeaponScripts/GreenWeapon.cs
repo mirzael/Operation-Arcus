@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GreenWeapon : MonoBehaviour {
 	public bool isStraight = false;
-	public float amplitude = 5f;
+	public float amplitude = 2.5f;
 	public float sphereRadius;
 	public float empDuration;
 	public float degreesPerSec;

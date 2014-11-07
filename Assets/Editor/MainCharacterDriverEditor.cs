@@ -46,6 +46,7 @@ namespace MainCharacter
 			var driver = (MainCharacterDriver)target;
 			driver.greenEmpRadius = EditorGUILayout.FloatField ("EMP Radius", driver.greenEmpRadius);
 			driver.greenEmpDuration = EditorGUILayout.FloatField ("EMP Duration", driver.greenEmpDuration);
+			driver.greenSinAmplitude = EditorGUILayout.FloatField ("Sin Wave Amplitude", driver.greenSinAmplitude);
 		}
 
 		public void OrangeWeaponLayout(){

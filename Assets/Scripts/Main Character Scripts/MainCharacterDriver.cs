@@ -73,6 +73,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Green Weapon
 	public float greenEmpRadius;
 	public float greenEmpDuration;
+	public float greenSinAmplitude;
 	[SerializeField]
 	public Form rainbowForm;
 
@@ -214,14 +215,14 @@ public class MainCharacterDriver : MonoBehaviour {
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
 				if(currentForm.shipColor == ShipColor.PURPLE){
 					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
 					blueForm.resetCooldown();
 					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
 					switchForm(previousForm);
 				}else if(currentForm.shipColor == ShipColor.ORANGE){
 					switchForm(previousForm);
 					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
 				}else if(currentForm.shipColor == ShipColor.GREEN){
 					switchForm(previousForm);
 					blueForm.resetCooldown();
@@ -251,7 +252,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
 					powerRed += POWER_INC;
-					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
 					if (powerRed > POWER_MAX) {
 						powerRed = POWER_MAX;
 					}
@@ -386,7 +387,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void sinBullet(GreenWeapon weapon, bool isNegative){
-		weapon.amplitude = isNegative ? -weapon.amplitude : weapon.amplitude;
+		weapon.amplitude = isNegative ? -greenSinAmplitude : greenSinAmplitude;
 		weapon.ySpeed = currentForm.getSpeed();
 		weapon.degreesPerSec = GREEN_DEGREES_PER_SEC;
 		weapon.sphereRadius = greenEmpRadius;

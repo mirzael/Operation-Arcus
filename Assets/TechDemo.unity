@@ -2852,7 +2852,7 @@ MonoBehaviour:
   timeToWinCounter: 0
   invulnTime: 1
   invulnCounter: 0
-  prevAlpha: 255
+  prevAlpha: 1
   lives: 10
   gameOver: 0
   powerRed: 0
@@ -2889,7 +2889,7 @@ MonoBehaviour:
     shipColor: 0
   yellowPointsPerBullet: 20
   orangeForm:
-    cooldown: .800000012
+    cooldown: .600000024
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
     projectileSpeed: 30
@@ -2898,7 +2898,7 @@ MonoBehaviour:
     formSpeed: 20
     shipColor: 0
   orangeRotationSpeed: 15
-  orangeExplosionRadius: 4
+  orangeExplosionRadius: 12.5
   orangeGravityRadius: 35
   orangeGravityForce: 1500
   purpleForm:
@@ -2923,6 +2923,7 @@ MonoBehaviour:
     shipColor: 0
   greenEmpRadius: 20
   greenEmpDuration: 1
+  greenSinAmplitude: 2.5
   rainbowForm:
     cooldown: .0500000007
     originalCooldown: 0
@@ -3714,7 +3715,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeForm.cooldown
-      value: .800000012
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeForm.projectileSpeed
@@ -3758,7 +3759,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeExplosionRadius
-      value: 4
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeGravityRadius
@@ -3819,6 +3820,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: yellowPointsPerBullet
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: greenSinAmplitude
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
