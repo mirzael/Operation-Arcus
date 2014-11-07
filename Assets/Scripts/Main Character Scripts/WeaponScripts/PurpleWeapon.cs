@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PurpleWeapon : MonoBehaviour {
-
-	List<GameObject> bullets = new List<GameObject>();	
 	public GameObject mirvBullet;
 	public float bulletSpeed;
 	public float timeBeforeExplosion;

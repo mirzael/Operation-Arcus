@@ -2887,6 +2887,7 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
     formSpeed: 20
     shipColor: 0
+  yellowPointsPerBullet: 20
   orangeForm:
     cooldown: .800000012
     originalCooldown: 0
@@ -3814,6 +3815,10 @@ Prefab:
     - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: yellowPointsPerBullet
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}

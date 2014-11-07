@@ -52,6 +52,8 @@ public class MainCharacterDriver : MonoBehaviour {
 	public Form blueForm;
 	[SerializeField]
 	public Form yellowForm;
+	//Yellow Weapon
+	public float yellowPointsPerBullet;
 
 	//These are the special ship forms
 	[SerializeField]
@@ -212,14 +214,14 @@ public class MainCharacterDriver : MonoBehaviour {
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
 				if(currentForm.shipColor == ShipColor.PURPLE){
 					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
 					blueForm.resetCooldown();
 					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
 					switchForm(previousForm);
 				}else if(currentForm.shipColor == ShipColor.ORANGE){
 					switchForm(previousForm);
 					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
 				}else if(currentForm.shipColor == ShipColor.GREEN){
 					switchForm(previousForm);
 					blueForm.resetCooldown();
@@ -249,7 +251,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
 					powerRed += POWER_INC;
-					currentForm.setSpeed(currentForm.getSpeed() + powerRed/10);
+					redForm.setSpeed(redForm.getSpeed() + powerRed/20);
 					if (powerRed > POWER_MAX) {
 						powerRed = POWER_MAX;
 					}
@@ -307,7 +309,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 			break;
 		case ShipColor.YELLOW:
-			int numProjectiles = 3 + (int)(powerYellow / POWER_INC);
+			int numProjectiles = 3 + (int)(powerYellow / yellowPointsPerBullet);
 			int projectileSpreadAngle = 30;
 			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
 			float radToDeg =  Mathf.PI / 180;

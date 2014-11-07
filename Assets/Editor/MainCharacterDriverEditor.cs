@@ -14,7 +14,7 @@ namespace MainCharacter
 			driver.invulnTime = EditorGUILayout.FloatField ("Time of Invulnerability", driver.invulnTime);
 			ShowWeaponDropdown ("Red", ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.material, ref driver.redForm.projectile, RedWeaponLayout);
 			ShowWeaponDropdown ("Blue", ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, null);
-			ShowWeaponDropdown ("Yellow", ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, null);
+			ShowWeaponDropdown ("Yellow", ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, YellowWeaponLayout);
 			ShowWeaponDropdown ("Green", ref driver.greenForm.formSpeed, ref driver.greenForm.cooldown, ref driver.greenForm.projectileSpeed, ref driver.greenForm.material, ref driver.greenForm.projectile, GreenWeaponLayout);
 			ShowWeaponDropdown ("Orange", ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile, OrangeWeaponLayout);
 			ShowWeaponDropdown ("Purple", ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile, PurpleWeaponLayout);
@@ -60,6 +60,11 @@ namespace MainCharacter
 			var driver = (MainCharacterDriver)target;
 			driver.redExplosionRadius = EditorGUILayout.FloatField ("Red base explosion radius", driver.redExplosionRadius);
 			driver.redRadiusPerPoint = EditorGUILayout.FloatField ("Red radius/point increase", driver.redRadiusPerPoint);
+		}
+
+		public void YellowWeaponLayout(){
+			var driver = (MainCharacterDriver)target;
+			driver.yellowPointsPerBullet = EditorGUILayout.FloatField ("Yellow Points/Bullet", driver.yellowPointsPerBullet);
 		}
 	}
 }
