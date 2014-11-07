@@ -14,6 +14,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float timeToWinCounter;
 	public float invulnTime;
 	public float invulnCounter = 0;
+	public float prevAlpha = 255;
 	public int lives;
 	public bool gameOver = false;
 
@@ -33,6 +34,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_DEGREES_PER_SEC = 720;
+	const float ALPHA_PER_SEC = 0.1f;
 	public float powerRed = 0.0f;
 	public float powerBlue = 0.0f;
 	public float powerYellow = 0.0f;
@@ -122,6 +124,23 @@ public class MainCharacterDriver : MonoBehaviour {
 			gameOver = true;
 			return;
 		}
+
+		if (invulnCounter > 0) {
+			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
+				prevAlpha = Mathf.Repeat (prevAlpha + ALPHA_PER_SEC, 1);
+				Debug.Log("ALPHA IS: " + prevAlpha);
+				Color color = obj.renderer.material.color;
+				color.a = prevAlpha;
+				obj.renderer.material.color = color;
+			}
+		} else {
+			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
+				prevAlpha = 1;
+				Color color = obj.renderer.material.color;
+				color.a = prevAlpha;
+				obj.renderer.material.color = color;
+			}
+		}
 		
 		//Get where to move given user input
 		float hspeed = Input.GetAxisRaw("Horizontal") * -(Time.deltaTime);
@@ -191,7 +210,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(invulnCounter <= 0){
-				invulnCounter = invulnTime;
+				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
 				if(currentForm.shipColor == ShipColor.PURPLE){
 					redForm.resetSpeed();
 					redForm.setSpeed(redForm.getSpeed() + powerRed);
