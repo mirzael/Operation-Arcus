@@ -14,7 +14,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float timeToWinCounter;
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public float prevAlpha = 255;
+	public float prevAlpha = 1;
 	public int lives;
 	public bool gameOver = false;
 

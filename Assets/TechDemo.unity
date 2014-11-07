@@ -2852,6 +2852,7 @@ MonoBehaviour:
   timeToWinCounter: 0
   invulnTime: 1
   invulnCounter: 0
+  prevAlpha: 255
   lives: 10
   gameOver: 0
   powerRed: 0
@@ -3789,6 +3790,30 @@ Prefab:
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: invulnTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.0122842891
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .036598783
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -.0413531549
+      objectReference: {fileID: 0}
+    - target: {fileID: 400050, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
@@ -5036,7 +5061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: -25, y: 13, z: 10}
+  pos: {x: -7, y: 13, z: 10}
   guiTextPos: {x: 0, y: 80}
   size: {x: 100, y: 100}
   lives: []
