@@ -128,7 +128,6 @@ public class MainCharacterDriver : MonoBehaviour {
 		if (invulnCounter > 0) {
 			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
 				prevAlpha = Mathf.Repeat (prevAlpha + ALPHA_PER_SEC, 1);
-				Debug.Log("ALPHA IS: " + prevAlpha);
 				Color color = obj.renderer.material.color;
 				color.a = prevAlpha;
 				obj.renderer.material.color = color;
@@ -250,7 +249,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			if (col.gameObject.tag == "Red") {
 				if (powerRed < POWER_MAX) {
 					powerRed += POWER_INC;
-					currentForm.setSpeed(currentForm.getSpeed() + powerRed);
+					currentForm.setSpeed(currentForm.getSpeed() + powerRed/10);
 					if (powerRed > POWER_MAX) {
 						powerRed = POWER_MAX;
 					}

@@ -2865,7 +2865,7 @@ MonoBehaviour:
     projectileSpeed: 60
     originalSpeed: 0
     material: {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
-    formSpeed: 8
+    formSpeed: 20
     shipColor: 0
   redExplosionRadius: 2.5
   redRadiusPerPoint: .100000001
@@ -2876,7 +2876,7 @@ MonoBehaviour:
     projectileSpeed: 50
     originalSpeed: 0
     material: {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
-    formSpeed: 12
+    formSpeed: 20
     shipColor: 0
   yellowForm:
     cooldown: 1
@@ -2885,7 +2885,7 @@ MonoBehaviour:
     projectileSpeed: 50
     originalSpeed: 0
     material: {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
-    formSpeed: 30
+    formSpeed: 20
     shipColor: 0
   orangeForm:
     cooldown: .800000012
@@ -2904,13 +2904,13 @@ MonoBehaviour:
     cooldown: .600000024
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
-    projectileSpeed: 40
+    projectileSpeed: 100
     originalSpeed: 0
     material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-    formSpeed: 10
+    formSpeed: 20
     shipColor: 0
   purpleMirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
-  purpleTimeBeforeExplosion: 1
+  purpleTimeBeforeExplosion: .150000006
   greenForm:
     cooldown: .100000001
     originalCooldown: 0
@@ -2918,7 +2918,7 @@ MonoBehaviour:
     projectileSpeed: 50
     originalSpeed: 0
     material: {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
-    formSpeed: 30
+    formSpeed: 20
     shipColor: 0
   greenEmpRadius: 20
   greenEmpDuration: 1
@@ -3661,7 +3661,7 @@ Prefab:
       objectReference: {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: redForm.formSpeed
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: redForm.cooldown
@@ -3673,7 +3673,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: blueForm.formSpeed
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: blueForm.cooldown
@@ -3685,7 +3685,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: yellowForm.formSpeed
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: yellowForm.cooldown
@@ -3697,7 +3697,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: greenForm.formSpeed
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: greenForm.cooldown
@@ -3721,7 +3721,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleForm.formSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleForm.cooldown
@@ -3729,7 +3729,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleForm.projectileSpeed
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: rainbowForm.formSpeed
@@ -3749,7 +3749,7 @@ Prefab:
       objectReference: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: purpleTimeBeforeExplosion
-      value: 1
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: orangeRotationSpeed
