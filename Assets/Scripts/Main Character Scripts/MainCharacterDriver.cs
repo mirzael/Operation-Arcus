@@ -72,6 +72,10 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Used for returning to the form we were in before switching to secondary
 	Form previousForm;
 
+	public float shipXMin = -10.25f;
+	public float shipXMax = 10.25f;
+	public float shipYMin = -12.0f;
+	public float shipYMax = 19.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -124,10 +128,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		Vector3 orig = transform.position;
 		transform.Translate(toMoveVector);
 		
-		float posX = transform.position.x;
-		float posY = transform.position.y;
-		Vector3 extents = gameObject.collider.bounds.extents;
-		if (posX + extents.x > 20 || posX - extents.x < -20 || posY + extents.y > 20 || posY - extents.y < -20) {
+		float posX = transform.position.x - transform.parent.position.x;
+		float posY = transform.position.y - transform.parent.position.y;
+		if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin) {
 			transform.position = orig;
 		}
 
