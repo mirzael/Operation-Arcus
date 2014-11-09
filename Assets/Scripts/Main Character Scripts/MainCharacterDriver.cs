@@ -85,6 +85,8 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float shipYMin = -12.0f;
 	public float shipYMax = 19.0f;
 
+	UIDriver uiDriver;
+
 	// Use this for initialization
 	void Start () {
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
@@ -114,6 +116,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		switchForm (currentForm);
 		
 		timeToWinCounter = timeToWin;
+		
+		uiDriver = gameObject.GetComponent<UIDriver>();
 	}
 	
 	// Update is called once per frame
@@ -175,6 +179,8 @@ public class MainCharacterDriver : MonoBehaviour {
 				powerBlue = powerBlue - 1;
 				powerYellow = powerYellow - 1;
 				powerRed = powerRed - 1;
+				
+				uiDriver.UpdateBars();
 			}
 			if (powerBlue == 0)
 				switchForm (previousForm);
@@ -184,27 +190,32 @@ public class MainCharacterDriver : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			switchForm (forms.Previous ());
 			previousForm = currentForm;
+			uiDriver.RotateRight();
 		//Switch to Next Form
 		} else if (Input.GetKeyDown (KeyCode.E)) {
 			switchForm (forms.Next ());
 			previousForm = currentForm;
+			uiDriver.RotateLeft();
 		//Switch to ORANGE Form
 		} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerRed -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm (orangeForm);
+			uiDriver.UpdateBars();
 		//Switch to PURPLE FORM
 		} else if (Input.GetKeyDown (KeyCode.Alpha2) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
 			powerRed -= TRANSFORM_AMOUNT; powerBlue -= TRANSFORM_AMOUNT;
 			switchForm (purpleForm);
+			uiDriver.UpdateBars();
 		//Switch to GREEN FORM
 		} else if (Input.GetKeyDown (KeyCode.Alpha3) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			powerBlue -= TRANSFORM_AMOUNT; powerYellow -= TRANSFORM_AMOUNT;
 			switchForm(greenForm);
+			uiDriver.UpdateBars();
 		} else if(Input.GetKeyDown (KeyCode.PageDown)){
 			powerRed = powerYellow = powerBlue = 100;
-			forms[0].setSpeed(forms[0].getSpeed() + powerRed/30
-);
+			forms[0].setSpeed(forms[0].getSpeed() + powerRed / 30);
 			forms[1].setCooldown(forms[1].getCooldown() - 0.15f);
+			uiDriver.UpdateBars();
 		}
 	}
 
@@ -257,6 +268,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					if (powerRed > POWER_MAX) {
 						powerRed = POWER_MAX;
 					}
+					uiDriver.UpdateBars();
 				}
 				Debug.Log("Absorbed red bullet, Red Power at " + powerRed);
 			} else if (col.gameObject.tag == "Blue") {
@@ -266,6 +278,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					if (powerBlue > POWER_MAX) {
 						powerBlue = POWER_MAX;
 					}
+					uiDriver.UpdateBars();
 				}
 				Debug.Log("Absorbed blue bullet, Blue Power at " + powerBlue);
 			} else if (col.gameObject.tag == "Yellow") {
@@ -274,6 +287,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					if (powerYellow > POWER_MAX) {
 						powerYellow = POWER_MAX;
 					}
+					uiDriver.UpdateBars();
 				}
 				Debug.Log("Absorbed yellow bullet, Yellow Power at " + powerYellow);
 			}
