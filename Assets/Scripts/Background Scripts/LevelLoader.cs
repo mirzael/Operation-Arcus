@@ -6,7 +6,7 @@ public class LevelLoader : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.R)) {
 			var enemies = GameObject.FindObjectsOfType(typeof(GameObject));
 			foreach (GameObject go in enemies) {
-				if (go.name.StartsWith("Enemy")) {
+				if (go.name.StartsWith("Enemy") || go.name.StartsWith("R") || go.name.StartsWith("Y") || go.name.StartsWith("B")) {
 					Destroy(go);
 				}
 			}
