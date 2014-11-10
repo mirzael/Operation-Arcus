@@ -68,6 +68,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Purple weapon
 	public GameObject purpleMirv;
 	public float purpleTimeBeforeExplosion;
+	int purpleBarrel = 1;
 	[SerializeField]
 	public Form greenForm;
 	//Green Weapon
@@ -355,7 +356,8 @@ public class MainCharacterDriver : MonoBehaviour {
 			oWep.gravityForce = orangeGravityForce;
 			break;
 		case ShipColor.PURPLE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			purpleBarrel *= -1;
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left * PROJECTILE_DISTANCE / 2.5f * purpleBarrel, currentForm.projectile.transform.rotation);
 			var moveScript = projectile.AddComponent<MoveProjectile>();
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
 			var mirvStuff = projectile.AddComponent<PurpleWeapon>();

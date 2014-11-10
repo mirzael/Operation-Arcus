@@ -2739,7 +2739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1120953521
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   orangeGravityRadius: 35
   orangeGravityForce: 1500
   purpleForm:
-    cooldown: .600000024
+    cooldown: .400000006
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
     projectileSpeed: 100
@@ -4741,6 +4741,14 @@ Prefab:
     - target: {fileID: 100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
       propertyPath: m_Name
       value: Arcus v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: purpleForm.cooldown
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45dca43c377137a42bbe479e0cade451, type: 2}
