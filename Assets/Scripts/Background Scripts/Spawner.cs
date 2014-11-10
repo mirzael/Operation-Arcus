@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
 	private float levelTimeCounter;
-	public static int level = 1;
+	public int level = 1;
 	public const int MAX_LEVELS = 3;
 
 	// Use this for initialization

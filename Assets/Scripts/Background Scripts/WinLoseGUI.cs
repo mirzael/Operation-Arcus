@@ -9,7 +9,7 @@ public class WinLoseGUI : MonoBehaviour {
 	
 	public void Start() {
 		if (win) {
-			if (Spawner.level < Spawner.MAX_LEVELS) {
+			if (GameObject.Find("WaveSpawner").GetComponent<Spawner>().level < Spawner.MAX_LEVELS) {
 				message = "You the battle! Press R to continue";
 			} else {
 				message = "You won the war! Press R to continue";
@@ -35,9 +35,10 @@ public class WinLoseGUI : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Debug.Log("Restarting game");
+			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
-				Spawner.level++;
-				if (Spawner.level > Spawner.MAX_LEVELS) {
+				spawner.level++;
+				if (spawner.level > Spawner.MAX_LEVELS) {
 					Application.LoadLevel("Credits");
 					return;
 				}
@@ -45,10 +46,9 @@ public class WinLoseGUI : MonoBehaviour {
 				driver.gameOver = false;
 				driver.timeToWinCounter = driver.timeToWin;
 				
-				GameObject.Find("WaveSpawner").GetComponent<Spawner>().Start();
+				spawner.Start();
 				Destroy(this);
 			} else {
-				Spawner.level = 1;
 				Application.LoadLevel(Application.loadedLevel);
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
