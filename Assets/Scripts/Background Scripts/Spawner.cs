@@ -36,6 +36,8 @@ public class Spawner : MonoBehaviour {
 		if (!Load("level" + level)) {
 			Debug.Log("Failed to read spawn data for level " + level);
 		}
+		
+		Debug.Log("Level has " + enemyDetails.Count + " enemies");
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html
@@ -56,9 +58,9 @@ public class Spawner : MonoBehaviour {
 				
 				// don't try to do anything if we didn't get any text
 				// also ignore lines starting with a #
-				if (line != null && line[0] != '#') {
+				if (line != null && !line.Trim().Equals("") && line[0] != '#') {
 					string[] entries = line.Split(',');
-					if (entries.Length > 0) {
+					if (entries.Length == 6) {
 						// format: enemyType, whenToAppear, xPos, yPos, movementPattern, stop
 						float timeToAppear = float.Parse(entries[1]);
 						string otherDetails = entries[0] + "," + entries[2] + "," + entries[3] + "," + entries[4] + "," + entries[5];
