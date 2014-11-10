@@ -10,7 +10,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
 
-	public float timeToWin = 15f;
+	public float timeToWin = 60f;
 	public float timeToWinCounter;
 	public float invulnTime;
 	public float invulnCounter = 0;

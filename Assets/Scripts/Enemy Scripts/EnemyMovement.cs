@@ -61,6 +61,13 @@ public class EnemyMovement : MonoBehaviour {
 			newDir = Vector3.up * speed + Vector3.right * speed;
 			blank = false;
 			break;
+		case 9: // straight down
+			timeBeforeStopOnScreen = 1.5f;
+			timeStayOnScreen = 3.0f;
+			dir = Vector3.down * speed + Vector3.left * speed;
+			newDir = Vector3.up * speed + Vector3.left * speed;
+			blank = false;
+			break;
 		default:
 			timeBeforeStopOnScreen = 1.5f;
 			timeStayOnScreen = 3.0f;

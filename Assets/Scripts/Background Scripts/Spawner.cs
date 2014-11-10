@@ -99,11 +99,11 @@ public class Spawner : MonoBehaviour {
 			string[] details = enemyDetails.Dequeue().Split(',');
 			
 			GameObject spawn;
-			if (details[0].Equals("Enemy1")) {
+			if (details[0].Equals("BMachineGun")) {
 				spawn = enemyToSpawn[0];
-			} else if (details[0].Equals("Enemy2")) {
+			} else if (details[0].Equals("YDualPulse")) {
 				spawn = enemyToSpawn[1];
-			} else if (details[0].Equals("Enemy3")) {
+			} else if (details[0].Equals("RCascade")) {
 				spawn = enemyToSpawn[2];
 			} else {
 				spawn = enemyToSpawn[0];
