@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 111: {fileID: 11100000}
   m_Layer: 8
-  m_Name: Enemy1
+  m_Name: BMachineGun
   m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
