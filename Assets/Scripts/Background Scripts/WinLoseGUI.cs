@@ -44,8 +44,6 @@ public class WinLoseGUI : MonoBehaviour {
 				}
 				var driver = GameObject.Find("Arcus v1").GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
-				driver.timeToWinCounter = driver.timeToWin;
-				
 				spawner.Start();
 				Destroy(this);
 			} else {
