@@ -5,11 +5,9 @@ public class MachineGunWave : Wave {
 	
 	float cooldown;
 	float currentCooldown;
-	GameObject player;
 	
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindWithTag ("Player");
 		projectile = gameObject.GetComponent<Shooter> ().projectile;
 		currentCooldown = 0;
 		cooldown = 100;
@@ -17,7 +15,7 @@ public class MachineGunWave : Wave {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player != null && currentCooldown % 10 == 0 && currentCooldown < cooldown) 
+		if (currentCooldown % 10 == 0 && currentCooldown < cooldown) 
 		{
 			int aVal = (int)currentCooldown % 30;
 			GameObject proj;
