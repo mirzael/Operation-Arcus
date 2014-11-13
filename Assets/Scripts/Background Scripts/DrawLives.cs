@@ -29,6 +29,9 @@ public class DrawLives : MonoBehaviour {
 	}
 
 	void Update(){
+		if (lives.Count == 0) {
+			return;
+		}
 		for(int i = lives.Count; i > driver.lives; i--){
 			Destroy (lives[i-1]);
 			lives.RemoveAt(i-1);

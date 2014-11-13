@@ -10,8 +10,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
 
-	public float timeToWin = 60f;
-	public float timeToWinCounter;
 	public float invulnTime;
 	public float invulnCounter = 0;
 	public float prevAlpha = 1;
@@ -68,6 +66,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Purple weapon
 	public GameObject purpleMirv;
 	public float purpleTimeBeforeExplosion;
+	int purpleBarrel = 1;
 	[SerializeField]
 	public Form greenForm;
 	//Green Weapon
@@ -115,22 +114,13 @@ public class MainCharacterDriver : MonoBehaviour {
 		currentForm = forms [0];
 		switchForm (currentForm);
 		
-		timeToWinCounter = timeToWin;
-		
 		uiDriver = gameObject.GetComponent<UIDriver>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (gameOver) return;
-		timeToWinCounter -= Time.deltaTime;
 		invulnCounter -= Time.deltaTime;
-		if (timeToWinCounter <= 0.0f) {
-			WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
-			gui.win = true;
-			gameOver = true;
-			return;
-		}
 
 		if (invulnCounter > 0) {
 			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
@@ -355,7 +345,8 @@ public class MainCharacterDriver : MonoBehaviour {
 			oWep.gravityForce = orangeGravityForce;
 			break;
 		case ShipColor.PURPLE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
+			purpleBarrel *= -1;
+			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left * PROJECTILE_DISTANCE / 2.5f * purpleBarrel, currentForm.projectile.transform.rotation);
 			var moveScript = projectile.AddComponent<MoveProjectile>();
 			moveScript.projectileSpeed = currentForm.projectileSpeed;
 			var mirvStuff = projectile.AddComponent<PurpleWeapon>();

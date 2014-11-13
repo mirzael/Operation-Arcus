@@ -123,6 +123,9 @@ public class Spawner : MonoBehaviour {
 			GameObject ship = (GameObject)Instantiate(spawn, transform.position + Vector3.down * (2 + yPos) + Vector3.right * xPos, spawn.transform.rotation);
 			ship.GetComponent<EnemyMovement>().pattern = movementPattern;
 			ship.GetComponent<EnemyMovement>().stops = stops;
+			if (enemyDetails.Count == 0) {
+				GameObject.Find("Main Camera").AddComponent<EndLevel>();
+			}
 		}
 		
 		//*/
