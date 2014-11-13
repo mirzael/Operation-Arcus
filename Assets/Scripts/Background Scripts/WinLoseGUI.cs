@@ -10,7 +10,7 @@ public class WinLoseGUI : MonoBehaviour {
 	public void Start() {
 		if (win) {
 			if (GameObject.Find("WaveSpawner").GetComponent<Spawner>().level < Spawner.MAX_LEVELS) {
-				message = "You the battle! Press R to continue";
+				message = "You won the battle! Press R to continue";
 			} else {
 				message = "You won the war! Press R to continue";
 			}
