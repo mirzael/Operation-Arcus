@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using MainCharacter;
 using System.Collections;
 
 public class RedWeapon : MonoBehaviour {
 	public float baseExplosionRadius;
 	public float radiusPerPoint;
+	public float damage;
 	public MainCharacterDriver driver;
 
 	Material redBlast;
@@ -20,6 +22,7 @@ public class RedWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		CreateAoe (col.contacts [0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 
 	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
@@ -28,6 +31,7 @@ public class RedWeapon : MonoBehaviour {
 		sphere.transform.position = center;
 		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		sphere.layer = LayerMask.NameToLayer("Character Bullet");
+		sphere.AddComponent<RedWeapon> ().damage = damage;
 		Destroy (sphere, duration);
 		Destroy(gameObject);
 	}

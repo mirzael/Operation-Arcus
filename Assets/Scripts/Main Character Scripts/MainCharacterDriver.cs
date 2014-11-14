@@ -134,17 +134,11 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		if (invulnCounter > 0) {
 			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
-				prevAlpha = Mathf.Repeat (prevAlpha + ALPHA_PER_SEC, 1);
-				Color color = obj.renderer.material.color;
-				color.a = prevAlpha;
-				obj.renderer.material.color = color;
+				obj.enabled = ! obj.enabled;
 			}
 		} else {
 			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
-				prevAlpha = 1;
-				Color color = obj.renderer.material.color;
-				color.a = prevAlpha;
-				obj.renderer.material.color = color;
+				obj.enabled = true;
 			}
 		}
 		
@@ -220,7 +214,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(invulnCounter <= 0){
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
@@ -306,6 +299,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		case ShipColor.BLUE:
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
+			projectile.AddComponent<BlueWeapon>().damage = currentForm.damage;
 			break;
 		case ShipColor.RED:
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left/2, currentForm.projectile.transform.rotation);
@@ -320,6 +314,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			rWep = projectile.AddComponent<RedWeapon>();
 			rWep.baseExplosionRadius = redExplosionRadius;
 			rWep.radiusPerPoint = redRadiusPerPoint;
+			rWep.damage = currentForm.damage;
 			rWep.driver = this;
 
 			break;
@@ -334,6 +329,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
 				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
+				blast[i].AddComponent<YellowWeapon>().damage = currentForm.damage;
 			} 
 			break;
 		case ShipColor.ORANGE:
@@ -345,6 +341,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			oWep.explosionRadius = orangeExplosionRadius;
 			oWep.gravityRadius = orangeGravityRadius;
 			oWep.gravityForce = orangeGravityForce;
+			oWep.damage = currentForm.damage;
 			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 			oWep = oBlast[1].gameObject.AddComponent<OrangeWeapon>();
 			oWep.moveSpeed = currentForm.projectileSpeed;
@@ -352,6 +349,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			oWep.explosionRadius = orangeExplosionRadius;
 			oWep.gravityRadius = orangeGravityRadius;
 			oWep.gravityForce = orangeGravityForce;
+			oWep.damage = currentForm.damage;
 			break;
 		case ShipColor.PURPLE:
 			purpleBarrel *= -1;
@@ -362,6 +360,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			mirvStuff.mirvBullet = purpleMirv;
 			mirvStuff.bulletSpeed = currentForm.projectileSpeed;
 			mirvStuff.timeBeforeExplosion = purpleTimeBeforeExplosion;
+			mirvStuff.damage = currentForm.damage;
 			break;
 		case ShipColor.GREEN:
 			var gProj = new GameObject[3];
@@ -375,6 +374,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			gWep.ySpeed = currentForm.getSpeed();
 			gWep.sphereRadius = greenEmpRadius;
 			gWep.empDuration = greenEmpDuration;
+			gWep.damage = currentForm.damage;
 			break;
 		case ShipColor.RAINBOW:
 			GameObject[] rainboom = new GameObject[15];
@@ -387,6 +387,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * rToD);
 				rainboom[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
 				rainboom[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
+				rainboom[i].AddComponent<RainbowWeapon>().damage = currentForm.damage;
 			} 
 			break;
 		}
@@ -408,6 +409,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		weapon.degreesPerSec = GREEN_DEGREES_PER_SEC;
 		weapon.sphereRadius = greenEmpRadius;
 		weapon.empDuration = greenEmpDuration;
+		weapon.damage = currentForm.damage;
 	}
 
 	public float[] getPowers()

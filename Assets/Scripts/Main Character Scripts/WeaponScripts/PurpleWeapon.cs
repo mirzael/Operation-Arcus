@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using MainCharacter;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,6 +7,7 @@ public class PurpleWeapon : MonoBehaviour {
 	public GameObject mirvBullet;
 	public float bulletSpeed;
 	public float timeBeforeExplosion;
+	public float damage;
 	float purpleDist = .75f;
 	// Use this for initialization
 	void Start () {
@@ -31,6 +33,7 @@ public class PurpleWeapon : MonoBehaviour {
 			addMirvScript(bullet2);
 			addMirvScript(bullet3);
 		}
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 
 	void addMirvScript(GameObject obj){

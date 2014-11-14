@@ -12,18 +12,18 @@ namespace MainCharacter
 			var driver = (MainCharacterDriver)target;
 			driver.lives = EditorGUILayout.IntField ("Ship Lives", driver.lives);
 			driver.invulnTime = EditorGUILayout.FloatField ("Time of Invulnerability", driver.invulnTime);
-			ShowWeaponDropdown ("Red", ref redFold, ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.material, ref driver.redForm.projectile, RedWeaponLayout);
-			ShowWeaponDropdown ("Blue", ref blueFold, ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, null);
-			ShowWeaponDropdown ("Yellow", ref yellowFold, ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, YellowWeaponLayout);
-			ShowWeaponDropdown ("Green", ref greenFold, ref driver.greenForm.formSpeed, ref driver.greenForm.cooldown, ref driver.greenForm.projectileSpeed, ref driver.greenForm.material, ref driver.greenForm.projectile, GreenWeaponLayout);
-			ShowWeaponDropdown ("Orange", ref orangeFold, ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile, OrangeWeaponLayout);
-			ShowWeaponDropdown ("Purple", ref purpleFold, ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile, PurpleWeaponLayout);
-			ShowWeaponDropdown ("Rainbow", ref rainbowFold, ref driver.rainbowForm.formSpeed, ref driver.rainbowForm.cooldown, ref driver.rainbowForm.projectileSpeed, ref driver.rainbowForm.material, ref driver.rainbowForm.projectile, null);
+			ShowWeaponDropdown ("Red", ref redFold, ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.material, ref driver.redForm.projectile, ref driver.redForm.damage, RedWeaponLayout);
+			ShowWeaponDropdown ("Blue", ref blueFold, ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, ref driver.blueForm.damage, null);
+			ShowWeaponDropdown ("Yellow", ref yellowFold, ref driver.yellowForm.formSpeed, ref driver.yellowForm.cooldown, ref driver.yellowForm.projectileSpeed, ref driver.yellowForm.material, ref driver.yellowForm.projectile, ref driver.yellowForm.damage, YellowWeaponLayout);
+			ShowWeaponDropdown ("Green", ref greenFold, ref driver.greenForm.formSpeed, ref driver.greenForm.cooldown, ref driver.greenForm.projectileSpeed, ref driver.greenForm.material, ref driver.greenForm.projectile, ref driver.greenForm.damage, GreenWeaponLayout);
+			ShowWeaponDropdown ("Orange", ref orangeFold, ref driver.orangeForm.formSpeed, ref driver.orangeForm.cooldown, ref driver.orangeForm.projectileSpeed, ref driver.orangeForm.material, ref driver.orangeForm.projectile, ref driver.orangeForm.damage, OrangeWeaponLayout);
+			ShowWeaponDropdown ("Purple", ref purpleFold, ref driver.purpleForm.formSpeed, ref driver.purpleForm.cooldown, ref driver.purpleForm.projectileSpeed, ref driver.purpleForm.material, ref driver.purpleForm.projectile, ref driver.purpleForm.damage, PurpleWeaponLayout);
+			ShowWeaponDropdown ("Rainbow", ref rainbowFold, ref driver.rainbowForm.formSpeed, ref driver.rainbowForm.cooldown, ref driver.rainbowForm.projectileSpeed, ref driver.rainbowForm.material, ref driver.rainbowForm.projectile, ref driver.rainbowForm.damage, null);
 
 			if (GUI.changed)EditorUtility.SetDirty (target);
 		}
 
-		public void ShowWeaponDropdown(string label, ref bool isFold, ref float shipSpeed, ref float cooldown, ref float projectileSpeed, ref Material material, ref GameObject bullet, Action specialWeaponLayout){
+		public void ShowWeaponDropdown(string label, ref bool isFold, ref float shipSpeed, ref float cooldown, ref float projectileSpeed, ref Material material, ref GameObject bullet, ref float damage, Action specialWeaponLayout){
 			isFold = EditorGUILayout.Foldout(isFold, label);
 			if (isFold) {
 				EditorGUI.indentLevel++;
@@ -33,6 +33,7 @@ namespace MainCharacter
 					var allowSceneObjects = !EditorUtility.IsPersistent (target);
 					material = (Material)EditorGUILayout.ObjectField ("Ship Material", material, typeof(Material), allowSceneObjects);
 					bullet = (GameObject)EditorGUILayout.ObjectField ("Primary Bullet", bullet, typeof(GameObject), allowSceneObjects);
+					damage = (float)EditorGUILayout.FloatField("Damage", damage);
 					if (specialWeaponLayout != null) specialWeaponLayout ();
 				EditorGUI.indentLevel--;
 			}

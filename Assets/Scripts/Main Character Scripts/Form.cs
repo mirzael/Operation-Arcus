@@ -9,6 +9,8 @@ namespace MainCharacter
 	[System.Serializable]
 	public class Form {
 		[SerializeField]
+		public float damage;
+		[SerializeField]
 		public float cooldown;
 		[SerializeField]
 		private float originalCooldown;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using MainCharacter;
 using System.Collections;
 
 public class OrangeWeapon : MonoBehaviour {
@@ -10,6 +11,7 @@ public class OrangeWeapon : MonoBehaviour {
 	public float explosionRadius;
 	public float gravityRadius;
 	public float gravityForce;
+	public float damage;
 
 	Material orangeBlast;
 
@@ -73,6 +75,7 @@ public class OrangeWeapon : MonoBehaviour {
 		} else {
 			CreateAoe (col.contacts [0].point, orangeBlast, explosionRadius, 0.5f, false);
 		}
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 
 	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){

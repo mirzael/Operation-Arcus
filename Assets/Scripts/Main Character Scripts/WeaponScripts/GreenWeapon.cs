@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using MainCharacter;
 using System.Collections;
 
 public class GreenWeapon : MonoBehaviour {
@@ -9,6 +10,7 @@ public class GreenWeapon : MonoBehaviour {
 	public float degreesPerSec;
 	public float degrees = 0;
 	public float ySpeed;
+	public float damage;
 	Vector3 centerPos;
 
 	Material greenBlast;
@@ -44,7 +46,8 @@ public class GreenWeapon : MonoBehaviour {
 			dis.sphereRadius = sphereRadius;
 			Destroy(sphere.collider);
 			Destroy (sphere, 0.5f);
-
 		}
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
+		Destroy (this);
 	}
 }
