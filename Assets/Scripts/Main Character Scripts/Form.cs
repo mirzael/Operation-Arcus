@@ -24,6 +24,8 @@ namespace MainCharacter
 		public float formSpeed;
 		[SerializeField]
 		public ShipColor shipColor;
+		[SerializeField]
+		public int animationNum;
 
 		public Form(ShipColor color){
 			shipColor = color;

@@ -26,6 +26,8 @@ public class MainCharacterDriver : MonoBehaviour {
 	 */
 	public RotatingList<Form> forms = new RotatingList<Form>();
 
+	//Arcus Animator
+	Animator anim;
 
 	const float POWER_MAX = 100.0f;
 	const float POWER_INC = 5.0f;
@@ -88,6 +90,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
 		bool formSet = false;
 		if (powerRed != 0.0f || powerBlue != 0.0f || powerYellow != 0.0f) {
@@ -99,12 +102,19 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 
 		redForm.shipColor = ShipColor.RED;
+		redForm.animationNum = 1;
 		blueForm.shipColor = ShipColor.BLUE;
+		blueForm.animationNum = 2;
 		yellowForm.shipColor = ShipColor.YELLOW;
+		yellowForm.animationNum = 3;
 		greenForm.shipColor = ShipColor.GREEN;
+		greenForm.animationNum = 0;
 		orangeForm.shipColor = ShipColor.ORANGE;
+		orangeForm.animationNum = 5;
 		purpleForm.shipColor = ShipColor.PURPLE;
+		purpleForm.animationNum = 4;
 		rainbowForm.shipColor = ShipColor.RAINBOW;
+		rainbowForm.animationNum = 0;
 
 		forms.Add (redForm);
 		forms.Add (blueForm);
@@ -210,7 +220,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		Debug.Log(col.gameObject.name);
 		
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 			if(invulnCounter <= 0){
@@ -389,7 +398,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		{
 			colorPieces[i].renderer.material = currentForm.material;
 		}
-			currentCooldown = currentForm.getCooldown();
+		currentCooldown = currentForm.getCooldown();
+		anim.SetInteger ("TransformVar", currentForm.animationNum);
 	}
 
 	void sinBullet(GreenWeapon weapon, bool isNegative){
