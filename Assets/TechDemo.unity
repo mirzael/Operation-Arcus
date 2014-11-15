@@ -849,6 +849,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 204290015}
+  - 23: {fileID: 204290016}
   m_Layer: 9
   m_Name: pCube2
   m_TagString: Untagged
@@ -869,6 +870,26 @@ Transform:
   - {fileID: 290389392}
   m_Father: {fileID: 238384790}
   m_RootOrder: 1
+--- !u!23 &204290016
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 204290014}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!1 &204296827
 GameObject:
   m_ObjectHideFlags: 0
