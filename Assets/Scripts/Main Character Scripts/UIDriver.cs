@@ -15,7 +15,18 @@ public class UIDriver : MonoBehaviour {
 	private Vector3 origScaleLeft;
 	private Vector3 origScaleRight;
 	
+	private GameObject winScreen, loseScreen;
+	private bool showingWinLose;
+	private bool win;
+	
 	public void Start() {
+		winScreen = GameObject.Find("WinScreen");
+		loseScreen = GameObject.Find("LoseScreen");
+		winScreen.SetActive(false);
+		loseScreen.SetActive(false);
+		showingWinLose = false;
+		win = false;
+		
 		currentColor = 1;
 		
 		origScaleCenter = powerCenter.transform.localScale;
@@ -25,6 +36,33 @@ public class UIDriver : MonoBehaviour {
 		ShiftAndScale(powerCenter, origScaleCenter, new Vector3(0, 1, 1));
 		ShiftAndScale(powerLeft, origScaleLeft, new Vector3(0, 1, 1));
 		ShiftAndScale(powerRight, origScaleRight, new Vector3(0, 1, 1));
+	}
+	
+	public void Update() {
+		if (!showingWinLose) {
+			return;
+		}
+		
+		if (Input.GetKeyDown(KeyCode.R)) {
+			Debug.Log("Restarting game");
+			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
+			if (win) {
+				spawner.level++;
+				if (spawner.level > Spawner.MAX_LEVELS) {
+					Application.LoadLevel("Credits");
+					return;
+				}
+				winScreen.SetActive(false);
+				
+				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
+				driver.gameOver = false;
+				spawner.Start();
+			} else {
+				Application.LoadLevel(Application.loadedLevel);
+			}
+		} else if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.LoadLevel("MainMenu");
+		}
 	}
 	
 	public void RotateLeft() {
@@ -66,7 +104,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void UpdateBars() {
-		var driver = gameObject.GetComponent<MainCharacterDriver>();
+		var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 		
 		if (currentColor == 1) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(driver.powerYellow / 100, 1, 1));
@@ -102,5 +140,17 @@ public class UIDriver : MonoBehaviour {
 		powerBar.transform.localScale = newScale;
 		newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
 		powerBar.transform.position = new Vector3(newX, curY, curZ);
+	}
+	
+	public void ShowWinScreen() {
+		winScreen.SetActive(true);
+		showingWinLose = true;
+		win = true;
+	}
+	
+	public void ShowLoseScreen() {
+		loseScreen.SetActive(true);
+		showingWinLose = true;
+		win = false;
 	}
 }

@@ -86,10 +86,14 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float shipYMin = -12.0f;
 	public float shipYMax = 19.0f;
 
-	UIDriver uiDriver;
+	public UIDriver uiDriver;
+
+	public static string arcusName = "";
 
 	// Use this for initialization
 	void Start () {
+		arcusName = gameObject.name;
+		
 		anim = GetComponent<Animator> ();
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
 		bool formSet = false;
@@ -124,7 +128,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		currentForm = forms [0];
 		switchForm (currentForm);
 		
-		uiDriver = gameObject.GetComponent<UIDriver>();
+		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
 	}
 	
 	// Update is called once per frame
@@ -246,8 +250,7 @@ public class MainCharacterDriver : MonoBehaviour {
 						powerYellow = 0.0f;
 						Debug.Log("MISSION FAILED");
 						
-						WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
-						gui.win = false;
+						uiDriver.ShowLoseScreen();
 						gameOver = true;
 					}
 				}

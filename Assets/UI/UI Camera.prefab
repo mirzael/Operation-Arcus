@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -617,7 +618,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7b142a303964c1d4c91115bcb6eb5504, type: 2}
+  - {fileID: 2100000, guid: 079ea8cc917e01248bd1e7deee145000, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -659,7 +660,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: dedd5a12322b4094eb2c6115fe7ea161, type: 2}
+  - {fileID: 2100000, guid: bc132472ebaf5e44592b2884ba044760, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -680,7 +681,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4a88f87b5b73c4f45832892ef9e0f1d0, type: 2}
+  - {fileID: 2100000, guid: 8fe7d5bc31ed77143acfeaff3c86def0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1088,6 +1089,23 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d22292e0f144944a83f2c7301b0d96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barCenter: {fileID: 100032}
+  barLeft: {fileID: 100024}
+  barRight: {fileID: 100018}
+  powerCenter: {fileID: 100028}
+  powerLeft: {fileID: 100022}
+  powerRight: {fileID: 100016}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

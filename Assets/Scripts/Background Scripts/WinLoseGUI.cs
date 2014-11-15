@@ -42,7 +42,7 @@ public class WinLoseGUI : MonoBehaviour {
 					Application.LoadLevel("Credits");
 					return;
 				}
-				var driver = GameObject.Find("Arcus v1").GetComponent<MainCharacterDriver>();
+				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
 				spawner.Start();
 				Destroy(this);

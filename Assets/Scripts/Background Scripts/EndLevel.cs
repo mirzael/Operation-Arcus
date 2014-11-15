@@ -8,9 +8,10 @@ public class EndLevel : MonoBehaviour {
 				return;
 			}
 		}
-		WinLoseGUI gui = GameObject.Find("Main Camera").AddComponent<WinLoseGUI>();
-		gui.win = true;
-		GameObject.Find("Arcus v1").GetComponent<MainCharacterDriver>().gameOver = true;
+		
+		var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
+		driver.gameOver = true;
+		driver.uiDriver.ShowWinScreen();
 		
 		Destroy(this);
 	}
