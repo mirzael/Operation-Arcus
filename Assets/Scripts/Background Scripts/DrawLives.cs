@@ -13,11 +13,15 @@ public class DrawLives : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {		
-		arcusModel.transform.localScale = new Vector3 (3f, 3f, 3f);
+		float xOffset;
+		float yOffset;
+		arcusModel.transform.localScale = new Vector3 (1f, 1f, 1f);
 		driver = (MainCharacterDriver)GetComponentInChildren (typeof(MainCharacterDriver));
 		for (int i = 0; i < driver.lives; i++) {
 			var tempPos = pos;
-			tempPos += new Vector3(i, 0, 0);
+			xOffset = ((float)(i % 5)) * 0.3162f;
+			yOffset = ((float)(i / 5)) * (-0.31424f);
+			tempPos += new Vector3(xOffset, yOffset, 0);
 			lives.Add((GameObject)Instantiate (arcusModel, tempPos, arcusModel.transform.rotation));
 		}
 	}

@@ -25,7 +25,7 @@ public class PointMaster : MonoBehaviour {
 		foreach (PointInfo info in displayArray) {
 			pointStyle.normal.textColor = info.color;
 		}
-		GUI.Label (new Rect (pos.x, pos.y, size.x, size.y), "POINTS:\t\t\t" + points, pointStyle);
+		GUI.Label (new Rect (pos.x, pos.y, size.x, size.y), "POINTS:\n" + points, pointStyle);
 
 
 		/* CURRENTLY BUGGY - PRINTING POINTS ABOVE CHARACTER
