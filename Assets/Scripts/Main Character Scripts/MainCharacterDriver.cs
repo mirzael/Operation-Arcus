@@ -85,6 +85,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float shipYMax = 19.0f;
 
 	UIDriver uiDriver;
+	public Animator theAnimator;
 
 	// Use this for initialization
 	void Start () {
@@ -115,10 +116,21 @@ public class MainCharacterDriver : MonoBehaviour {
 		switchForm (currentForm);
 		
 		uiDriver = gameObject.GetComponent<UIDriver>();
+
+
 	}
-	
+
+	void Awake(){
+		theAnimator = GetComponent<Animator>();
+	}
+
 	// Update is called once per frame
 	void Update () {
+		if (theAnimator == null)
+			Debug.Log ("NULL!");
+		else
+			Debug.Log ("NOT IT!");
+		Debug.Log ("CHECK!");
 		if (gameOver) return;
 		invulnCounter -= Time.deltaTime;
 
@@ -388,6 +400,28 @@ public class MainCharacterDriver : MonoBehaviour {
 		for (int i = 0; i < colorPieces.Length; i++) 
 		{
 			colorPieces[i].renderer.material = currentForm.material;
+		}
+		Debug.Log (theAnimator.avatar.ToString () + "IS HERE!");
+		switch (currentForm.shipColor) 
+		{
+		case ShipColor.RED:
+			theAnimator.SetInteger ("TransformVar", 1);
+			break;
+		case ShipColor.BLUE:
+			theAnimator.SetInteger ("TransformVar", 2);
+			break;
+		case ShipColor.YELLOW:
+			theAnimator.SetInteger ("TransformVar", 3);
+			break;
+		case ShipColor.PURPLE:
+			theAnimator.SetInteger ("TransformVar", 4);
+			break;
+		case ShipColor.ORANGE:
+			theAnimator.SetInteger ("TransformVar", 5);
+			break;
+		default:
+			theAnimator.SetInteger ("TransformVar", 0);
+			break;
 		}
 			currentCooldown = currentForm.getCooldown();
 	}
