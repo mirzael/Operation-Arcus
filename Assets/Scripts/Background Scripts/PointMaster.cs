@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PointMaster : MonoBehaviour {
 	GUIStyle pointStyle;
-	float points = 0;
+	public float points = 0;
 	public Color orange = new Color();
 	public Color purple = new Color();
 	public Vector2 pos = new Vector2(0, 50);
