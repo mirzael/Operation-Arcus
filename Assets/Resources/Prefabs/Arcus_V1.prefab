@@ -15,7 +15,7 @@ GameObject:
   - 135: {fileID: 13500002}
   - 135: {fileID: 13500004}
   m_Layer: 0
-  m_Name: MainArcus
+  m_Name: Arcus_V1
   m_TagString: Player
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2895,6 +2895,7 @@ MonoBehaviour:
   powerBlue: 0
   powerYellow: 0
   redForm:
+    damage: 0
     cooldown: .600000024
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 7c7271d5b582ccb498ddccb0a7336abc, type: 2}
@@ -2903,9 +2904,11 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   redExplosionRadius: 2.5
   redRadiusPerPoint: .100000001
   blueForm:
+    damage: 0
     cooldown: .200000003
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 8ae4fb95e3d8b1c4384a908d4b7634f2, type: 2}
@@ -2914,7 +2917,9 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   yellowForm:
+    damage: 0
     cooldown: 1
     originalCooldown: 0
     projectile: {fileID: 100000, guid: aaf74b2359023774ca9cbb2cbf12fba2, type: 2}
@@ -2923,8 +2928,10 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 1c87b2718febcac4dafe67fadd80021a, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   yellowPointsPerBullet: 20
   orangeForm:
+    damage: 0
     cooldown: .600000024
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
@@ -2933,11 +2940,13 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   orangeRotationSpeed: 15
   orangeExplosionRadius: 12.5
   orangeGravityRadius: 35
   orangeGravityForce: 1500
   purpleForm:
+    damage: 0
     cooldown: .400000006
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
@@ -2946,9 +2955,11 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   purpleMirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
   purpleTimeBeforeExplosion: .150000006
   greenForm:
+    damage: 0
     cooldown: .100000001
     originalCooldown: 0
     projectile: {fileID: 100000, guid: a9975fbe213c6af4ca1ab32902a07035, type: 2}
@@ -2957,10 +2968,12 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
     formSpeed: 20
     shipColor: 0
+    animationNum: 0
   greenEmpRadius: 20
   greenEmpDuration: 1
   greenSinAmplitude: 2.5
   rainbowForm:
+    damage: 0
     cooldown: .0500000007
     originalCooldown: 0
     projectile: {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
@@ -2969,10 +2982,12 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 2e5d11e0dccd4a240b0cb3baed1c79b4, type: 2}
     formSpeed: 30
     shipColor: 0
+    animationNum: 0
   shipXMin: -10.25
   shipXMax: 10.25
   shipYMin: -12
   shipYMax: 19
+  uiDriver: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

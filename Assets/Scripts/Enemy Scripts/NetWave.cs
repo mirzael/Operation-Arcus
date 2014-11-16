@@ -3,14 +3,11 @@ using System.Collections;
 
 public class NetWave : Wave {
 
-	float cooldown;
-	float currentCooldown;
-
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		base.Start ();
 		projectile = gameObject.GetComponent<Shooter> ().projectile;
 		currentCooldown = 0;
-		cooldown = 100;
 	}
 	
 	// Update is called once per frame

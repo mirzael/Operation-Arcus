@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 400
   projectile: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
-  pattern: 6
+  pattern: 1
   bulletWave: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:

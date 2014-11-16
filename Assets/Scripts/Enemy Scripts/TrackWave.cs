@@ -2,17 +2,12 @@
 using System.Collections;
 
 public class TrackWave : Wave {
-
-	float cooldown;
-	float currentCooldown;
 	GameObject player;
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		base.Start ();
 		player = GameObject.FindWithTag ("Player");
-		projectile = gameObject.GetComponent<Shooter> ().projectile;
-		currentCooldown = 20;
-		cooldown = 100;
 	}
 	
 	// Update is called once per frame
@@ -22,7 +17,7 @@ public class TrackWave : Wave {
 			var heading = player.transform.position - transform.position;
 			var distance = heading.magnitude;
 			var direction = heading / distance;
-			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.down * 2, transform.rotation);
+			var proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
 			proj.rigidbody.velocity = direction * 10;
 			}
 		currentCooldown = currentCooldown + 1;

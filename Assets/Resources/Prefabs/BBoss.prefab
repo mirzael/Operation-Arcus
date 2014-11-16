@@ -864,8 +864,11 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
+  - 54: {fileID: 5400000}
   m_Layer: 8
-  m_Name: IMPLEMENT_Big Blue
+  m_Name: BBoss
   m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1976,6 +1979,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100024}
   m_Mesh: {fileID: 4300022, guid: a5d5ef5a04ddba44daf9e9700ac133d4, type: 3}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1997,7 +2015,7 @@ Animator:
   m_GameObject: {fileID: 100112}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a5d5ef5a04ddba44daf9e9700ac133d4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bf774969b23e9442b127703bc2bd8c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2015,6 +2033,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 300
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 200
+  projectile: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
+  isBoss: 1
+  bossProjectile: {fileID: 100008, guid: 936eca7403c15ad41acc7cf19c7080ea, type: 2}
+  bossBulletChance: 15
+  pattern: 3
+  bulletWave: {fileID: 0}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feebe3b382029b840ac6887ef0060572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pattern: 0
+  stops: 0
+  dir: {x: 0, y: 0, z: 0}
+  newDir: {x: 0, y: 0, z: 0}
+  speed: 0
+  timeBeforeStopOnScreen: 0
+  timeStayOnScreen: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

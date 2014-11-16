@@ -4,6 +4,9 @@ using System.Collections;
 public class Shooter : MonoBehaviour {
 	public float cooldown;
 	public GameObject projectile;
+	public bool isBoss;
+	public GameObject bossProjectile;
+	public float bossBulletChance;
 	public int pattern;
 	float currentCooldown;
 	public Wave bulletWave;

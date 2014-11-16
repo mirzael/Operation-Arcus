@@ -19,7 +19,8 @@ public class EnemyDeath : MonoBehaviour {
 		health -= wep.damage;
 		Debug.Log ("Hit enemy. Health Remaining: " + health);
 		if (health <= 0) {
-			points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = wep.tag, shipPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z)});
+			if(animation != null) animation.Stop();
+			rigidbody.isKinematic = false;
 			GetComponent<Shooter> ().enabled = false;
 			GetComponent<Wave>().enabled = false;
 			Destroy (gameObject, 3f);

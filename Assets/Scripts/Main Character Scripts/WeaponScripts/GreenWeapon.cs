@@ -48,6 +48,6 @@ public class GreenWeapon : MonoBehaviour {
 			Destroy (sphere, 0.5f);
 		}
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
-		Destroy (this);
+		Destroy (gameObject);
 	}
 }

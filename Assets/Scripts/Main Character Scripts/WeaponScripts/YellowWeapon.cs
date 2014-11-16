@@ -6,6 +6,7 @@ public class YellowWeapon : MonoBehaviour {
 	public float damage;
 	void OnCollisionEnter(Collision col){
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
+		Destroy (gameObject);
 	}
 
 }
