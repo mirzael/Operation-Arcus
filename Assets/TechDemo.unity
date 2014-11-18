@@ -9245,7 +9245,7 @@ MonoBehaviour:
   points: 0
   orange: {r: 1, g: .608823478, b: .0220588446, a: 1}
   purple: {r: .801470578, g: .253406137, b: .71831584, a: 1}
-  pos: {x: 0, y: 60}
+  pos: {x: 5, y: 510}
   size: {x: 100, y: 30}
 --- !u!114 &1951599142
 MonoBehaviour:
@@ -9258,8 +9258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: -7, y: 13, z: 10}
-  guiTextPos: {x: 0, y: 80}
+  pos: {x: 101.462502, y: 99.7569427, z: 99.9000015}
+  guiTextPos: {x: 227, y: 510}
   size: {x: 100, y: 100}
   lives: []
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
