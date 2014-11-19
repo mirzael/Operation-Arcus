@@ -11,6 +11,9 @@ public class UIDriver : MonoBehaviour {
 	
 	private int currentColor; // 1 = red; 2 = blue; 3 = yellow;
 	
+	public Material[] successScreens;
+	public Material[] backgrounds;
+	
 	private Vector3 origScaleCenter;
 	private Vector3 origScaleLeft;
 	private Vector3 origScaleRight;
@@ -26,6 +29,8 @@ public class UIDriver : MonoBehaviour {
 		loseScreen.SetActive(false);
 		showingWinLose = false;
 		win = false;
+		
+		GameObject.Find("Background").renderer.material = backgrounds[GameObject.Find("WaveSpawner").GetComponent<Spawner>().level - 1];
 		
 		currentColor = 1;
 		
@@ -54,6 +59,8 @@ public class UIDriver : MonoBehaviour {
 					Application.LoadLevel("Credits");
 					return;
 				}
+				
+				GameObject.Find("Background").renderer.material = backgrounds[spawner.level - 1];
 				winScreen.SetActive(false);
 				
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
@@ -145,7 +152,12 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
+		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
+		
+		if (level < Spawner.MAX_LEVELS) {
+			winScreen.renderer.material = successScreens[level - 1];
+		}
 		showingWinLose = true;
 		win = true;
 	}

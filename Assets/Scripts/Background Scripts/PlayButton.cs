@@ -7,8 +7,6 @@ public class PlayButton : MonoBehaviour {
 	private GameObject intro2;
 	private GameObject intro3;
 	private GameObject intro4;
-	private GameObject intro5;
-	private GameObject intro6;
 	
 	public void Awake() {
 		mainMenu = GameObject.Find("MainMenu");
@@ -20,8 +18,6 @@ public class PlayButton : MonoBehaviour {
 		intro2 = GameObject.Find("Intro2");
 		intro3 = GameObject.Find("Intro3");
 		intro4 = GameObject.Find("Intro4");
-		intro5 = GameObject.Find("Intro5");
-		intro6 = GameObject.Find("Intro6");
 	}
 	
 	public void Start() {
@@ -39,12 +35,6 @@ public class PlayButton : MonoBehaviour {
 		}
 		if (!transform.parent.gameObject.name.Equals("Intro4")) {
 			intro4.SetActive(false);
-		}
-		if (!transform.parent.gameObject.name.Equals("Intro5")) {
-			intro5.SetActive(false);
-		}
-		if (!transform.parent.gameObject.name.Equals("Intro6")) {
-			intro6.SetActive(false);
 		}
 	}
 	
@@ -70,14 +60,6 @@ public class PlayButton : MonoBehaviour {
 			intro3.SetActive(false);
 			intro4.SetActive(true);
 			break;
-		case "btnNext5":
-			intro4.SetActive(false);
-			intro5.SetActive(true);
-			break;
-		case "btnNext6":
-			intro5.SetActive(false);
-			intro6.SetActive(true);
-			break;
 		case "btnBack1":
 			intro2.SetActive(false);
 			intro1.SetActive(true);
@@ -90,17 +72,9 @@ public class PlayButton : MonoBehaviour {
 			intro4.SetActive(false);
 			intro3.SetActive(true);
 			break;
-		case "btnBack4":
-			intro5.SetActive(false);
-			intro4.SetActive(true);
-			break;
-		case "btnBack5":
-			intro6.SetActive(false);
-			intro5.SetActive(true);
-			break;
 		case "btnSkip":
 			transform.parent.gameObject.SetActive(false);
-			intro6.SetActive(true);
+			intro4.SetActive(true);
 			break;
 		case "btnHiscore":
 			Debug.Log("Displaying Hiscores");

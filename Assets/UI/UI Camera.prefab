@@ -1106,6 +1106,14 @@ MonoBehaviour:
   powerCenter: {fileID: 100028}
   powerLeft: {fileID: 100022}
   powerRight: {fileID: 100016}
+  successScreens:
+  - {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
+  - {fileID: 2100000, guid: d801e5d1228c4fc4f8d69036c0cf00fe, type: 2}
+  - {fileID: 2100000, guid: 8ad1469d00a14d94bbdd6d7a7ba2b945, type: 2}
+  backgrounds:
+  - {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
+  - {fileID: 2100000, guid: 1ac78001a038d3843ae1dc1e25671af2, type: 2}
+  - {fileID: 2100000, guid: 69b70ea2d4e08914fa8e235cad73e30f, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
