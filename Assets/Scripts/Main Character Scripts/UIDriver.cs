@@ -50,6 +50,9 @@ public class UIDriver : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Debug.Log("Restarting game");
+			
+			showingWinLose = false;
+			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
