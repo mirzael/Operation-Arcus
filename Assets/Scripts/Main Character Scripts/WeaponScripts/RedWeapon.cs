@@ -9,10 +9,12 @@ public class RedWeapon : MonoBehaviour {
 	public MainCharacterDriver driver;
 
 	Material redBlast;
+	GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
 		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
+		explosion = (GameObject)Resources.Load("Prefabs/ExplosionRedMissile", typeof(GameObject));
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,7 @@ public class RedWeapon : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
+		Instantiate(explosion, transform.position, transform.rotation);
 		CreateAoe (col.contacts [0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
