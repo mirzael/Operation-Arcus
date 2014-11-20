@@ -182,8 +182,11 @@ public class MainCharacterDriver : MonoBehaviour {
 				
 				uiDriver.UpdateBars();
 			}
-			if (powerBlue == 0)
+			if (powerBlue == 0) {
 				switchForm (previousForm);
+				blueForm.resetCooldown();
+				redForm.resetSpeed();
+			}
 			return;
 		}
 		//Switch to Previous Form
