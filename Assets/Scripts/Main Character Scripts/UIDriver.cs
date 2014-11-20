@@ -9,10 +9,18 @@ public class UIDriver : MonoBehaviour {
 	public GameObject powerLeft;
 	public GameObject powerRight;
 	
+	public GameObject secondaryCenter;
+	public GameObject secondaryLeft;
+	public GameObject secondaryRight;
+	
 	private int currentColor; // 1 = red; 2 = blue; 3 = yellow;
 	
 	public Material[] successScreens;
 	public Material[] backgrounds;
+	
+	public Material darkOrange, brightOrange;
+	public Material darkPurple, brightPurple;
+	public Material darkGreen, brightGreen;
 	
 	private Vector3 origScaleCenter;
 	private Vector3 origScaleLeft;
@@ -135,6 +143,24 @@ public class UIDriver : MonoBehaviour {
 			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(driver.powerRed / 100, 1, 1));
 			ShiftAndScale(powerRight, origScaleRight, new Vector3(driver.powerBlue / 100, 1, 1));
 		}
+		
+		float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
+		if (driver.powerRed >= transformAmount && driver.powerBlue >= transformAmount) {
+			secondaryCenter.renderer.material = brightPurple;
+		} else {
+			secondaryCenter.renderer.material = darkPurple;
+		}
+		if (driver.powerRed >= transformAmount && driver.powerYellow >= transformAmount) {
+			secondaryLeft.renderer.material = brightOrange;
+		} else {
+			secondaryLeft.renderer.material = darkOrange;
+		}
+		if (driver.powerYellow >= transformAmount && driver.powerBlue >= transformAmount) {
+			secondaryRight.renderer.material = brightGreen;
+		} else {
+			secondaryRight.renderer.material = darkGreen;
+		}
+		
 	}
 	
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {

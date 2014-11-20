@@ -31,7 +31,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	const float POWER_MAX = 100.0f;
 	const float POWER_INC = 5.0f;
-	const float TRANSFORM_AMOUNT = 50f;
+	public const float TRANSFORM_AMOUNT = 50f;
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_DEGREES_PER_SEC = 720;
 	const float ALPHA_PER_SEC = 0.1f;
