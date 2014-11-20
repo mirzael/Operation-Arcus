@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class EnemyDeath : MonoBehaviour {
 	public float health;
+	public GameObject explosion;
 	const float SPHERE_DURATION = 0.5f;
 	const float SPHERE_RADIUS = 1f;
 	PointMaster points;
@@ -23,6 +24,10 @@ public class EnemyDeath : MonoBehaviour {
 			rigidbody.isKinematic = false;
 			GetComponent<Shooter> ().enabled = false;
 			GetComponent<Wave>().enabled = false;
+			if (explosion != null) {
+				Instantiate(explosion, transform.position, transform.rotation);
+				explosion = null; // make sure it occurs on the first hit
+			}
 			Destroy (gameObject, 3f);
 		}
 
