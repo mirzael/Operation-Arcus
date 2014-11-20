@@ -13,13 +13,13 @@ namespace MainCharacter
 		[SerializeField]
 		public float cooldown;
 		[SerializeField]
-		private float originalCooldown;
+		public float originalCooldown;
 		[SerializeField]
 		public GameObject projectile;
 		[SerializeField]
 		public float projectileSpeed;
 		[SerializeField]
-		private float originalSpeed;
+		public float originalSpeed;
 		[SerializeField]
 		public Material material;
 		[SerializeField]

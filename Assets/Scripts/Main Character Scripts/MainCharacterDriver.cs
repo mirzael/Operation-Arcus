@@ -107,6 +107,8 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		redForm.shipColor = ShipColor.RED;
 		redForm.animationNum = 1;
+		redForm.originalCooldown = redForm.cooldown;
+		redForm.originalSpeed = redForm.projectileSpeed;
 		blueForm.shipColor = ShipColor.BLUE;
 		blueForm.animationNum = 2;
 		yellowForm.shipColor = ShipColor.YELLOW;
