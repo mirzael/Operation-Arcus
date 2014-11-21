@@ -44,7 +44,8 @@ namespace MainCharacter
 		public void PurpleWeaponLayout(){
 			var driver = (MainCharacterDriver)target;
 			driver.purpleMirv = (GameObject)EditorGUILayout.ObjectField("Mirv Bullet", driver.purpleMirv, typeof(GameObject), !EditorUtility.IsPersistent(target));
-			driver.purpleTimeBeforeExplosion = EditorGUILayout.FloatField ("Time before explosion", driver.purpleTimeBeforeExplosion);;
+			driver.purpleTimeBeforeExplosion = EditorGUILayout.FloatField ("Time before explosion", driver.purpleTimeBeforeExplosion);
+			driver.purpleExplosionSize = EditorGUILayout.FloatField ("Mirv Explosion Size", driver.purpleExplosionSize);
 		}	
 
 		public void GreenWeaponLayout(){

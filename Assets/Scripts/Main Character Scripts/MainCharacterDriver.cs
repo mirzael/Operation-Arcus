@@ -68,6 +68,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Purple weapon
 	public GameObject purpleMirv;
 	public float purpleTimeBeforeExplosion;
+	public float purpleExplosionSize;
 	int purpleBarrel = 1;
 	[SerializeField]
 	public Form greenForm;
@@ -369,6 +370,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			mirvStuff.bulletSpeed = currentForm.projectileSpeed;
 			mirvStuff.timeBeforeExplosion = purpleTimeBeforeExplosion;
 			mirvStuff.damage = currentForm.damage;
+			mirvStuff.explosionSize = purpleExplosionSize;
 			break;
 		case ShipColor.GREEN:
 			var gProj = new GameObject[3];

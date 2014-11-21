@@ -5,10 +5,10 @@ public class MirvBullet : MonoBehaviour {
 	
 	public float timeBeforeExplosion;
 	public float bulletSpeed;
+	public float explosionSize;
 	Material explosionMat;
 	GameObject explosion;
 	const float SPHERE_DURATION = 0.5f;
-	const float SPHERE_RADIUS = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +25,7 @@ public class MirvBullet : MonoBehaviour {
 			var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 			sphere.renderer.material = explosionMat;
 			sphere.transform.position = transform.position;
-			sphere.transform.localScale = new Vector3(SPHERE_RADIUS,SPHERE_RADIUS,SPHERE_RADIUS);
+			sphere.transform.localScale = new Vector3(explosionSize,explosionSize,explosionSize);
 			sphere.tag = "Purple";
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
 			Instantiate(explosion, transform.position, transform.rotation);
