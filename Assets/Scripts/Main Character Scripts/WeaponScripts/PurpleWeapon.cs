@@ -8,6 +8,7 @@ public class PurpleWeapon : MonoBehaviour {
 	public float bulletSpeed;
 	public float timeBeforeExplosion;
 	public float damage;
+	public float explosionSize;
 	float purpleDist = .75f;
 	// Use this for initialization
 	void Start () {
@@ -40,5 +41,6 @@ public class PurpleWeapon : MonoBehaviour {
 		var script = obj.AddComponent<MirvBullet>();
 		script.bulletSpeed = bulletSpeed;
 		script.timeBeforeExplosion = timeBeforeExplosion;
+		script.explosionSize = explosionSize;
 	}
 }

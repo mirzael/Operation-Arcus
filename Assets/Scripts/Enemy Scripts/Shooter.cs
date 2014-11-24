@@ -38,6 +38,9 @@ public class Shooter : MonoBehaviour {
 		case 6:
 			bulletWave = gameObject.AddComponent<CascadeWave> ();
 			break;
+		case 7:
+			bulletWave = gameObject.AddComponent<CircleWave> ();
+			break;
 		}
 	}
 	

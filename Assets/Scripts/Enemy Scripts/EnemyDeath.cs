@@ -9,10 +9,12 @@ public class EnemyDeath : MonoBehaviour {
 	const float SPHERE_DURATION = 0.5f;
 	const float SPHERE_RADIUS = 1f;
 	PointMaster points;
+	EnemyMovement movement;
 
 	// Use this for initialization
 	void Start () {
 		points = Component.FindObjectOfType<PointMaster> ();
+		movement = gameObject.GetComponent<EnemyMovement> ();
 	}
 
 	void OnHit(WeaponDamage wep){
@@ -28,6 +30,8 @@ public class EnemyDeath : MonoBehaviour {
 				Instantiate(explosion, transform.position, transform.rotation);
 				explosion = null; // make sure it occurs on the first hit
 			}
+			movement.enabled = false;
+			rigidbody.AddForce(new Vector3(Random.Range(-500, 500), Random.Range(-500,500), Random.Range(-500,500)));
 			Destroy (gameObject, 3f);
 		}
 
