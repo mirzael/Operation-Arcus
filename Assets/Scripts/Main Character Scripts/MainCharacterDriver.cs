@@ -173,6 +173,13 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		if (currentForm.shipColor == ShipColor.RAINBOW) 
 		{
+			if (rainbowCooldown % 3 == 0) {
+				//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+				for (int i = 0; i < colorPieces.Length; i++) {
+					Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+					colorPieces[i].renderer.material.color = newColor;
+				}
+			}
 			rainbowCooldown = rainbowCooldown - 1;
 			if (rainbowCooldown <= 0)
 			{
@@ -402,7 +409,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			break;
 		}
 	}
-
+	
 	void switchForm(Form form){
 		currentForm = form;
 		for (int i = 0; i < colorPieces.Length; i++) 

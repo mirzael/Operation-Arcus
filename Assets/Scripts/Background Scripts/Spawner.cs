@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour {
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
 	private float levelTimeCounter;
+	private float lastSpawnTime;
 	public int level = 1;
 	public const int MAX_LEVELS = 3;
 
@@ -37,6 +38,8 @@ public class Spawner : MonoBehaviour {
 			Debug.Log("Failed to read spawn data for level " + level);
 		}
 		
+		GameObject.Find("Background").AddComponent<ScrollBackground>().numSeconds = lastSpawnTime;
+		
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
 	}
 
@@ -44,6 +47,7 @@ public class Spawner : MonoBehaviour {
 	private bool Load(string fileName) {
 		enemySpawnTimes = new Queue<float>();
 		enemyDetails = new Queue<String>();
+		lastSpawnTime = 0;
 		
 		TextAsset levelData = (TextAsset)Resources.Load(fileName, typeof(TextAsset));
 		StringReader reader = new StringReader(levelData.text);
@@ -65,6 +69,9 @@ public class Spawner : MonoBehaviour {
 						float timeToAppear = float.Parse(entries[1]);
 						string otherDetails = entries[0] + "," + entries[2] + "," + entries[3] + "," + entries[4] + "," + entries[5];
 						enemySpawnTimes.Enqueue(timeToAppear);
+						if (timeToAppear > lastSpawnTime) {
+							lastSpawnTime = timeToAppear;
+						}
 						enemyDetails.Enqueue(otherDetails);
 					}
 				}
