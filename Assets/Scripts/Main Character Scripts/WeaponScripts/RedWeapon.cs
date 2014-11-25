@@ -24,7 +24,7 @@ public class RedWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		Instantiate(explosion, transform.position, transform.rotation);
-		CreateAoe (col.contacts [0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
+		CreateAoe (col.contacts[0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 

@@ -116,6 +116,8 @@ public class Spawner : MonoBehaviour {
 				spawn = enemyToSpawn[2];
 			} else if (details[0].Equals("BBoss")) {
 				spawn = enemyToSpawn[3];
+			} else if (details[0].Equals("RBoss")){
+				spawn = enemyToSpawn[4];
 			} else {
 				spawn = enemyToSpawn[0];
 			}

@@ -15,8 +15,10 @@ GameObject:
   - 114: {fileID: 11400002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400004}
   m_Layer: 8
-  m_Name: IMPLEMENT_BigRed
+  m_Name: RBoss
   m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
+  cooldown: 10
   projectile: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   isBoss: 1
   bossProjectile: {fileID: 100008, guid: 936eca7403c15ad41acc7cf19c7080ea, type: 2}
@@ -120,8 +122,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 800
   explosion: {fileID: 0}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feebe3b382029b840ac6887ef0060572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pattern: 0
+  stops: 0
+  dir: {x: 0, y: 0, z: 0}
+  newDir: {x: 0, y: 0, z: 0}
+  speed: 0
+  timeBeforeStopOnScreen: 0
+  timeStayOnScreen: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e5341033a02814295c7d6f732ea0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mooks:
+  - {fileID: 100000, guid: c2cd4181f92793c469543b4f2260b7cf, type: 2}
+  - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
+  cooldown: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
