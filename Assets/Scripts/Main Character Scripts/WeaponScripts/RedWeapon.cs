@@ -15,6 +15,7 @@ public class RedWeapon : MonoBehaviour {
 	void Start () {
 		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
 		explosion = (GameObject)Resources.Load("Prefabs/ExplosionRedMissile", typeof(GameObject));
+		driver = (MainCharacterDriver)GameObject.FindGameObjectWithTag ("Player").GetComponent (typeof(MainCharacterDriver));
 	}
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class RedWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		Instantiate(explosion, transform.position, transform.rotation);
-		CreateAoe (col.contacts[0].point, redBlast, driver.powerRed*radiusPerPoint+baseExplosionRadius, 0.5f, false);
+		CreateAoe (col.contacts[0].point, redBlast, driver.powerRed * radiusPerPoint + baseExplosionRadius, 0.5f, false);
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 
