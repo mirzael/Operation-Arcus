@@ -29,6 +29,9 @@ public class UIDriver : MonoBehaviour {
 	private GameObject winScreen, loseScreen;
 	private bool showingWinLose;
 	private bool win;
+
+	public AudioClip loseSound;
+	public AudioClip winSound;
 	
 	public void Start() {
 		winScreen = GameObject.Find("WinScreen");
@@ -181,6 +184,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
+		audio.PlayOneShot (winSound);
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		
@@ -192,6 +196,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowLoseScreen() {
+		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
 		showingWinLose = true;
 		win = false;
