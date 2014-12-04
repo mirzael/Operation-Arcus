@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: 81c89db01e7f12c4db36a27de5a8e5eb
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bluespritesheet_0
+    21300002: bluespritesheet_1
+    21300004: bluespritesheet_2
+    21300006: bluespritesheet_3
+    21300008: bluespritesheet_4
+    21300010: bluespritesheet_5
+    21300012: bluespritesheet_6
+    21300014: bluespritesheet_7
+    21300016: bluespritesheet_8
+    21300018: bluespritesheet_9
+    21300020: bluespritesheet_10
+    21300022: bluespritesheet_11
+    21300024: bluespritesheet_12
+    21300026: bluespritesheet_13
+    21300028: bluespritesheet_14
+    21300030: bluespritesheet_15
+    21300032: bluespritesheet_16
+    21300034: bluespritesheet_17
+    21300036: bluespritesheet_18
+    21300038: bluespritesheet_19
+    21300040: bluespritesheet_20
+    21300042: bluespritesheet_21
+    21300044: bluespritesheet_22
+    21300046: bluespritesheet_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 2
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bluespritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3597
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 3597
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3597
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3087
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 3087
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3087
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2577
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2577
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2577
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2067
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2067
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2067
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1557
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1557
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1557
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1047
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1047
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1047
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 537
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 537
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 537
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 27
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 27
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bluespritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 27
+        width: 500
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
