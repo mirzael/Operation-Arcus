@@ -9291,7 +9291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   orange: {r: 1, g: .608823478, b: .0220588446, a: 1}
-  purple: {r: .801470578, g: .253406137, b: .71831584, a: 1}
+  purple: {r: .882352948, g: .421712786, b: .812462389, a: 1}
   pos: {x: 25, y: 725}
   size: {x: 100, y: 30}
 --- !u!114 &1951599142
