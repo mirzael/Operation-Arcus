@@ -60,16 +60,13 @@ public class UIDriver : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
-			Debug.Log("Restarting game");
-			
 			showingWinLose = false;
 			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
 				if (spawner.level > Spawner.MAX_LEVELS) {
-					int score = (int)GameObject.Find("Main Camera").GetComponent<PointMaster>().points;
-					Hiscores.SaveScore("Player1", score);
+					Hiscores.latestScore = (int)GameObject.Find("Main Camera").GetComponent<PointMaster>().points;
 					Application.LoadLevel("Credits");
 					return;
 				}
