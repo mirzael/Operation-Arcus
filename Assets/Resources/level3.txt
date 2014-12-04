@@ -2,7 +2,8 @@
 # movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
 # 4 = left-to-right, 5 = right-to-left, 6 = diagonal up-left, 7 = diagonal up-right
 # 8 = left-to-right V, 9 = right-to-left V
-
+YDualPulse,0.0,0.0,0.0,2,0
+RCascade,2.0,-12.0,0.0,8,1
 BMachineGun,3.5,0.0,5.5,1,0
 BMachineGun,5.0,3.0,5.5,2,0
 YDualPulse,5.0,0.0,5.5,2,0
