@@ -91,6 +91,11 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	public static string arcusName = "";
 
+	//Sounds
+	public AudioClip bulletSound;
+	public AudioClip bumpSound;
+	public AudioClip absorbSound;
+
 	// Use this for initialization
 	void Start () {
 		arcusName = gameObject.name;
@@ -232,6 +237,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			if(col.gameObject.layer == LayerMask.NameToLayer("Enemy")) audio.PlayOneShot(bumpSound);
 			if(invulnCounter <= 0){
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
 				if(currentForm.shipColor == ShipColor.PURPLE){
@@ -278,6 +284,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					}
 					uiDriver.UpdateBars();
 				}
+				audio.PlayOneShot(absorbSound);
 				Debug.Log("Absorbed red bullet, Red Power at " + powerRed);
 			} else if (col.gameObject.tag == "Blue") {
 				if (powerBlue < POWER_MAX) {
@@ -288,6 +295,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					}
 					uiDriver.UpdateBars();
 				}
+				audio.PlayOneShot(absorbSound);
 				Debug.Log("Absorbed blue bullet, Blue Power at " + powerBlue);
 			} else if (col.gameObject.tag == "Yellow") {
 				if (powerYellow < POWER_MAX) {
@@ -297,6 +305,7 @@ public class MainCharacterDriver : MonoBehaviour {
 					}
 					uiDriver.UpdateBars();
 				}
+				audio.PlayOneShot(absorbSound);
 				Debug.Log("Absorbed yellow bullet, Yellow Power at " + powerYellow);
 			}
 		}
@@ -310,6 +319,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void Fire(){
 		GameObject projectile;
+		audio.PlayOneShot (bulletSound);
 		switch (currentForm.shipColor)
 		{
 		case ShipColor.BLUE:

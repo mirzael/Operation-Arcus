@@ -29,6 +29,9 @@ public class UIDriver : MonoBehaviour {
 	private GameObject winScreen, loseScreen;
 	private bool showingWinLose;
 	private bool win;
+
+	public AudioClip loseSound;
+	public AudioClip winSound;
 	
 	public void Start() {
 		winScreen = GameObject.Find("WinScreen");
@@ -57,16 +60,13 @@ public class UIDriver : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
-			Debug.Log("Restarting game");
-			
 			showingWinLose = false;
 			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
 				if (spawner.level > Spawner.MAX_LEVELS) {
-					int score = (int)GameObject.Find("Main Camera").GetComponent<PointMaster>().points;
-					Hiscores.SaveScore("Player1", score);
+					Hiscores.latestScore = (int)GameObject.Find("Main Camera").GetComponent<PointMaster>().points;
 					Application.LoadLevel("Credits");
 					return;
 				}
@@ -181,6 +181,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
+		audio.PlayOneShot (winSound);
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		
@@ -192,6 +193,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowLoseScreen() {
+		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
 		showingWinLose = true;
 		win = false;

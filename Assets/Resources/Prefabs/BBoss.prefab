@@ -868,6 +868,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400002}
+  - 82: {fileID: 8200000}
   m_Layer: 8
   m_Name: BBoss
   m_TagString: Blue
@@ -1587,7 +1588,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.133040428, y: .621988773, z: 13.6488056}
+  m_LocalPosition: {x: .325012982, y: .114611864, z: 12.9615459}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 400108}
@@ -2007,6 +2008,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .0399999991, y: .0500000007, z: .300000012}
   m_Center: {x: 0, y: 0, z: .0500000007}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -2033,7 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 800
+  health: 150
   explosion: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -2061,7 +2120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 200
+  cooldown: 150
   projectile: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
   isBoss: 1
   bossProjectile: {fileID: 100008, guid: 936eca7403c15ad41acc7cf19c7080ea, type: 2}

@@ -11,7 +11,7 @@ public class CircleWave : Wave {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentCooldown % 10 == 0 && currentCooldown < cooldown) {
+		if (currentCooldown % cooldown == 0) {
 			GameObject[] projs = new GameObject[4];
 
 			projs[0] = (GameObject)InstantiateBullet(projectile, transform.position + Vector3.left, projectile.transform.rotation);

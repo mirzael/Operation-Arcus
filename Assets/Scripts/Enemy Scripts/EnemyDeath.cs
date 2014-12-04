@@ -10,11 +10,14 @@ public class EnemyDeath : MonoBehaviour {
 	const float SPHERE_RADIUS = 1f;
 	PointMaster points;
 	EnemyMovement movement;
+	static AudioClip boomSound;
 
 	// Use this for initialization
 	void Start () {
 		points = Component.FindObjectOfType<PointMaster> ();
 		movement = gameObject.GetComponent<EnemyMovement> ();
+		boomSound = (AudioClip)Resources.Load ("Sounds/Enemyboom", typeof(AudioClip));
+
 	}
 
 	void OnHit(WeaponDamage wep){
@@ -33,6 +36,7 @@ public class EnemyDeath : MonoBehaviour {
 			movement.enabled = false;
 			rigidbody.AddForce(new Vector3(Random.Range(-500, 500), Random.Range(-500,500), Random.Range(-500,500)));
 			Destroy (gameObject, 3f);
+			audio.PlayOneShot(boomSound);
 		}
 
 
