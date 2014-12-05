@@ -194,6 +194,8 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowLoseScreen() {
+		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
+		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
 		showingWinLose = true;

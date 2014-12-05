@@ -98,6 +98,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		audio.volume = 2.0f;
 		arcusName = gameObject.name;
 		
 		anim = GetComponent<Animator> ();
@@ -120,7 +121,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		yellowForm.shipColor = ShipColor.YELLOW;
 		yellowForm.animationNum = 3;
 		greenForm.shipColor = ShipColor.GREEN;
-		greenForm.animationNum = 0;
+		greenForm.animationNum = 6;
 		orangeForm.shipColor = ShipColor.ORANGE;
 		orangeForm.animationNum = 5;
 		purpleForm.shipColor = ShipColor.PURPLE;

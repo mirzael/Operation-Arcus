@@ -90,7 +90,7 @@ public class OrangeWeapon : MonoBehaviour {
 		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		if(gravity){ 
 			var field = sphere.AddComponent<GravityField>();
-			sphere.renderer.material = wellBlast;
+			//sphere.renderer.material = wellBlast;
 			sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
 			//sphere.renderer.material.color = new Color(255, 255, 255, 0.5f);
 			/*SpriteRenderer aRender = sphere.AddComponent<SpriteRenderer> ();
