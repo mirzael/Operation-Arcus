@@ -25,7 +25,7 @@ public class EnemyDeath : MonoBehaviour {
 		health -= wep.damage;
 		Debug.Log ("Hit enemy. Health Remaining: " + health);
 		if (health <= 0) {
-			gameObject.layer = LayerMask.NameToLayer("Enemy Bullet");
+			if(!gameObject.GetComponent<Shooter>().isBoss) { gameObject.layer = LayerMask.NameToLayer("Enemy Bullet"); }
 			if(animation != null) animation.Stop();
 			rigidbody.isKinematic = false;
 			GetComponent<Shooter> ().enabled = false;
@@ -35,7 +35,8 @@ public class EnemyDeath : MonoBehaviour {
 				explosion = null; // make sure it occurs on the first hit
 			}
 			movement.enabled = false;
-			rigidbody.AddForce(new Vector3(Random.Range(-500, 500), Random.Range(-500,500), Random.Range(-500,500)));
+
+			rigidbody.AddForce(new Vector3(Random.Range(-500,500), Random.Range(-350,-200), Random.Range (-250, -100)));
 			Destroy (gameObject, 3f);
 			audio.PlayOneShot(boomSound);
 		}

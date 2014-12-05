@@ -346,8 +346,8 @@ public class MainCharacterDriver : MonoBehaviour {
 
 			break;
 		case ShipColor.YELLOW:
-			int numProjectiles = 3 + (int)(powerYellow / yellowPointsPerBullet);
-			int projectileSpreadAngle = 30;
+			int numProjectiles = 2 + (int)(powerYellow / yellowPointsPerBullet);
+			int projectileSpreadAngle = 20;
 			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
 			float radToDeg =  Mathf.PI / 180;
 			GameObject[] blast = new GameObject[numProjectiles];
