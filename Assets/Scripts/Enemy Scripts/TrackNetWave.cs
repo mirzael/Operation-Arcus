@@ -28,43 +28,43 @@ public class TrackNetWave : Wave {
 			switch (aVal) 
 				{
 				case 0:
-					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [0].rigidbody.velocity = direction * 8;
 					break;
 				case 1:
-					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [0].rigidbody.velocity = direction * 8 + Vector3.left * .8f;
-					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [1].rigidbody.velocity = direction * 8 + Vector3.left * -.8f;
 					break;
 				case 2:
-					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [0].rigidbody.velocity = direction * 8 + Vector3.left * 1.6f;
-					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [1].rigidbody.velocity = direction * 8;
-					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [2].rigidbody.velocity = direction * 8 + Vector3.left * -1.6f;
 					break;
 				case 3:
-					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [0].rigidbody.velocity = direction * 8 + Vector3.left * 2.4f;
-					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [1].rigidbody.velocity = direction * 8 + Vector3.left * .8f;
-					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [2].rigidbody.velocity = direction * 8 + Vector3.left * -.8f;
-					proj [3] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [3] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [3].rigidbody.velocity = direction * 8 + Vector3.left * -2.4f;
 					break;
 				case 4:
-					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [0].rigidbody.velocity = direction * 8 + Vector3.left * 3.2f;
-					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [1] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [1].rigidbody.velocity = direction * 8 + Vector3.left * 1.6f;
-					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [2] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [2].rigidbody.velocity = direction * 8;
-					proj [3] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [3] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [3].rigidbody.velocity = direction * 8 + Vector3.left * -1.6f;
-					proj [4] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+					proj [4] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 					proj [4].rigidbody.velocity = direction * 8 + Vector3.left * -3.2f;
 					break;
 				}

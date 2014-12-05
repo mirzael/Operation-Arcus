@@ -13,6 +13,7 @@ public class MookSpawner : MonoBehaviour {
 	void Start () {
 		origCooldown = cooldown;
 		myMooks = new RotatingList<GameObject> (mooks);
+
 	}
 	
 	// Update is called once per frame
@@ -24,14 +25,18 @@ public class MookSpawner : MonoBehaviour {
 			switch(Random.Range(0,2)){
 				case 0:
 					var mook = (GameObject) Instantiate (ship, transform.position + Vector3.up * 4 + Vector3.left, ship.transform.rotation);
+					mook.transform.localScale = new Vector3(0.01f ,0.01f ,0.01f);
 					var movement = (EnemyMovement)mook.GetComponent(typeof(EnemyMovement));
 					movement.pattern = 1;
+					mook.AddComponent<BossSpawnBehavior>();
 					break;
 				case 1:
-				Debug.Log("HELLO");
+					Debug.Log("HELLO");
 					var mook2 = (GameObject) Instantiate (ship, transform.position + Vector3.up * 4 + Vector3.right, ship.transform.rotation);
+					mook2.transform.localScale = new Vector3(0.01f ,0.01f ,0.01f);
 					var movement2 = (EnemyMovement)mook2.GetComponent(typeof(EnemyMovement));
 					movement2.pattern = 2;
+					mook2.AddComponent<BossSpawnBehavior>();
 					break;
 			}
 			cooldown = origCooldown;

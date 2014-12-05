@@ -23,7 +23,7 @@ public class TrackShooter : MonoBehaviour {
 			var heading = player.transform.position - transform.position;
 			var distance = heading.magnitude;
 			var direction = heading / distance;
-			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, transform.rotation);
+			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, projectile.transform.rotation);
 			proj.rigidbody.velocity = direction * 10;
 		}
 		currentCooldown = currentCooldown - 1;

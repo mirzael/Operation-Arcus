@@ -19,15 +19,15 @@ public class MachineGunWave : Wave {
 			switch (aVal)
 			{
 			case 0:
-				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, transform.rotation);
+				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 				proj.rigidbody.velocity = Vector3.down * 30;
 				break;
 			case 10:
-				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 1.8f + Vector3.left * .2f, transform.rotation);
+				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 1.8f + Vector3.left * .2f, projectile.transform.rotation);
 				proj.rigidbody.velocity = Vector3.down * 30;
 				break;
 			case 20:
-				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 1.8f + Vector3.right * .2f, transform.rotation);
+				proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 1.8f + Vector3.right * .2f, projectile.transform.rotation);
 				proj.rigidbody.velocity = Vector3.down * 30;
 				break;
 			}
