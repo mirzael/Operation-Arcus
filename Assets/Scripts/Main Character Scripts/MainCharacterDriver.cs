@@ -196,6 +196,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				uiDriver.UpdateBars();
 			}
 			if (powerBlue <= 0) {
+				previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
 				switchForm (previousForm);
 				blueForm.resetCooldown();
 				redForm.resetSpeed();

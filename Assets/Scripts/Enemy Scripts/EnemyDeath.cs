@@ -25,6 +25,7 @@ public class EnemyDeath : MonoBehaviour {
 		health -= wep.damage;
 		Debug.Log ("Hit enemy. Health Remaining: " + health);
 		if (health <= 0) {
+			gameObject.layer = LayerMask.NameToLayer("Enemy Bullet");
 			if(animation != null) animation.Stop();
 			rigidbody.isKinematic = false;
 			GetComponent<Shooter> ().enabled = false;
