@@ -14,13 +14,13 @@ public class OrangeWeapon : MonoBehaviour {
 	public float damage;
 	public Material blackHoleMat;
 
-	Material orangeBlast;
+	GameObject orangeBlast;
 	Material wellBlast;
 	Sprite blackHole;
 
 	// Use this for initialization
 	void Start () {
-		orangeBlast = (Material)Resources.Load ("Materials/AoeBlasts/OrangeBlast", typeof(Material));
+		orangeBlast = (GameObject)Resources.Load ("Prefabs/OrangeExplosion", typeof(GameObject));
 		wellBlast = (Material)Resources.Load ("Materials/Black-Hole-v01", typeof(Material));
 		blackHole = (Sprite)Resources.Load ("Textures/Black-Hole-v01", typeof(Sprite));
 		findTarget ();
@@ -76,17 +76,15 @@ public class OrangeWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Blue") {
-			CreateAoe (col.contacts [0].point, orangeBlast, gravityRadius, 1f, true);
+			CreateAoe (col.contacts [0].point, gravityRadius, 1f, true);
 		} else {
-			CreateAoe (col.contacts [0].point, orangeBlast, explosionRadius, 0.5f, false);
+			CreateAoe (col.contacts [0].point, explosionRadius, 0.5f, false);
 		}
 		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
 	}
 
-	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
-		var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		sphere.renderer.material = mat;
-		sphere.transform.position = center;
+	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
+		var sphere = (GameObject)Instantiate(orangeBlast, transform.position, orangeBlast.transform.rotation);
 		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		if(gravity){ 
 			var field = sphere.AddComponent<GravityField>();

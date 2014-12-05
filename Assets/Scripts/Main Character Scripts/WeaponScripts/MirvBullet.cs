@@ -6,13 +6,13 @@ public class MirvBullet : MonoBehaviour {
 	public float timeBeforeExplosion;
 	public float bulletSpeed;
 	public float explosionSize;
-	Material explosionMat;
+	GameObject explosionSphere;
 	GameObject explosion;
 	const float SPHERE_DURATION = 0.5f;
 
 	// Use this for initialization
 	void Start () {
-		explosionMat = (Material)Resources.Load ("Materials/AoeBlasts/PurpleBlast", typeof(Material));	
+		explosionSphere = (GameObject)Resources.Load ("Prefabs/PurpleExplosion", typeof(GameObject));	
 		explosion = (GameObject)Resources.Load("Prefabs/ExplosionPurple", typeof(GameObject));
 	}
 	
@@ -22,9 +22,7 @@ public class MirvBullet : MonoBehaviour {
 		if (timeBeforeExplosion >= 0) {
 			transform.position += transform.up * bulletSpeed / 100;
 		} else {
-			var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			sphere.renderer.material = explosionMat;
-			sphere.transform.position = transform.position;
+			var sphere = (GameObject)Instantiate(explosionSphere, transform.position, explosionSphere.transform.rotation);
 			sphere.transform.localScale = new Vector3(explosionSize,explosionSize,explosionSize);
 			sphere.tag = "Purple";
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
