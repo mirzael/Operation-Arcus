@@ -13,12 +13,12 @@ public class GreenWeapon : MonoBehaviour {
 	public float damage;
 	Vector3 centerPos;
 
-	Material greenBlast;
+	GameObject greenBlast;
 	Material empBlast;
 
 	// Use this for initialization
 	void Start () {
-		greenBlast = (Material)Resources.Load ("Materials/AoeBlasts/GreenBlast", typeof(Material));
+		greenBlast = (GameObject)Resources.Load ("Prefabs/GreenExplosion", typeof(GameObject));
 		empBlast = (Material)Resources.Load ("Materials/EMP-v01", typeof(Material));
 		centerPos = transform.position;
 		if (isStraight)	degreesPerSec = 0;
@@ -38,10 +38,10 @@ public class GreenWeapon : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "Red"){
 			//Create the green Sphere
-			var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			sphere.renderer.material = empBlast;
+			var sphere = (GameObject)Instantiate(greenBlast, transform.position, greenBlast.transform.rotation);
+			//sphere.renderer.material = empBlast;
 			sphere.transform.position = transform.position;
-			sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
+			//sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
 			sphere.transform.localScale = new Vector3(sphereRadius, sphereRadius, sphereRadius);
 			var dis = sphere.AddComponent<EnableDisable>();
 			dis.empDuration = empDuration;

@@ -8,12 +8,12 @@ public class RedWeapon : MonoBehaviour {
 	public float damage;
 	public MainCharacterDriver driver;
 
-	Material redBlast;
+	GameObject redBlast;
 	GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
-		redBlast = (Material)Resources.Load ("Materials/AoeBlasts/RedBlast", typeof(Material));
+		redBlast = (GameObject)Resources.Load ("Prefabs/RedExplosion", typeof(GameObject));
 		explosion = (GameObject)Resources.Load("Prefabs/ExplosionRedMissile", typeof(GameObject));
 		driver = (MainCharacterDriver)GameObject.FindGameObjectWithTag ("Player").GetComponent (typeof(MainCharacterDriver));
 	}
@@ -24,17 +24,18 @@ public class RedWeapon : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		Instantiate(explosion, transform.position, transform.rotation);
-		CreateAoe (col.contacts[0].point, redBlast, driver.powerRed * radiusPerPoint + baseExplosionRadius, 0.5f, false);
+		var exp = (GameObject)Instantiate(explosion, transform.position, transform.rotation);
+		exp.particleEmitter.minSize = (driver.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
+		exp.particleEmitter.maxSize = driver.powerRed * radiusPerPoint + baseExplosionRadius;
+		CreateAoe (col.contacts[0].point, driver.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
 		if (gameObject.renderer.material != redBlast) {
-			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
+			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+driver.powerRed/10});
 		}
 	}
 
-	void CreateAoe(Vector3 center, Material mat, float radius, float duration, bool gravity){
-		var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		sphere.renderer.material = mat;
-		sphere.transform.position = center;
+	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
+
+		var sphere = (GameObject)Instantiate (redBlast, transform.position, redBlast.transform.rotation);
 		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		sphere.layer = LayerMask.NameToLayer("Character Bullet");
 		sphere.tag = "Red";

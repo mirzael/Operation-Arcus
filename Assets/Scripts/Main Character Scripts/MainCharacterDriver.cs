@@ -197,6 +197,7 @@ public class MainCharacterDriver : MonoBehaviour {
 				uiDriver.UpdateBars();
 			}
 			if (powerBlue <= 0) {
+				previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
 				switchForm (previousForm);
 				blueForm.resetCooldown();
 				redForm.resetSpeed();
@@ -346,8 +347,8 @@ public class MainCharacterDriver : MonoBehaviour {
 
 			break;
 		case ShipColor.YELLOW:
-			int numProjectiles = 3 + (int)(powerYellow / yellowPointsPerBullet);
-			int projectileSpreadAngle = 30;
+			int numProjectiles = 2 + (int)(powerYellow / yellowPointsPerBullet);
+			int projectileSpreadAngle = 20;
 			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
 			float radToDeg =  Mathf.PI / 180;
 			GameObject[] blast = new GameObject[numProjectiles];
