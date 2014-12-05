@@ -181,12 +181,13 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
-		audio.PlayOneShot (winSound);
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		
-		if (level < Spawner.MAX_LEVELS) {
+		if (level <= Spawner.MAX_LEVELS) {
 			winScreen.renderer.material = successScreens[level - 1];
+			if (level == successScreens.Length)
+				audio.PlayOneShot (winSound);
 		}
 		showingWinLose = true;
 		win = true;

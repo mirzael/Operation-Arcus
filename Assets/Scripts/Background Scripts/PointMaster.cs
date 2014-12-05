@@ -16,7 +16,6 @@ public class PointMaster : MonoBehaviour {
 	void Start () {
 		pointStyle = new GUIStyle ();
 		pointStyle.normal.textColor = Color.white;
-		Screen.SetResolution (1200, 1600, true);
 	}
 
 	void OnGUI(){		
