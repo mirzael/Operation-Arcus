@@ -33,6 +33,8 @@ public class UIDriver : MonoBehaviour {
 	public AudioClip loseSound;
 	public AudioClip winSound;
 	
+	private Camera camera;
+	
 	public void Start() {
 		winScreen = GameObject.Find("WinScreen");
 		loseScreen = GameObject.Find("LoseScreen");
@@ -40,6 +42,8 @@ public class UIDriver : MonoBehaviour {
 		loseScreen.SetActive(false);
 		showingWinLose = false;
 		win = false;
+		
+		camera = transform.Find("Camera").camera;
 		
 		GameObject.Find("Background").renderer.material = backgrounds[GameObject.Find("WaveSpawner").GetComponent<Spawner>().level - 1];
 		
@@ -73,6 +77,7 @@ public class UIDriver : MonoBehaviour {
 				
 				GameObject.Find("Background").renderer.material = backgrounds[spawner.level - 1];
 				winScreen.SetActive(false);
+				camera.enabled = true;
 				
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
@@ -183,6 +188,7 @@ public class UIDriver : MonoBehaviour {
 	public void ShowWinScreen() {
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
+		camera.enabled = false;
 		
 		if (level <= Spawner.MAX_LEVELS) {
 			winScreen.renderer.material = successScreens[level - 1];
@@ -196,6 +202,7 @@ public class UIDriver : MonoBehaviour {
 	public void ShowLoseScreen() {
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
+		camera.enabled = false;
 		showingWinLose = true;
 		win = false;
 	}
