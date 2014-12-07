@@ -98,7 +98,6 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		audio.volume = 2.0f;
 		arcusName = gameObject.name;
 		
 		anim = GetComponent<Animator> ();
@@ -239,7 +238,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-			if(col.gameObject.layer == LayerMask.NameToLayer("Enemy")) audio.PlayOneShot(bumpSound);
+			audio.PlayOneShot(bumpSound);
 			if(invulnCounter <= 0){
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
 				if(currentForm.shipColor == ShipColor.PURPLE){

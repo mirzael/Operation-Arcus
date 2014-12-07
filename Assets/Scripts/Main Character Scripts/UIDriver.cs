@@ -32,6 +32,7 @@ public class UIDriver : MonoBehaviour {
 
 	public AudioClip loseSound;
 	public AudioClip winSound;
+	public GameObject introSound;
 	
 	private Camera camera;
 	
@@ -186,6 +187,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
+		introSound.audio.Stop ();
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		camera.enabled = false;
@@ -197,9 +199,11 @@ public class UIDriver : MonoBehaviour {
 		}
 		showingWinLose = true;
 		win = true;
+
 	}
 	
 	public void ShowLoseScreen() {
+		introSound.audio.Stop ();
 		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
 		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
