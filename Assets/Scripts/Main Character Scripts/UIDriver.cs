@@ -79,12 +79,13 @@ public class UIDriver : MonoBehaviour {
 				GameObject.Find("Background").renderer.material = backgrounds[spawner.level - 1];
 				winScreen.SetActive(false);
 				camera.enabled = true;
-				
+
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
 				spawner.Start();
 			} else {
 				Application.LoadLevel(Application.loadedLevel);
+				introSound.audio.Play ();
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.LoadLevel("MainMenu");
