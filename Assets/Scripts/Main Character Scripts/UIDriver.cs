@@ -82,6 +82,7 @@ public class UIDriver : MonoBehaviour {
 
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
+				introSound.audio.Play ();
 				spawner.Start();
 			} else {
 				Application.LoadLevel(Application.loadedLevel);
@@ -188,7 +189,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowWinScreen() {
-		introSound.audio.Stop ();
+		introSound.audio.Stop();
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		camera.enabled = false;
@@ -196,7 +197,10 @@ public class UIDriver : MonoBehaviour {
 		if (level <= Spawner.MAX_LEVELS) {
 			winScreen.renderer.material = successScreens[level - 1];
 			if (level == successScreens.Length)
+			{
+				introSound.audio.Stop();
 				audio.PlayOneShot (winSound);
+			}
 		}
 		showingWinLose = true;
 		win = true;

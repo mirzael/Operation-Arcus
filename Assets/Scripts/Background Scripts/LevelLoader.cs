@@ -10,7 +10,6 @@ public class LevelLoader : MonoBehaviour {
 					Destroy(go);
 				}
 			}
-			GameObject.Find("MainMusic").GetComponent<AudioSource>().audio.Play();
 			GameObject.Find("WaveSpawner").GetComponent<Spawner>().Start();
 		}
 	}
