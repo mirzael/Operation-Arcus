@@ -15,14 +15,15 @@ public class OrangeWeapon : MonoBehaviour {
 	public Material blackHoleMat;
 
 	GameObject orangeBlast;
+	GameObject explosion;
 	Material wellBlast;
 	Texture blackHole;
 
 	// Use this for initialization
 	void Start () {
 		orangeBlast = (GameObject)Resources.Load ("Prefabs/OrangeExplosion", typeof(GameObject));
-		wellBlast = (Material)Resources.Load ("Materials/Black-Hole-v01", typeof(Material));
 		blackHole = (Texture)Resources.Load ("Textures/Black-Hole-v01", typeof(Texture));
+		explosion = (GameObject)Resources.Load("Prefabs/ExplosionRedMissile", typeof(GameObject));
 		findTarget ();
 	}
 	
@@ -84,9 +85,9 @@ public class OrangeWeapon : MonoBehaviour {
 	}
 
 	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
-		var sphere = (GameObject)Instantiate(orangeBlast, transform.position, orangeBlast.transform.rotation);
-		sphere.transform.localScale = new Vector3(radius, radius, radius);
 		if(gravity){ 
+			var sphere = (GameObject)Instantiate(orangeBlast, transform.position, orangeBlast.transform.rotation);
+			sphere.transform.localScale = new Vector3(radius, radius, radius);
 			var field = sphere.AddComponent<GravityField>();
 			//sphere.renderer.material = wellBlast;
 			sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
@@ -99,10 +100,21 @@ public class OrangeWeapon : MonoBehaviour {
 			field.GRAVITY_FIELD = gravityRadius;
 			field.GRAVITY_FORCE = gravityForce;
 			Destroy (sphere.collider);
+			Destroy (sphere, duration);
 		}else{
+			var exp = (GameObject)Instantiate(explosion, transform.position, explosion.transform.rotation);
+			exp.particleEmitter.minSize = radius * 0.8f;
+			exp.particleEmitter.maxSize = radius;
+
+			var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			sphere.transform.position = transform.position;
+			sphere.transform.localScale = new Vector3(radius, radius, radius);
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
+			sphere.tag = "Orange";
+			sphere.GetComponent<MeshRenderer>().enabled = false;
+			Destroy (exp, duration);
+			Destroy (sphere, duration);
 		}
-		Destroy (sphere, duration);
 		Destroy(gameObject);
 	}
 }
