@@ -472,6 +472,4 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		return powerLevels;
 	}
-
-
 }
