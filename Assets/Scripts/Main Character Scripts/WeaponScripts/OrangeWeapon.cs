@@ -16,13 +16,13 @@ public class OrangeWeapon : MonoBehaviour {
 
 	GameObject orangeBlast;
 	Material wellBlast;
-	Sprite blackHole;
+	Texture blackHole;
 
 	// Use this for initialization
 	void Start () {
 		orangeBlast = (GameObject)Resources.Load ("Prefabs/OrangeExplosion", typeof(GameObject));
 		wellBlast = (Material)Resources.Load ("Materials/Black-Hole-v01", typeof(Material));
-		blackHole = (Sprite)Resources.Load ("Textures/Black-Hole-v01", typeof(Sprite));
+		blackHole = (Texture)Resources.Load ("Textures/Black-Hole-v01", typeof(Texture));
 		findTarget ();
 	}
 	
@@ -90,6 +90,7 @@ public class OrangeWeapon : MonoBehaviour {
 			var field = sphere.AddComponent<GravityField>();
 			//sphere.renderer.material = wellBlast;
 			sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
+			sphere.renderer.material.SetTexture("_MainTex", blackHole);
 			//sphere.renderer.material.color = new Color(255, 255, 255, 0.5f);
 			/*SpriteRenderer aRender = sphere.AddComponent<SpriteRenderer> ();
 			aRender.material = wellBlast;
