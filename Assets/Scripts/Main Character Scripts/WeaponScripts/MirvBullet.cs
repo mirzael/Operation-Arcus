@@ -26,6 +26,7 @@ public class MirvBullet : MonoBehaviour {
 			sphere.transform.localScale = new Vector3(explosionSize,explosionSize,explosionSize);
 			sphere.tag = "Purple";
 			sphere.layer = LayerMask.NameToLayer("Character Bullet");
+			sphere.GetComponent<MeshRenderer>().enabled = false;
 			Instantiate(explosion, transform.position, transform.rotation);
 			Destroy (sphere, SPHERE_DURATION);
 			Destroy(gameObject);
