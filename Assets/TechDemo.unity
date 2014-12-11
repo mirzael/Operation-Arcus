@@ -1517,6 +1517,7 @@ MonoBehaviour:
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
+  pauseButton: {fileID: 0}
 --- !u!135 &238384793
 SphereCollider:
   m_ObjectHideFlags: 0
