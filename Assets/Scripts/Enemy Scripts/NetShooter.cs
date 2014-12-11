@@ -64,7 +64,7 @@ public class NetShooter : MonoBehaviour {
 				break;
 			}
 		}
-		currentCooldown = currentCooldown - 1;
+		if(Time.timeScale!= 0) currentCooldown = currentCooldown - 1;
 		if (currentCooldown < (cooldown * -9))
 			currentCooldown = cooldown;
 	}

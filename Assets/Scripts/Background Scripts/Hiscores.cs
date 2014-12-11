@@ -5,6 +5,7 @@ public class Hiscores : MonoBehaviour {
 	public static int latestScore;
 	
 	public void Awake() {
+		PlayerPrefs.DeleteAll ();
 		for (int i = 1; i <= MAX_SCORES; i++) {
 			if (!PlayerPrefs.HasKey("Score" + i)) {
 				PlayerPrefs.SetInt("Score" + i, 0);
