@@ -10,6 +10,7 @@ public class PlayButton : MonoBehaviour {
 	private AudioClip clippy;
 	
 	public void Awake() {
+		clippy = (AudioClip)Resources.Load ("Sounds/Menuchange", typeof(AudioClip));
 		mainMenu = GameObject.Find("MainMenu");
 		if (mainMenu == null) {
 			return;
@@ -19,11 +20,12 @@ public class PlayButton : MonoBehaviour {
 		intro2 = GameObject.Find("Intro2");
 		intro3 = GameObject.Find("Intro3");
 		intro4 = GameObject.Find("Intro4");
-		clippy = (AudioClip)Resources.Load ("Sounds/Menuchange", typeof(AudioClip));
 	}
 	
 	public void Start() {
-		audio.PlayOneShot (clippy);
+        if (clippy != null && audio != null) {
+            audio.PlayOneShot (clippy);
+        }
 		if (!transform.parent.gameObject.name.Equals("Hiscores")) {
 			hiscore.SetActive(false);
 		}
@@ -42,7 +44,9 @@ public class PlayButton : MonoBehaviour {
 	}
 	
 	public void OnMouseDown() {
-		audio.PlayOneShot (clippy);
+        if (clippy != null && audio != null) {
+            audio.PlayOneShot (clippy);
+        }
 		switch (gameObject.name) {
 		case "btnPlay":
 			Application.LoadLevel("TechDemo");
