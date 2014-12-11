@@ -9747,7 +9747,6 @@ MonoBehaviour:
   guiTextPos: {x: 325, y: 725}
   size: {x: 100, y: 100}
   innerHealthBar: {fileID: 315986276}
-  lives: []
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
 --- !u!1 &1959256148
 GameObject:

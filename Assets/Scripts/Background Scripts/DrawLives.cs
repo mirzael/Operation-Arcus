@@ -7,7 +7,6 @@ public class DrawLives : MonoBehaviour {
 	public Vector2 guiTextPos = new Vector2 (0, 80);
 	public Vector2 size  = new Vector2(100, 100);
 	public GameObject innerHealthBar;
-	public List<GameObject> lives = new List<GameObject>();
 
 	public GameObject arcusModel;
 	MainCharacterDriver driver;
@@ -26,11 +25,7 @@ public class DrawLives : MonoBehaviour {
 	}
 
 	void Update(){
-		if (lives.Count == 0) {
-			return;
-		} else {
-			ShiftAndScale(innerHealthBar, origHealthBar, new Vector3(driver.health/100,1,1));
-		}
+		ShiftAndScale(innerHealthBar, origHealthBar, new Vector3(driver.health/100f,1,1));
 	}
 
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
