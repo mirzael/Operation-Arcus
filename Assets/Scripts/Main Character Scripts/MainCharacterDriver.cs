@@ -98,6 +98,9 @@ public class MainCharacterDriver : MonoBehaviour {
 	public AudioClip bumpSound;
 	public AudioClip absorbSound;
 
+	//Pause screenshot
+	public Texture pauseButton;
+
 	// Use this for initialization
 	void Start () {
 		arcusName = gameObject.name;
@@ -139,6 +142,13 @@ public class MainCharacterDriver : MonoBehaviour {
 		switchForm (currentForm);
 		
 		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
+		pauseButton = (Texture) Resources.Load ("Textures/PauseButton", typeof(Texture));
+	}
+
+	void OnGUI(){
+		if (pause) {
+			GUI.DrawTexture(new Rect(100,200,250,300), pauseButton, ScaleMode.StretchToFill);
+		}
 	}
 	
 	// Update is called once per frame
