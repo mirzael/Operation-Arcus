@@ -4,27 +4,27 @@
 # 8 = left-to-right V, 9 = right-to-left V
 
 
-BMachineGun,3.5,0.0,5.5,1,0
-BMachineGun,5.0,3.0,5.5,2,0
-YDualPulse,5.0,0.0,5.5,2,0
-YDualPulse,6.0,0.0,10.0,3,0
-YDualPulse,7.0,15.0,10.0,5,0
-BMachineGun,7.5,15.0,18.0,6,0
-YDualPulse,7.0,-15.0,20.0,8,1
-YDualPulse,8.0,-3.0,10.0,1,0
-RCascade,9.0,-15.0,13.5,4,0
-RCascade,11.0,-15.0,17.0,7,0
+BMachineGun,3.5,0.0,2,1,0
+BMachineGun,5.0,3.0,2,2,0
+YDualPulse,5.0,0.0,2,2,0
+YDualPulse,6.0,0,2,3,0
+YDualPulse,7.0,13.0,10.0,5,0
+BMachineGun,7.5,13.0,18.0,6,0
+YDualPulse,7.0,-13.0,20.0,8,1
+YDualPulse,8.0,-13.0,10.0,1,0
+RCascade,9.0,-13.0,5.5,4,0
+RCascade,11.0,-13.0,4.0,7,0
 
 BMachineGun,12.5,13.0,4.0,5,0
 BMachineGun,13.2,13.0,3.6,5,0
 RCascade,15.0,8.0,2,1,0
 RCascade,15.4,-6.0,2,2,0
 YDualPulse,15.5,13.0,5.5,9,1
-RCascade,15.6,5.0,9.5,1,0
-RCascade,15.8,4.0,9.5,1,0
-RCascade,16.0,3.0,9.5,1,0
+RCascade,15.6,5.0,2,1,0
+RCascade,15.8,4.0,2,1,0
+RCascade,16.0,3.0,2,1,0
 YDualPulse,16.0,13.0,5.5,9,1
-RCascade,16.1,8.0,-9.5,2,0
+RCascade,16.1,-13.0,6.5,2,0
 YDualPulse,16.9,-13.0,5.5,8,1
 
 RCascade,17.0,8.0,2,2,0
