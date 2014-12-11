@@ -10,7 +10,6 @@ YDualPulse,5.0,13.0,10.0,5,0
 RCascade,6.0,-13.0,17.0,7,0
 BMachineGun,6.5,13.0,18.0,6,0
 # a comment for testing
-YDualPulse,7.0,-13.0,20.0,8,1
 RCascade,8.0,-13.0,10.0,1,0
 RCascade,8.0,1.0,2,2,0
 BMachineGun,8.0,0.0,2,3,0
