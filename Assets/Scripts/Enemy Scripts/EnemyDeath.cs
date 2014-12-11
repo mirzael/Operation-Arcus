@@ -57,8 +57,11 @@ public class EnemyDeath : MonoBehaviour {
 		{
 			if (gameObject.GetComponent<Shooter> ().isBoss) {
 				GameObject bossExp = (GameObject)Instantiate(explosion, wep.hitLocation, transform.rotation);
-				bossExp.particleEmitter.minSize = 0.25f;
-				bossExp.particleEmitter.maxSize = 0.5f;
+				if(gameObject.tag == "Red"){
+					bossExp.particleEmitter.minSize = 0.1f;
+					bossExp.particleEmitter.maxSize = 0.1f;
+				}
+				audio.PlayOneShot(boomSound);
 			}
 		}
 
