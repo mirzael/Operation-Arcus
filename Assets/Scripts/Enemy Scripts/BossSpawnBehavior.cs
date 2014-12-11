@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using MainCharacter;
 
 public class BossSpawnBehavior : MonoBehaviour {
-	public float scale = 0.01f;
+	public float scale;
+	public float multiplier = 1f;
 	public float cooldown = 0f;
 
 	Wave wave;
@@ -15,6 +16,7 @@ public class BossSpawnBehavior : MonoBehaviour {
 		shooter = (Shooter)gameObject.GetComponent<Shooter> ();
 		wave.enabled = false;
 		shooter.enabled = false;
+		scale = transform.localScale.x;
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,7 @@ public class BossSpawnBehavior : MonoBehaviour {
 			shooter.enabled = true;
 			Destroy(this);
 		}
-		if(Time.timeScale != 0) scale += cooldown/20;
+		if(Time.timeScale != 0) scale += cooldown/20 * multiplier;
 		transform.localScale = new Vector3 (scale, scale, scale);
 	}
 }
