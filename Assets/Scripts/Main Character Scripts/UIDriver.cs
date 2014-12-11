@@ -69,6 +69,7 @@ public class UIDriver : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
+			points.enabled = true;
 			showingWinLose = false;
 			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
