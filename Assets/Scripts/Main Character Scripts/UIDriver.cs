@@ -33,7 +33,8 @@ public class UIDriver : MonoBehaviour {
 	public AudioClip loseSound;
 	public AudioClip winSound;
 	public GameObject introSound;
-	
+
+	PointMaster points;
 	private Camera camera;
 	
 	public void Start() {
@@ -57,6 +58,9 @@ public class UIDriver : MonoBehaviour {
 		ShiftAndScale(powerCenter, origScaleCenter, new Vector3(0, 1, 1));
 		ShiftAndScale(powerLeft, origScaleLeft, new Vector3(0, 1, 1));
 		ShiftAndScale(powerRight, origScaleRight, new Vector3(0, 1, 1));
+
+		
+		points = Camera.main.gameObject.GetComponent<PointMaster> ();
 	}
 	
 	public void Update() {
@@ -191,6 +195,7 @@ public class UIDriver : MonoBehaviour {
 	
 	public void ShowWinScreen() {
 		introSound.audio.Stop();
+		points.enabled = false;
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
 		camera.enabled = false;
@@ -210,6 +215,7 @@ public class UIDriver : MonoBehaviour {
 	
 	public void ShowLoseScreen() {
 		introSound.audio.Stop ();
+		points.enabled = false;
 		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
 		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
