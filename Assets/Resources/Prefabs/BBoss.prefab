@@ -2093,7 +2093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: b5893256158ccd245a11ec172871022e, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

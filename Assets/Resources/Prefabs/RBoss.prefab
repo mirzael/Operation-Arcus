@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: d0f4aac2d9151e84ab42d47cf966dbd0, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
