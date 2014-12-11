@@ -1454,7 +1454,7 @@ MonoBehaviour:
     formSpeed: 20
     shipColor: 0
     animationNum: 0
-  yellowPointsPerBullet: 20
+  yellowPointsPerBullet: 33
   orangeForm:
     damage: 20
     cooldown: .600000024
@@ -5496,6 +5496,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
       propertyPath: health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
+      propertyPath: yellowPointsPerBullet
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
