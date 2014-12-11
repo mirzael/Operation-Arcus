@@ -29,7 +29,7 @@ public class RedWeapon : MonoBehaviour {
 		exp.particleEmitter.maxSize = driver.powerRed * radiusPerPoint + baseExplosionRadius;
 		CreateAoe (col.contacts[0].point, driver.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
 		if (gameObject.renderer.material != redBlast) {
-			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+driver.powerRed/10});
+			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+driver.powerRed/10, hitLocation = col.contacts[0].point});
 		}
 	}
 

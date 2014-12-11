@@ -34,7 +34,7 @@ public class PurpleWeapon : MonoBehaviour {
 			addMirvScript(bullet2);
 			addMirvScript(bullet3);
 		}
-		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage, hitLocation = col.contacts[0].point});
 	}
 
 	void addMirvScript(GameObject obj){

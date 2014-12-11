@@ -11,7 +11,7 @@ public class MoveProjectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += Vector3.up * projectileSpeed/100;
+		if(Time.timeScale != 0) transform.position += Vector3.up * projectileSpeed/100;
 	}
 
 }

@@ -81,7 +81,7 @@ public class OrangeWeapon : MonoBehaviour {
 		} else {
 			CreateAoe (col.contacts [0].point, explosionRadius, 0.5f, false);
 		}
-		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage});
+		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage, hitLocation = col.contacts[0].point});
 	}
 
 	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
