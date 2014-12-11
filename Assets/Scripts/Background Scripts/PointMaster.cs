@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -117,6 +117,7 @@ public class PointMaster : MonoBehaviour {
 				break;
 		}
 		points += deathPoints;
+        Hiscores.latestScore = (int)points;
 		pointInfo.pointValue = deathPoints;
 		pointInfo.length = 10;
 		var where2Display = Camera.main.WorldToScreenPoint(shipDeath.shipPosition);

@@ -5,13 +5,24 @@ public class Hiscores : MonoBehaviour {
 	public static int latestScore;
 	
 	public void Awake() {
+        string[] names = new string[MAX_SCORES];
+        int[] scores = new int[MAX_SCORES];
+        
+        for (int i = 1; i <= MAX_SCORES; i++) {
+            if (PlayerPrefs.HasKey("Score" + i)) {
+                names[i - 1] = PlayerPrefs.GetString("Player" + i);
+                scores[i - 1] = PlayerPrefs.GetInt("Score" + i);
+            } else {
+                names[i - 1] = "Player" + i;
+                scores[i - 1] = 0;
+            }
+        }
+        
 		PlayerPrefs.DeleteAll ();
 		for (int i = 1; i <= MAX_SCORES; i++) {
-			if (!PlayerPrefs.HasKey("Score" + i)) {
-				PlayerPrefs.SetInt("Score" + i, 0);
-				PlayerPrefs.SetString("Player" + i, "Player" + i);
-			}
-			int score = PlayerPrefs.GetInt("Score" + i);
+            int score = scores[i - 1];
+			PlayerPrefs.SetString("Player" + i, names[i - 1]);
+            PlayerPrefs.SetInt("Score" + i, score);
 			if (score > 0) {
 				string name = PlayerPrefs.GetString("Player" + i);
 				GameObject.Find("Player" + i).GetComponent<TextMesh>().text = name + ": " + score;

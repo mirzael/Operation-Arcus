@@ -75,7 +75,6 @@ public class UIDriver : MonoBehaviour {
 			if (win) {
 				spawner.level++;
 				if (spawner.level > Spawner.MAX_LEVELS) {
-					Hiscores.latestScore = (int)GameObject.Find("Main Camera").GetComponent<PointMaster>().points;
 					Application.LoadLevel("Credits");
 					return;
 				}

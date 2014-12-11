@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HiscoreTextbox : MonoBehaviour {
 	private string username = "";
-	private bool submitted = false;
+	public bool submitted = false;
 	
 	public void Awake() {
 		if (!Hiscores.LatestScoreIsHiscore()) {
