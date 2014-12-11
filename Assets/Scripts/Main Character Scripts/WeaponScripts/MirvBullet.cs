@@ -8,7 +8,7 @@ public class MirvBullet : MonoBehaviour {
 	public float explosionSize;
 	GameObject explosionSphere;
 	GameObject explosion;
-	const float SPHERE_DURATION = 0.5f;
+	const float SPHERE_DURATION = 1f;
 
 	// Use this for initialization
 	void Start () {
