@@ -103,6 +103,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Application.targetFrameRate = 60;
 		arcusName = gameObject.name;
 		
 		anim = GetComponent<Animator> ();
