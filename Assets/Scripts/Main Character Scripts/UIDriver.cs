@@ -60,6 +60,7 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void Update() {
+		Debug.Log (Time.deltaTime.ToString ());
 		if (!showingWinLose) {
 			return;
 		}

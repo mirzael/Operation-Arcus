@@ -14,7 +14,7 @@ PlayerSettings:
   productName: GMAP377
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  defaultScreenWidth: 400
+  defaultScreenWidth: 450
   defaultScreenHeight: 800
   defaultScreenWidthWeb: 450
   defaultScreenHeightWeb: 800

@@ -53,6 +53,7 @@ public class Shooter : MonoBehaviour {
 			bulletWave.resetCooldown ();
 			currentCooldown = cooldown;
 		}
-		currentCooldown = currentCooldown - 1;
+		if (Time.timeScale != 0)
+			currentCooldown = currentCooldown - 1;
 	}
 }
