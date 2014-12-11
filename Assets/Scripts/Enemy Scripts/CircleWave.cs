@@ -42,6 +42,6 @@ public class CircleWave : Wave {
 				projs[3].rigidbody.velocity = Vector3.down * 5;
 			}
 		}
-		currentCooldown = currentCooldown + 1;
+		if(Time.timeScale != 0) currentCooldown = currentCooldown + 1;
 	}
 }

@@ -87,11 +87,9 @@ public class OrangeWeapon : MonoBehaviour {
 	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
 		if(gravity){ 
 			var sphere = (GameObject)Instantiate(orangeBlast, transform.position, orangeBlast.transform.rotation);
-			sphere.transform.localScale = new Vector3(radius, radius, radius);
+			sphere.transform.localScale = new Vector3(radius/10, radius/10, radius/10);
 			var field = sphere.AddComponent<GravityField>();
 			//sphere.renderer.material = wellBlast;
-			sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
-			sphere.renderer.material.SetTexture("_MainTex", blackHole);
 			//sphere.renderer.material.color = new Color(255, 255, 255, 0.5f);
 			/*SpriteRenderer aRender = sphere.AddComponent<SpriteRenderer> ();
 			aRender.material = wellBlast;

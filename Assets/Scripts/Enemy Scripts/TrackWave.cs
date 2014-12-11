@@ -20,7 +20,7 @@ public class TrackWave : Wave {
 			var proj = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2, projectile.transform.rotation);
 			proj.rigidbody.velocity = direction * 10;
 			}
-		currentCooldown = currentCooldown + 1;
+		if(Time.timeScale != 0) currentCooldown = currentCooldown + 1;
 	}
 
 	public override void resetCooldown()

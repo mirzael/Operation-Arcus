@@ -58,7 +58,7 @@ public class NetWave : Wave {
 						break;
 				}
 		}
-		currentCooldown = currentCooldown + 1;
+		if(Time.timeScale != 0) currentCooldown = currentCooldown + 1;
 	}
 
 	public override void resetCooldown()

@@ -46,13 +46,10 @@ public class Shooter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//currentCooldown -= Time.deltaTime;
-
-		if (currentCooldown == 0) 
-		{
-			bulletWave.resetCooldown ();
-			currentCooldown = cooldown;
+		if(Time.timeScale != 0) currentCooldown -= 1;
+		if (currentCooldown == 0) {
+				bulletWave.resetCooldown ();
+				currentCooldown = cooldown;
 		}
-		currentCooldown = currentCooldown - 1;
 	}
 }

@@ -40,7 +40,7 @@ public class GreenWeapon : MonoBehaviour {
 			//sphere.renderer.material = empBlast;
 			sphere.transform.position = transform.position;
 			//sphere.transform.localEulerAngles = new Vector3(0, 110.0788f, 0);
-			sphere.transform.localScale = new Vector3(sphereRadius, sphereRadius, sphereRadius);
+			sphere.transform.localScale = new Vector3(sphereRadius/10, sphereRadius/10, sphereRadius/10);
 			var dis = sphere.AddComponent<EnableDisable>();
 			dis.empDuration = empDuration;
 			dis.sphereRadius = sphereRadius;

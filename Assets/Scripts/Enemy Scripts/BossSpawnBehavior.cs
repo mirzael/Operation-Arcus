@@ -25,7 +25,7 @@ public class BossSpawnBehavior : MonoBehaviour {
 			shooter.enabled = true;
 			Destroy(this);
 		}
-		scale += cooldown/20;
+		if(Time.timeScale != 0) scale += cooldown/20;
 		transform.localScale = new Vector3 (scale, scale, scale);
 	}
 }

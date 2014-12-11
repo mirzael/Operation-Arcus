@@ -26,7 +26,7 @@ public class TrackShooter : MonoBehaviour {
 			var proj = (GameObject)Instantiate (projectile, transform.position + Vector3.left * 2, projectile.transform.rotation);
 			proj.rigidbody.velocity = direction * 10;
 		}
-		currentCooldown = currentCooldown - 1;
+		if(Time.timeScale!=0)	currentCooldown = currentCooldown - 1;
 		if (currentCooldown < (cooldown * -2))
 				currentCooldown = cooldown;
 	}
