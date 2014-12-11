@@ -13,7 +13,7 @@ namespace MainCharacter
 			driver.absorbSound = (AudioClip)EditorGUILayout.ObjectField ("Absorb Sound",driver.absorbSound, typeof(AudioClip), !EditorUtility.IsPersistent (target));
 			driver.bumpSound = (AudioClip)EditorGUILayout.ObjectField ("Bump Sound",driver.bumpSound, typeof(AudioClip), !EditorUtility.IsPersistent (target));
 			driver.bulletSound = (AudioClip)EditorGUILayout.ObjectField ("Bullet Sound",driver.bulletSound, typeof(AudioClip), !EditorUtility.IsPersistent (target));
-			driver.lives = EditorGUILayout.IntField ("Ship Lives", driver.lives);
+			driver.health = EditorGUILayout.IntField ("Ship Health", driver.health);
 			driver.invulnTime = EditorGUILayout.FloatField ("Time of Invulnerability", driver.invulnTime);
 			ShowWeaponDropdown ("Red", ref redFold, ref driver.redForm.formSpeed, ref driver.redForm.cooldown, ref driver.redForm.originalCooldown, ref driver.redForm.projectileSpeed, ref driver.redForm.originalSpeed, ref driver.redForm.material, ref driver.redForm.projectile, ref driver.redForm.damage, RedWeaponLayout);
 			ShowWeaponDropdown ("Blue", ref blueFold, ref driver.blueForm.formSpeed, ref driver.blueForm.cooldown, ref driver.blueForm.originalCooldown, ref driver.blueForm.projectileSpeed, ref driver.blueForm.originalSpeed, ref driver.blueForm.material, ref driver.blueForm.projectile, ref driver.blueForm.damage, null);

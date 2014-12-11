@@ -13,7 +13,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float invulnTime;
 	public float invulnCounter = 0;
 	public float prevAlpha = 1;
-	public int lives;
+	public int health;
 	public bool gameOver = false;
 
 	/*These are the Forms of the ship
@@ -261,8 +261,8 @@ public class MainCharacterDriver : MonoBehaviour {
 					return;
 				}
 				 else{
-					lives--;
-					if(lives < 0){
+					health-=10;
+					if(health < 0){
 						if (gameOver) return;
 						Destroy (gameObject);
 						powerRed = 0.0f;
