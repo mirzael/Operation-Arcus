@@ -29,7 +29,6 @@ public class DrawLives : MonoBehaviour {
 	// Update is called once per frame
 	void OnGUI () {
 		liveStyle.normal.textColor = Color.white;
-		GUI.Label (new Rect (guiTextPos.x, guiTextPos.y, size.x, size.y), "LIVES:", liveStyle);
 	}
 
 	void Update(){
