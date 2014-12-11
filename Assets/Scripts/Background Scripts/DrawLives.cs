@@ -4,26 +4,20 @@ using System.Collections.Generic;
 
 public class DrawLives : MonoBehaviour {
 	GUIStyle liveStyle = new GUIStyle();
-	public Vector3 pos = new Vector3(-25, 13, 10);
 	public Vector2 guiTextPos = new Vector2 (0, 80);
 	public Vector2 size  = new Vector2(100, 100);
+	public GameObject innerHealthBar;
 	public List<GameObject> lives = new List<GameObject>();
+
 	public GameObject arcusModel;
 	MainCharacterDriver driver;
 
+	private Vector3 origHealthBar;
+
 	// Use this for initialization
-	void Start () {		
-		float xOffset;
-		float yOffset;
-		arcusModel.transform.localScale = new Vector3 (1f, 1f, 1f);
+	void Start () {
 		driver = (MainCharacterDriver)GetComponentInChildren (typeof(MainCharacterDriver));
-		for (int i = 0; i < driver.lives; i++) {
-			var tempPos = pos;
-			xOffset = ((float)(i % 5)) * 0.3162f;
-			yOffset = ((float)(i / 5)) * (-0.31424f);
-			tempPos += new Vector3(xOffset, yOffset, 0);
-			lives.Add((GameObject)Instantiate (arcusModel, tempPos, arcusModel.transform.rotation));
-		}
+		origHealthBar = innerHealthBar.transform.localScale;
 	}
 
 	// Update is called once per frame
@@ -34,10 +28,25 @@ public class DrawLives : MonoBehaviour {
 	void Update(){
 		if (lives.Count == 0) {
 			return;
+		} else {
+			ShiftAndScale(innerHealthBar, origHealthBar, new Vector3(driver.health/100,1,1));
 		}
-		for(int i = lives.Count; i > driver.lives; i--){
-			Destroy (lives[i-1]);
-			lives.RemoveAt(i-1);
+	}
+
+	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
+		Vector3 curScale = powerBar.transform.localScale;
+		Vector3 newScale = new Vector3(origScale.x * newScaleRatio.x, origScale.y * newScaleRatio.y, origScale.z * newScaleRatio.z);
+		
+		if (newScale.x == curScale.x && newScale.y == curScale.y && newScale.z == curScale.z) {
+			return;
 		}
+		
+		float newX = powerBar.transform.position.x - powerBar.renderer.bounds.extents.x;
+		float curY = powerBar.transform.position.y;
+		float curZ = powerBar.transform.position.z;
+		powerBar.transform.position = new Vector3(newX, curY, curZ);
+		powerBar.transform.localScale = newScale;
+		newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
+		powerBar.transform.position = new Vector3(newX, curY, curZ);
 	}
 }

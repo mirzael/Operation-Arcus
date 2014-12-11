@@ -14,12 +14,10 @@ public class GreenWeapon : MonoBehaviour {
 	Vector3 centerPos;
 
 	GameObject greenBlast;
-	Material empBlast;
 
 	// Use this for initialization
 	void Start () {
 		greenBlast = (GameObject)Resources.Load ("Prefabs/GreenExplosion", typeof(GameObject));
-		empBlast = (Material)Resources.Load ("Materials/EMP-v01", typeof(Material));
 		centerPos = transform.position;
 		if (isStraight)	degreesPerSec = 0;
 	}
