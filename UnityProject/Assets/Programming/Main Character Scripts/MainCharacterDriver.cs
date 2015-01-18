@@ -222,30 +222,32 @@ public class MainCharacterDriver : MonoBehaviour {
 				}
 				return;
 			}
-			//Switch to Previous Form
-			if (Input.GetKeyDown (KeyCode.Q)) {
-					switchForm (forms.Previous ());
-					previousForm = currentForm;
-					uiDriver.RotateRight ();
-					//Switch to Next Form
-			} else if (Input.GetKeyDown (KeyCode.E)) {
-					switchForm (forms.Next ());
-					previousForm = currentForm;
-					uiDriver.RotateLeft ();
-					//Switch to ORANGE Form
-			} else if (Input.GetKeyDown (KeyCode.Alpha1) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			//Switch to Yellow Form
+			if (Input.GetButtonDown ("Yellow")) {
+					switchForm (yellowForm);
+					uiDriver.RotateToYellow();
+			//Switch to Blue Form
+			} else if (Input.GetButtonDown ("Blue")) {
+					switchForm (blueForm);
+					uiDriver.RotateToBlue();
+			//Switch to Red Form
+			} else if (Input.GetButtonDown("Red")) {
+					switchForm(redForm);
+					uiDriver.RotateToRed();
+			//Switch to ORANGE Form
+			} else if (Input.GetButtonDown ("Orange") && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 					powerRed -= TRANSFORM_AMOUNT;
 					powerYellow -= TRANSFORM_AMOUNT;
 					switchForm (orangeForm);
 					uiDriver.UpdateBars ();
-					//Switch to PURPLE FORM
-			} else if (Input.GetKeyDown (KeyCode.Alpha2) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
+			//Switch to PURPLE FORM
+			} else if (Input.GetButtonDown ("Purple") && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
 					powerRed -= TRANSFORM_AMOUNT;
 					powerBlue -= TRANSFORM_AMOUNT;
 					switchForm (purpleForm);
 					uiDriver.UpdateBars ();
-					//Switch to GREEN FORM
-			} else if (Input.GetKeyDown (KeyCode.Alpha3) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			//Switch to GREEN FORM
+			} else if (Input.GetButtonDown ("Green") && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 					powerBlue -= TRANSFORM_AMOUNT;
 					powerYellow -= TRANSFORM_AMOUNT;
 					switchForm (greenForm);

@@ -96,45 +96,102 @@ public class UIDriver : MonoBehaviour {
 			Application.LoadLevel("MainMenu");
 		}
 	}
-	
-	public void RotateLeft() {
-		var tmp = barCenter.renderer.material;
-		barCenter.renderer.material = barRight.renderer.material;
-		barRight.renderer.material = barLeft.renderer.material;
-		barLeft.renderer.material = tmp;
-		
-		tmp = powerCenter.renderer.material;
-		powerCenter.renderer.material = powerRight.renderer.material;
-		powerRight.renderer.material = powerLeft.renderer.material;
-		powerLeft.renderer.material = tmp;
-		
-		currentColor++;
-		if (currentColor > 3) {
-			currentColor = 1;
+
+	public void RotateToBlue(){
+		if (currentColor == 1) {
+			var tmp = barRight.renderer.material;
+			barRight.renderer.material = barLeft.renderer.material;
+			barLeft.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerRight.renderer.material;
+			powerRight.renderer.material = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
+		} else if (currentColor == 3) {
+			var tmp = barLeft.renderer.material;
+			barLeft.renderer.material = barRight.renderer.material;
+			barRight.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerRight.renderer.material;
+			powerRight.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
 		}
-		
-		UpdateBars();
+
+		currentColor = 2;
+		UpdateBars ();
 	}
-	
-	public void RotateRight() {
-		var tmp = barCenter.renderer.material;
-		barCenter.renderer.material = barLeft.renderer.material;
-		barLeft.renderer.material = barRight.renderer.material;
-		barRight.renderer.material = tmp;
-		
-		tmp = powerCenter.renderer.material;
-		powerCenter.renderer.material = powerLeft.renderer.material;
-		powerLeft.renderer.material = powerRight.renderer.material;
-		powerRight.renderer.material = tmp;
-		
-		currentColor--;
-		if (currentColor < 1) {
-			currentColor = 3;
+
+	public void RotateToRed(){
+		if (currentColor == 2) {
+			var tmp = barLeft.renderer.material;
+			barLeft.renderer.material = barRight.renderer.material;
+			barRight.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerRight.renderer.material;
+			powerRight.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
+		} else if (currentColor == 3) {
+			var tmp = barRight.renderer.material;
+			barRight.renderer.material = barLeft.renderer.material;
+			barLeft.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerRight.renderer.material;
+			powerRight.renderer.material = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
 		}
-		
-		UpdateBars();
+
+		currentColor = 1;
+		UpdateBars ();
 	}
-	
+
+	public void RotateToYellow(){
+		if (currentColor == 1) {
+			var tmp = barLeft.renderer.material;
+			barLeft.renderer.material = barRight.renderer.material;
+			barRight.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerRight.renderer.material;
+			powerRight.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
+		} else if (currentColor == 2) {
+			var tmp = barRight.renderer.material;
+			barRight.renderer.material = barLeft.renderer.material;
+			barLeft.renderer.material = barCenter.renderer.material;
+			barCenter.renderer.material = tmp;
+
+			tmp = powerRight.renderer.material;
+			powerRight.renderer.material = powerLeft.renderer.material;
+			powerLeft.renderer.material = powerCenter.renderer.material;
+			powerCenter.renderer.material = tmp;
+		}
+
+		currentColor = 3;
+		UpdateBars ();
+	}
+
+	/* CurrentColor = 1
+	 * 	Left = Yellow
+	 * 	Center = Red
+	 *	Right = Blue 
+	 * CurrentColor = 2
+	 * 	Left = Red
+	 *  Center = Blue
+	 *  Right = Yellow
+	 * CurrentColor = 3
+	 *  Left = Blue
+	 *  Center = Yellow
+	 *  Right = Red 
+	 */
+
 	public void UpdateBars() {
 		var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 		
