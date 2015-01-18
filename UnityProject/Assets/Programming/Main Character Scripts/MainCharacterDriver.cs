@@ -37,12 +37,12 @@ public class MainCharacterDriver : MonoBehaviour {
 	const int PROJECTILE_DISTANCE = 2;
 	const int GREEN_DEGREES_PER_SEC = 720;
 	const float ALPHA_PER_SEC = 0.1f;
-	public float powerRed = 0.0f;
-	public float powerBlue = 0.0f;
-	public float powerYellow = 0.0f;
+	public static float powerRed = 0.0f;
+	public static float powerBlue = 0.0f;
+	public static float powerYellow = 0.0f;
 
 	//This is the current form the ship is using
-	Form currentForm;
+	static Form currentForm;
 
 	//The base forms
 	[SerializeField]
@@ -82,7 +82,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public Form rainbowForm;
 
 	//Used for returning to the form we were in before switching to secondary
-	Form previousForm;
+	static Form previousForm;
 
 	public float shipXMin = -10.25f;
 	public float shipXMax = 10.25f;
@@ -108,14 +108,6 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		anim = GetComponent<Animator> ();
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
-		bool formSet = false;
-		if (powerRed != 0.0f || powerBlue != 0.0f || powerYellow != 0.0f) {
-			formSet = true;
-		} else {
-			powerRed = 0.0f;
-			powerBlue = 0.0f;
-			powerYellow = 0.0f;
-		}
 
 		redForm.shipColor = ShipColor.RED;
 		redForm.animationNum = 1;
@@ -137,12 +129,19 @@ public class MainCharacterDriver : MonoBehaviour {
 		forms.Add (redForm);
 		forms.Add (blueForm);
 		forms.Add (yellowForm);
-		previousForm = forms [0];
-		//Set the current form to the first form
-		currentForm = forms [0];
+		previousForm = previousForm ?? forms[0];
+		currentForm = currentForm ?? forms [0];
 		switchForm (currentForm);
 		
 		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
+
+		if (currentForm.shipColor == ShipColor.BLUE)
+						uiDriver.RotateToBlue ();
+		if (currentForm.shipColor == ShipColor.RED)
+						uiDriver.RotateToRed ();
+		if (currentForm.shipColor == ShipColor.YELLOW)
+						uiDriver.RotateToYellow ();
+
 		pauseButton = (Texture) Resources.Load ("Textures/PauseButton", typeof(Texture));
 	}
 
@@ -359,7 +358,6 @@ public class MainCharacterDriver : MonoBehaviour {
 			var rWep = projectile.AddComponent<RedWeapon>();
 			rWep.baseExplosionRadius = redExplosionRadius;
 			rWep.radiusPerPoint = redRadiusPerPoint;
-			rWep.driver = this;
 
 			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.right/2, currentForm.projectile.transform.rotation);
 			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
@@ -367,7 +365,6 @@ public class MainCharacterDriver : MonoBehaviour {
 			rWep.baseExplosionRadius = redExplosionRadius;
 			rWep.radiusPerPoint = redRadiusPerPoint;
 			rWep.damage = currentForm.damage;
-			rWep.driver = this;
 
 			break;
 		case ShipColor.YELLOW:
@@ -465,36 +462,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		weapon.damage = currentForm.damage;
 	}
 
-	public float[] getPowers()
-	{
-		float[] powerLevels = new float[4];
-		powerLevels [0] = powerRed;
-		powerLevels [1] = powerBlue;
-		powerLevels [2] = powerYellow;
-		switch (currentForm.shipColor) 
-		{
-		case ShipColor.RED:
-			powerLevels[3] = 0f;
-			break;
-		case ShipColor.BLUE:
-			powerLevels[3] = 1f;
-			break;
-		case ShipColor.YELLOW:
-			powerLevels[3] = 2f;
-			break;
-		case ShipColor.ORANGE:
-			powerLevels[3] = 3f;
-			break;
-		case ShipColor.PURPLE:
-			powerLevels[3] = 4f;
-			break;
-		case ShipColor.GREEN:
-			powerLevels[3] = 5f;
-			break;
-		case ShipColor.RAINBOW:
-			powerLevels[3] = 6f;
-			break;
-		}
-		return powerLevels;
+	public void ResetForm(){
+		switchForm (redForm);
 	}
 }

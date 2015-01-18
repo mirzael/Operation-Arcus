@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{5B580621-09B4-68CB-B5F4-5B9DD210A60F}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Programming\Background Scripts\ColorBarDrawer.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\DrawLives.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\EndGame.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\EndLevel.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\HiscoreTextbox.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\Hiscores.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\LevelLoader.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\PlayButton.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\PointMaster.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\ScrollBackground.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\Spawner.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\The_Destroyer.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\WinLoseGUI.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\BossSpawnBehavior.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\BulletSound.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\CascadeWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\CircleWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\DualPulseWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\EnemyDeath.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\EnemyMovement.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\MachineGunWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\MookSpawner.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\NetShooter.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\NetWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\Shooter.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\TrackNetWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\TrackShooter.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\TrackWave.cs" />
+     <Compile Include="Assets\Programming\Enemy Scripts\Wave.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Form.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\MainCharacterDriver.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\RotatingList.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\UIDriver.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\BlueWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\Disabler.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\EnableDisable.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\GravityField.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\GreenWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\MirvBullet.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\MoveProjectile.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\OrangeWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\PurpleWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\RainbowWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\RedWeapon.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\WeaponDamage.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\WeaponScripts\YellowWeapon.cs" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Resources\level3.txt" />
+     <None Include="Assets\Resources\level1.txt" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Resources\level2.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

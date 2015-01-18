@@ -8,10 +8,8 @@ using System.IO;
 
 public class Spawner : MonoBehaviour {
 	public List<GameObject> enemyToSpawn;
-	public List<GameObject> projectilesEnemySpawns;
 	public float spawnRate;
-	RotatingList<GameObject> copyEnemyToSpawn;
-	float currentRate;
+	public string nextSceneName;
 	
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
@@ -19,11 +17,10 @@ public class Spawner : MonoBehaviour {
 	private float lastSpawnTime;
 	public int level = 1;
 	public const int MAX_LEVELS = 3;
+	public bool lastLevel = false;
 
 	// Use this for initialization
 	public void Start () {
-		currentRate = spawnRate;
-		copyEnemyToSpawn = new RotatingList<GameObject> (enemyToSpawn);
 		levelTimeCounter = 0;
 		
 		if (level > MAX_LEVELS) {
@@ -41,6 +38,10 @@ public class Spawner : MonoBehaviour {
 		GameObject.Find("Background").AddComponent<ScrollBackground>().numSeconds = lastSpawnTime;
 		
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
+	}
+
+	public void NextLevel(){
+		Application.LoadLevel (nextSceneName);
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html
@@ -90,16 +91,6 @@ public class Spawner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		/*
-		currentRate -= Time.deltaTime;
-
-		if (currentRate <= 0) {
-			currentRate = spawnRate;
-			GameObject spawn = copyEnemyToSpawn.Next();
-			GameObject ship = (GameObject)Instantiate(spawn, transform.position + Vector3.down * 2, spawn.transform.rotation);
-			//ship.rigidbody.velocity = Vector3.down * 10 + Vector3.left * Random.Range(-10f, 10f);
-		}
-		/*/
 		levelTimeCounter += Time.deltaTime;
 		
 		// there is something to spawn, and the current object should have been spawned by now
@@ -107,20 +98,24 @@ public class Spawner : MonoBehaviour {
 			enemySpawnTimes.Dequeue();
 			string[] details = enemyDetails.Dequeue().Split(',');
 			
-			GameObject spawn;
-			if (details[0].Equals("BMachineGun")) {
-				spawn = enemyToSpawn[0];
-			} else if (details[0].Equals("RCascade")) {
-				spawn = enemyToSpawn[1];
-			} else if (details[0].Equals("YDualPulse")) {
-				spawn = enemyToSpawn[2];
-			} else if (details[0].Equals("BBoss")) {
-				spawn = enemyToSpawn[3];
-			} else if (details[0].Equals("RBoss")){
-				spawn = enemyToSpawn[4];
-			} else if (details[0].Equals("YBoss")){
-				spawn = enemyToSpawn[5];
+			GameObject spawn = null;
+			var enemy = details[0].IndexOf("GOB");
+			var enemyNum = int.MaxValue;
+			if (enemy != -1) {
+				try{
+					enemyNum = Convert.ToInt32 (details[0].Substring(enemy+3));
+					spawn = enemyToSpawn[enemyNum];
+				}catch(FormatException){
+					Debug.LogError(details[0] + " is not a valid gameobject string in the level script. SPAWNING FIRST ENEMY IN LIST");
+					spawn = enemyToSpawn[0];
+				}
 			} else {
+				Debug.LogError("Cannot find enemy " + details[0] + ". SPAWNING FIRST ENEMY IN LIST");
+				spawn = enemyToSpawn[0];
+			}
+
+			if(enemyNum >= enemyToSpawn.Count){
+				Debug.LogError("Attempted to spawn GameObject that is not in list. SPAWNING FIRST ENEMY IN LIST");
 				spawn = enemyToSpawn[0];
 			}
 			
@@ -140,7 +135,5 @@ public class Spawner : MonoBehaviour {
 				GameObject.Find("Main Camera").AddComponent<EndLevel>();
 			}
 		}
-		
-		//*/
 	}
 }

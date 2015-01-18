@@ -1416,9 +1416,6 @@ MonoBehaviour:
   prevAlpha: 1
   health: 100
   gameOver: 0
-  powerRed: 0
-  powerBlue: 0
-  powerYellow: 0
   redForm:
     damage: 10
     cooldown: .600000024
@@ -5598,9 +5595,10 @@ MonoBehaviour:
   - {fileID: 100112, guid: 46a08c22b08dd8d44b1ad303fbb69b1d, type: 2}
   - {fileID: 100000, guid: 0432693ee94d71a42b072f66f79166b6, type: 2}
   - {fileID: 100186, guid: 28fa7f18385f6ab48bc2000b3a78574c, type: 2}
-  projectilesEnemySpawns: []
   spawnRate: 1
-  level: 1
+  nextSceneName: Level3
+  level: 2
+  lastLevel: 0
 --- !u!23 &1215482626
 Renderer:
   m_ObjectHideFlags: 0
@@ -9839,7 +9837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df254dac930dc840adaec8b8eb8f44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
   orange: {r: 1, g: .608823478, b: .0220588446, a: 1}
   purple: {r: .882352948, g: .421712786, b: .812462389, a: 1}
   pos: {x: 25, y: 715}

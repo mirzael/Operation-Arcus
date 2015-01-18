@@ -10,24 +10,19 @@ public class ColorBarDrawer : MonoBehaviour {
 	public Texture2D redBarFull;
 	public Texture2D blueBarFull;
 	public Texture2D yellowBarFull;
-	MainCharacterDriver driver;
 
 	void Awake(){
 		style = new GUIStyle();
 		style.normal.textColor = Color.white;
 		style.stretchHeight = true;
 		style.stretchWidth = true;
-		driver = (MainCharacterDriver)GetComponentInChildren (typeof(MainCharacterDriver));
 	}
 
 	void OnGUI()
 	{
-		DrawBar (pos, driver.powerRed/100, redBarFull);
-		DrawBar (new Vector2 (pos.x, pos.y + size.y), driver.powerBlue / 100, blueBarFull);
-		DrawBar (new Vector2 (pos.x, pos.y + size.y * 2), driver.powerYellow / 100, yellowBarFull);
-		if (driver.invulnCounter > 0) {
-			GUI.Label(new Rect(100,100, size.x, size.y), "INVULNERABLE", style);
-		}
+		DrawBar (pos, MainCharacterDriver.powerRed/100, redBarFull);
+		DrawBar (new Vector2 (pos.x, pos.y + size.y), MainCharacterDriver.powerBlue / 100, blueBarFull);
+		DrawBar (new Vector2 (pos.x, pos.y + size.y * 2), MainCharacterDriver.powerYellow / 100, yellowBarFull);
 	} 
 
 	void DrawBar(Vector2 pos, float progress, Texture2D barFull){

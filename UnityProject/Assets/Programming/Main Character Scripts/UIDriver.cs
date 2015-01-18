@@ -35,9 +35,9 @@ public class UIDriver : MonoBehaviour {
 	public GameObject introSound;
 
 	PointMaster points;
-	private Camera camera;
+	private Camera myCamera;
 	
-	public void Start() {
+	public void Awake() {
 		winScreen = GameObject.Find("WinScreen");
 		loseScreen = GameObject.Find("LoseScreen");
 		winScreen.SetActive(false);
@@ -45,7 +45,7 @@ public class UIDriver : MonoBehaviour {
 		showingWinLose = false;
 		win = false;
 		
-		camera = transform.Find("Camera").camera;
+		myCamera = transform.Find("Camera").camera;
 		
 		GameObject.Find("Background").renderer.material = backgrounds[GameObject.Find("WaveSpawner").GetComponent<Spawner>().level - 1];
 		
@@ -75,24 +75,31 @@ public class UIDriver : MonoBehaviour {
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
-				if (spawner.level > Spawner.MAX_LEVELS) {
+				if (spawner.lastLevel) {
+					PointMaster.points = 0.0f;
+					MainCharacterDriver.powerRed = MainCharacterDriver.powerBlue = MainCharacterDriver.powerYellow = 0;
+					GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
 					Application.LoadLevel("Credits");
 					return;
 				}
 				
 				GameObject.Find("Background").renderer.material = backgrounds[spawner.level - 1];
 				winScreen.SetActive(false);
-				camera.enabled = true;
+				myCamera.enabled = true;
 
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
 				introSound.audio.Play ();
-				spawner.Start();
+				spawner.NextLevel();
 			} else {
 				Application.LoadLevel(Application.loadedLevel);
 				introSound.audio.Play ();
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
+			PointMaster.points = 0;
+			MainCharacterDriver.powerRed = MainCharacterDriver.powerBlue = MainCharacterDriver.powerYellow = 0;
+			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
+			driver.ResetForm();
 			Application.LoadLevel("MainMenu");
 		}
 	}
@@ -193,38 +200,39 @@ public class UIDriver : MonoBehaviour {
 	 */
 
 	public void UpdateBars() {
-		var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
-		
+	
+		Debug.Log ("Updating Colors: RED: " + MainCharacterDriver.powerRed + " BLUE: " + MainCharacterDriver.powerBlue + " YELLOW: " + MainCharacterDriver.powerYellow);
+
 		if (currentColor == 1) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(driver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(driver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(driver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
 		} else if (currentColor == 2) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(driver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(driver.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(driver.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
 		} else if (currentColor == 3) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(driver.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(driver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(driver.powerRed / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
 		} else {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(driver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(driver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(driver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
 		}
 		
 		float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
-		if (driver.powerRed >= transformAmount && driver.powerBlue >= transformAmount) {
+		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
 			secondaryCenter.renderer.material = brightPurple;
 		} else {
 			secondaryCenter.renderer.material = darkPurple;
 		}
-		if (driver.powerRed >= transformAmount && driver.powerYellow >= transformAmount) {
+		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerYellow >= transformAmount) {
 			secondaryLeft.renderer.material = brightOrange;
 		} else {
 			secondaryLeft.renderer.material = darkOrange;
 		}
-		if (driver.powerYellow >= transformAmount && driver.powerBlue >= transformAmount) {
+		if (MainCharacterDriver.powerYellow >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
 			secondaryRight.renderer.material = brightGreen;
 		} else {
 			secondaryRight.renderer.material = darkGreen;
@@ -254,7 +262,7 @@ public class UIDriver : MonoBehaviour {
 		points.enabled = false;
 		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
 		winScreen.SetActive(true);
-		camera.enabled = false;
+		myCamera.enabled = false;
 		
 		if (level <= Spawner.MAX_LEVELS) {
 			winScreen.renderer.material = successScreens[level - 1];
@@ -276,7 +284,7 @@ public class UIDriver : MonoBehaviour {
 		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
-		camera.enabled = false;
+		myCamera.enabled = false;
 		showingWinLose = true;
 		win = false;
 	}

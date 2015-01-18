@@ -49,7 +49,7 @@ public class PlayButton : MonoBehaviour {
         }
 		switch (gameObject.name) {
 		case "btnPlay":
-			Application.LoadLevel("TechDemo");
+			Application.LoadLevel("Level1");
 			break;
 		case "btnIntro":
 			Debug.Log("Displaying Intro");

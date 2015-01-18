@@ -6,8 +6,6 @@ public class RedWeapon : MonoBehaviour {
 	public float baseExplosionRadius;
 	public float radiusPerPoint;
 	public float damage;
-	public MainCharacterDriver driver;
-
 	GameObject redBlast;
 	GameObject explosion;
 
@@ -15,7 +13,6 @@ public class RedWeapon : MonoBehaviour {
 	void Start () {
 		redBlast = (GameObject)Resources.Load ("Prefabs/RedExplosion", typeof(GameObject));
 		explosion = (GameObject)Resources.Load("Prefabs/ExplosionRedMissile", typeof(GameObject));
-		driver = (MainCharacterDriver)GameObject.FindGameObjectWithTag ("Player").GetComponent (typeof(MainCharacterDriver));
 	}
 	
 	// Update is called once per frame
@@ -25,11 +22,11 @@ public class RedWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		var exp = (GameObject)Instantiate(explosion, transform.position, transform.rotation);
-		exp.particleEmitter.minSize = (driver.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
-		exp.particleEmitter.maxSize = driver.powerRed * radiusPerPoint + baseExplosionRadius;
-		CreateAoe (col.contacts[0].point, driver.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
+		exp.particleEmitter.minSize = (MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
+		exp.particleEmitter.maxSize = MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius;
+		CreateAoe (col.contacts[0].point, MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
 		if (gameObject.renderer.material != redBlast) {
-			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+driver.powerRed/10, hitLocation = col.contacts[0].point});
+			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+MainCharacterDriver.powerRed/10, hitLocation = col.contacts[0].point});
 		}
 	}
 

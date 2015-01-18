@@ -8,15 +8,12 @@ public class EnemyMovement : MonoBehaviour {
 	public float speed;
 	public float timeBeforeStopOnScreen;
 	public float timeStayOnScreen;
-	private bool onScreen;
 	bool blank;
 
 	
 	public void Start() {
 		blank = true;
-		onScreen = false;
 		speed = 10;
-		Vector3 pos = transform.position;
 		
 		switch (pattern) {
 		case 1: // diagonal left
@@ -97,8 +94,5 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		}
 	}
-	
-	public void OnBecameVisible() {
-		onScreen = true;
-	}
+
 }
