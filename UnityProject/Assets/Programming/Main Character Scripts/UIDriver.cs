@@ -36,6 +36,10 @@ public class UIDriver : MonoBehaviour {
 
 	PointMaster points;
 	private Camera myCamera;
+
+	public GameObject primaryRing;
+	public GameObject secondaryRing1;
+	public GameObject secondaryRing2;
 	
 	public void Awake() {
 		winScreen = GameObject.Find("WinScreen");
@@ -104,6 +108,8 @@ public class UIDriver : MonoBehaviour {
 		}
 	}
 
+	
+
 	public void RotateToBlue(){
 		if (currentColor == 1) {
 			var tmp = barRight.renderer.material;
@@ -115,6 +121,12 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerLeft.renderer.material;
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = tmp;
+
 		} else if (currentColor == 3) {
 			var tmp = barLeft.renderer.material;
 			barLeft.renderer.material = barRight.renderer.material;
@@ -125,6 +137,11 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 2;
@@ -142,6 +159,12 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = rTmp;
+
 		} else if (currentColor == 3) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
@@ -152,6 +175,11 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerLeft.renderer.material;
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 1;
@@ -169,6 +197,12 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = rTmp;
+
 		} else if (currentColor == 2) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
@@ -179,6 +213,11 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerLeft.renderer.material;
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
+
+			var rTmp = secondaryRing2.renderer.material;
+			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
+			secondaryRing1.renderer.material = primaryRing.renderer.material;
+			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 3;
@@ -186,17 +225,17 @@ public class UIDriver : MonoBehaviour {
 	}
 
 	/* CurrentColor = 1
-	 * 	Left = Yellow
+	 * 	Left = Secondary 1 = Yellow
 	 * 	Center = Red
-	 *	Right = Blue 
+	 *	Right = Secondary 2 = Blue 
 	 * CurrentColor = 2
-	 * 	Left = Red
+	 * 	Left = Secondary 1 = Red
 	 *  Center = Blue
-	 *  Right = Yellow
+	 *  Right = Secondary 2 = Yellow
 	 * CurrentColor = 3
-	 *  Left = Blue
+	 *  Left = Secondary 1 = Blue
 	 *  Center = Yellow
-	 *  Right = Red 
+	 *  Right = Secondary 2 = Red 
 	 */
 
 	public void UpdateBars() {
