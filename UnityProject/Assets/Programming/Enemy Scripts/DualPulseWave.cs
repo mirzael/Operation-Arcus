@@ -16,7 +16,6 @@ public class DualPulseWave : Wave {
 		if (currentCooldown % 20 == 0 && currentCooldown < cooldown) {
 			GameObject[] proj = new GameObject[3];
 			int aVal = (int)currentCooldown % 40;
-			Debug.Log (aVal.ToString() + "IVE GOT STUFF");
 			switch (aVal) {
 			case 0:
 				proj [0] = (GameObject)InstantiateBullet (projectile, transform.position + Vector3.down * 2 + Vector3.left * .6f, transform.rotation);
