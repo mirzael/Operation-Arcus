@@ -26,19 +26,19 @@ public class PlayButton : MonoBehaviour {
         if (clippy != null && audio != null) {
             audio.PlayOneShot (clippy);
         }
-		if (!transform.parent.gameObject.name.Equals("Hiscores")) {
+		if (!transform.parent.gameObject.name.Equals("Hiscores") && hiscore != null) {
 			hiscore.SetActive(false);
 		}
-		if (!transform.parent.gameObject.name.Equals("Intro1")) {
+		if (!transform.parent.gameObject.name.Equals("Intro1") && intro1 != null) {
 			intro1.SetActive(false);
 		}
-		if (!transform.parent.gameObject.name.Equals("Intro2")) {
+		if (!transform.parent.gameObject.name.Equals("Intro2") && intro2 != null) {
 			intro2.SetActive(false);
 		}
-		if (!transform.parent.gameObject.name.Equals("Intro3")) {
+		if (!transform.parent.gameObject.name.Equals("Intro3") && intro3 != null) {
 			intro3.SetActive(false);
 		}
-		if (!transform.parent.gameObject.name.Equals("Intro4")) {
+		if (!transform.parent.gameObject.name.Equals("Intro4") && intro4 != null) {
 			intro4.SetActive(false);
 		}
 	}

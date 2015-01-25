@@ -58,6 +58,7 @@
      <Compile Include="Assets\Programming\Background Scripts\ScrollBackground.cs" />
      <Compile Include="Assets\Programming\Background Scripts\Spawner.cs" />
      <Compile Include="Assets\Programming\Background Scripts\The_Destroyer.cs" />
+     <Compile Include="Assets\Programming\Background Scripts\TutorialSpawner.cs" />
      <Compile Include="Assets\Programming\Background Scripts\WinLoseGUI.cs" />
      <Compile Include="Assets\Programming\Enemy Scripts\BossSpawnBehavior.cs" />
      <Compile Include="Assets\Programming\Enemy Scripts\BulletSound.cs" />
@@ -75,7 +76,14 @@
      <Compile Include="Assets\Programming\Enemy Scripts\TrackShooter.cs" />
      <Compile Include="Assets\Programming\Enemy Scripts\TrackWave.cs" />
      <Compile Include="Assets\Programming\Enemy Scripts\Wave.cs" />
-     <Compile Include="Assets\Programming\Main Character Scripts\Form.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\BlueForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\Form.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\GreenForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\OrangeForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\PurpleForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\RainbowForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\RedForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\YellowForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\MainCharacterDriver.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\RotatingList.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\UIDriver.cs" />
@@ -99,6 +107,7 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\Resources\level2.txt" />
+     <None Include="Assets\Design\tutorialVoiceOver.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

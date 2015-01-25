@@ -14,6 +14,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
+  - 114: {fileID: 11480146}
   m_Layer: 11
   m_Name: Red
   m_TagString: Red
@@ -104,6 +105,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &11480146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f117b8b973a434baf64c17b4970e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseExplosionRadius: 2.5
+  radiusPerPoint: .100000001
+  damage: 10
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

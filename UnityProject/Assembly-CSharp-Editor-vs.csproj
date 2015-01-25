@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\CleanUpWindow.cs" />
-     <Compile Include="Assets\Editor\MainCharacterDriverEditor.cs" />
      <Compile Include="Assets\Editor\UsedAssets.cs" />
      <Compile Include="Assets\FindUnusedAssets\Editor\FindUnusedAssets.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
@@ -57,8 +56,9 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\Resources\level2.txt" />
+     <None Include="Assets\Design\tutorialVoiceOver.txt" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/drago_000/Documents/GitHub/Operation-Arcus/UnityProject/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>C:/Users/Owner/Documents/Operation-Arcus/UnityProject/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

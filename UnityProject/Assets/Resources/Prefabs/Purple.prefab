@@ -14,6 +14,8 @@ GameObject:
   - 54: {fileID: 5400000}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
+  - 114: {fileID: 11480146}
+  - 114: {fileID: 11480144}
   m_Layer: 11
   m_Name: Purple
   m_TagString: Purple
@@ -75,6 +77,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11480144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c28a1994b1fcd4fb8381817099fd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mirvBullet: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  bulletSpeed: 100
+  timeBeforeExplosion: .150000006
+  damage: 15
+  explosionSize: 10
+--- !u!114 &11480146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440fa76bc6573c84b82711bc8b8b9af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 100
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

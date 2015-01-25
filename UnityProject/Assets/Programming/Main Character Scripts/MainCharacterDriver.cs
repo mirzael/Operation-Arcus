@@ -31,58 +31,26 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Arcus Animator
 	Animator anim;
 
-	const float POWER_MAX = 100.0f;
-	const float POWER_INC = 5.0f;
 	public const float TRANSFORM_AMOUNT = 50f;
-	const int PROJECTILE_DISTANCE = 2;
-	const int GREEN_DEGREES_PER_SEC = 720;
 	const float ALPHA_PER_SEC = 0.1f;
+
+	//This is the current form the ship is using
+	private Form currentForm;
+
+	//Used for returning to the form we were in before switching to secondary
+	private Form previousForm;
+
+	private RedForm redForm;
+	private BlueForm blueForm;
+	private YellowForm yellowForm;
+	private GreenForm greenForm;
+	private OrangeForm orangeForm;
+	private PurpleForm purpleForm;
+	private RainbowForm rainbowForm;
+
 	public static float powerRed = 0.0f;
 	public static float powerBlue = 0.0f;
 	public static float powerYellow = 0.0f;
-
-	//This is the current form the ship is using
-	static Form currentForm;
-
-	//The base forms
-	[SerializeField]
-	public Form redForm;
-	//Red Weapon
-	public float redExplosionRadius;
-	public float redRadiusPerPoint;
-	[SerializeField]
-	public Form blueForm;
-	[SerializeField]
-	public Form yellowForm;
-	//Yellow Weapon
-	public float yellowPointsPerBullet;
-
-	//These are the special ship forms
-	[SerializeField]
-	public Form orangeForm;
-	//Orange Weapon
-	public float orangeRotationSpeed;
-	public float orangeExplosionRadius;
-	public float orangeGravityRadius;
-	public float orangeGravityForce;
-	[SerializeField]
-	public Form purpleForm;
-	//Purple weapon
-	public GameObject purpleMirv;
-	public float purpleTimeBeforeExplosion;
-	public float purpleExplosionSize;
-	int purpleBarrel = 1;
-	[SerializeField]
-	public Form greenForm;
-	//Green Weapon
-	public float greenEmpRadius;
-	public float greenEmpDuration;
-	public float greenSinAmplitude;
-	[SerializeField]
-	public Form rainbowForm;
-
-	//Used for returning to the form we were in before switching to secondary
-	static Form previousForm;
 
 	public float shipXMin = -10.25f;
 	public float shipXMax = 10.25f;
@@ -108,24 +76,19 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		anim = GetComponent<Animator> ();
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
-
-		redForm.shipColor = ShipColor.RED;
-		redForm.animationNum = 1;
-		redForm.originalCooldown = redForm.cooldown;
-		redForm.originalSpeed = redForm.projectileSpeed;
-		blueForm.shipColor = ShipColor.BLUE;
-		blueForm.animationNum = 2;
-		yellowForm.shipColor = ShipColor.YELLOW;
-		yellowForm.animationNum = 3;
-		greenForm.shipColor = ShipColor.GREEN;
-		greenForm.animationNum = 6;
-		orangeForm.shipColor = ShipColor.ORANGE;
-		orangeForm.animationNum = 5;
-		purpleForm.shipColor = ShipColor.PURPLE;
-		purpleForm.animationNum = 4;
-		rainbowForm.shipColor = ShipColor.RAINBOW;
-		rainbowForm.animationNum = 0;
-
+		
+		redForm = GetComponent<RedForm>();
+		blueForm = GetComponent<BlueForm>();
+		yellowForm = GetComponent<YellowForm>();
+		greenForm = GetComponent<GreenForm>();
+		orangeForm = GetComponent<OrangeForm>();
+		purpleForm = GetComponent<PurpleForm>();
+		rainbowForm = GetComponent<RainbowForm>();
+		
+		powerRed = redForm.power;
+		powerBlue = blueForm.power;
+		powerYellow = yellowForm.power;
+		
 		forms.Add (redForm);
 		forms.Add (blueForm);
 		forms.Add (yellowForm);
@@ -135,14 +98,16 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
 
-		if (currentForm.shipColor == ShipColor.BLUE)
-						uiDriver.RotateToBlue ();
-		if (currentForm.shipColor == ShipColor.RED)
-						uiDriver.RotateToRed ();
-		if (currentForm.shipColor == ShipColor.YELLOW)
-						uiDriver.RotateToYellow ();
-
-		pauseButton = (Texture) Resources.Load ("Textures/PauseButton", typeof(Texture));
+		if (currentForm.shipColor == ShipColor.BLUE) {
+			uiDriver.RotateToBlue();
+		} else if (currentForm.shipColor == ShipColor.RED) {
+			uiDriver.RotateToRed();
+		} else if (currentForm.shipColor == ShipColor.YELLOW) {
+			uiDriver.RotateToYellow();
+		}
+		uiDriver.UpdateBars();
+		
+		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
 	}
 
 	void OnGUI(){
@@ -152,7 +117,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
 		if(Input.GetKeyDown(KeyCode.F)){
 			pause = !pause;
 		}
@@ -198,249 +163,117 @@ public class MainCharacterDriver : MonoBehaviour {
 			}
 			if (currentForm.shipColor == ShipColor.RAINBOW) {
 				if (rainbowCooldown % 3 == 0) {
-						//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-						for (int i = 0; i < colorPieces.Length; i++) {
-								Color newColor = new Color (Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), 1.0f);
-								colorPieces [i].renderer.material.color = newColor;
-						}
+					//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+					for (int i = 0; i < colorPieces.Length; i++) {
+						Color newColor = new Color (Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), 1.0f);
+						colorPieces [i].renderer.material.color = newColor;
+					}
 				}
 				rainbowCooldown = rainbowCooldown - 1;
 				if (rainbowCooldown <= 0) {
-						rainbowCooldown = 10;
-						powerBlue = powerBlue - 1;
-						powerYellow = powerYellow - 1;
-						powerRed = powerRed - 1;
-
-						uiDriver.UpdateBars ();
+					rainbowCooldown = 10;
+					setRedPower(powerRed - 1);
+					setBluePower(powerBlue - 1);
+					setYellowPower(powerYellow - 1);
+					uiDriver.UpdateBars ();
 				}
 				if (powerBlue <= 0) {
-						previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
-						switchForm (previousForm);
-						blueForm.resetCooldown ();
-						redForm.resetSpeed ();
+					previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
+					switchForm (previousForm);
+					blueForm.resetCooldown ();
+					redForm.resetSpeed ();
 				}
 				return;
 			}
 			//Switch to Yellow Form
 			if (Input.GetButtonDown ("Yellow")) {
-					switchForm (yellowForm);
-					uiDriver.RotateToYellow();
+				switchForm (yellowForm);
+				uiDriver.RotateToYellow();
 			//Switch to Blue Form
 			} else if (Input.GetButtonDown ("Blue")) {
-					switchForm (blueForm);
-					uiDriver.RotateToBlue();
+				switchForm (blueForm);
+				uiDriver.RotateToBlue();
 			//Switch to Red Form
 			} else if (Input.GetButtonDown("Red")) {
-					switchForm(redForm);
-					uiDriver.RotateToRed();
+				switchForm(redForm);
+				uiDriver.RotateToRed();
 			//Switch to ORANGE Form
 			} else if (Input.GetButtonDown ("Orange") && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-					powerRed -= TRANSFORM_AMOUNT;
-					powerYellow -= TRANSFORM_AMOUNT;
-					switchForm (orangeForm);
-					uiDriver.UpdateBars ();
+				setRedPower(powerRed - TRANSFORM_AMOUNT);
+				setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+				switchForm (orangeForm);
+				uiDriver.UpdateBars ();
 			//Switch to PURPLE FORM
 			} else if (Input.GetButtonDown ("Purple") && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
-					powerRed -= TRANSFORM_AMOUNT;
-					powerBlue -= TRANSFORM_AMOUNT;
-					switchForm (purpleForm);
-					uiDriver.UpdateBars ();
+				setRedPower(powerRed - TRANSFORM_AMOUNT);
+				setBluePower(powerBlue - TRANSFORM_AMOUNT);
+				switchForm (purpleForm);
+				uiDriver.UpdateBars ();
 			//Switch to GREEN FORM
 			} else if (Input.GetButtonDown ("Green") && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-					powerBlue -= TRANSFORM_AMOUNT;
-					powerYellow -= TRANSFORM_AMOUNT;
-					switchForm (greenForm);
-					uiDriver.UpdateBars ();
+				setBluePower(powerBlue - TRANSFORM_AMOUNT);
+				setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+				switchForm (greenForm);
+				uiDriver.UpdateBars ();
 			} else if (Input.GetKeyDown (KeyCode.PageDown)) {
-					powerRed = powerYellow = powerBlue = 100;
-					forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
-					forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
-					uiDriver.UpdateBars ();
+				setRedPower(100);
+				setBluePower(100);
+				setYellowPower(100);
+				forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
+				forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
+				uiDriver.UpdateBars ();
 			}
 		}
 	}
 
-	void OnCollisionEnter(Collision col){
-		if (currentForm.projectile.tag != col.gameObject.tag || col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-			audio.PlayOneShot(bumpSound);
-			if(invulnCounter <= 0){
+	public void OnCollisionEnter(Collision col) {
+		
+		// Form.TakeHit() returns true if the bullet cannot be absorbed, else it returns false
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || currentForm.TakeHit(col)) {
+			
+			// Only handle hit if not invulnerable
+			if (invulnCounter <= 0) {
+				
+				// Set invulnerability
 				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
-				if(currentForm.shipColor == ShipColor.PURPLE){
-					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
-					blueForm.resetCooldown();
-					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
+				audio.PlayOneShot(bumpSound);
+				
+				// If in a secondary form, switch back to the previous form
+				if (currentForm.shipColor == ShipColor.PURPLE || currentForm.shipColor == ShipColor.ORANGE || currentForm.shipColor == ShipColor.GREEN) {
 					switchForm(previousForm);
-				}else if(currentForm.shipColor == ShipColor.ORANGE){
-					switchForm(previousForm);
-					redForm.resetSpeed();
-					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
-				}else if(currentForm.shipColor == ShipColor.GREEN){
-					switchForm(previousForm);
-					blueForm.resetCooldown();
-					blueForm.setCooldown(blueForm.getCooldown() - 0.00015f * powerBlue);
-				}else if (currentForm.shipColor == ShipColor.RAINBOW)
-				{
-					Destroy (col.gameObject);
-					return;
-				}
-				 else{
-					health-=10;
-					if(health < 0){
+				
+				// Only take damage if not in rainbow mode
+				} else if (currentForm.shipColor != ShipColor.RAINBOW) {
+					health -= 10;
+					if (health < 0) {
 						if (gameOver) return;
 						Destroy (gameObject);
-						powerRed = 0.0f;
-						powerBlue = 0.0f;
-						powerYellow = 0.0f;
 						Debug.Log("MISSION FAILED");
-						
 						uiDriver.ShowLoseScreen();
 						gameOver = true;
 					}
 				}
 			}
+		
+		// Absorbed the bullet
 		} else {
-			if (col.gameObject.tag == "Red") {
-				if (powerRed < POWER_MAX) {
-					powerRed += POWER_INC;
-					redForm.setSpeed(redForm.getSpeed() + powerRed/30);
-					if (powerRed > POWER_MAX) {
-						powerRed = POWER_MAX;
-					}
-					uiDriver.UpdateBars();
-				}
-				audio.PlayOneShot(absorbSound);
-				Debug.Log("Absorbed red bullet, Red Power at " + powerRed);
-			} else if (col.gameObject.tag == "Blue") {
-				if (powerBlue < POWER_MAX) {
-					powerBlue += POWER_INC;
-					currentForm.setCooldown(currentForm.getCooldown() - 0.00015f * powerBlue);
-					if (powerBlue > POWER_MAX) {
-						powerBlue = POWER_MAX;
-					}
-					uiDriver.UpdateBars();
-				}
-				audio.PlayOneShot(absorbSound);
-				Debug.Log("Absorbed blue bullet, Blue Power at " + powerBlue);
-			} else if (col.gameObject.tag == "Yellow") {
-				if (powerYellow < POWER_MAX) {
-					powerYellow += POWER_INC;
-					if (powerYellow > POWER_MAX) {
-						powerYellow = POWER_MAX;
-					}
-					uiDriver.UpdateBars();
-				}
-				audio.PlayOneShot(absorbSound);
-				Debug.Log("Absorbed yellow bullet, Yellow Power at " + powerYellow);
-			}
+			powerBlue = blueForm.power;
+			powerRed = redForm.power;
+			powerYellow = yellowForm.power;
+			uiDriver.UpdateBars();
+			audio.PlayOneShot(absorbSound);
 		}
+		
 		Destroy (col.gameObject);
-		if (powerYellow == POWER_MAX && powerBlue == POWER_MAX && powerRed == POWER_MAX) 
-		{
+		if (yellowForm.atMaxPower() && blueForm.atMaxPower() && redForm.atMaxPower()) {
 			previousForm = currentForm;
-			switchForm (rainbowForm);
+			switchForm(rainbowForm);
 		}
 	}
-
+	
 	void Fire(){
-		GameObject projectile;
-		audio.PlayOneShot (bulletSound);
-		switch (currentForm.shipColor)
-		{
-		case ShipColor.BLUE:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
-			projectile.AddComponent<BlueWeapon>().damage = currentForm.damage;
-			break;
-		case ShipColor.RED:
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left/2, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
-			var rWep = projectile.AddComponent<RedWeapon>();
-			rWep.baseExplosionRadius = redExplosionRadius;
-			rWep.radiusPerPoint = redRadiusPerPoint;
-
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.right/2, currentForm.projectile.transform.rotation);
-			projectile.rigidbody.velocity = Vector3.up * currentForm.getSpeed();
-			rWep = projectile.AddComponent<RedWeapon>();
-			rWep.baseExplosionRadius = redExplosionRadius;
-			rWep.radiusPerPoint = redRadiusPerPoint;
-			rWep.damage = currentForm.damage;
-
-			break;
-		case ShipColor.YELLOW:
-			int numProjectiles = 2 + (int)(powerYellow / yellowPointsPerBullet);
-			int projectileSpreadAngle = 20;
-			int angleBetweenProjectiles = (projectileSpreadAngle / (numProjectiles - 1));
-			float radToDeg =  Mathf.PI / 180;
-			GameObject[] blast = new GameObject[numProjectiles];
-			for(int i = 0; i < numProjectiles; i++){
-				float trajectoryDegree = 90 + (projectileSpreadAngle / 2 - angleBetweenProjectiles * i);
-				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * radToDeg);
-				blast[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-				blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
-				blast[i].AddComponent<YellowWeapon>().damage = currentForm.damage;
-			} 
-			break;
-		case ShipColor.ORANGE:
-			var oBlast = new GameObject[2];
-			oBlast[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			var oWep = oBlast[0].gameObject.AddComponent<OrangeWeapon>();
-			oWep.moveSpeed = currentForm.projectileSpeed;
-			oWep.rotationSpeed = orangeRotationSpeed;
-			oWep.explosionRadius = orangeExplosionRadius;
-			oWep.gravityRadius = orangeGravityRadius;
-			oWep.gravityForce = orangeGravityForce;
-			oWep.damage = currentForm.damage;
-			oBlast[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			oWep = oBlast[1].gameObject.AddComponent<OrangeWeapon>();
-			oWep.moveSpeed = currentForm.projectileSpeed;
-			oWep.rotationSpeed = orangeRotationSpeed;
-			oWep.explosionRadius = orangeExplosionRadius;
-			oWep.gravityRadius = orangeGravityRadius;
-			oWep.gravityForce = orangeGravityForce;
-			oWep.damage = currentForm.damage;
-			break;
-		case ShipColor.PURPLE:
-			purpleBarrel *= -1;
-			projectile = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE + Vector3.left * PROJECTILE_DISTANCE / 2.5f * purpleBarrel, currentForm.projectile.transform.rotation);
-			var moveScript = projectile.AddComponent<MoveProjectile>();
-			moveScript.projectileSpeed = currentForm.projectileSpeed;
-			var mirvStuff = projectile.AddComponent<PurpleWeapon>();
-			mirvStuff.mirvBullet = purpleMirv;
-			mirvStuff.bulletSpeed = currentForm.projectileSpeed;
-			mirvStuff.timeBeforeExplosion = purpleTimeBeforeExplosion;
-			mirvStuff.damage = currentForm.damage;
-			mirvStuff.explosionSize = purpleExplosionSize;
-			break;
-		case ShipColor.GREEN:
-			var gProj = new GameObject[3];
-			gProj[0] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			gProj[1] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			gProj[2] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-			sinBullet(gProj[0].AddComponent<GreenWeapon>(), false);
-			sinBullet(gProj[1].AddComponent<GreenWeapon>(), true);
-			var gWep = gProj[2].AddComponent<GreenWeapon>();
-			gWep.isStraight = true;
-			gWep.ySpeed = currentForm.getSpeed();
-			gWep.sphereRadius = greenEmpRadius;
-			gWep.empDuration = greenEmpDuration;
-			gWep.damage = currentForm.damage;
-			break;
-		case ShipColor.RAINBOW:
-			GameObject[] rainboom = new GameObject[15];
-			int rainbowSpreadAngle = 50;
-			int rainbowBetweenProjectiles = (rainbowSpreadAngle / (15 - 1));
-			float rToD =  Mathf.PI / 180;
-			Debug.Log (currentForm.projectile.transform.rotation.x);
-			for(int i = 0; i < rainboom.Length; i++){
-				float trajectoryDegree = 90 + (rainbowSpreadAngle / 2 - rainbowBetweenProjectiles * i);
-				float currentAngularVelocity = Mathf.Cos(trajectoryDegree * rToD);
-				rainboom[i] = (GameObject)Instantiate(currentForm.projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, currentForm.projectile.transform.rotation);
-				rainboom[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * currentForm.getSpeed() + Vector3.right * currentAngularVelocity * currentForm.getSpeed());
-				rainboom[i].AddComponent<RainbowWeapon>().damage = currentForm.damage;
-			} 
-			break;
-		}
+		audio.PlayOneShot(bulletSound);
+		currentForm.Fire();
 	}
 	
 	void switchForm(Form form){
@@ -453,16 +286,22 @@ public class MainCharacterDriver : MonoBehaviour {
 		anim.SetInteger ("TransformVar", currentForm.animationNum);
 	}
 
-	void sinBullet(GreenWeapon weapon, bool isNegative){
-		weapon.amplitude = isNegative ? -greenSinAmplitude : greenSinAmplitude;
-		weapon.ySpeed = currentForm.getSpeed();
-		weapon.degreesPerSec = GREEN_DEGREES_PER_SEC;
-		weapon.sphereRadius = greenEmpRadius;
-		weapon.empDuration = greenEmpDuration;
-		weapon.damage = currentForm.damage;
-	}
-
 	public void ResetForm(){
 		switchForm (redForm);
+	}
+
+	private void setRedPower(float p) {
+		redForm.power = p;
+		powerRed = p;
+	}
+
+	private void setBluePower(float p) {
+		blueForm.power = p;
+		powerBlue = p;
+	}
+
+	private void setYellowPower(float p) {
+		yellowForm.power = p;
+		powerYellow = p;
 	}
 }
