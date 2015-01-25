@@ -13,7 +13,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public float invulnTime;
 	public float invulnCounter = 0;
 	public float prevAlpha = 1;
-	public int health;
+	public static int health = 100;
 	public bool gameOver = false;
 	bool pause = false;
 
@@ -32,13 +32,14 @@ public class MainCharacterDriver : MonoBehaviour {
 	Animator anim;
 
 	public const float TRANSFORM_AMOUNT = 50f;
-	const float ALPHA_PER_SEC = 0.1f;
+	private const float ALPHA_PER_SEC = 0.1f;
+	static bool lostGame;
 
 	//This is the current form the ship is using
-	private Form currentForm;
+	static Form currentForm;
 
 	//Used for returning to the form we were in before switching to secondary
-	private Form previousForm;
+	static Form previousForm;
 
 	private RedForm redForm;
 	private BlueForm blueForm;
@@ -85,15 +86,54 @@ public class MainCharacterDriver : MonoBehaviour {
 		purpleForm = GetComponent<PurpleForm>();
 		rainbowForm = GetComponent<RainbowForm>();
 		
-		powerRed = redForm.power;
-		powerBlue = blueForm.power;
-		powerYellow = yellowForm.power;
-		
 		forms.Add (redForm);
 		forms.Add (blueForm);
 		forms.Add (yellowForm);
-		previousForm = previousForm ?? forms[0];
-		currentForm = currentForm ?? forms [0];
+		
+		if (previousForm == null) {
+			previousForm = forms[0];
+		} else {
+			if (previousForm.shipColor == ShipColor.RED) {
+				previousForm = redForm;
+			} else if (previousForm.shipColor == ShipColor.BLUE) {
+				previousForm = blueForm;
+			} else if (previousForm.shipColor == ShipColor.YELLOW) {
+				previousForm = yellowForm;
+			} else {
+				previousForm = forms[0];
+			}
+		}
+		if (currentForm == null) {
+			currentForm = forms[0];
+		} else {
+			if (currentForm.shipColor == ShipColor.RED) {
+				currentForm = redForm;
+			} else if (currentForm.shipColor == ShipColor.BLUE) {
+				currentForm = blueForm;
+			} else if (currentForm.shipColor == ShipColor.YELLOW) {
+				currentForm = yellowForm;
+			} else if (currentForm.shipColor == ShipColor.GREEN) {
+				currentForm = greenForm;
+			} else if (currentForm.shipColor == ShipColor.ORANGE) {
+				currentForm = orangeForm;
+			} else if (currentForm.shipColor == ShipColor.PURPLE) {
+				currentForm = purpleForm;
+			} else if (currentForm.shipColor == ShipColor.RAINBOW) {
+				currentForm = rainbowForm;
+			} else {
+				currentForm = forms[0];
+			}
+		}
+		if (lostGame) {
+			health = 100;
+			powerRed = 0;
+			powerBlue = 0;
+			powerYellow = 0;
+		} else {
+			redForm.setPower(powerRed);
+			blueForm.setPower(powerBlue);
+			yellowForm.setPower(powerYellow);
+		}
 		switchForm (currentForm);
 		
 		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
@@ -108,6 +148,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		uiDriver.UpdateBars();
 		
 		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
+		lostGame = false;
 	}
 
 	void OnGUI(){
@@ -251,6 +292,7 @@ public class MainCharacterDriver : MonoBehaviour {
 						Debug.Log("MISSION FAILED");
 						uiDriver.ShowLoseScreen();
 						gameOver = true;
+						lostGame = true;
 					}
 				}
 			}

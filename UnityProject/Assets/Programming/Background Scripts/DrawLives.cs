@@ -25,7 +25,7 @@ public class DrawLives : MonoBehaviour {
 	}
 
 	void Update(){
-		ShiftAndScale(innerHealthBar, origHealthBar, new Vector3(driver.health/100f,1,1));
+		ShiftAndScale(innerHealthBar, origHealthBar, new Vector3(MainCharacterDriver.health/100f,1,1));
 	}
 
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {

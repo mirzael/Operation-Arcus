@@ -29,6 +29,6 @@ public class RedForm : Form {
 	
 	public override void setPower(float amount) {
 		base.setPower(amount);
-		setSpeed(getSpeed() + power / 30);
+		setSpeed(originalSpeed + power / 30);
 	}
 }

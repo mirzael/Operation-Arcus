@@ -22,6 +22,6 @@ public class BlueForm : Form {
 	
 	public override void setPower(float amount) {
 		base.setPower(amount);
-		setCooldown(getCooldown() - 0.00015f * power);
+		setCooldown(originalCooldown - 0.00015f * power);
 	}
 }
