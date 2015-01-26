@@ -337,9 +337,11 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 	}
 	
-	void Fire(){
-		audio.PlayOneShot(bulletSound);
-		currentForm.Fire();
+	void Fire() {
+		if (currentForm is PrimaryForm) {
+			audio.PlayOneShot(bulletSound);
+			currentForm.Fire();
+		}
 	}
 	
 	void switchForm(Form form){
