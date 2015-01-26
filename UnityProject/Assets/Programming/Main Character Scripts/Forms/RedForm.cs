@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RedForm : Form {
+public class RedForm : PrimaryForm {
 	public float explosionRadius;
 	public float radiusPerPoint;
 	
@@ -19,7 +19,9 @@ public class RedForm : Form {
 	}
 	
 	public override bool TakeHit(Collision col) {
-		if (col.gameObject.tag == "Red") {
+		string tag = col.gameObject.tag;
+		Destroy(col.gameObject);
+		if (tag == "Red") {
 			setPower(power + POWER_INC);
 			Debug.Log("Absorbed red bullet, Red Power at " + power);
 			return false;

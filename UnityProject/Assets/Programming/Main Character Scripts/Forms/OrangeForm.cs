@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OrangeForm : Form {
+public class OrangeForm : SecondaryForm {
 	public float explosionRadius;
 	public float gravityForce;
 	public float gravityRadius;
@@ -17,12 +17,27 @@ public class OrangeForm : Form {
 	}
 	
 	public override void Fire() {
+		/*
 		var oBlast = new GameObject[2];
 		oBlast[0] = (GameObject)Instantiate(projectile, transform.position + (Vector3.up + Vector3.left) * PROJECTILE_DISTANCE, projectile.transform.rotation);
 		oBlast[1] = (GameObject)Instantiate(projectile, transform.position + (Vector3.up + Vector3.right) * PROJECTILE_DISTANCE, projectile.transform.rotation);
+		*/
+	}
+	
+	public override void Activate() {
+		isActive = true;
+		timeActive = timeActiveOrig;
+	}
+	
+	public void Update() {
+		if (!isActive) return;
+		timeActive -= Time.deltaTime;
+		if (timeActive <= 0.0f) {
+			isActive = false;
+		}
 	}
 	
 	public override bool TakeHit(Collision col) {
-		return true;
+		return false;
 	}
 }

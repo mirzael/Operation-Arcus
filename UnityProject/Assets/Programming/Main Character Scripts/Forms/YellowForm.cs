@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class YellowForm : Form {
+public class YellowForm : PrimaryForm {
 	public float pointsPerBullet;
 	
 	public void Start() {
@@ -22,7 +22,9 @@ public class YellowForm : Form {
 	}
 	
 	public override bool TakeHit(Collision col) {
-		if (col.gameObject.tag == "Yellow") {
+		string tag = col.gameObject.tag;
+		Destroy(col.gameObject);
+		if (tag == "Yellow") {
 			setPower(power + POWER_INC);
 			Debug.Log("Absorbed yellow bullet, Yellow Power at " + power);
 			return false;

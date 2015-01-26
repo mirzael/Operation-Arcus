@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BlueForm : Form {
+public class BlueForm : PrimaryForm {
 	
 	public void Start() {
 		projectile.GetComponent<BlueWeapon>().damage = damage;
@@ -12,7 +12,9 @@ public class BlueForm : Form {
 	}
 	
 	public override bool TakeHit(Collision col) {
-		if (col.gameObject.tag == "Blue") {
+		string tag = col.gameObject.tag;
+		Destroy(col.gameObject);
+		if (tag == "Blue") {
 			setPower(power + POWER_INC);
 			Debug.Log("Absorbed blue bullet, Blue Power at " + power);
 			return false;

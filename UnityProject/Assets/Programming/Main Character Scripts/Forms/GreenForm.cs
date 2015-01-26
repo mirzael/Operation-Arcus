@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GreenForm : Form {
+public class GreenForm : SecondaryForm {
 	public float empRadius;
 	public float empDuration;
 	public float sinAmplitude;
@@ -16,16 +16,32 @@ public class GreenForm : Form {
 	}
 	
 	public override void Fire() {
+		/*
 		GameObject[] gProj = new GameObject[3];
 		gProj[0] = (GameObject)Instantiate(projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, projectile.transform.rotation);
 		gProj[1] = (GameObject)Instantiate(projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, projectile.transform.rotation);
 		gProj[2] = (GameObject)Instantiate(projectile, transform.position + Vector3.up * PROJECTILE_DISTANCE, projectile.transform.rotation);
 		sinBullet(gProj[0].GetComponent<GreenWeapon>(), false);
 		sinBullet(gProj[1].GetComponent<GreenWeapon>(), true);
+		*/
+	}
+	
+	public override void Activate() {
+		isActive = true;
+		timeActive = timeActiveOrig;
+	}
+	
+	public void Update() {
+		if (!isActive) return;
+		timeActive -= Time.deltaTime;
+		if (timeActive <= 0.0f) {
+			isActive = false;
+		}
 	}
 	
 	public override bool TakeHit(Collision col) {
-		return true;
+		Destroy(col.gameObject);
+		return false;
 	}
 	
 	private void sinBullet(GreenWeapon weapon, bool isNegative) {

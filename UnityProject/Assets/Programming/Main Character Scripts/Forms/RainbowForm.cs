@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RainbowForm : Form {
+public class RainbowForm : PrimaryForm {
 	
 	public void Start() {
 		projectile.GetComponent<RainbowWeapon>().damage = damage;
@@ -21,6 +21,6 @@ public class RainbowForm : Form {
 	}
 	
 	public override bool TakeHit(Collision col) {
-		return true;
+		return false;
 	}
 }

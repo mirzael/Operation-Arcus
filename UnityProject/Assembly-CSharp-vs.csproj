@@ -80,9 +80,11 @@
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\Form.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\GreenForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\OrangeForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\PrimaryForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\PurpleForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\RainbowForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\RedForm.cs" />
+     <Compile Include="Assets\Programming\Main Character Scripts\Forms\SecondaryForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\Forms\YellowForm.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\MainCharacterDriver.cs" />
      <Compile Include="Assets\Programming\Main Character Scripts\RotatingList.cs" />

@@ -57,6 +57,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	private OrangeForm orangeForm;
 	private PurpleForm purpleForm;
 	private RainbowForm rainbowForm;
+	private bool isInSecondary = false;
 
 	public static float powerRed = 0.0f;
 	public static float powerBlue = 0.0f;
@@ -239,6 +240,11 @@ public class MainCharacterDriver : MonoBehaviour {
 				redForm.resetSpeed ();
 			}
 			return;
+		} else if (isInSecondary) {
+			if (((SecondaryForm)currentForm).isDeactivated()) {
+				switchForm(previousForm);
+				isInSecondary = false;
+			}
 		}
 		//Switch to Yellow Form
 		if (Input.GetButtonDown(inputYellow)) {
@@ -257,26 +263,32 @@ public class MainCharacterDriver : MonoBehaviour {
 			setRedPower(powerRed - TRANSFORM_AMOUNT);
 			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
 			switchForm (orangeForm);
-			uiDriver.UpdateBars ();
+			orangeForm.Activate();
+			uiDriver.UpdateBars();
+			isInSecondary = true;
 		//Switch to PURPLE FORM
 		} else if (Input.GetButtonDown(inputPurple) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
 			setRedPower(powerRed - TRANSFORM_AMOUNT);
 			setBluePower(powerBlue - TRANSFORM_AMOUNT);
 			switchForm (purpleForm);
-			uiDriver.UpdateBars ();
+			purpleForm.Activate();
+			uiDriver.UpdateBars();
+			isInSecondary = true;
 		//Switch to GREEN FORM
 		} else if (Input.GetButtonDown(inputGreen) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
 			setBluePower(powerBlue - TRANSFORM_AMOUNT);
 			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
 			switchForm (greenForm);
-			uiDriver.UpdateBars ();
+			greenForm.Activate();
+			uiDriver.UpdateBars();
+			isInSecondary = true;
 		} else if (Input.GetKeyDown(KeyCode.PageDown)) {
 			setRedPower(100);
 			setBluePower(100);
 			setYellowPower(100);
 			forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
 			forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
-			uiDriver.UpdateBars ();
+			uiDriver.UpdateBars();
 		}
 	}
 
@@ -319,7 +331,6 @@ public class MainCharacterDriver : MonoBehaviour {
 			audio.PlayOneShot(absorbSound);
 		}
 		
-		Destroy (col.gameObject);
 		if (yellowForm.atMaxPower() && blueForm.atMaxPower() && redForm.atMaxPower()) {
 			previousForm = currentForm;
 			switchForm(rainbowForm);
