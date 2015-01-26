@@ -16,8 +16,17 @@ public class MainCharacterDriver : MonoBehaviour {
 	public static int health = 100;
 	public bool gameOver = false;
 	bool pause = false;
-
-
+	
+	public string inputRed = "Red";
+	public string inputBlue = "Blue";
+	public string inputYellow = "Yellow";
+	public string inputGreen = "Green";
+	public string inputOrange = "Orange";
+	public string inputPurple = "Purple";
+	
+	public string inputHorizontal = "Horizontal";
+	public string inputVertical = "Vertical";
+	
 	/*These are the Forms of the ship
 	 *The forms comprise of
 	 *	- Projectile Cooldown
@@ -161,109 +170,113 @@ public class MainCharacterDriver : MonoBehaviour {
 	public void Update () {
 		if(Input.GetKeyDown(KeyCode.F)){
 			pause = !pause;
-		}
-		if (pause) {
-			Time.timeScale = 0;
-		} else {
-			Time.timeScale = 1;
-			if (gameOver)
-					return;
-			invulnCounter -= Time.deltaTime;
-
-			if (invulnCounter > 0) {
-				foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
-					obj.enabled = ! obj.enabled;
-				}
-			} else {
-				foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
-					obj.enabled = true;
-				}
-			}
-
-			//Get where to move given user input
-			float hspeed = Input.GetAxisRaw ("Horizontal") * -(Time.deltaTime);
-			float vspeed = Input.GetAxisRaw ("Vertical") * Time.deltaTime;
-
-			var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
-			Vector3 orig = transform.position;
-			transform.Translate (toMoveVector);
-
-			float posX = transform.position.x - transform.parent.position.x;
-			float posY = transform.position.y - transform.parent.position.y;
-			if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin) {
-				transform.position = orig;
-			}
-
-			//change the cooldown of the main weapon, as one frame has passed
-			currentCooldown -= Time.deltaTime;
-
-			//FIRE!!!
-			if (Input.GetKey (KeyCode.Space) && currentCooldown <= 0) {
-				currentCooldown = currentForm.getCooldown ();
-				Fire ();
-			}
-			if (currentForm.shipColor == ShipColor.RAINBOW) {
-				if (rainbowCooldown % 3 == 0) {
-					//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-					for (int i = 0; i < colorPieces.Length; i++) {
-						Color newColor = new Color (Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), 1.0f);
-						colorPieces [i].renderer.material.color = newColor;
-					}
-				}
-				rainbowCooldown = rainbowCooldown - 1;
-				if (rainbowCooldown <= 0) {
-					rainbowCooldown = 10;
-					setRedPower(powerRed - 1);
-					setBluePower(powerBlue - 1);
-					setYellowPower(powerYellow - 1);
-					uiDriver.UpdateBars ();
-				}
-				if (powerBlue <= 0) {
-					previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
-					switchForm (previousForm);
-					blueForm.resetCooldown ();
-					redForm.resetSpeed ();
-				}
+			
+			if (pause) {
+				Time.timeScale = 0;
 				return;
+			} else {
+				Time.timeScale = 1;
 			}
-			//Switch to Yellow Form
-			if (Input.GetButtonDown ("Yellow")) {
-				switchForm (yellowForm);
-				uiDriver.RotateToYellow();
-			//Switch to Blue Form
-			} else if (Input.GetButtonDown ("Blue")) {
-				switchForm (blueForm);
-				uiDriver.RotateToBlue();
-			//Switch to Red Form
-			} else if (Input.GetButtonDown("Red")) {
-				switchForm(redForm);
-				uiDriver.RotateToRed();
-			//Switch to ORANGE Form
-			} else if (Input.GetButtonDown ("Orange") && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-				setRedPower(powerRed - TRANSFORM_AMOUNT);
-				setYellowPower(powerYellow - TRANSFORM_AMOUNT);
-				switchForm (orangeForm);
-				uiDriver.UpdateBars ();
-			//Switch to PURPLE FORM
-			} else if (Input.GetButtonDown ("Purple") && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
-				setRedPower(powerRed - TRANSFORM_AMOUNT);
-				setBluePower(powerBlue - TRANSFORM_AMOUNT);
-				switchForm (purpleForm);
-				uiDriver.UpdateBars ();
-			//Switch to GREEN FORM
-			} else if (Input.GetButtonDown ("Green") && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-				setBluePower(powerBlue - TRANSFORM_AMOUNT);
-				setYellowPower(powerYellow - TRANSFORM_AMOUNT);
-				switchForm (greenForm);
-				uiDriver.UpdateBars ();
-			} else if (Input.GetKeyDown (KeyCode.PageDown)) {
-				setRedPower(100);
-				setBluePower(100);
-				setYellowPower(100);
-				forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
-				forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
+		}
+		if (gameOver) {
+			return;
+		}
+		
+		invulnCounter -= Time.deltaTime;
+		
+		if (invulnCounter > 0) {
+			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
+				obj.enabled = ! obj.enabled;
+			}
+		} else {
+			foreach (Renderer obj in GetComponentsInChildren<Renderer>()) {
+				obj.enabled = true;
+			}
+		}
+
+		//Get where to move given user input
+		float hspeed = Input.GetAxisRaw(inputHorizontal) * -(Time.deltaTime);
+		float vspeed = Input.GetAxisRaw(inputVertical) * Time.deltaTime;
+
+		var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
+		Vector3 orig = transform.position;
+		transform.Translate (toMoveVector);
+
+		float posX = transform.position.x - transform.parent.position.x;
+		float posY = transform.position.y - transform.parent.position.y;
+		if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin) {
+			transform.position = orig;
+		}
+
+		//change the cooldown of the main weapon, as one frame has passed
+		currentCooldown -= Time.deltaTime;
+
+		//FIRE!!!
+		if (Input.GetKey (KeyCode.Space) && currentCooldown <= 0) {
+			currentCooldown = currentForm.getCooldown ();
+			Fire ();
+		}
+		if (currentForm.shipColor == ShipColor.RAINBOW) {
+			if (rainbowCooldown % 3 == 0) {
+				//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+				for (int i = 0; i < colorPieces.Length; i++) {
+					Color newColor = new Color (Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), Random.Range (0.0f, 1.0f), 1.0f);
+					colorPieces [i].renderer.material.color = newColor;
+				}
+			}
+			rainbowCooldown = rainbowCooldown - 1;
+			if (rainbowCooldown <= 0) {
+				rainbowCooldown = 10;
+				setRedPower(powerRed - 1);
+				setBluePower(powerBlue - 1);
+				setYellowPower(powerYellow - 1);
 				uiDriver.UpdateBars ();
 			}
+			if (powerBlue <= 0) {
+				previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
+				switchForm (previousForm);
+				blueForm.resetCooldown ();
+				redForm.resetSpeed ();
+			}
+			return;
+		}
+		//Switch to Yellow Form
+		if (Input.GetButtonDown(inputYellow)) {
+			switchForm (yellowForm);
+			uiDriver.RotateToYellow();
+		//Switch to Blue Form
+		} else if (Input.GetButtonDown(inputBlue)) {
+			switchForm (blueForm);
+			uiDriver.RotateToBlue();
+		//Switch to Red Form
+		} else if (Input.GetButtonDown(inputRed)) {
+			switchForm(redForm);
+			uiDriver.RotateToRed();
+		//Switch to ORANGE Form
+		} else if (Input.GetButtonDown(inputOrange) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			setRedPower(powerRed - TRANSFORM_AMOUNT);
+			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+			switchForm (orangeForm);
+			uiDriver.UpdateBars ();
+		//Switch to PURPLE FORM
+		} else if (Input.GetButtonDown(inputPurple) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
+			setRedPower(powerRed - TRANSFORM_AMOUNT);
+			setBluePower(powerBlue - TRANSFORM_AMOUNT);
+			switchForm (purpleForm);
+			uiDriver.UpdateBars ();
+		//Switch to GREEN FORM
+		} else if (Input.GetButtonDown(inputGreen) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
+			setBluePower(powerBlue - TRANSFORM_AMOUNT);
+			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+			switchForm (greenForm);
+			uiDriver.UpdateBars ();
+		} else if (Input.GetKeyDown(KeyCode.PageDown)) {
+			setRedPower(100);
+			setBluePower(100);
+			setYellowPower(100);
+			forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
+			forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
+			uiDriver.UpdateBars ();
 		}
 	}
 
