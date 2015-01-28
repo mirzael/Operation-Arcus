@@ -295,7 +295,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	public void OnCollisionEnter(Collision col) {
 		
 		// Form.TakeHit() returns true if the bullet cannot be absorbed, else it returns false
-		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || currentForm.TakeHit(col)) {
+		if (/*col.gameObject.layer == LayerMask.NameToLayer("Enemy") ||*/ currentForm.TakeHit(col)) {
 			
 			// Only handle hit if not invulnerable
 			if (invulnCounter <= 0) {
@@ -305,11 +305,12 @@ public class MainCharacterDriver : MonoBehaviour {
 				audio.PlayOneShot(bumpSound);
 				
 				// If in a secondary form, switch back to the previous form
-				if (currentForm.shipColor == ShipColor.PURPLE || currentForm.shipColor == ShipColor.ORANGE || currentForm.shipColor == ShipColor.GREEN) {
+				/*if (currentForm.shipColor == ShipColor.PURPLE || currentForm.shipColor == ShipColor.ORANGE || currentForm.shipColor == ShipColor.GREEN) {
 					switchForm(previousForm);
 				
 				// Only take damage if not in rainbow mode
-				} else if (currentForm.shipColor != ShipColor.RAINBOW) {
+				} else */
+				if (currentForm.shipColor != ShipColor.RAINBOW) {
 					health -= 10;
 					if (health < 0) {
 						if (gameOver) return;
