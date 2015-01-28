@@ -40,7 +40,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	//Arcus Animator
 	Animator anim;
 
-	public const float TRANSFORM_AMOUNT = 50f;
+	public const float TRANSFORM_AMOUNT = 100f;
 	private const float ALPHA_PER_SEC = 0.1f;
 	static bool lostGame;
 
@@ -146,7 +146,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		switchForm (currentForm);
 		
-		uiDriver = GameObject.Find("UI Camera").GetComponent<UIDriver>();
+		uiDriver = Camera.main.GetComponent<UIDriver>();
 
 		if (currentForm.shipColor == ShipColor.BLUE) {
 			uiDriver.RotateToBlue();
