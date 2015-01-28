@@ -12,11 +12,13 @@ public class DrawLives : MonoBehaviour {
 	MainCharacterDriver driver;
 
 	private Vector3 origHealthBar;
+	public Renderer[] healthPortions;
 
 	// Use this for initialization
 	void Start () {
 		driver = (MainCharacterDriver)GetComponentInChildren (typeof(MainCharacterDriver));
 		origHealthBar = innerHealthBar.transform.localScale;
+		healthPortions = innerHealthBar.GetComponentsInChildren<Renderer> ();
 	}
 
 	// Update is called once per frame
@@ -26,7 +28,15 @@ public class DrawLives : MonoBehaviour {
 
 	void Update(){
 		if (driver.health > 0) {
-			ShiftAndScale (innerHealthBar, origHealthBar, new Vector3 (driver.health / 100f, 1, 1));
+			UpdateHealth ();
+		}
+	}
+
+	private void UpdateHealth(){
+		for (int i = healthPortions.Length; i > driver.health/10; i--) {
+			var tmp = healthPortions[10-i].material.color;
+			tmp.a = 0;
+			healthPortions[10-i].material.color = tmp;
 		}
 	}
 

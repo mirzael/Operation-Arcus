@@ -9,19 +9,11 @@ public class UIDriver : MonoBehaviour {
 	public GameObject powerLeft;
 	public GameObject powerRight;
 	
-	public GameObject secondaryCenter;
-	public GameObject secondaryLeft;
-	public GameObject secondaryRight;
-	
 	private int currentColor; // 1 = red; 2 = blue; 3 = yellow;
 	
-	public Material[] successScreens;
-	public Material[] backgrounds;
-	
-	public Material darkOrange, brightOrange;
-	public Material darkPurple, brightPurple;
-	public Material darkGreen, brightGreen;
-	
+	public Material successScreen;
+	public Material background;
+
 	private Vector3 origScaleCenter;
 	private Vector3 origScaleLeft;
 	private Vector3 origScaleRight;
@@ -35,7 +27,10 @@ public class UIDriver : MonoBehaviour {
 	public GameObject introSound;
 
 	PointMaster points;
-	private Camera myCamera;
+
+	public Color Orange;
+	public Color Purple;
+	public Color Green;
 
 	public GameObject primaryRing;
 	public GameObject secondaryRing1;
@@ -49,9 +44,7 @@ public class UIDriver : MonoBehaviour {
 		showingWinLose = false;
 		win = false;
 		
-		myCamera = transform.Find("Camera").camera;
-		
-		GameObject.Find("Background").renderer.material = backgrounds[GameObject.Find("WaveSpawner").GetComponent<Spawner>().level - 1];
+		GameObject.Find("Background").renderer.material = background;
 		
 		currentColor = 1;
 		
@@ -87,9 +80,8 @@ public class UIDriver : MonoBehaviour {
 					return;
 				}
 				
-				GameObject.Find("Background").renderer.material = backgrounds[spawner.level - 1];
+				GameObject.Find("Background").renderer.material = background;
 				winScreen.SetActive(false);
-				myCamera.enabled = true;
 
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 				driver.gameOver = false;
@@ -122,11 +114,6 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
 
-			var rTmp = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = tmp;
-
 		} else if (currentColor == 3) {
 			var tmp = barLeft.renderer.material;
 			barLeft.renderer.material = barRight.renderer.material;
@@ -137,11 +124,6 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
-
-			var rTmp = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 2;
@@ -160,11 +142,6 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
 
-			var rTmp = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = rTmp;
-
 		} else if (currentColor == 3) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
@@ -175,11 +152,6 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerLeft.renderer.material;
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
-
-			var rTmp = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 1;
@@ -197,12 +169,6 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
-
-			var rTmp = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = rTmp;
-
 		} else if (currentColor == 2) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
@@ -214,10 +180,6 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
 
-			var rTmp = secondaryRing2.renderer.material;
-			secondaryRing2.renderer.material = secondaryRing1.renderer.material;
-			secondaryRing1.renderer.material = primaryRing.renderer.material;
-			primaryRing.renderer.material = rTmp;
 		}
 
 		currentColor = 3;
@@ -262,21 +224,74 @@ public class UIDriver : MonoBehaviour {
 		
 		float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
 		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
-			secondaryCenter.renderer.material = brightPurple;
-		} else {
-			secondaryCenter.renderer.material = darkPurple;
+			if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
+					primaryRing.renderer.material.color = Purple;
+			} else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
+					secondaryRing1.renderer.material.color = Purple;
+			} else {
+					secondaryRing2.renderer.material.color = Purple;
+			}
+		}else{
+			if(primaryRing.renderer.material.color == Purple){
+				var tmp = primaryRing.renderer.material.color;
+				tmp.a = 0;
+				primaryRing.renderer.material.color = tmp;
+			} else if(secondaryRing1.renderer.material.color == Purple){
+				var tmp = secondaryRing1.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing1.renderer.material.color = tmp;
+			} else if(secondaryRing2.renderer.material.color == Purple){
+				var tmp = secondaryRing2.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing2.renderer.material.color = tmp;
+			}
 		}
 		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerYellow >= transformAmount) {
-			secondaryLeft.renderer.material = brightOrange;
-		} else {
-			secondaryLeft.renderer.material = darkOrange;
+			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
+				primaryRing.renderer.material.color = Orange;
+			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
+				secondaryRing1.renderer.material.color = Orange;
+			} else {
+				secondaryRing2.renderer.material.color = Orange;
+			}
+		}else{
+			if(primaryRing.renderer.material.color == Orange){
+				var tmp = primaryRing.renderer.material.color;
+				tmp.a = 0;
+				primaryRing.renderer.material.color = tmp;
+			} else if(secondaryRing1.renderer.material.color == Orange){
+				var tmp = secondaryRing1.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing1.renderer.material.color = tmp;
+			} else if(secondaryRing2.renderer.material.color == Orange){
+				var tmp = secondaryRing2.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing2.renderer.material.color = tmp;
+			}
 		}
 		if (MainCharacterDriver.powerYellow >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
-			secondaryRight.renderer.material = brightGreen;
-		} else {
-			secondaryRight.renderer.material = darkGreen;
+			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){
+				primaryRing.renderer.material.color = Green;
+			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){
+				secondaryRing1.renderer.material.color = Green;
+			} else {
+				secondaryRing2.renderer.material.color = Green;
+			}
+		}else{
+			if(primaryRing.renderer.material.color == Green){
+				var tmp = primaryRing.renderer.material.color;
+				tmp.a = 0;
+				primaryRing.renderer.material.color = tmp;
+			} else if(secondaryRing1.renderer.material.color == Green){
+				var tmp = secondaryRing1.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing1.renderer.material.color = tmp;
+			} else if(secondaryRing2.renderer.material.color == Green){
+				var tmp = secondaryRing2.renderer.material.color;
+				tmp.a = 0;
+				secondaryRing2.renderer.material.color = tmp;
+			}
 		}
-		
 	}
 	
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
@@ -299,17 +314,14 @@ public class UIDriver : MonoBehaviour {
 	public void ShowWinScreen() {
 		introSound.audio.Stop();
 		points.enabled = false;
-		int level = GameObject.Find("WaveSpawner").GetComponent<Spawner>().level;
+		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
+		int level = spawner.level;
 		winScreen.SetActive(true);
-		myCamera.enabled = false;
-		
-		if (level <= Spawner.MAX_LEVELS) {
-			winScreen.renderer.material = successScreens[level - 1];
-			if (level == successScreens.Length)
-			{
-				introSound.audio.Stop();
-				audio.PlayOneShot (winSound);
-			}
+
+		winScreen.renderer.material = successScreen;
+		if (spawner.lastLevel) {
+			introSound.audio.Stop ();
+			audio.PlayOneShot (winSound);
 		}
 		showingWinLose = true;
 		win = true;
@@ -323,7 +335,6 @@ public class UIDriver : MonoBehaviour {
 		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
-		myCamera.enabled = false;
 		showingWinLose = true;
 		win = false;
 	}
