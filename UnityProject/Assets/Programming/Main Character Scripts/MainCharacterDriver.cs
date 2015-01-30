@@ -63,10 +63,10 @@ public class MainCharacterDriver : MonoBehaviour {
 	public static float powerBlue = 0.0f;
 	public static float powerYellow = 0.0f;
 
-	public float shipXMin = -10.25f;
-	public float shipXMax = 10.25f;
-	public float shipYMin = -12.0f;
-	public float shipYMax = 19.0f;
+	private float shipXMin;
+	private float shipXMax;
+	private float shipYMin;
+	private float shipYMax;
 
 	public UIDriver uiDriver;
 
@@ -159,6 +159,25 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
 		lostGame = false;
+
+		//Get the distance from the ship to the camera
+		float z = Mathf.Abs(transform.position.z);
+		var tmp = transform;
+		while (tmp.parent != null) {
+			tmp = tmp.parent;
+			z += Mathf.Abs(tmp.position.z);
+		}
+
+		//Max an min points of the screen at the ship distance from the camera
+		Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
+		Vector3 wrldMin = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, z));
+		Debug.Log (wrldMin);
+		Debug.Log (wrldMax);
+
+		shipXMax = wrldMax.x;
+		shipYMax = wrldMax.y;
+		shipXMin = wrldMin.x;
+		shipYMin = wrldMin.y;
 	}
 
 	void OnGUI(){
@@ -205,6 +224,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 		float posX = transform.position.x - transform.parent.position.x;
 		float posY = transform.position.y - transform.parent.position.y;
+
 		if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin) {
 			transform.position = orig;
 		}

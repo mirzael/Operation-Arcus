@@ -1440,10 +1440,6 @@ MonoBehaviour:
   inputPurple: Purple
   inputHorizontal: Horizontal
   inputVertical: Vertical
-  shipXMin: -10.25
-  shipXMax: 10.25
-  shipYMin: -12
-  shipYMax: 19
   uiDriver: {fileID: 0}
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
@@ -3845,6 +3841,22 @@ Prefab:
     - target: {fileID: 11493092, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
       propertyPath: prefabSize
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
+      propertyPath: shipXMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
+      propertyPath: shipXMax
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
+      propertyPath: shipYMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
+      propertyPath: shipYMax
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94d41ca114c07a64f9f885b6e39cfae7, type: 2}
@@ -9919,9 +9931,9 @@ MonoBehaviour:
   loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
   winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
   introSound: {fileID: 2123052104}
-  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 0}
-  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 0}
-  Green: {r: .0758621693, g: 1, b: 0, a: 0}
+  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
+  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
+  Green: {r: .0758621693, g: 1, b: 0, a: 1}
   primaryRing: {fileID: 979713676}
   secondaryRing1: {fileID: 278572333}
   secondaryRing2: {fileID: 1877209474}
