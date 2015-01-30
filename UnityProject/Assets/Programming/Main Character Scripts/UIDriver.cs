@@ -315,7 +315,6 @@ public class UIDriver : MonoBehaviour {
 		introSound.audio.Stop();
 		points.enabled = false;
 		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
-		int level = spawner.level;
 		winScreen.SetActive(true);
 
 		winScreen.renderer.material = successScreen;

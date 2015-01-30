@@ -25,7 +25,7 @@ public class Disabler : MonoBehaviour {
 			rigidbody.isKinematic = false;
 			rigidbody.velocity = initVelocity;
 			movement.enabled = true;
-			shooting.enabled = true;
+			shooting.bulletWave.enabled = true;
 			Destroy (this);
 		}
 	}

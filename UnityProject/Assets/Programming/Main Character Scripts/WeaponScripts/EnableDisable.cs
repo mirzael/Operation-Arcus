@@ -20,6 +20,7 @@ public class EnableDisable : MonoBehaviour {
 		int layerMask = 1 << 8;
 		//Add the disabler script - enemy can't move or shoot
 		foreach(Collider collider in Physics.OverlapSphere(transform.position, sphereRadius, layerMask)){
+			Debug.Log("HIT OBJECT");
 			if(collider.gameObject.GetComponent<Disabler>() == null){
 				var dis = collider.gameObject.AddComponent<Disabler>();
 				dis.disabledTime = empDuration;

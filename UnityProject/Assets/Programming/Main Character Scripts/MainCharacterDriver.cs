@@ -247,15 +247,15 @@ public class MainCharacterDriver : MonoBehaviour {
 			}
 		}
 		//Switch to Yellow Form
-		if (Input.GetButtonDown(inputYellow)) {
+		if (Input.GetButtonDown(inputYellow) && !isInSecondary) {
 			switchForm (yellowForm);
 			uiDriver.RotateToYellow();
 		//Switch to Blue Form
-		} else if (Input.GetButtonDown(inputBlue)) {
+		} else if (Input.GetButtonDown(inputBlue) && !isInSecondary) {
 			switchForm (blueForm);
 			uiDriver.RotateToBlue();
 		//Switch to Red Form
-		} else if (Input.GetButtonDown(inputRed)) {
+		} else if (Input.GetButtonDown(inputRed) && !isInSecondary) {
 			switchForm(redForm);
 			uiDriver.RotateToRed();
 		//Switch to ORANGE Form
