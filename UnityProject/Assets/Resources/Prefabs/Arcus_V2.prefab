@@ -9036,12 +9036,15 @@ MonoBehaviour:
   invulnTime: 1
   invulnCounter: 0
   prevAlpha: 1
-  health: 100
   gameOver: 0
-  shipXMin: -10.25
-  shipXMax: 10.25
-  shipYMin: -12
-  shipYMax: 19
+  inputRed: Red
+  inputBlue: Blue
+  inputYellow: Yellow
+  inputGreen: Green
+  inputOrange: Orange
+  inputPurple: Purple
+  inputHorizontal: Horizontal
+  inputVertical: Vertical
   uiDriver: {fileID: 0}
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
@@ -9138,9 +9141,11 @@ MonoBehaviour:
   shipColor: 4
   animationNum: 6
   power: 0
-  empRadius: 20
-  empDuration: 1
+  empRadius: 35
+  empDuration: 6
   sinAmplitude: 2.5
+  empBlastPrefab: {fileID: 100000, guid: 4f4fa03f38eb4c4408cbb3a1e323904f, type: 2}
+  prefabSize: 4
 --- !u!114 &11493094
 MonoBehaviour:
   m_ObjectHideFlags: 1
