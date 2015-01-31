@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Threading;
 using MainCharacter;
+using InControl;
 
 public class MainCharacterDriver : MonoBehaviour {
 	GameObject[] colorPieces;
@@ -214,29 +215,21 @@ public class MainCharacterDriver : MonoBehaviour {
 			}
 		}
 
+        //Get the most recent input device from incontrol
+        //Keyboard controls can be represented as an InputDevice using a CustomController
+        var inputDevice = InputManager.ActiveDevice;
+
 		//Get where to move given user input
-		float hspeed = Input.GetAxisRaw(inputHorizontal) * -(Time.deltaTime);
-		float vspeed = Input.GetAxisRaw(inputVertical) * Time.deltaTime;
-
-		var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
-		Vector3 orig = transform.position;
-		transform.Translate (toMoveVector);
-
-		float posX = transform.position.x - transform.parent.position.x;
-		float posY = transform.position.y - transform.parent.position.y;
-
-		if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin) {
-			transform.position = orig;
-		}
+        PressMove(Input.GetAxisRaw(inputHorizontal),Input.GetAxisRaw(inputVertical));
+        PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (Input.GetKey (KeyCode.Space) && currentCooldown <= 0) {
-			currentCooldown = currentForm.getCooldown ();
-			Fire ();
-		}
+		if (Input.GetKey (KeyCode.Space) || inputDevice.Action1) {
+            PressFire();
+        }
 		if (currentForm.shipColor == ShipColor.RAINBOW) {
 			if (rainbowCooldown % 3 == 0) {
 				//Color newColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
@@ -266,43 +259,25 @@ public class MainCharacterDriver : MonoBehaviour {
 				isInSecondary = false;
 			}
 		}
-		//Switch to Yellow Form
-		if (Input.GetButtonDown(inputYellow) && !isInSecondary) {
-			switchForm (yellowForm);
-			uiDriver.RotateToYellow();
-		//Switch to Blue Form
-		} else if (Input.GetButtonDown(inputBlue) && !isInSecondary) {
-			switchForm (blueForm);
-			uiDriver.RotateToBlue();
-		//Switch to Red Form
-		} else if (Input.GetButtonDown(inputRed) && !isInSecondary) {
-			switchForm(redForm);
-			uiDriver.RotateToRed();
-		//Switch to ORANGE Form
-		} else if (Input.GetButtonDown(inputOrange) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-			setRedPower(powerRed - TRANSFORM_AMOUNT);
-			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
-			switchForm (orangeForm);
-			orangeForm.Activate();
-			uiDriver.UpdateBars();
-			isInSecondary = true;
-		//Switch to PURPLE FORM
-		} else if (Input.GetButtonDown(inputPurple) && powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT) {
-			setRedPower(powerRed - TRANSFORM_AMOUNT);
-			setBluePower(powerBlue - TRANSFORM_AMOUNT);
-			switchForm (purpleForm);
-			purpleForm.Activate();
-			uiDriver.UpdateBars();
-			isInSecondary = true;
-		//Switch to GREEN FORM
-		} else if (Input.GetButtonDown(inputGreen) && powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT) {
-			setBluePower(powerBlue - TRANSFORM_AMOUNT);
-			setYellowPower(powerYellow - TRANSFORM_AMOUNT);
-			switchForm (greenForm);
-			greenForm.Activate();
-			uiDriver.UpdateBars();
-			isInSecondary = true;
-		} else if (Input.GetKeyDown(KeyCode.PageDown)) {
+
+        //Take input
+        //For multiplayer these will need to be exclusive, but for now both can move ship
+        if (Input.GetButtonDown(inputYellow) || inputDevice.Action4)
+        {
+            PressYellow();		
+		} else if (Input.GetButtonDown(inputBlue) || inputDevice.Action3) {
+            PressBlue();		
+		} else if (Input.GetButtonDown(inputRed) || inputDevice.Action2) {
+            PressRed();		
+		} else if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper) {
+            PressOrange();		
+		} else if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger) {
+            PressPurple();		
+		} else if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper) {
+            PressGreen();
+        }
+        else if (Input.GetKeyDown(KeyCode.PageDown))
+        {
 			setRedPower(100);
 			setBluePower(100);
 			setYellowPower(100);
@@ -311,6 +286,106 @@ public class MainCharacterDriver : MonoBehaviour {
 			uiDriver.UpdateBars();
 		}
 	}
+
+    public void PressMove(float horizontal, float vertical)
+    {
+        float hspeed = horizontal * -(Time.deltaTime);
+        float vspeed = vertical * Time.deltaTime;
+
+        var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
+        Vector3 orig = transform.position;
+        transform.Translate(toMoveVector);
+
+        float posX = transform.position.x - transform.parent.position.x;
+        float posY = transform.position.y - transform.parent.position.y;
+
+        if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
+        {
+            transform.position = orig;
+        }
+    }
+
+    public void PressFire()
+    {
+        //FIRE!!!
+        if (currentCooldown <= 0)
+        {
+            currentCooldown = currentForm.getCooldown();
+            Fire();
+        }
+    }
+
+    //Switch to Yellow Form
+    public void PressYellow()
+    {
+        if (!isInSecondary)
+        {
+            switchForm(yellowForm);
+            uiDriver.RotateToYellow();
+        }
+    }
+
+    //Switch to Red Form
+    public void PressRed()
+    {
+        if (!isInSecondary)
+        {
+            switchForm(redForm);
+            uiDriver.RotateToRed();
+        }
+    }
+
+    //Switch to Blue Form
+    public void PressBlue()
+    {
+        if (!isInSecondary)
+        {
+            switchForm(blueForm);
+            uiDriver.RotateToBlue();
+        }
+    }
+
+    //Switch to PURPLE FORM
+    public void PressPurple()
+    {
+        if (powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT)
+        {
+            setRedPower(powerRed - TRANSFORM_AMOUNT);
+            setBluePower(powerBlue - TRANSFORM_AMOUNT);
+            switchForm(purpleForm);
+            purpleForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
+        }
+    }
+
+    //Switch to GREEN FORM
+    public void PressGreen()
+    {
+        if (powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT)
+        {
+            setBluePower(powerBlue - TRANSFORM_AMOUNT);
+            setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+            switchForm(greenForm);
+            greenForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
+        }
+    }
+
+    //Switch to ORANGE Form
+    public void PressOrange()
+    {
+        if (Input.GetButtonDown(inputOrange) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT)
+        {
+            setRedPower(powerRed - TRANSFORM_AMOUNT);
+            setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+            switchForm(orangeForm);
+            orangeForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
+        }
+    }
 
 	public void OnCollisionEnter(Collision col) {
 		

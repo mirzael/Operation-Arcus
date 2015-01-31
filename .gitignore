@@ -53,14 +53,16 @@ Library/
 # ===================================== #
 ExportedObj/
 obj/
+obj.meta
 bin/
 bin.meta
 *.svd
 *.userprefs
-/*.csproj*
+*.csproj*
 *.pidb
 *.suo
-/*.sln*
+*.sln*
+*.sln*
 *.user
 *.unityproj
 *.booproj
