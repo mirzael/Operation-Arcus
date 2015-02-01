@@ -9190,7 +9190,7 @@ MonoBehaviour:
   projectileSpeed: 100
   originalSpeed: 100
   material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-  formSpeed: 20
+  formSpeed: 40
   shipColor: 5
   animationNum: 4
   power: 0

@@ -3,6 +3,25 @@ using MainCharacter;
 using System.Collections;
 
 public class OrangeWeapon : MonoBehaviour {
+	
+	public void Start() {
+		moveSpeed = 5;
+	}
+	
+	public void OnCollisionEnter(Collision col) {
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy Bullet")) {
+			col.gameObject.rigidbody.velocity *= -2;
+			// move the bullet away a bit
+			col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			// make sure the bullet disappears at some point
+			Destroy(col.gameObject, 3);
+		}
+	}
+	
+	public void Update() {
+		transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
+	}
+	
 	Transform shape;
 	Transform target;
 
@@ -17,6 +36,7 @@ public class OrangeWeapon : MonoBehaviour {
 	GameObject explosion;
 	Material wellBlast;
 
+	/*
 	// Use this for initialization
 	void Start () {
 		orangeBlast = (GameObject)Resources.Load ("Prefabs/OrangeExplosion", typeof(GameObject));
@@ -105,5 +125,5 @@ public class OrangeWeapon : MonoBehaviour {
 			Destroy (sphere, duration);
 		}
 		Destroy(gameObject);
-	}
+	}*/
 }

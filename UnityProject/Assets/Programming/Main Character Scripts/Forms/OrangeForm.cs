@@ -27,7 +27,14 @@ public class OrangeForm : SecondaryForm {
 	public override void Activate() {
 		isActive = true;
 		timeActive = timeActiveOrig;
-		gameObject.GetComponent<SphereCollider>().radius *= 3;
+		GameObject reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		reflectBall.transform.localScale = new Vector3(5, 5, 5);
+		reflectBall.renderer.material.color = new Color(1, 0.5f, 0);
+		reflectBall.transform.position = transform.position;
+		Rigidbody rb = reflectBall.AddComponent<Rigidbody>();
+		rb.isKinematic = true;
+		reflectBall.AddComponent<OrangeWeapon>();
+		Destroy(reflectBall, timeActiveOrig);
 	}
 	
 	public void Update() {
@@ -35,22 +42,10 @@ public class OrangeForm : SecondaryForm {
 		timeActive -= Time.deltaTime;
 		if (timeActive <= 0.0f) {
 			isActive = false;
-			gameObject.GetComponent<SphereCollider>().radius /= 3;
 		}
 	}
 	
 	public override bool TakeHit(Collision col) {
-		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy Bullet")) {
-			col.gameObject.rigidbody.velocity *= -2;
-			// move the bullet away a bit
-			col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
-			// make sure the bullet disappears at some point
-			Destroy(col.gameObject, 3);
-		} else if (col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-			Destroy(col.gameObject);
-			return true;
-		}
-		
 		return false;
 	}
 }

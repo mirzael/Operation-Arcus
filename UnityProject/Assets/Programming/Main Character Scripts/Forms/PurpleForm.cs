@@ -7,7 +7,7 @@ public class PurpleForm : SecondaryForm {
 	public GameObject mirv;
 	
 	public void Start() {
-		MoveProjectile moveScript = projectile.GetComponent<MoveProjectile>();
+		/*MoveProjectile moveScript = projectile.GetComponent<MoveProjectile>();
 		moveScript.projectileSpeed = projectileSpeed;
 		
 		PurpleWeapon mirvStuff = projectile.GetComponent<PurpleWeapon>();
@@ -15,7 +15,7 @@ public class PurpleForm : SecondaryForm {
 		mirvStuff.bulletSpeed = projectileSpeed;
 		mirvStuff.timeBeforeExplosion = timeBeforeExplosion;
 		mirvStuff.damage = damage;
-		mirvStuff.explosionSize = explosionSize;
+		mirvStuff.explosionSize = explosionSize;*/
 	}
 	
 	public override void Fire() {
@@ -30,6 +30,7 @@ public class PurpleForm : SecondaryForm {
 	public override void Activate() {
 		isActive = true;
 		timeActive = timeActiveOrig;
+		gameObject.GetComponent<SphereCollider>().radius *= 3;
 	}
 	
 	public void Update() {
@@ -37,10 +38,26 @@ public class PurpleForm : SecondaryForm {
 		timeActive -= Time.deltaTime;
 		if (timeActive <= 0.0f) {
 			isActive = false;
+			gameObject.GetComponent<SphereCollider>().radius /= 3;
 		}
 	}
 	
 	public override bool TakeHit(Collision col) {
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy Bullet")) {
+			col.gameObject.rigidbody.velocity *= -2;
+			// move the bullet away a bit
+			col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			// make sure the bullet disappears at some point
+			Destroy(col.gameObject, 3);
+		} else if (col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			Destroy(col.gameObject.GetComponent<EnemyMovement>());
+			col.gameObject.rigidbody.velocity *= -2;
+			// move the enemy away a bit
+			//col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			// make sure the enemy disappears at some point
+			Destroy(col.gameObject, 3);
+		}
+		
 		return false;
 	}
 }
