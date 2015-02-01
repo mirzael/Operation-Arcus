@@ -14,12 +14,32 @@ public class TutorialSpawner : MonoBehaviour
         //GameObjects in the scene to turn on
         public GameObject textMessage;
         public GameObject enemyToSpawn;
+        public float timeToNext = -1;
     }
 
     public List<TutorialSegment> segments;
 
     //After timeToNext time, go to next segment
-    protected float timeToNext = 6f;
+    protected float timeToNext
+    {
+        get
+        {
+            float defaultF = 6f;
+            if(curSegment<0 || curSegment >= segments.Count)
+            {
+                return defaultF;
+            }
+            float time = segments[curSegment].timeToNext;
+            if(time==-1)
+            {
+                return defaultF;
+            }
+            else
+            {
+                return time;
+            }
+        }
+    }
     protected float timeSoFar = 0.0f;
 
     protected int curSegment = -1;
@@ -56,11 +76,13 @@ public class TutorialSpawner : MonoBehaviour
         {
             GameObject.Destroy(curTextMessage);
         }
+
         //increase our segment
         curSegment += 1;
         if(curSegment>=segments.Count)
         {
             //we're done, probably do stuff
+            Application.LoadLevel(Application.loadedLevel + 1);
             return;
         }
 
