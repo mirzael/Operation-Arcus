@@ -82,7 +82,6 @@ public class TutorialSpawner : MonoBehaviour
         if(curSegment>=segments.Count)
         {
             //we're done, probably do stuff
-            Application.LoadLevel(Application.loadedLevel + 1);
             return;
         }
 
