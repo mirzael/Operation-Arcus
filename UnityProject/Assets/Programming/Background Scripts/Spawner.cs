@@ -19,6 +19,10 @@ public class Spawner : MonoBehaviour {
 	public const int MAX_LEVELS = 3;
 	public bool lastLevel = false;
 
+	void OnGUI () {
+		GUI.Label (new Rect (0,0,100,50), levelTimeCounter.ToString());
+	}
+
 	// Use this for initialization
 	public void Start () {
 		levelTimeCounter = 0;
