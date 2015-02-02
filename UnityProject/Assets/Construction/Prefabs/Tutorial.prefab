@@ -246,7 +246,7 @@ MonoBehaviour:
   - voiceOver: {fileID: 8300000, guid: 773a9f15e75a40340a0fc84cd8665607, type: 3}
     textMessage: {fileID: 144910}
     enemyToSpawn: {fileID: 0}
-    timeToNext: -1
+    timeToNext: 3
   - voiceOver: {fileID: 8300000, guid: 638d73dd5d33287448aaea25925bb9a6, type: 3}
     textMessage: {fileID: 126606}
     enemyToSpawn: {fileID: 0}

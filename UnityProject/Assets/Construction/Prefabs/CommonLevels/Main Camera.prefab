@@ -9435,8 +9435,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .0780000016
-  m_Center: {x: 0, y: .0350000001, z: 0}
+  m_Radius: .0599999987
+  m_Center: {x: 0, y: .0399999991, z: -.00999999978}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
