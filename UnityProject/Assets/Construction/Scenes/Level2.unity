@@ -692,6 +692,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 7.38042545
       objectReference: {fileID: 0}
+    - target: {fileID: 8214440, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 30fbc3b5570617744a5611ce604e41bc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
   m_RootGameObject: {fileID: 1051093918}
@@ -6044,7 +6048,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 0e6e9a3343c2c4845868d3a4b5bc4b1b, type: 2}
   - {fileID: 100000, guid: 37ba6355ee4010744899000586e5e42e, type: 2}
   spawnRate: 1
-  nextSceneName: Credits
   level: 2
   lastLevel: 0
 --- !u!23 &1215482626
@@ -10872,7 +10875,7 @@ AudioSource:
   m_GameObject: {fileID: 2123052104}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 359dff8caeaa97b40a5ce5dc21f77ae8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 30fbc3b5570617744a5611ce604e41bc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
