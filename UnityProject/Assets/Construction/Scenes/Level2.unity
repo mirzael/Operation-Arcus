@@ -694,7 +694,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
-  m_RootGameObject: {fileID: 569828995}
+  m_RootGameObject: {fileID: 1051093918}
   m_IsPrefabParent: 0
   m_IsExploded: 1
 --- !u!1 &185331448
@@ -1512,8 +1512,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .0780000016
-  m_Center: {x: 0, y: .0350000001, z: 0}
+  m_Radius: .0599999987
+  m_Center: {x: 0, y: .0399999991, z: -.00999999978}
 --- !u!82 &238384794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3317,7 +3317,7 @@ GameObject:
   - 64: {fileID: 569828997}
   - 23: {fileID: 569828996}
   m_Layer: 0
-  m_Name: DimmerMusic
+  m_Name: Dimmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3374,12 +3374,10 @@ Transform:
   m_GameObject: {fileID: 569828995}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
   m_LocalPosition: {x: 0, y: 0, z: 49}
-  m_LocalScale: {x: 7.38042545, y: 1, z: 8.5}
-  m_Children:
-  - {fileID: 1757385104}
-  - {fileID: 2123052106}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_LocalScale: {x: 7.38042545, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1051093919}
+  m_RootOrder: 3
 --- !u!1 &570981393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,6 +4439,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1081711161}
   m_GameObject: {fileID: 872892608}
   m_Mesh: {fileID: 4300018, guid: 365d4c541d80f9843902f34b80431cb9, type: 3}
+--- !u!1 &877418978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 139042, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 173684323}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 877418979}
+  - 114: {fileID: 877418980}
+  m_Layer: 0
+  m_Name: InControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &877418979
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 439042, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 173684323}
+  m_GameObject: {fileID: 877418978}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalPosition: {x: 0, y: 49, z: 0}
+  m_LocalScale: {x: .200000003, y: .117647029, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1051093919}
+  m_RootOrder: 2
+--- !u!114 &877418980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11439042, guid: 4c9545179d7133f4ba2fb9e97de4d6c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 173684323}
+  m_GameObject: {fileID: 877418978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logDebugInfo: 0
+  invertYAxis: 0
+  enableXInput: 0
+  useFixedUpdate: 0
+  dontDestroyOnLoad: 0
+  customProfiles: []
 --- !u!1 &887870820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,6 +5176,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1969574481}
   m_RootOrder: 0
+--- !u!1 &1051093918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 135172, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 173684323}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1051093919}
+  m_Layer: 0
+  m_Name: DimmerMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051093919
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 435172, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 173684323}
+  m_GameObject: {fileID: 1051093918}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalPosition: {x: 0, y: 0, z: 49}
+  m_LocalScale: {x: 5, y: 1, z: 8.5}
+  m_Children:
+  - {fileID: 1757385104}
+  - {fileID: 2123052106}
+  - {fileID: 877418979}
+  - {fileID: 569828999}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1052149978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,7 +5694,7 @@ Transform:
   - {fileID: 214688146}
   - {fileID: 267522516}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &1126901747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,7 +6044,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 0e6e9a3343c2c4845868d3a4b5bc4b1b, type: 2}
   - {fileID: 100000, guid: 37ba6355ee4010744899000586e5e42e, type: 2}
   spawnRate: 1
-  nextSceneName: Level2
+  nextSceneName: Credits
   level: 2
   lastLevel: 0
 --- !u!23 &1215482626
@@ -6397,6 +6472,10 @@ Prefab:
       propertyPath: enemyToSpawn.Array.data[8]
       value: 
       objectReference: {fileID: 100000, guid: 37ba6355ee4010744899000586e5e42e, type: 2}
+    - target: {fileID: 11424696, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
+      propertyPath: nextSceneName
+      value: Credits
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
   m_RootGameObject: {fileID: 1215482624}
@@ -8841,7 +8920,7 @@ Transform:
   m_LocalPosition: {x: 1.29386878, y: 31.5481873, z: -.865816116}
   m_LocalScale: {x: .313089073, y: .380353868, z: .624204099}
   m_Children: []
-  m_Father: {fileID: 569828999}
+  m_Father: {fileID: 1051093919}
   m_RootOrder: 0
 --- !u!1 &1762346340
 GameObject:
@@ -9428,7 +9507,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7af492f1eabf5804b9ab3a7bd5157e16, type: 2}
+  - {fileID: 2100000, guid: 089e3ca4172896b49afe5a25e6f224dd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -10000,7 +10079,7 @@ Transform:
   m_Children:
   - {fileID: 238384790}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!82 &1951599140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10853,7 +10932,7 @@ Transform:
   m_LocalPosition: {x: .794588268, y: 49.1402283, z: -.525650084}
   m_LocalScale: {x: .200000003, y: .117647029, z: 1}
   m_Children: []
-  m_Father: {fileID: 569828999}
+  m_Father: {fileID: 1051093919}
   m_RootOrder: 1
 --- !u!1 &2132229177
 GameObject:

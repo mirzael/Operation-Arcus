@@ -9,7 +9,6 @@ using System.IO;
 public class Spawner : MonoBehaviour {
 	public List<GameObject> enemyToSpawn;
 	public float spawnRate;
-	public string nextSceneName;
 	
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
@@ -45,7 +44,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	public void NextLevel(){
-		Application.LoadLevel (nextSceneName);
+		Application.LoadLevel (Application.loadedLevel+1);
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html
