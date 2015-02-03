@@ -934,7 +934,7 @@ Transform:
   m_PrefabInternal: {fileID: 1075889583}
   m_GameObject: {fileID: 186611215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -66.9000015, z: 0}
+  m_LocalPosition: {x: 0, y: -56.0999985, z: 0}
   m_LocalScale: {x: 100, y: 50, z: 100}
   m_Children: []
   m_Father: {fileID: 1126529355}
@@ -6291,7 +6291,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 0432693ee94d71a42b072f66f79166b6, type: 2}
   - {fileID: 100186, guid: 28fa7f18385f6ab48bc2000b3a78574c, type: 2}
   spawnRate: 1
-  nextSceneName: Level2
   level: 1
   lastLevel: 0
 --- !u!23 &1215482626
