@@ -22,11 +22,11 @@ public class RedWeapon : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		var exp = (GameObject)Instantiate(explosion, transform.position, transform.rotation);
-		exp.particleEmitter.minSize = (MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
-		exp.particleEmitter.maxSize = MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius;
-		CreateAoe (col.contacts[0].point, MainCharacterDriver.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
+		exp.particleEmitter.minSize = (ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
+		exp.particleEmitter.maxSize = ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius;
+		CreateAoe (col.contacts[0].point, ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
 		if (gameObject.renderer.material != redBlast) {
-			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+MainCharacterDriver.powerRed/10, hitLocation = col.contacts[0].point});
+			col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage+ColorPower.Instance.powerRed/10, hitLocation = col.contacts[0].point});
 		}
 	}
 
