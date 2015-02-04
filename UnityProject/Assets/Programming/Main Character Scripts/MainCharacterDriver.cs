@@ -13,7 +13,6 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public float prevAlpha = 1;
 	public static int health = 100;
 	public bool gameOver = false;
 	bool pause = false;
@@ -36,7 +35,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	 *	- Color of ship
 	 *	- Speed of ship
 	 */
-	public RotatingList<Form> forms = new RotatingList<Form>();
 
 	//Arcus Animator
 	Animator anim;
@@ -93,12 +91,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		purpleForm = GetComponent<PurpleForm>();
 		rainbowForm = GetComponent<RainbowForm>();
 		
-		forms.Add (redForm);
-		forms.Add (blueForm);
-		forms.Add (yellowForm);
-		
 		if (previousForm == null) {
-			previousForm = forms[0];
+			previousForm = redForm;
 		} else {
 			if (previousForm.shipColor == ShipColor.RED) {
 				previousForm = redForm;
@@ -107,11 +101,11 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (previousForm.shipColor == ShipColor.YELLOW) {
 				previousForm = yellowForm;
 			} else {
-				previousForm = forms[0];
+				previousForm = redForm;
 			}
 		}
 		if (currentForm == null) {
-			currentForm = forms[0];
+			currentForm = redForm;
 		} else {
 			if (currentForm.shipColor == ShipColor.RED) {
 				currentForm = redForm;
@@ -128,7 +122,7 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (currentForm.shipColor == ShipColor.RAINBOW) {
 				currentForm = rainbowForm;
 			} else {
-				currentForm = forms[0];
+				currentForm = redForm;
 			}
 		}
 		if (lostGame) {
@@ -277,8 +271,8 @@ public class MainCharacterDriver : MonoBehaviour {
 			setRedPower(100);
 			setBluePower(100);
 			setYellowPower(100);
-			forms [0].setSpeed (forms [0].getSpeed () + ColorPower.Instance.powerRed / 30);
-			forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
+			redForm.setSpeed (redForm.getSpeed () + ColorPower.Instance.powerRed / 30);
+			blueForm.setCooldown (blueForm.getCooldown () - 0.15f);
 			uiDriver.UpdateBars();
 		}
 	}
