@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour {
 	
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
+    private Queue<string> waveDetails = new Queue<string>();
 	private float levelTimeCounter;
 	private float lastSpawnTime;
 	public int level = 1;
@@ -78,6 +79,14 @@ public class Spawner : MonoBehaviour {
 						}
 						enemyDetails.Enqueue(otherDetails);
 					}
+                    else if (entries.Length==3)
+                    {
+                        if (entries[0].Trim().ToLower().Equals("wave"))
+                        {
+                          //  float timeToAppear = float.Parse(entries[1]);
+                            Debug.Log("there is a wave here");
+                        }
+                    }
 				}
 			} while (line != null);
 		}
