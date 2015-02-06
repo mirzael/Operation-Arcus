@@ -427,6 +427,8 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
+  - 114: {fileID: 11435678}
+  - 114: {fileID: 11435680}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11493086}
   - 114: {fileID: 11493088}
@@ -4490,7 +4492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100054}
   m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: 7.4505806e-09, y: -10.3331652, z: 35.7266006}
+  m_LocalPosition: {x: 0, y: -10.3331699, z: 35.7266006}
   m_LocalScale: {x: 22.5, y: 22.5, z: 22.5}
   m_Children:
   - {fileID: 400472}
@@ -9035,7 +9037,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
-  prevAlpha: 1
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
@@ -9050,6 +9051,50 @@ MonoBehaviour:
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
   pauseButton: {fileID: 0}
+--- !u!114 &11435678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiTextPos: {x: 325, y: 725}
+  size: {x: 100, y: 100}
+  innerHealthBar: {fileID: 0}
+  arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
+  healthPortions: []
+--- !u!114 &11435680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d22292e0f144944a83f2c7301b0d96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barCenter: {fileID: 0}
+  barLeft: {fileID: 0}
+  barRight: {fileID: 0}
+  powerCenter: {fileID: 0}
+  powerLeft: {fileID: 0}
+  powerRight: {fileID: 0}
+  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
+  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
+  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
+  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
+  introSound: {fileID: 0}
+  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
+  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
+  Green: {r: .0758621693, g: 1, b: 0, a: 1}
+  primaryRing: {fileID: 0}
+  secondaryRing1: {fileID: 0}
+  secondaryRing2: {fileID: 0}
 --- !u!114 &11493086
 MonoBehaviour:
   m_ObjectHideFlags: 1

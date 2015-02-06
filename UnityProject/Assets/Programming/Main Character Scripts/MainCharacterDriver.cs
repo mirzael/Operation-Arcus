@@ -137,7 +137,7 @@ public class MainCharacterDriver : MonoBehaviour {
 		}
 		switchForm (currentForm);
 		
-		uiDriver = Camera.main.GetComponent<UIDriver>();
+		uiDriver = gameObject.GetComponent<UIDriver>();
 
 		if (currentForm.shipColor == ShipColor.BLUE) {
 			uiDriver.RotateToBlue();
