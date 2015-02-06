@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hiscores : MonoBehaviour {
+public class Hiscores : Singleton<Hiscores> {
 	private const int MAX_SCORES = 10;
 	public static int latestScore;
 	
