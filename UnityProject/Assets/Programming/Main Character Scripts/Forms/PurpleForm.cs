@@ -7,6 +7,7 @@ public class PurpleForm : SecondaryForm {
 	public GameObject mirv;
 	
 	public void Start() {
+		timeActiveOrig = 0.5f;
 		/*MoveProjectile moveScript = projectile.GetComponent<MoveProjectile>();
 		moveScript.projectileSpeed = projectileSpeed;
 		

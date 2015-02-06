@@ -9,6 +9,7 @@ public class GreenForm : SecondaryForm {
 	private const int DEGREES_PER_SEC = 720;
 	
 	public void Start() {
+		timeActiveOrig = 0.5f;
 		GreenWeapon gWep = projectile.GetComponent<GreenWeapon>();
 		gWep.isStraight = true;
 		gWep.ySpeed = getSpeed();

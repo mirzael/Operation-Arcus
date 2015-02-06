@@ -7,6 +7,7 @@ public class OrangeForm : SecondaryForm {
 	public float rotationSpeed;
 	
 	public void Start() {
+		timeActiveOrig = 0.5f;
 		OrangeWeapon oWep = projectile.GetComponent<OrangeWeapon>();
 		oWep.moveSpeed = projectileSpeed;
 		oWep.rotationSpeed = rotationSpeed;
@@ -28,13 +29,13 @@ public class OrangeForm : SecondaryForm {
 		isActive = true;
 		timeActive = timeActiveOrig;
 		GameObject reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		reflectBall.transform.localScale = new Vector3(5, 5, 5);
+		reflectBall.transform.localScale = new Vector3(10, 10, 10);
 		reflectBall.renderer.material.color = new Color(1, 0.5f, 0);
-		reflectBall.transform.position = transform.position;
+		reflectBall.transform.position = transform.position + Vector3.up * 7;
 		Rigidbody rb = reflectBall.AddComponent<Rigidbody>();
 		rb.isKinematic = true;
 		reflectBall.AddComponent<OrangeWeapon>();
-		Destroy(reflectBall, timeActiveOrig);
+		Destroy(reflectBall, 4);
 	}
 	
 	public void Update() {
