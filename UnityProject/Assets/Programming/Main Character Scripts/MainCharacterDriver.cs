@@ -13,7 +13,6 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public float prevAlpha = 1;
 	public static int health = 100;
 	public bool gameOver = false;
 	bool pause = false;
@@ -36,7 +35,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	 *	- Color of ship
 	 *	- Speed of ship
 	 */
-	public RotatingList<Form> forms = new RotatingList<Form>();
 
 	//Arcus Animator
 	Animator anim;
@@ -59,10 +57,6 @@ public class MainCharacterDriver : MonoBehaviour {
 	private PurpleForm purpleForm;
 	private RainbowForm rainbowForm;
 	private bool isInSecondary = false;
-
-	public static float powerRed = 0.0f;
-	public static float powerBlue = 0.0f;
-	public static float powerYellow = 0.0f;
 
 	private float shipXMin;
 	private float shipXMax;
@@ -97,12 +91,8 @@ public class MainCharacterDriver : MonoBehaviour {
 		purpleForm = GetComponent<PurpleForm>();
 		rainbowForm = GetComponent<RainbowForm>();
 		
-		forms.Add (redForm);
-		forms.Add (blueForm);
-		forms.Add (yellowForm);
-		
 		if (previousForm == null) {
-			previousForm = forms[0];
+			previousForm = redForm;
 		} else {
 			if (previousForm.shipColor == ShipColor.RED) {
 				previousForm = redForm;
@@ -111,11 +101,11 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (previousForm.shipColor == ShipColor.YELLOW) {
 				previousForm = yellowForm;
 			} else {
-				previousForm = forms[0];
+				previousForm = redForm;
 			}
 		}
 		if (currentForm == null) {
-			currentForm = forms[0];
+			currentForm = redForm;
 		} else {
 			if (currentForm.shipColor == ShipColor.RED) {
 				currentForm = redForm;
@@ -132,18 +122,18 @@ public class MainCharacterDriver : MonoBehaviour {
 			} else if (currentForm.shipColor == ShipColor.RAINBOW) {
 				currentForm = rainbowForm;
 			} else {
-				currentForm = forms[0];
+				currentForm = redForm;
 			}
 		}
 		if (lostGame) {
 			health = 100;
-			powerRed = 0;
-			powerBlue = 0;
-			powerYellow = 0;
+			ColorPower.Instance.powerRed = 0;
+			ColorPower.Instance.powerBlue = 0;
+			ColorPower.Instance.powerYellow = 0;
 		} else {
-			redForm.setPower(powerRed);
-			blueForm.setPower(powerBlue);
-			yellowForm.setPower(powerYellow);
+			redForm.setPower(ColorPower.Instance.powerRed);
+			blueForm.setPower(ColorPower.Instance.powerBlue);
+			yellowForm.setPower(ColorPower.Instance.powerYellow);
 		}
 		switchForm (currentForm);
 		
@@ -241,12 +231,12 @@ public class MainCharacterDriver : MonoBehaviour {
 			rainbowCooldown = rainbowCooldown - 1;
 			if (rainbowCooldown <= 0) {
 				rainbowCooldown = 10;
-				setRedPower(powerRed - 1);
-				setBluePower(powerBlue - 1);
-				setYellowPower(powerYellow - 1);
+				setRedPower(ColorPower.Instance.powerRed - 1);
+				setBluePower(ColorPower.Instance.powerRed - 1);
+				setYellowPower(ColorPower.Instance.powerRed - 1);
 				uiDriver.UpdateBars ();
 			}
-			if (powerBlue <= 0) {
+			if (ColorPower.Instance.powerBlue <= 0) {
 				previousForm = previousForm.shipColor == ShipColor.RAINBOW ? redForm : previousForm;
 				switchForm (previousForm);
 				blueForm.resetCooldown ();
@@ -281,8 +271,8 @@ public class MainCharacterDriver : MonoBehaviour {
 			setRedPower(100);
 			setBluePower(100);
 			setYellowPower(100);
-			forms [0].setSpeed (forms [0].getSpeed () + powerRed / 30);
-			forms [1].setCooldown (forms [1].getCooldown () - 0.15f);
+			redForm.setSpeed (redForm.getSpeed () + ColorPower.Instance.powerRed / 30);
+			blueForm.setCooldown (blueForm.getCooldown () - 0.15f);
 			uiDriver.UpdateBars();
 		}
 	}
@@ -348,10 +338,10 @@ public class MainCharacterDriver : MonoBehaviour {
     //Switch to PURPLE FORM
     public void PressPurple()
     {
-        if (powerRed >= TRANSFORM_AMOUNT && powerBlue >= TRANSFORM_AMOUNT)
+        if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT)
         {
-            setRedPower(powerRed - TRANSFORM_AMOUNT);
-            setBluePower(powerBlue - TRANSFORM_AMOUNT);
+            setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
+            setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
             switchForm(purpleForm);
             purpleForm.Activate();
             uiDriver.UpdateBars();
@@ -362,10 +352,10 @@ public class MainCharacterDriver : MonoBehaviour {
     //Switch to GREEN FORM
     public void PressGreen()
     {
-        if (powerBlue >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT)
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
-            setBluePower(powerBlue - TRANSFORM_AMOUNT);
-            setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+            setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
+            setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
             switchForm(greenForm);
             greenForm.Activate();
             uiDriver.UpdateBars();
@@ -376,10 +366,10 @@ public class MainCharacterDriver : MonoBehaviour {
     //Switch to ORANGE Form
     public void PressOrange()
     {
-        if (Input.GetButtonDown(inputOrange) && powerRed >= TRANSFORM_AMOUNT && powerYellow >= TRANSFORM_AMOUNT)
+        if (Input.GetButtonDown(inputOrange) && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
-            setRedPower(powerRed - TRANSFORM_AMOUNT);
-            setYellowPower(powerYellow - TRANSFORM_AMOUNT);
+            setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
+            setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
             switchForm(orangeForm);
             orangeForm.Activate();
             uiDriver.UpdateBars();
@@ -420,9 +410,9 @@ public class MainCharacterDriver : MonoBehaviour {
 		
 		// Absorbed the bullet
 		} else {
-			powerBlue = blueForm.power;
-			powerRed = redForm.power;
-			powerYellow = yellowForm.power;
+			ColorPower.Instance.powerBlue = blueForm.power;
+			ColorPower.Instance.powerRed = redForm.power;
+			ColorPower.Instance.powerYellow = yellowForm.power;
 			uiDriver.UpdateBars();
 			audio.PlayOneShot(absorbSound);
 		}
@@ -456,16 +446,16 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	private void setRedPower(float p) {
 		redForm.power = p;
-		powerRed = p;
+		ColorPower.Instance.powerRed = p;
 	}
 
 	private void setBluePower(float p) {
 		blueForm.power = p;
-		powerBlue = p;
+		ColorPower.Instance.powerBlue = p;
 	}
 
 	private void setYellowPower(float p) {
 		yellowForm.power = p;
-		powerYellow = p;
+		ColorPower.Instance.powerYellow = p;
 	}
 }

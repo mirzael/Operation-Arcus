@@ -1,4 +1,5 @@
 using UnityEngine;
+using MainCharacter;
 
 public class UIDriver : MonoBehaviour {
 	public GameObject barCenter;
@@ -74,7 +75,7 @@ public class UIDriver : MonoBehaviour {
 				spawner.level++;
 				if (spawner.lastLevel) {
 					PointMaster.points = 0.0f;
-					MainCharacterDriver.powerRed = MainCharacterDriver.powerBlue = MainCharacterDriver.powerYellow = 0;
+					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
 					GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
 					Application.LoadLevel("Credits");
 					return;
@@ -93,7 +94,7 @@ public class UIDriver : MonoBehaviour {
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			PointMaster.points = 0;
-			MainCharacterDriver.powerRed = MainCharacterDriver.powerBlue = MainCharacterDriver.powerYellow = 0;
+			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
 			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
 			driver.ResetForm();
 			Application.LoadLevel("MainMenu");
@@ -201,29 +202,27 @@ public class UIDriver : MonoBehaviour {
 	 */
 
 	public void UpdateBars() {
-	
-		Debug.Log ("Updating Colors: RED: " + MainCharacterDriver.powerRed + " BLUE: " + MainCharacterDriver.powerBlue + " YELLOW: " + MainCharacterDriver.powerYellow);
 
 		if (currentColor == 1) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
 		} else if (currentColor == 2) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
 		} else if (currentColor == 3) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
 		} else {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(MainCharacterDriver.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(MainCharacterDriver.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(MainCharacterDriver.powerBlue / 100, 1, 1));
+			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
+			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
+			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
 		}
 		
 		float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
-		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
+		if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount) {
 			if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
 					primaryRing.renderer.material.color = Purple;
 			} else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
@@ -246,7 +245,7 @@ public class UIDriver : MonoBehaviour {
 				secondaryRing2.renderer.material.color = tmp;
 			}
 		}
-		if (MainCharacterDriver.powerRed >= transformAmount && MainCharacterDriver.powerYellow >= transformAmount) {
+		if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerYellow >= transformAmount) {
 			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
 				primaryRing.renderer.material.color = Orange;
 			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
@@ -269,7 +268,7 @@ public class UIDriver : MonoBehaviour {
 				secondaryRing2.renderer.material.color = tmp;
 			}
 		}
-		if (MainCharacterDriver.powerYellow >= transformAmount && MainCharacterDriver.powerBlue >= transformAmount) {
+		if (ColorPower.Instance.powerYellow >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount) {
 			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){
 				primaryRing.renderer.material.color = Green;
 			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){

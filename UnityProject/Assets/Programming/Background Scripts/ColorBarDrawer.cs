@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MainCharacter;
 
 public class ColorBarDrawer : MonoBehaviour {
 
@@ -20,9 +21,9 @@ public class ColorBarDrawer : MonoBehaviour {
 
 	void OnGUI()
 	{
-		DrawBar (pos, MainCharacterDriver.powerRed/100, redBarFull);
-		DrawBar (new Vector2 (pos.x, pos.y + size.y), MainCharacterDriver.powerBlue / 100, blueBarFull);
-		DrawBar (new Vector2 (pos.x, pos.y + size.y * 2), MainCharacterDriver.powerYellow / 100, yellowBarFull);
+		DrawBar (pos, ColorPower.Instance.powerRed/100, redBarFull);
+		DrawBar (new Vector2 (pos.x, pos.y + size.y), ColorPower.Instance.powerBlue / 100, blueBarFull);
+		DrawBar (new Vector2 (pos.x, pos.y + size.y * 2), ColorPower.Instance.powerYellow / 100, yellowBarFull);
 	} 
 
 	void DrawBar(Vector2 pos, float progress, Texture2D barFull){
