@@ -28,11 +28,19 @@ public class DrawLives : MonoBehaviour {
 	}
 
 	private void UpdateHealth(){
-		for (int i = healthPortions.Length; i > MainCharacterDriver.health/10; i--) {
-			var tmp = healthPortions[10-i].material.color;
-			tmp.a = 0;
-			healthPortions[10-i].material.color = tmp;
+		int invisIndex = 10-MainCharacterDriver.health / 10;
+
+		for (int i = healthPortions.Length-1; i >= invisIndex; i--) {
+			var tmp = healthPortions[i].material.color;
+			tmp.a = 0.8f;
+			healthPortions[i].material.color = tmp;
 		}
+		for (int i = 0; i < invisIndex; i++) {
+			var tmp = healthPortions[i].material.color;
+			tmp.a = 0f;
+			healthPortions[i].material.color = tmp;
+		}
+
 	}
 
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
