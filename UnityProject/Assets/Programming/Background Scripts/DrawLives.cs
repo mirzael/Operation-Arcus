@@ -3,32 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DrawLives : MonoBehaviour {
-	GUIStyle liveStyle = new GUIStyle();
-	public Vector2 guiTextPos = new Vector2 (0, 80);
-	public Vector2 size  = new Vector2(100, 100);
 	public GameObject innerHealthBar;
 
 	public GameObject arcusModel;
 	public Renderer[] healthPortions;
+	private MainCharacterDriver driver; 
 
 	// Use this for initialization
 	void Start () {
 		healthPortions = innerHealthBar.GetComponentsInChildren<Renderer> ();
+		driver = gameObject.GetComponent<MainCharacterDriver> ();
 	}
 
-	// Update is called once per frame
-	void OnGUI () {
-		liveStyle.normal.textColor = Color.white;
-	}
 
 	void Update(){
-		if (MainCharacterDriver.health > 0) {
+		if (driver.health > 0) {
 			UpdateHealth ();
 		}
 	}
 
 	private void UpdateHealth(){
-		int invisIndex = 10-MainCharacterDriver.health / 10;
+		float invisIndex = 10-driver.health / 10;
 
 		for (int i = healthPortions.Length-1; i >= invisIndex; i--) {
 			var tmp = healthPortions[i].material.color;

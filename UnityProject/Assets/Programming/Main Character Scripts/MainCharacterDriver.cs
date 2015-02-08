@@ -13,7 +13,7 @@ public class MainCharacterDriver : MonoBehaviour {
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public static int health = 100;
+	public float health = 100;
 	public bool gameOver = false;
 	bool pause = false;
 	
@@ -47,14 +47,14 @@ public class MainCharacterDriver : MonoBehaviour {
 	static Form currentForm;
 
 	//Used for returning to the form we were in before switching to secondary
-	static Form previousForm;
+	public static Form previousForm;
 
-	private RedForm redForm;
-	private BlueForm blueForm;
-	private YellowForm yellowForm;
-	private GreenForm greenForm;
-	private OrangeForm orangeForm;
-	private PurpleForm purpleForm;
+	private PrimaryForm redForm;
+	private PrimaryForm blueForm;
+	private PrimaryForm yellowForm;
+	private SecondaryForm greenForm;
+	private SecondaryForm orangeForm;
+	private SecondaryForm purpleForm;
 	private RainbowForm rainbowForm;
 	private bool isInSecondary = false;
 
@@ -356,10 +356,11 @@ public class MainCharacterDriver : MonoBehaviour {
         {
             setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
             setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-            switchForm(greenForm);
+            //For Green form, we just want to heal and not do stuff
+			//switchForm(greenForm);
             greenForm.Activate();
             uiDriver.UpdateBars();
-            isInSecondary = true;
+            //isInSecondary = true;
         }
     }
 
@@ -424,13 +425,12 @@ public class MainCharacterDriver : MonoBehaviour {
 	}
 	
 	void Fire() {
-		if (currentForm is PrimaryForm) {
-			audio.PlayOneShot(bulletSound);
-			currentForm.Fire();
-		}
+		audio.PlayOneShot(bulletSound);
+		currentForm.Fire();
 	}
 	
 	void switchForm(Form form){
+		previousForm = currentForm;
 		currentForm = form;
 		for (int i = 0; i < colorPieces.Length; i++) 
 		{
