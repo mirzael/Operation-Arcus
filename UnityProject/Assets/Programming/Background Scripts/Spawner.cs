@@ -16,7 +16,6 @@ public class Spawner : MonoBehaviour {
 	private float levelTimeCounter;
 	private float lastSpawnTime;
 	public int level = 1;
-	public const int MAX_LEVELS = 3;
 	public bool lastLevel = false;
 
 	void OnGUI () {
@@ -26,12 +25,6 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		levelTimeCounter = 0;
-		
-		if (level > MAX_LEVELS) {
-			Debug.Log("You won the game!");
-			Application.Quit();
-			return;
-		}
 		
 		Debug.Log("Loading level " + level);
 		

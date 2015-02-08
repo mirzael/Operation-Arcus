@@ -9,7 +9,7 @@ public class WinLoseGUI : MonoBehaviour {
 	
 	public void Start() {
 		if (win) {
-			if (GameObject.Find("WaveSpawner").GetComponent<Spawner>().level < Spawner.MAX_LEVELS) {
+			if (!GameObject.Find("WaveSpawner").GetComponent<Spawner>().lastLevel) {
 				message = "You won the battle! Press R to continue";
 			} else {
 				message = "You won the war! Press R to continue";
@@ -38,7 +38,7 @@ public class WinLoseGUI : MonoBehaviour {
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
-				if (spawner.level > Spawner.MAX_LEVELS) {
+				if (spawner.lastLevel) {
 					Application.LoadLevel("Credits");
 					return;
 				}
