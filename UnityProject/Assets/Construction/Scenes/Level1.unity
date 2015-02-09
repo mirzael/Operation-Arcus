@@ -3637,6 +3637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
@@ -3940,8 +3941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 367280753}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -22797,8 +22796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 1300928981}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -22816,6 +22813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
@@ -24440,8 +24438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 161991495}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -24459,6 +24455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
