@@ -540,6 +540,10 @@ Prefab:
       propertyPath: introSound
       value: 
       objectReference: {fileID: 2123052104}
+    - target: {fileID: 176796, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_RootGameObject: {fileID: 1951599134}
@@ -3637,6 +3641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
@@ -3940,8 +3945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 367280753}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -22797,8 +22800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 1300928981}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -22816,6 +22817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
@@ -24440,8 +24442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 161991495}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -24459,6 +24459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
   inputRed: Red
   inputBlue: Blue
