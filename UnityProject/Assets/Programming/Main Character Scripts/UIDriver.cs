@@ -327,7 +327,15 @@ public class UIDriver : MonoBehaviour {
 	}
 	
 	public void ShowLoseScreen() {
-		introSound.audio.Stop ();
+		if(introSound!=null)
+		{
+					introSound.audio.Stop ();
+		}
+		else
+		{
+			Debug.Log("please plug something in for intro sound for uidriver");
+		}
+		
 		points.enabled = false;
 		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
 		audio.volume = 0.1f;

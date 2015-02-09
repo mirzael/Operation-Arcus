@@ -12,7 +12,10 @@ public class Spawner : MonoBehaviour {
 	
 	private Queue<float> enemySpawnTimes;
 	private Queue<string> enemyDetails;
-    private Queue<string> waveDetails = new Queue<string>();
+    private Queue<float> waveTimes = new Queue<float>();
+
+    private float? curWaveTime;
+
 	private float levelTimeCounter;
 	private float lastSpawnTime;
 	public int level = 1;
@@ -76,8 +79,9 @@ public class Spawner : MonoBehaviour {
                     {
                         if (entries[0].Trim().ToLower().Equals("wave"))
                         {
-                          //  float timeToAppear = float.Parse(entries[1]);
+                            float timeToAppear = float.Parse(entries[1]);
                             Debug.Log("there is a wave here");
+                            waveTimes.Enqueue(timeToAppear);
                         }
                     }
 				}
@@ -98,6 +102,12 @@ public class Spawner : MonoBehaviour {
 	void Update () {
 		levelTimeCounter += Time.deltaTime;
 		
+        //get through the waves
+        while (waveTimes.Count > 0 && waveTimes.Peek() <= levelTimeCounter)
+        {
+            float waveTime = waveTimes.Dequeue();
+        }
+
 		// there is something to spawn, and the current object should have been spawned by now
 		while (enemySpawnTimes.Count > 0 && enemySpawnTimes.Peek() <= levelTimeCounter) {
 			enemySpawnTimes.Dequeue();
