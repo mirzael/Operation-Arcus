@@ -105,7 +105,8 @@ public class Spawner : MonoBehaviour {
         //get through the waves
         while (waveTimes.Count > 0 && waveTimes.Peek() <= levelTimeCounter)
         {
-            float waveTime = waveTimes.Dequeue();
+            //Commented out because it's not being used.
+            //float waveTime = waveTimes.Dequeue();
         }
 
 		// there is something to spawn, and the current object should have been spawned by now
