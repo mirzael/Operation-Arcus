@@ -107,6 +107,7 @@ public class Spawner : MonoBehaviour {
         {
             //Commented out because it's not being used.
             //float waveTime = waveTimes.Dequeue();
+            waveTimes.Dequeue();
         }
 
 		// there is something to spawn, and the current object should have been spawned by now

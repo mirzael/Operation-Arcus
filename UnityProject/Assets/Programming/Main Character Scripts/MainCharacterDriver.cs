@@ -44,7 +44,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	static bool lostGame;
 
 	//This is the current form the ship is using
-	static Form currentForm;
+	public static Form currentForm;
 
 	//Used for returning to the form we were in before switching to secondary
 	public static Form previousForm;
