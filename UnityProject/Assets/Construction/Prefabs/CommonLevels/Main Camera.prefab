@@ -27236,7 +27236,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .0500000007
 --- !u!114 &11424820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27259,6 +27259,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: 7.50000036e-05
 --- !u!114 &11424822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27281,7 +27282,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 50
 --- !u!114 &11424824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27504,7 +27505,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .200000003
 --- !u!114 &11476476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27527,6 +27528,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000300000014
 --- !u!114 &11476478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27549,7 +27551,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 16
 --- !u!114 &11476480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27777,9 +27779,9 @@ MonoBehaviour:
   invulnCounter: 0
   health: 100
   gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
+  inputRed: ORed
+  inputBlue: OBlue
+  inputYellow: OYellow
   inputGreen: Green
   inputOrange: Orange
   inputPurple: Purple
@@ -27935,6 +27937,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000150000007
 --- !u!114 &11476512
 MonoBehaviour:
   m_ObjectHideFlags: 1
