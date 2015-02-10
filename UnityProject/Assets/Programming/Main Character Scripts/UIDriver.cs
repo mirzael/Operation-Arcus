@@ -10,7 +10,8 @@ public class UIDriver : MonoBehaviour {
 	public GameObject powerLeft;
 	public GameObject powerRight;
 	
-	private int currentColor; // 1 = red; 2 = blue; 3 = yellow;
+	private ShipColor currentColor; // 1 = red; 2 = blue; 3 = yellow;
+    //public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW};
 	
 	public Material successScreen;
 	public Material background;
@@ -36,6 +37,8 @@ public class UIDriver : MonoBehaviour {
 	public GameObject primaryRing;
 	public GameObject secondaryRing1;
 	public GameObject secondaryRing2;
+
+
 	
 	public void Awake() {
 		winScreen = GameObject.Find("WinScreen");
@@ -47,7 +50,7 @@ public class UIDriver : MonoBehaviour {
 		
 		GameObject.Find("Background").renderer.material = background;
 		
-		currentColor = 1;
+		currentColor = ShipColor.RED;
 		
 		origScaleCenter = powerCenter.transform.localScale;
 		origScaleLeft = powerLeft.transform.localScale;
@@ -104,7 +107,7 @@ public class UIDriver : MonoBehaviour {
 	
 
 	public void RotateToBlue(){
-		if (currentColor == 1) {
+		if (currentColor == ShipColor.RED) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
 			barLeft.renderer.material = barCenter.renderer.material;
@@ -115,7 +118,7 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
 
-		} else if (currentColor == 3) {
+		} else if (currentColor == ShipColor.YELLOW) {
 			var tmp = barLeft.renderer.material;
 			barLeft.renderer.material = barRight.renderer.material;
 			barRight.renderer.material = barCenter.renderer.material;
@@ -127,12 +130,12 @@ public class UIDriver : MonoBehaviour {
 			powerCenter.renderer.material = tmp;
 		}
 
-		currentColor = 2;
+		currentColor = ShipColor.BLUE;
 		UpdateBars ();
 	}
 
 	public void RotateToRed(){
-		if (currentColor == 2) {
+		if (currentColor == ShipColor.BLUE) {
 			var tmp = barLeft.renderer.material;
 			barLeft.renderer.material = barRight.renderer.material;
 			barRight.renderer.material = barCenter.renderer.material;
@@ -143,7 +146,7 @@ public class UIDriver : MonoBehaviour {
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
 
-		} else if (currentColor == 3) {
+		} else if (currentColor == ShipColor.YELLOW) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
 			barLeft.renderer.material = barCenter.renderer.material;
@@ -155,12 +158,12 @@ public class UIDriver : MonoBehaviour {
 			powerCenter.renderer.material = tmp;
 		}
 
-		currentColor = 1;
+		currentColor = ShipColor.RED;
 		UpdateBars ();
 	}
 
 	public void RotateToYellow(){
-		if (currentColor == 1) {
+		if (currentColor == ShipColor.RED) {
 			var tmp = barLeft.renderer.material;
 			barLeft.renderer.material = barRight.renderer.material;
 			barRight.renderer.material = barCenter.renderer.material;
@@ -170,7 +173,7 @@ public class UIDriver : MonoBehaviour {
 			powerLeft.renderer.material = powerRight.renderer.material;
 			powerRight.renderer.material = powerCenter.renderer.material;
 			powerCenter.renderer.material = tmp;
-		} else if (currentColor == 2) {
+		} else if (currentColor == ShipColor.BLUE) {
 			var tmp = barRight.renderer.material;
 			barRight.renderer.material = barLeft.renderer.material;
 			barLeft.renderer.material = barCenter.renderer.material;
@@ -183,7 +186,7 @@ public class UIDriver : MonoBehaviour {
 
 		}
 
-		currentColor = 3;
+		currentColor = ShipColor.YELLOW;
 		UpdateBars ();
 	}
 
@@ -203,15 +206,17 @@ public class UIDriver : MonoBehaviour {
 
 	public void UpdateBars() {
 
-		if (currentColor == 1) {
+        BlindBar.Instance.UpdateColorBars();
+
+		if (currentColor == ShipColor.RED) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
 			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
 			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
-		} else if (currentColor == 2) {
+		} else if (currentColor == ShipColor.BLUE) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
 			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
 			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
-		} else if (currentColor == 3) {
+		} else if (currentColor == ShipColor.YELLOW) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
 			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
 			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
@@ -293,6 +298,12 @@ public class UIDriver : MonoBehaviour {
 		}
 	}
 	
+    /// <summary>
+    /// Resize bar with relation to its original scale
+    /// </summary>
+    /// <param name="powerBar"></param>
+    /// <param name="origScale"></param>
+    /// <param name="newScaleRatio"></param>
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
 		Vector3 curScale = powerBar.transform.localScale;
 		Vector3 newScale = new Vector3(origScale.x * newScaleRatio.x, origScale.y * newScaleRatio.y, origScale.z * newScaleRatio.z);
