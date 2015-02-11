@@ -5,7 +5,7 @@ public class MultiplayerController : MonoBehaviour {
 	public GameObject arcus;
 	public GameObject oArcus;
 	public GameObject dArcus;
-	public static bool isMultiplayer = false;
+	public static bool isMultiplayer = true;
 	
 	public void Start() {
 		if (isMultiplayer) {
