@@ -4094,7 +4094,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 50
 --- !u!114 &238384800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4118,6 +4118,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: 7.50000036e-05
 --- !u!114 &238384801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4142,7 +4143,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .0500000007
 --- !u!114 &238384802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6042,7 +6043,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 16
 --- !u!114 &323341926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6066,6 +6067,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000300000014
 --- !u!114 &323341927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6090,7 +6092,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .200000003
 --- !u!82 &323341928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8084,6 +8086,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000150000007
 --- !u!114 &448776039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8241,12 +8244,12 @@ MonoBehaviour:
   invulnCounter: 0
   health: 100
   gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
+  inputRed: OffRed
+  inputBlue: OffBlue
+  inputYellow: OffYellow
+  inputGreen: OffGreen
+  inputOrange: OffOrange
+  inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
   uiDriver: {fileID: 0}
@@ -16617,6 +16620,30 @@ Prefab:
       propertyPath: introSound
       value: 
       objectReference: {fileID: 2123052104}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputRed
+      value: OffRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputBlue
+      value: OffBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputYellow
+      value: OffYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputGreen
+      value: OffGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputOrange
+      value: OffOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputPurple
+      value: OffPurple
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_RootGameObject: {fileID: 1951599134}
@@ -18132,10 +18159,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1209344859}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -.100000001, y: 135.199997}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchorMin: {x: .100000001, y: .699999988}
+  m_AnchorMax: {x: .899999976, y: .899999976}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .500000298}
 --- !u!114 &1204712441
 MonoBehaviour:
@@ -18153,7 +18180,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 289a66d5fcafcc74d92a4b2756b56c50, type: 3}
-    m_FontSize: 26
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -18247,6 +18274,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -18264,7 +18292,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

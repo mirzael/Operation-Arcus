@@ -3270,6 +3270,38 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: OffHorizontal
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: DefHorizontal
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: j
+    positiveButton: l
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
@@ -3277,6 +3309,38 @@ InputManager:
     positiveButton: up
     altNegativeButton: s
     altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: OffVertical
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: s
+    positiveButton: w
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: DefVertical
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: k
+    positiveButton: i
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: .00100000005
     sensitivity: 3
@@ -3366,7 +3430,39 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OSwitchColor
+    m_Name: OffFire
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: DefFire
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: OffSwitchColor
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: q
@@ -3382,7 +3478,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DSwitchColor
+    m_Name: DefSwitchColor
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: u
@@ -3398,7 +3494,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: ORed
+    m_Name: OffRed
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3414,7 +3510,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DRed
+    m_Name: DefRed
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3430,7 +3526,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OYellow
+    m_Name: OffYellow
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3446,7 +3542,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DYellow
+    m_Name: DefYellow
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3462,7 +3558,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OBlue
+    m_Name: OffBlue
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3478,7 +3574,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DBlue
+    m_Name: DefBlue
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3494,7 +3590,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OOrange
+    m_Name: OffOrange
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3510,7 +3606,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DOrange
+    m_Name: DefOrange
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3526,7 +3622,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OGreen
+    m_Name: OffGreen
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3542,7 +3638,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DGreen
+    m_Name: DefGreen
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3558,7 +3654,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: OPurple
+    m_Name: OffPurple
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -3574,7 +3670,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: DPurple
+    m_Name: DefPurple
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
