@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Shooter : MonoBehaviour {
@@ -7,13 +7,22 @@ public class Shooter : MonoBehaviour {
 	public bool isBoss;
 	public GameObject bossProjectile;
 	public float bossBulletChance;
+	public float bossPattern;
 	public int pattern;
 	float currentCooldown;
 	public Wave bulletWave;
-
+	EnemyDeath death;
+	float maxHealth;
+	float health;
 
 	// Use this for initialization
 	void Start () {
+		if (isBoss == true) 
+		{
+			death = gameObject.GetComponent<EnemyDeath>();
+			maxHealth = death.health;
+			health = death.health;
+		}
 		currentCooldown = cooldown;
 		switch (pattern)
 		{
@@ -47,7 +56,16 @@ public class Shooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//currentCooldown -= Time.deltaTime;
-
+		health = death.health;
+		if (health < (maxHealth - 10f)) 
+		{
+			if (!(bulletWave is BossBeamWave))
+			{
+				Destroy (bulletWave);
+				Debug.Log ("DESPERATION!");
+				bulletWave = gameObject.AddComponent<BossBeamWave>();
+			}
+		}
 		if (currentCooldown == 0) 
 		{
 			bulletWave.resetCooldown ();
