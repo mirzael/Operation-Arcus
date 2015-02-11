@@ -10,9 +10,10 @@ public class OrangeWeapon : MonoBehaviour {
 	
 	public void OnCollisionEnter(Collision col) {
 		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy Bullet")) {
-			col.gameObject.rigidbody.velocity *= -2;
 			// move the bullet away a bit
 			col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
+			col.gameObject.rigidbody.velocity = direction * -10;
 			// make sure the bullet disappears at some point
 			Destroy(col.gameObject, 3);
 		}

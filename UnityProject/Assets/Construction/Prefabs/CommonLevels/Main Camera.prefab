@@ -732,7 +732,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 424776}
   - 95: {fileID: 9524832}
-  - 114: {fileID: 11424832}
   - 114: {fileID: 11448788}
   - 114: {fileID: 11448786}
   - 135: {fileID: 13524832}
@@ -742,8 +741,9 @@ GameObject:
   - 114: {fileID: 11424822}
   - 114: {fileID: 11424824}
   - 114: {fileID: 11424826}
-  - 114: {fileID: 11424828}
+  - 114: {fileID: 11458568}
   - 114: {fileID: 11424830}
+  - 114: {fileID: 11458566}
   m_Layer: 9
   m_Name: dArcus
   m_TagString: Player
@@ -7832,7 +7832,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 476682}
   - 95: {fileID: 9576480}
-  - 114: {fileID: 11476488}
   - 114: {fileID: 11476490}
   - 114: {fileID: 11476492}
   - 135: {fileID: 13576474}
@@ -7844,6 +7843,7 @@ GameObject:
   - 114: {fileID: 11476482}
   - 114: {fileID: 11476484}
   - 114: {fileID: 11476486}
+  - 114: {fileID: 11458564}
   m_Layer: 9
   m_Name: oArcus
   m_TagString: Player
@@ -27336,31 +27336,6 @@ MonoBehaviour:
   gravityForce: 1500
   gravityRadius: 35
   rotationSpeed: 15
---- !u!114 &11424828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a31cfd9e4b9e14f8fc87778c805a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  cooldown: .200000003
-  originalCooldown: .400000006
-  projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
-  projectileSpeed: 100
-  originalSpeed: 100
-  material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-  formSpeed: 40
-  shipColor: 5
-  animationNum: 4
-  power: 0
-  timeBeforeExplosion: .150000006
-  explosionSize: 10
-  mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
 --- !u!114 &11424830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27383,34 +27358,6 @@ MonoBehaviour:
   shipColor: 6
   animationNum: 0
   power: 0
---- !u!114 &11424832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62474b05b5b63e44995abe038df66532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invulnTime: 1
-  invulnCounter: 0
-  health: 100
-  gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
-  inputHorizontal: Horizontal
-  inputVertical: Vertical
-  uiDriver: {fileID: 0}
-  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
-  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
-  absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
-  pauseButton: {fileID: 0}
 --- !u!114 &11448786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27453,6 +27400,77 @@ MonoBehaviour:
   innerHealthBar: {fileID: 124730}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
+--- !u!114 &11458564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a06f451b953dda42b113c0e6f7138ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  colorPieces: []
+  invulnTime: 1
+  invulnCounter: 0
+  gameOver: 0
+  uiDriver: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
+  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
+  pauseButton: {fileID: 0}
+--- !u!114 &11458566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e8ad0aa1b91cb488e5c9b4c015f86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  colorPieces: []
+  canMove: 1
+  invulnTime: 1
+  invulnCounter: 0
+  gameOver: 0
+  uiDriver: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
+  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
+  absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
+  pauseButton: {fileID: 0}
+--- !u!114 &11458568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c9cb8fb11bb504dbd80df21bf04295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  cooldown: .200000003
+  originalCooldown: .400000006
+  projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
+  projectileSpeed: 100
+  originalSpeed: 100
+  material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
+  formSpeed: 20
+  shipColor: 5
+  animationNum: 4
+  power: 0
+  timeBeforeExplosion: 0
+  explosionSize: 0
+  mirv: {fileID: 0}
+  baseRadius: 0
+  growValue: 0
+  maxRadius: 0
+  oArcus: {fileID: 176682}
 --- !u!114 &11461436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27630,6 +27648,9 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  baseRadius: 0
+  growValue: 0
+  maxRadius: 0
 --- !u!114 &11476486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27652,34 +27673,6 @@ MonoBehaviour:
   shipColor: 6
   animationNum: 0
   power: 0
---- !u!114 &11476488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62474b05b5b63e44995abe038df66532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invulnTime: 1
-  invulnCounter: 0
-  health: 100
-  gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
-  inputHorizontal: Horizontal
-  inputVertical: Vertical
-  uiDriver: {fileID: 0}
-  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
-  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
-  absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
-  pauseButton: {fileID: 0}
 --- !u!114 &11476490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27775,16 +27768,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62474b05b5b63e44995abe038df66532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   invulnTime: 1
   invulnCounter: 0
-  health: 100
   gameOver: 0
-  inputRed: ORed
-  inputBlue: OBlue
-  inputYellow: OYellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
+  inputRed: OffRed
+  inputBlue: OffBlue
+  inputYellow: OffYellow
+  inputGreen: OffGreen
+  inputOrange: OffOrange
+  inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
   uiDriver: {fileID: 0}
@@ -27839,6 +27832,9 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  baseRadius: 0
+  growValue: 0
+  maxRadius: 0
 --- !u!114 &11476504
 MonoBehaviour:
   m_ObjectHideFlags: 1
