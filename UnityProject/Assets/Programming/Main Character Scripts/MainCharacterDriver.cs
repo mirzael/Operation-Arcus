@@ -17,12 +17,12 @@ public class MainCharacterDriver : MonoBehaviour {
 	public bool gameOver = false;
 	bool pause = false;
 	
-	public string inputRed = "Red";
-	public string inputBlue = "Blue";
-	public string inputYellow = "Yellow";
-	public string inputGreen = "Green";
-	public string inputOrange = "Orange";
-	public string inputPurple = "Purple";
+	public string inputRed = "OffRed";
+    public string inputBlue = "OffBlue";
+    public string inputYellow = "OffYellow";
+    public string inputGreen = "OffGreen";
+    public string inputOrange = "OffOrange";
+    public string inputPurple = "OffPurple";
 	
 	public string inputHorizontal = "Horizontal";
 	public string inputVertical = "Vertical";

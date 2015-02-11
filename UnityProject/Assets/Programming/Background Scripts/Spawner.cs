@@ -105,8 +105,6 @@ public class Spawner : MonoBehaviour {
         //get through the waves
         while (waveTimes.Count > 0 && waveTimes.Peek() <= levelTimeCounter)
         {
-            //Commented out because it's not being used.
-            //float waveTime = waveTimes.Dequeue();
             waveTimes.Dequeue();
         }
 
