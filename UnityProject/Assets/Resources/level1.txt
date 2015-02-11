@@ -11,7 +11,6 @@
 # YBoss = GOB5
 
 #after absorb message
-Wave,0.0,0
 GOB1,3.5, 2.0,2,1,0
 GOB1,3.5,-2.0,2,2,0
 GOB1,4.0,-5.0,0,2,0

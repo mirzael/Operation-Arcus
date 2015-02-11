@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class PurpleForm : SecondaryForm {
-    //Commented out because it's not being used.
-	//private int barrel = 1;
+	private int barrel = 1;
 	public float timeBeforeExplosion;
 	public float explosionSize;
 	public GameObject mirv;

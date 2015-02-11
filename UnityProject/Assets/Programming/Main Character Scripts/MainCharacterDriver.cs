@@ -6,23 +6,22 @@ using System.Threading;
 using MainCharacter;
 using InControl;
 
-public class MainCharacterDriver : MonoBehaviour {
+public class MainCharacterDriver : CharacterDriver {
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public float health = 100;
 	public bool gameOver = false;
 	bool pause = false;
 	
-	public string inputRed = "Red";
-	public string inputBlue = "Blue";
-	public string inputYellow = "Yellow";
-	public string inputGreen = "Green";
-	public string inputOrange = "Orange";
-	public string inputPurple = "Purple";
+	public string inputRed = "OffRed";
+    public string inputBlue = "OffBlue";
+    public string inputYellow = "OffYellow";
+    public string inputGreen = "OffGreen";
+    public string inputOrange = "OffOrange";
+    public string inputPurple = "OffPurple";
 	
 	public string inputHorizontal = "Horizontal";
 	public string inputVertical = "Vertical";
@@ -44,7 +43,7 @@ public class MainCharacterDriver : MonoBehaviour {
 	static bool lostGame;
 
 	//This is the current form the ship is using
-	static Form currentForm;
+	public static Form currentForm;
 
 	//Used for returning to the form we were in before switching to secondary
 	public static Form previousForm;

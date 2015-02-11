@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class BlueForm : PrimaryForm {
+	public float cooldownOffsetPerPower = 0.00015f;
 	
 	public void Start() {
 		projectile.GetComponent<BlueWeapon>().damage = damage;
@@ -24,6 +25,6 @@ public class BlueForm : PrimaryForm {
 	
 	public override void setPower(float amount) {
 		base.setPower(amount);
-		setCooldown(originalCooldown - 0.00015f * power);
+		setCooldown(originalCooldown - cooldownOffsetPerPower * power);
 	}
 }

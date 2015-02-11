@@ -4,7 +4,7 @@ public class Hiscores : Singleton<Hiscores> {
 	private const int MAX_SCORES = 10;
 	public static int latestScore;
 	
-	public override void Awake() {
+	public void Awake() {
         string[] names = new string[MAX_SCORES];
         int[] scores = new int[MAX_SCORES];
         
