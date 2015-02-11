@@ -526,7 +526,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461770, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
       propertyPath: inputYellow
@@ -1662,7 +1662,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435172, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
@@ -5012,7 +5012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481890, guid: 726f233bbe533ca40973b49d8e3ce5d6, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 22481890, guid: 726f233bbe533ca40973b49d8e3ce5d6, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -15007,7 +15007,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409028, guid: 53249fb815fcd62408332b2b67d3556e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53249fb815fcd62408332b2b67d3556e, type: 2}
@@ -17262,7 +17262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyToSpawn:
-  - {fileID: 100000, guid: 93e2ebd253a3d324cbf6ac12bf5858c7, type: 2}
+  - {fileID: 100000, guid: bbe8c472bac262045af8232a867d6cf2, type: 2}
   - {fileID: 100002, guid: 28922bcfe4e13df41a80bbde0f793498, type: 2}
   - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
   - {fileID: 100112, guid: 46a08c22b08dd8d44b1ad303fbb69b1d, type: 2}
@@ -18617,12 +18617,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424696, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11424696, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
       propertyPath: enemyToSpawn.Array.data[1]
       value: 
       objectReference: {fileID: 100002, guid: 28922bcfe4e13df41a80bbde0f793498, type: 2}
+    - target: {fileID: 11424696, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
+      propertyPath: enemyToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 100000, guid: bbe8c472bac262045af8232a867d6cf2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30e02d0cc9ffeea49ad878005d9ee49e, type: 2}
   m_RootGameObject: {fileID: 1215482624}
@@ -20642,7 +20646,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480808, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bde38482694538347a79fbe3b105db67, type: 2}
@@ -25452,7 +25456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479146, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22379142, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
       propertyPath: m_Camera
