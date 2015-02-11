@@ -7,12 +7,12 @@ public class DrawLives : MonoBehaviour {
 
 	public GameObject arcusModel;
 	public Renderer[] healthPortions;
-	private MainCharacterDriver driver; 
+	private CharacterDriver driver; 
 
 	// Use this for initialization
 	void Start () {
 		healthPortions = innerHealthBar.GetComponentsInChildren<Renderer> ();
-		driver = gameObject.GetComponent<MainCharacterDriver> ();
+		driver = gameObject.GetComponent<CharacterDriver> ();
 	}
 
 

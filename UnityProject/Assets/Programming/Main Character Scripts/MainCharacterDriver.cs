@@ -6,14 +6,13 @@ using System.Threading;
 using MainCharacter;
 using InControl;
 
-public class MainCharacterDriver : MonoBehaviour {
+public class MainCharacterDriver : CharacterDriver {
 	GameObject[] colorPieces;
 	float currentCooldown = 0;
 	int rainbowCooldown = 2;
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public float health = 100;
 	public bool gameOver = false;
 	bool pause = false;
 	

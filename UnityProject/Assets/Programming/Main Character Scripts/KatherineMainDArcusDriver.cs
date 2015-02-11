@@ -27,7 +27,7 @@ namespace Spectrum
     /// GUI Scaling Controller
     /// Revises the scaling of GUI elements based on window size.
     /// </summary>
-    public class KatherineMainDArcusDriver : MonoBehaviour
+    public class KatherineMainDArcusDriver : CharacterDriver
     {
         /**********************/
         /** Script Constants **/
@@ -39,13 +39,12 @@ namespace Spectrum
         /**    Model Data    **/
         /**********************/
         static bool lostGame;
-        public GameObject[] colorPieces;
+        public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
         int rainbowCooldown = 2;
 
         public float invulnTime;
         public float invulnCounter = 0;
-        public float health = 100;
         public bool gameOver = false;
         bool pause = false;
 
@@ -122,7 +121,7 @@ namespace Spectrum
             anim = GetComponent<Animator>();
 
             // Retrieve the GUI Components
-            colorPieces = GameObject.FindGameObjectsWithTag("ArcusColor");
+			GetColorPiecesRecursive (transform);
 
             // Retrieve Color Form Scripts from this object
             redForm = GetComponent<RedForm>();
@@ -433,7 +432,7 @@ namespace Spectrum
         {
             lastPrimaryForm = currentForm;
             currentForm = form;
-            for (int i = 0; i < colorPieces.Length; i++)
+            for (int i = 0; i < colorPieces.Count; i++)
             {
                 colorPieces[i].renderer.material = currentForm.material;
             }
@@ -463,5 +462,14 @@ namespace Spectrum
             yellowForm.power = p;
             ColorPower.Instance.powerYellow = p;
         }
+
+		private void GetColorPiecesRecursive(Transform trans){
+			foreach(Transform t in trans.GetComponentInChildren<Transform> ()){
+				if(t.tag == "ArcusColor"){
+					colorPieces.Add(t.gameObject);
+				}
+				GetColorPiecesRecursive(t);
+			}
+		}
     }
 }
