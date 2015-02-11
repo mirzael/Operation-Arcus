@@ -9037,13 +9037,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnTime: 1
   invulnCounter: 0
+  health: 100
   gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
+  inputRed: OffRed
+  inputBlue: OffBlue
+  inputYellow: OffYellow
+  inputGreen: OffGreen
+  inputOrange: OffOrange
+  inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
   uiDriver: {fileID: 0}
@@ -9062,8 +9063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d081f7ffe26d1849adf1c913322f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiTextPos: {x: 325, y: 725}
-  size: {x: 100, y: 100}
   innerHealthBar: {fileID: 0}
   arcusModel: {fileID: 100146, guid: eeb70b1ab1034034bbc94e4884b68009, type: 2}
   healthPortions: []
@@ -9141,6 +9140,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000150000007
 --- !u!114 &11493090
 MonoBehaviour:
   m_ObjectHideFlags: 1

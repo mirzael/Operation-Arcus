@@ -3730,12 +3730,12 @@ MonoBehaviour:
   invulnCounter: 0
   health: 100
   gameOver: 0
-  inputRed: ORed
-  inputBlue: OBlue
-  inputYellow: OYellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
+  inputRed: OffRed
+  inputBlue: OffBlue
+  inputYellow: OffYellow
+  inputGreen: OffGreen
+  inputOrange: OffOrange
+  inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
   uiDriver: {fileID: 0}
@@ -11299,6 +11299,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -11846,6 +11847,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -27251,6 +27253,30 @@ Prefab:
     - target: {fileID: 461770, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputYellow
+      value: OffYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputBlue
+      value: OffBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputRed
+      value: OffRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputGreen
+      value: OffGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputOrange
+      value: OffOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputPurple
+      value: OffPurple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}

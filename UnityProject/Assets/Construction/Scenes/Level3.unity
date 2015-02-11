@@ -2237,6 +2237,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputRed
+      value: OffRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputBlue
+      value: OffBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputYellow
+      value: OffYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputGreen
+      value: OffGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputOrange
+      value: OffOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: inputPurple
+      value: OffPurple
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_RootGameObject: {fileID: 1951599134}
@@ -4082,7 +4106,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 50
 --- !u!114 &238384800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4106,6 +4130,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: 7.50000036e-05
 --- !u!114 &238384801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4130,7 +4155,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .0500000007
 --- !u!114 &238384802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6030,7 +6055,7 @@ MonoBehaviour:
   shipColor: 2
   animationNum: 3
   power: 0
-  pointsPerBullet: 33
+  pointsPerBullet: 16
 --- !u!114 &323341926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6054,6 +6079,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000300000014
 --- !u!114 &323341927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6078,7 +6104,7 @@ MonoBehaviour:
   animationNum: 1
   power: 0
   explosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .200000003
 --- !u!82 &323341928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8072,6 +8098,7 @@ MonoBehaviour:
   shipColor: 0
   animationNum: 2
   power: 0
+  cooldownOffsetPerPower: .000150000007
 --- !u!114 &448776039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8229,12 +8256,12 @@ MonoBehaviour:
   invulnCounter: 0
   health: 100
   gameOver: 0
-  inputRed: Red
-  inputBlue: Blue
-  inputYellow: Yellow
-  inputGreen: Green
-  inputOrange: Orange
-  inputPurple: Purple
+  inputRed: OffRed
+  inputBlue: OffBlue
+  inputYellow: OffYellow
+  inputGreen: OffGreen
+  inputOrange: OffOrange
+  inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
   uiDriver: {fileID: 0}
