@@ -7082,7 +7082,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11409866, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11409864, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
       propertyPath: m_FontData.m_FontSize
@@ -7091,6 +7091,18 @@ Prefab:
     - target: {fileID: 109864, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
       propertyPath: m_Name
       value: TextButton - Multiplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409866, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1616202390}
+    - target: {fileID: 11409866, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409866, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a989a75c3bce7684a821eed9e80dc261, type: 2}
@@ -18240,6 +18252,7 @@ GameObject:
   - 222: {fileID: 1616202389}
   - 114: {fileID: 1616202388}
   - 114: {fileID: 1616202387}
+  - 114: {fileID: 1616202390}
   m_Layer: 5
   m_Name: TextButton - Multiplayer
   m_TagString: Untagged
@@ -18327,17 +18340,18 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1616202387}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616202385}
-        m_MethodName: 
+      - m_Target: {fileID: 1616202390}
+        m_MethodName: TakeAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18352,6 +18366,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 517011086}
   m_GameObject: {fileID: 1616202385}
+--- !u!114 &1616202390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1616202385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985278d8370b6294d8440d0d09d4e35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInGUI: 1
+  isMultiplayer: 1
 --- !u!1 &1623357805
 GameObject:
   m_ObjectHideFlags: 0
