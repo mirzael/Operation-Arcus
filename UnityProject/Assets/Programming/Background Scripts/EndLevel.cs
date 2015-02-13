@@ -8,11 +8,12 @@ public class EndLevel : MonoBehaviour {
 				return;
 			}
 		}
-		
+	
+		/*
 		var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
 		driver.gameOver = true;
 		driver.uiDriver.ShowWinScreen();
-		
+		*/
 		Destroy(this);
 	}
 }

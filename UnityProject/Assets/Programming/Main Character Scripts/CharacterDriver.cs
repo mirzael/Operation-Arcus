@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterDriver : MonoBehaviour {
+public abstract class CharacterDriver : MonoBehaviour {
 	public float health = 100;
+	public const float TRANSFORM_AMOUNT = 100f;
+	public bool gameOver = false;
+	public UIDriver uiDriver;
+	public abstract void PressGreen();
+	public abstract void PressPurple();
+	public abstract void PressOrange();
 }

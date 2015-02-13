@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class MPOOrangeForm : SecondaryForm {
+public class MPDOrangeForm : SecondaryForm {
 	MainCharacterDriver driver;
 	SphereCollider col;
 	

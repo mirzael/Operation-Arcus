@@ -1,14 +1,15 @@
 using UnityEngine;
+using Spectrum;
 
-public class MPDPurpleForm : PurpleForm {
-	private DarcusDriver driver;
+public class MPDPurpleForm : SecondaryForm {
+	private KatherineMainDArcusDriver driver;
 	public GameObject oArcus;
 	private int numFrames;
 	private const int FRAMES_TO_DOCK = 10;
 	
-	new public void Start() {
+	public void Start() {
 		timeActiveOrig = 4.0f;
-		driver = gameObject.GetComponent<DarcusDriver>();
+		driver = gameObject.GetComponent<KatherineMainDArcusDriver>();
 	}
 	
 	public override void Activate() {
@@ -18,8 +19,10 @@ public class MPDPurpleForm : PurpleForm {
 		numFrames = 0;
 		driver.canMove = false;
 	}
+
+	public override void Fire(){}
 	
-	new public void Update() {
+	public void Update() {
 		if (!isActive) return;
 		timeActive -= Time.deltaTime;
 		
@@ -37,8 +40,23 @@ public class MPDPurpleForm : PurpleForm {
 			driver.canMove = true;
 		}
 	}
-	
-	public void OnCollisionEnter(Collision col) {
-		TakeHit(col);
+
+	public override bool TakeHit(Collision col) {
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy Bullet")) {
+			col.gameObject.rigidbody.velocity *= -2;
+			// move the bullet away a bit
+			col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			// make sure the bullet disappears at some point
+			Destroy(col.gameObject, 3);
+		} else if (col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			Destroy(col.gameObject.GetComponent<EnemyMovement>());
+			col.gameObject.rigidbody.velocity *= -2;
+			// move the enemy away a bit
+			//col.gameObject.transform.position += col.gameObject.rigidbody.velocity;
+			// make sure the enemy disappears at some point
+			Destroy(col.gameObject, 3);
+		}
+		
+		return false;
 	}
 }

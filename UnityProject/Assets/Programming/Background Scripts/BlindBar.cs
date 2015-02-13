@@ -45,8 +45,8 @@ public class BlindBar : Singleton<BlindBar>
 
     public void UpdateCurrentColor()
     {
-        ShipColor color = MainCharacterDriver.currentForm.shipColor;
-        colorText.UpdateText(color.ToString());
+     //   ShipColor color = MainCharacterDriver.currentForm.shipColor;
+    //    colorText.UpdateText(color.ToString());
     }
 
     public void UpdateScore()

@@ -27,12 +27,11 @@ namespace Spectrum
     /// GUI Scaling Controller
     /// Revises the scaling of GUI elements based on window size.
     /// </summary>
-    public class KatherineMainDArcusDriver : CharacterDriver
+    public class KatherineMainDArcusDriver : MultiplayerCharacterDriver
     {
         /**********************/
         /** Script Constants **/
         /**********************/
-        public const float TRANSFORM_AMOUNT = 100f;
         private const float ALPHA_PER_SEC = 0.1f;
 
         /**********************/
@@ -41,12 +40,11 @@ namespace Spectrum
         static bool lostGame;
         public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
-        int rainbowCooldown = 2;
 
         public float invulnTime;
         public float invulnCounter = 0;
-        public bool gameOver = false;
         bool pause = false;
+		public bool canMove = true;
 
         /**********************/
         /**  Arcus Keybinds  **/
@@ -79,9 +77,6 @@ namespace Spectrum
         private PrimaryForm redForm;
         private PrimaryForm blueForm;
         private PrimaryForm yellowForm;
-        private SecondaryForm greenForm;
-        private SecondaryForm orangeForm;
-        private SecondaryForm purpleForm;
 
         private bool isInSecondary = false;
 
@@ -90,8 +85,6 @@ namespace Spectrum
         private float levelConstraintMaxX;
         private float levelConstraintMinY;
         private float levelConstraintMaxY;
-
-        public UIDriver uiDriver;
 
         public static string arcusName = "";
 
@@ -107,8 +100,9 @@ namespace Spectrum
         /**   Initializers   **/
         /**********************/
         // Initialization Code
-        void Start()
+        new void Start()
         {
+			base.Start ();
             // Set the Application target framerate and shut down V-Sync.
             // V-Sync will override targetFrameRate if active, so disable this.
             QualitySettings.vSyncCount = 0;
@@ -127,9 +121,6 @@ namespace Spectrum
             redForm = GetComponent<RedForm>();
             blueForm = GetComponent<BlueForm>();
             yellowForm = GetComponent<YellowForm>();
-            greenForm = GetComponent<GreenForm>();
-            orangeForm = GetComponent<OrangeForm>();
-            purpleForm = GetComponent<PurpleForm>();
 
             // Assign a default Color Form and update ship form
             currentForm = redForm;
@@ -172,6 +163,8 @@ namespace Spectrum
             levelConstraintMaxY = wrldMax.y;
             levelConstraintMinX = wrldMin.x;
             levelConstraintMinY = wrldMin.y;
+
+			MultiplayerCoordinator.Instance.DarcusDriver = this;
         }
 
         /**********************/
@@ -251,13 +244,13 @@ namespace Spectrum
             { PressRed(); }
 
             if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper)
-            { PressOrange(); }
+			{ MultiplayerCoordinator.Instance.UseDefensiveOrange(); }
 
             if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger)
-            { PressPurple(); }
+			{ MultiplayerCoordinator.Instance.UseDefensivePurple(); }
 
             if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper)
-            { PressGreen(); }
+			{ MultiplayerCoordinator.Instance.UseDefensiveGreen(); }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -275,6 +268,10 @@ namespace Spectrum
 
         public void PressMove(float horizontal, float vertical)
         {
+			if (!canMove) {
+				return;
+			}
+
             float hspeed = horizontal * -(Time.deltaTime);
             float vspeed = vertical * Time.deltaTime;
 
@@ -332,47 +329,53 @@ namespace Spectrum
         }
 
         //Switch to PURPLE FORM
-        public void PressPurple()
+        public override void PressPurple()
         {
-            if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT)
-            {
-                setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-                setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-                switchForm(purpleForm);
-                purpleForm.Activate();
-                uiDriver.UpdateBars();
-                isInSecondary = true;
-            }
+            switchForm(purpleForm);
+            purpleForm.Activate();
+            uiDriver.UpdateBars();
+			isInSecondary = true;
         }
 
         //Switch to GREEN FORM
-        public void PressGreen()
+        public override void PressGreen()
         {
-            if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-            {
-                setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-                setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-                //For Green form, we just want to heal and not do stuff
-                //switchForm(greenForm);
-                greenForm.Activate();
-                uiDriver.UpdateBars();
-                //isInSecondary = true;
-            }
+            //For Green form, we just want to heal and not do stuff
+            switchForm(greenForm);
+            greenForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
         }
 
         //Switch to ORANGE Form
-        public void PressOrange()
+        public override void PressOrange()
         {
-            if (Input.GetButtonDown(inputOrange) && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-            {
-                setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-                setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-                switchForm(orangeForm);
-                orangeForm.Activate();
-                uiDriver.UpdateBars();
-                isInSecondary = true;
-            }
+	        switchForm(orangeForm);
+	        orangeForm.Activate();
+	        uiDriver.UpdateBars();
+			isInSecondary = true;
         }
+
+		public override void PressDefensivePurple(){
+			switchForm (defensePurpleForm);
+			defensePurpleForm.Activate ();
+			uiDriver.UpdateBars ();
+			isInSecondary = true;
+		}
+
+		public override void PressDefensiveGreen(){
+			switchForm (defenseGreenForm);
+			defenseGreenForm.Activate ();
+			uiDriver.UpdateBars ();
+			isInSecondary = true;
+		}
+
+		public override void PressDefensiveOrange(){
+			switchForm (defenseOrangeForm);
+			defenseOrangeForm.Activate ();
+			uiDriver.UpdateBars ();
+			isInSecondary = true;
+		}
 
         public void OnCollisionEnter(Collision col)
         {
@@ -395,18 +398,15 @@ namespace Spectrum
 				
                     // Only take damage if not in rainbow mode
                     } else */
-                    if (currentForm.shipColor != ShipColor.RAINBOW)
+
+                    health -= 10;
+                    if (health < 0)
                     {
-                        health -= 10;
-                        if (health < 0)
-                        {
-                            if (gameOver) return;
-                            Destroy(gameObject);
-                            Debug.Log("MISSION FAILED");
-                            uiDriver.ShowLoseScreen();
-                            gameOver = true;
-                            lostGame = true;
-                        }
+                        if (gameOver) return;
+                        Destroy(gameObject);
+                        Debug.Log("MISSION FAILED");
+                        gameOver = true;
+                        lostGame = true;
                     }
                 }
 
@@ -417,7 +417,7 @@ namespace Spectrum
                 ColorPower.Instance.powerBlue = blueForm.power;
                 ColorPower.Instance.powerRed = redForm.power;
                 ColorPower.Instance.powerYellow = yellowForm.power;
-                uiDriver.UpdateBars();
+				MultiplayerCoordinator.Instance.UpdateUI();
                 audio.PlayOneShot(absorbSound);
             }
         }

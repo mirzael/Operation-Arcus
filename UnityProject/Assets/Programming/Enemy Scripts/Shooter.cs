@@ -56,14 +56,14 @@ public class Shooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//currentCooldown -= Time.deltaTime;
-		health = death.health;
-		if (health < (maxHealth - 10f)) 
-		{
-			if (!(bulletWave is BossBeamWave))
-			{
-				Destroy (bulletWave);
-				Debug.Log ("DESPERATION!");
-				bulletWave = gameObject.AddComponent<BossBeamWave>();
+		if (isBoss) {
+			health = death.health;
+			if (health < (maxHealth - 10f)) {
+				if (!(bulletWave is BossBeamWave)) {
+					Destroy (bulletWave);
+					Debug.Log ("DESPERATION!");
+					bulletWave = gameObject.AddComponent<BossBeamWave> ();
+				}
 			}
 		}
 		if (currentCooldown == 0) 

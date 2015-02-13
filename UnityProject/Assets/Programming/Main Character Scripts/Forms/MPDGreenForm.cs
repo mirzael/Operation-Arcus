@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class MPOGreenForm : SecondaryForm {
-	MainCharacterDriver driver;
+public class MPDGreenForm : SecondaryForm {
+	CharacterDriver driver;
 	
 	public void Start() {
 		timeActiveOrig = 3f;
-		driver = gameObject.GetComponent<MainCharacterDriver> ();
+		driver = gameObject.GetComponent<CharacterDriver> ();
 	}
 	
 	public override void Fire() {

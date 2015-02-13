@@ -13,7 +13,6 @@ public class MainCharacterDriver : CharacterDriver {
 
 	public float invulnTime;
 	public float invulnCounter = 0;
-	public bool gameOver = false;
 	bool pause = false;
 	
 	public string inputRed = "OffRed";
@@ -38,7 +37,6 @@ public class MainCharacterDriver : CharacterDriver {
 	//Arcus Animator
 	Animator anim;
 
-	public const float TRANSFORM_AMOUNT = 100f;
 	private const float ALPHA_PER_SEC = 0.1f;
 	static bool lostGame;
 
@@ -61,8 +59,6 @@ public class MainCharacterDriver : CharacterDriver {
 	private float shipXMax;
 	private float shipYMin;
 	private float shipYMax;
-
-	public UIDriver uiDriver;
 
 	public static string arcusName = "";
 
@@ -335,7 +331,7 @@ public class MainCharacterDriver : CharacterDriver {
     }
 
     //Switch to PURPLE FORM
-    public void PressPurple()
+    public override void PressPurple()
     {
         if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT)
         {
@@ -349,7 +345,7 @@ public class MainCharacterDriver : CharacterDriver {
     }
 
     //Switch to GREEN FORM
-    public void PressGreen()
+    public override void PressGreen()
     {
         if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
@@ -364,7 +360,7 @@ public class MainCharacterDriver : CharacterDriver {
     }
 
     //Switch to ORANGE Form
-    public void PressOrange()
+    public override void PressOrange()
     {
         if (Input.GetButtonDown(inputOrange) && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
