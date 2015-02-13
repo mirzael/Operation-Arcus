@@ -49,9 +49,13 @@ public class BackgroundUI : MonoBehaviour {
 				
 				GameObject.Find("Background").renderer.material = background;
 				winScreen.SetActive(false);
-				
-				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
-				driver.gameOver = false;
+
+				if(MultiplayerController.isMultiplayer){
+					MultiplayerCoordinator.Instance.NewLevel();
+				}else{
+					var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
+					driver.gameOver = false;
+				}
 				
 				spawner.NextLevel();
 			} else {

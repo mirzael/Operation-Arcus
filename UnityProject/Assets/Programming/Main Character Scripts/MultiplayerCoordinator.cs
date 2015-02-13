@@ -37,6 +37,11 @@ public class MultiplayerCoordinator {
 		backgroundUI.ShowLoseScreen ();
 	}
 
+	public void NewLevel(){
+		OArcusDriver.gameOver = false;
+		DarcusDriver.gameOver = false;
+	}
+
 	public void UseOffensiveGreen(){
 		if (ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
 			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
