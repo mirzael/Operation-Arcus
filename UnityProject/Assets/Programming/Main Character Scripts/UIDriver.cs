@@ -137,7 +137,7 @@ public class UIDriver : MonoBehaviour {
 
 	public void UpdateBars() {
 
-        BlindBar.Instance.UpdateColorBars();
+        //BlindBar.Instance.UpdateColorBars();
 
 		if (currentColor == ShipColor.RED) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));

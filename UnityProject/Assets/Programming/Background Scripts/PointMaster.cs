@@ -19,7 +19,7 @@ public class PointMaster : MonoBehaviour {
 	}
 
 	void OnGUI(){		
-		pointStyle.normal.textColor = Color.white;
+	/*	pointStyle.normal.textColor = Color.white;
 
 		foreach (PointInfo info in displayArray) {
 			pointStyle.normal.textColor = info.color;
