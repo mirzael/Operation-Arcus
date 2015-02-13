@@ -741,9 +741,12 @@ GameObject:
   - 114: {fileID: 11424822}
   - 114: {fileID: 11424824}
   - 114: {fileID: 11424826}
-  - 114: {fileID: 11458568}
   - 114: {fileID: 11424830}
-  - 114: {fileID: 11458566}
+  - 114: {fileID: 11434472}
+  - 114: {fileID: 11434478}
+  - 114: {fileID: 11434480}
+  - 114: {fileID: 11434482}
+  - 114: {fileID: 11434484}
   m_Layer: 9
   m_Name: dArcus
   m_TagString: Player
@@ -3750,6 +3753,7 @@ GameObject:
   - 114: {fileID: 11461436}
   - 114: {fileID: 11467446}
   - 82: {fileID: 8261436}
+  - 114: {fileID: 11434476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7844,6 +7848,7 @@ GameObject:
   - 114: {fileID: 11476484}
   - 114: {fileID: 11476486}
   - 114: {fileID: 11458564}
+  - 114: {fileID: 11434474}
   m_Layer: 9
   m_Name: oArcus
   m_TagString: Player
@@ -27358,6 +27363,163 @@ MonoBehaviour:
   shipColor: 6
   animationNum: 0
   power: 0
+--- !u!114 &11434472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e39c01f20e66544e92b9f56251f6f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  colorPieces: []
+  invulnTime: 1
+  invulnCounter: 0
+  gameOver: 0
+  uiDriver: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
+  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
+  absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
+  pauseButton: {fileID: 0}
+--- !u!114 &11434474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a06f451b953dda42b113c0e6f7138ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  colorPieces: []
+  invulnTime: 1
+  invulnCounter: 0
+  gameOver: 0
+  uiDriver: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
+  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
+  pauseButton: {fileID: 0}
+--- !u!114 &11434476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780e6364247d1c546ab64f684bc3b298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
+  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
+  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
+  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
+--- !u!114 &11434478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00798cb03868ce74fb1afa5223f72b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  originalCooldown: 0
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  originalSpeed: 0
+  material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
+  formSpeed: 30
+  shipColor: 3
+  animationNum: 5
+  power: 0
+--- !u!114 &11434480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0f763c6bf9f84094774f870005b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  originalCooldown: 0
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  originalSpeed: 0
+  material: {fileID: 2100000, guid: 1b27a49cc79b28d41933082489154334, type: 2}
+  formSpeed: 20
+  shipColor: 4
+  animationNum: 6
+  power: 0
+--- !u!114 &11434482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67157d398bab0b545b8e5968d2db1039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  originalCooldown: 0
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  originalSpeed: 0
+  material: {fileID: 0}
+  formSpeed: 0
+  shipColor: 5
+  animationNum: 0
+  power: 0
+  timeBeforeExplosion: 0
+  explosionSize: 0
+  mirv: {fileID: 0}
+  baseRadius: 0
+  growValue: 0
+  maxRadius: 0
+  oArcus: {fileID: 176682}
+--- !u!114 &11434484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a31cfd9e4b9e14f8fc87778c805a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  originalCooldown: 0
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  originalSpeed: 0
+  material: {fileID: 0}
+  formSpeed: 0
+  shipColor: 0
+  animationNum: 0
+  power: 0
+  timeBeforeExplosion: 0
+  explosionSize: 0
+  mirv: {fileID: 0}
+  baseRadius: 0
+  growValue: 0
+  maxRadius: 0
 --- !u!114 &11448786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27375,11 +27537,6 @@ MonoBehaviour:
   powerCenter: {fileID: 161820}
   powerLeft: {fileID: 124740}
   powerRight: {fileID: 161674}
-  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
-  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
-  introSound: {fileID: 0}
   Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
   Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
   Green: {r: .0758621693, g: 1, b: 0, a: 1}
@@ -27420,57 +27577,6 @@ MonoBehaviour:
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   pauseButton: {fileID: 0}
---- !u!114 &11458566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e8ad0aa1b91cb488e5c9b4c015f86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  colorPieces: []
-  canMove: 1
-  invulnTime: 1
-  invulnCounter: 0
-  gameOver: 0
-  uiDriver: {fileID: 0}
-  bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
-  bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
-  absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
-  pauseButton: {fileID: 0}
---- !u!114 &11458568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c9cb8fb11bb504dbd80df21bf04295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  cooldown: .200000003
-  originalCooldown: .400000006
-  projectile: {fileID: 100000, guid: 4898be05474bc724ea9e062ed14322c2, type: 2}
-  projectileSpeed: 100
-  originalSpeed: 100
-  material: {fileID: 2100000, guid: c81f78b9ece66f1408246476bac5b8fb, type: 2}
-  formSpeed: 20
-  shipColor: 5
-  animationNum: 4
-  power: 0
-  timeBeforeExplosion: 0
-  explosionSize: 0
-  mirv: {fileID: 0}
-  baseRadius: 0
-  growValue: 0
-  maxRadius: 0
-  oArcus: {fileID: 176682}
 --- !u!114 &11461436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27704,11 +27810,6 @@ MonoBehaviour:
   powerCenter: {fileID: 167446}
   powerLeft: {fileID: 176646}
   powerRight: {fileID: 167302}
-  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
-  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
-  introSound: {fileID: 0}
   Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
   Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
   Green: {r: .0758621693, g: 1, b: 0, a: 1}
@@ -27732,11 +27833,6 @@ MonoBehaviour:
   powerCenter: {fileID: 197266}
   powerLeft: {fileID: 176832}
   powerRight: {fileID: 197122}
-  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
-  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
-  introSound: {fileID: 0}
   Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
   Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
   Green: {r: .0758621693, g: 1, b: 0, a: 1}
