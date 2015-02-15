@@ -11,24 +11,11 @@ public class UIDriver : MonoBehaviour {
 	public GameObject powerRight;
 	
 	private ShipColor currentColor; // 1 = red; 2 = blue; 3 = yellow;
-    //public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW};
-	
-	public Material successScreen;
-	public Material background;
+    //public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW}
 
 	private Vector3 origScaleCenter;
 	private Vector3 origScaleLeft;
 	private Vector3 origScaleRight;
-	
-	private GameObject winScreen, loseScreen;
-	private bool showingWinLose;
-	private bool win;
-
-	public AudioClip loseSound;
-	public AudioClip winSound;
-	public GameObject introSound;
-
-	PointMaster points;
 
 	public Color Orange;
 	public Color Purple;
@@ -37,19 +24,8 @@ public class UIDriver : MonoBehaviour {
 	public GameObject primaryRing;
 	public GameObject secondaryRing1;
 	public GameObject secondaryRing2;
-
-
 	
 	public void Awake() {
-		winScreen = GameObject.Find("WinScreen");
-		loseScreen = GameObject.Find("LoseScreen");
-		winScreen.SetActive(false);
-		loseScreen.SetActive(false);
-		showingWinLose = false;
-		win = false;
-		
-		GameObject.Find("Background").renderer.material = background;
-		
 		currentColor = ShipColor.RED;
 		
 		origScaleCenter = powerCenter.transform.localScale;
@@ -59,52 +35,7 @@ public class UIDriver : MonoBehaviour {
 		ShiftAndScale(powerCenter, origScaleCenter, new Vector3(0, 1, 1));
 		ShiftAndScale(powerLeft, origScaleLeft, new Vector3(0, 1, 1));
 		ShiftAndScale(powerRight, origScaleRight, new Vector3(0, 1, 1));
-
-		
-		points = Camera.main.gameObject.GetComponent<PointMaster> ();
 	}
-	
-	public void Update() {
-		if (!showingWinLose) {
-			return;
-		}
-		
-		if (Input.GetKeyDown(KeyCode.R)) {
-			points.enabled = true;
-			showingWinLose = false;
-			
-			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
-			if (win) {
-				spawner.level++;
-				if (spawner.lastLevel) {
-					PointMaster.points = 0.0f;
-					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-					GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
-					Application.LoadLevel("Credits");
-					return;
-				}
-				
-				GameObject.Find("Background").renderer.material = background;
-				winScreen.SetActive(false);
-
-				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
-				driver.gameOver = false;
-				introSound.audio.Play ();
-				spawner.NextLevel();
-			} else {
-				Application.LoadLevel(Application.loadedLevel);
-				introSound.audio.Play ();
-			}
-		} else if (Input.GetKeyDown(KeyCode.Escape)) {
-			PointMaster.points = 0;
-			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
-			driver.ResetForm();
-			Application.LoadLevel("MainMenu");
-		}
-	}
-
-	
 
 	public void RotateToBlue(){
 		if (currentColor == ShipColor.RED) {
@@ -206,7 +137,7 @@ public class UIDriver : MonoBehaviour {
 
 	public void UpdateBars() {
 
-        BlindBar.Instance.UpdateColorBars();
+        //BlindBar.Instance.UpdateColorBars();
 
 		if (currentColor == ShipColor.RED) {
 			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
@@ -320,39 +251,9 @@ public class UIDriver : MonoBehaviour {
 		newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
 		powerBar.transform.position = new Vector3(newX, curY, curZ);
 	}
-	
-	public void ShowWinScreen() {
-		introSound.audio.Stop();
-		points.enabled = false;
-		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
-		winScreen.SetActive(true);
 
-		winScreen.renderer.material = successScreen;
-		if (spawner.lastLevel) {
-			introSound.audio.Stop ();
-			audio.PlayOneShot (winSound);
-		}
-		showingWinLose = true;
-		win = true;
+	public void ShowLoseScreen(){
+		Camera.main.gameObject.GetComponent<BackgroundUI> ().ShowLoseScreen ();
+	}
 
-	}
-	
-	public void ShowLoseScreen() {
-		if(introSound!=null)
-		{
-					introSound.audio.Stop ();
-		}
-		else
-		{
-			Debug.Log("please plug something in for intro sound for uidriver");
-		}
-		
-		points.enabled = false;
-		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
-		audio.volume = 0.1f;
-		audio.PlayOneShot (loseSound);
-		loseScreen.SetActive(true);
-		showingWinLose = true;
-		win = false;
-	}
 }

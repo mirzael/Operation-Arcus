@@ -27,12 +27,11 @@ namespace Spectrum
     /// GUI Scaling Controller
     /// Revises the scaling of GUI elements based on window size.
     /// </summary>
-    public class KatherineMainOArcusDriver : CharacterDriver
+    public class KatherineMainOArcusDriver : MultiplayerCharacterDriver
     {
         /**********************/
         /** Script Constants **/
         /**********************/
-        public const float TRANSFORM_AMOUNT = 100f;
         private const float ALPHA_PER_SEC = 0.1f;
 
         /**********************/
@@ -41,11 +40,9 @@ namespace Spectrum
         static bool lostGame;
 		public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
-        int rainbowCooldown = 2;
 
         public float invulnTime;
         public float invulnCounter = 0;
-        public bool gameOver = false;
         bool pause = false;
 
         /**********************/
@@ -79,9 +76,6 @@ namespace Spectrum
         private PrimaryForm redForm;
         private PrimaryForm blueForm;
         private PrimaryForm yellowForm;
-        private SecondaryForm greenForm;
-        private SecondaryForm orangeForm;
-        private SecondaryForm purpleForm;
 
         private bool isInSecondary = false;
 
@@ -91,7 +85,6 @@ namespace Spectrum
         private float levelConstraintMinY;
         private float levelConstraintMaxY;
 
-        public UIDriver uiDriver;
 
         public static string arcusName = "";
 
@@ -106,8 +99,9 @@ namespace Spectrum
         /**   Initializers   **/
         /**********************/
         // Initialization Code
-        void Start()
+        new void Start()
         {
+			base.Start ();
             // Set the Application target framerate and shut down V-Sync.
             // V-Sync will override targetFrameRate if active, so disable this.
             QualitySettings.vSyncCount = 0;
@@ -126,9 +120,6 @@ namespace Spectrum
             redForm = GetComponent<RedForm>();
             blueForm = GetComponent<BlueForm>();
             yellowForm = GetComponent<YellowForm>();
-            greenForm = GetComponent<GreenForm>();
-            orangeForm = GetComponent<OrangeForm>();
-            purpleForm = GetComponent<PurpleForm>();
 
             // Assign a default Color Form and update ship form
             currentForm = redForm;
@@ -171,6 +162,8 @@ namespace Spectrum
             levelConstraintMaxY = wrldMax.y;
             levelConstraintMinX = wrldMin.x;
             levelConstraintMinY = wrldMin.y;
+
+			MultiplayerCoordinator.Instance.OArcusDriver = this;
         }
 
         /**********************/
@@ -249,14 +242,14 @@ namespace Spectrum
             if (Input.GetButtonDown(inputRed) || inputDevice.Action2)
             { PressRed(); }
 
-            if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper)
-            { PressOrange(); }
-
-            if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger)
-            { PressPurple(); }
-
-            if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper)
-            { PressGreen(); }
+			if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper)
+			{ MultiplayerCoordinator.Instance.UseOffensiveOrange(); }
+			
+			if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger)
+			{ MultiplayerCoordinator.Instance.UseOffensivePurple(); }
+			
+			if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper)
+			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -270,6 +263,13 @@ namespace Spectrum
                 else
                 { Time.timeScale = 1; }
             }
+
+			if (Input.GetKeyDown (KeyCode.PageDown)) {
+				setRedPower (100);
+				setBluePower (100);
+				setYellowPower (100);
+				MultiplayerCoordinator.Instance.UpdateUI();
+			}
         }
 
         public void PressMove(float horizontal, float vertical)
@@ -331,58 +331,78 @@ namespace Spectrum
         }
 
         //Switch to PURPLE FORM
-        public void PressPurple()
+        public override void PressPurple()
         {
-            if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT)
-            {
-                setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-                setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-                switchForm(purpleForm);
-                purpleForm.Activate();
-                uiDriver.UpdateBars();
-                isInSecondary = true;
-            }
+            switchForm(purpleForm);
+            purpleForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
         }
 
         //Switch to GREEN FORM
-        public void PressGreen()
+        public override void PressGreen()
         {
-            if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-            {
-                setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-                setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-                //For Green form, we just want to heal and not do stuff
-                //switchForm(greenForm);
-                greenForm.Activate();
-                uiDriver.UpdateBars();
-                //isInSecondary = true;
-            }
+            switchForm(greenForm);
+            greenForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
         }
 
         //Switch to ORANGE Form
-        public void PressOrange()
+        public override void PressOrange()
         {
-            if (Input.GetButtonDown(inputOrange) && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-            {
-                setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-                setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-                switchForm(orangeForm);
-                orangeForm.Activate();
-                uiDriver.UpdateBars();
-                isInSecondary = true;
-            }
+            switchForm(orangeForm);
+            orangeForm.Activate();
+            uiDriver.UpdateBars();
+            isInSecondary = true;
         }
+
+		public override void PressDefensivePurple(){
+			//SWITCHING TO PURPLE FOR OARCUS DOES NOTHING
+			uiDriver.UpdateBars ();
+		}
+		
+		public override void PressDefensiveGreen(){
+			//JUST HEAL - Don't switch forms
+			defenseGreenForm.Activate ();
+			uiDriver.UpdateBars ();
+		}
+		
+		public override void PressDefensiveOrange(){
+			//BATTERING RAM!!!
+			switchForm (defenseOrangeForm);
+			defenseOrangeForm.Activate ();
+			uiDriver.UpdateBars ();
+			isInSecondary = true;
+		}
 
         // OnCollisionEnter was modified in OArcus because it cannot absorb.
         public void OnCollisionEnter(Collision col)
         {
-            // Only handle hit if not invulnerable
-            if (invulnCounter <= 0)
-            {
-                // Set invulnerability
-                invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
-                audio.PlayOneShot(bumpSound);
-            }
+			float bluePow = ColorPower.Instance.powerBlue;
+			float yellowPow = ColorPower.Instance.powerYellow;
+			float redPow = ColorPower.Instance.powerRed;
+			if (currentForm.TakeHit(col)) {
+				// Only handle hit if not invulnerable
+				if (invulnCounter <= 0) {
+					// Set invulnerability
+					invulnCounter = invulnTime;
+					audio.PlayOneShot (bumpSound);
+					health -= 10;
+				}
+
+				ColorPower.Instance.powerBlue = bluePow;
+				ColorPower.Instance.powerRed = redPow;
+				ColorPower.Instance.powerYellow = yellowPow;
+				if (health < 0) {
+					if (gameOver)
+						return;
+					Destroy (gameObject);
+					Debug.Log ("MISSION FAILED");
+					gameOver = true;
+					lostGame = true;
+				}
+			}
         }
 
         void Fire()

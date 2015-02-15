@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class PurpleForm : SecondaryForm {
-	private int barrel = 1;
 	public float timeBeforeExplosion;
 	public float explosionSize;
 	public GameObject mirv;
@@ -58,7 +57,7 @@ public class PurpleForm : SecondaryForm {
 				Debug.Log("HIT OBJECT");
 				Vector3 direction = (reflectBall.transform.position - collider.transform.position).normalized;
 				Debug.Log ("VECTOR MADE");
-				Rigidbody theRigid = collider.gameObject.transform;
+				Rigidbody theRigid;
 				Transform temp = collider.gameObject.transform;
 				while (temp.parent != null)
 					temp = temp.parent;

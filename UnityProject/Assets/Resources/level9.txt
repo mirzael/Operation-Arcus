@@ -1,0 +1,84 @@
+# format: enemyType,whenToAppear,xPos (relative to center of screen), yPos, movementPattern, stop
+# 18 and -18 for right and left borders, 
+# movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
+# 4 = left-to-right, 5 = right-to-left, 6 = diagonal up-left, 7 = diagonal up-right
+# 8 = left-to-right V, 9 = right-to-left V
+# BMachineGun = GOB0
+# RCascade = GOB1
+# YDualPulse = GOB2
+# BBoss = GOB3
+# RBoss = GOB4
+# YBoss = GOB5
+
+#after absorb message
+GOB1,3.5, 2.0,2,1,0
+GOB1,3.5,-2.0,2,2,0
+GOB1,4.0,-5.0,0,2,0
+GOB1,4.0, 5.0,0,1,0
+
+#switch shield message
+#blue on left
+GOB0,11.0,-2.0,2,3,0
+GOB0,11.0,-5.0,2,3,0
+GOB0,11.0,-8.0,2,3,0
+GOB0,11.0,-11.0,2,3,0
+GOB0,11.0,-14.0,2,3,0
+GOB0,11.0,-17.0,2,3,0
+#yellow enemies on right
+GOB2,11.0, 2.0,2,3,0
+GOB2,11.0, 5.0,2,3,0
+GOB2,11.0, 8.0,2,3,0
+GOB2,11.0, 11.0,2,3,0
+GOB2,11.0, 14.0,2,3,0
+GOB2,11.0, 17.0,2,3,0
+
+#shoot message
+#red from both sides
+GOB1,17.0,-5.0,0,2,0
+GOB1,17.0, 5.0,0,1,0
+GOB1,17.5, 2.0,2,1,0
+GOB1,17.5,-2.0,2,2,0
+#blue & yellow from opposite sides
+GOB2,19.0, 5.0,0,1,0
+GOB0,19.0,-5.0,0,2,0
+GOB2,19.5, 2.0,2,1,0
+GOB0,19.5,-2.0,2,2,0
+
+#blue & yellow from opposite sides
+GOB2,22.0, 17.0,8,5,0
+GOB2,22.0, 25.0,8,5,0
+GOB0,22.0,-17.0,8,4,0
+GOB0,22.0,-21.0,8,4,0
+GOB0,22.0,-25.0,8,4,0
+GOB2,22.0, 21.0,8,5,0
+GOB0,22.0,-13.0,8,4,0
+GOB2,22.0, 13.0,8,5,0
+
+#Phase 5 - all of them
+GOB0,26.5,  2.0,2,1,0
+GOB0,26.5, -2.0,2,2,0
+GOB1,27.0, 11.0,2,1,0
+GOB1,27.0,-11.0,2,2,0
+GOB2,28.0, 15.0,8,5,1
+GOB2,28.0,-15.0,8,4,1
+
+#Phase 6 - red & blue opposite sides
+GOB0,31.0,-16.0,8,4,0
+GOB1,31.0, 16.0,8,5,0
+GOB1,31.0, 12.0,8,5,0
+GOB0,31.0,-12.0,8,4,0
+GOB0,31.0, 19.0,8,1,0
+GOB0,31.0, 23.0,8,1,0
+GOB1,31.0,-19.0,8,2,0
+GOB1,31.0,-23.0,8,2,0
+
+#Phase 7
+GOB0,35.0, 21.0,8,5,0
+GOB0,35.0,-21.0,8,4,0
+GOB1,35.5, 2.0,2,3,0
+GOB1,35.5,-2.0,2,3,0
+GOB2,36.0, 13.0,3,1,0
+GOB2,36.0,-13.0,3,2,0
+
+#BOSS
+GOB4,43.5,0,0,0,0

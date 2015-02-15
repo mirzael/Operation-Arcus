@@ -6,15 +6,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using MainCharacter;
 
-public class BlindBar : Singleton<BlindBar>
+public class BlindBar : MonoBehaviour
 {
     public BlindColorBar redSlider;
     public BlindColorBar blueSlider;
     public BlindColorBar yellowSlider;
 
-    public BlindColorBar healthSlider;
-
+    public BlindColorBar healthSliderP1;
+    public BlindColorBar healthSliderP2;
+    public CharacterDriver player1;
+    public CharacterDriver player2;
     public PrefixedText colorText;
+    public PrefixedText colorTextP2;
+    private bool isMultiplayer;
+
     public PrefixedText scoreText;
 
     protected void Start()
@@ -25,8 +30,13 @@ public class BlindBar : Singleton<BlindBar>
         }
         if (colorText==null || scoreText==null)
         {
-            Debug.LogError("Make sure curColor & scoreText are dragged into blind bar");
+            Debug.LogError("Make sure curColor & scoreText are dragged into "+gameObject.name);
         }
+        if(healthSliderP1==null || player1==null)
+        {
+            Debug.LogError("Make sure healthSliderP1 & Player1 are dragged into "+gameObject.name);
+        }
+        isMultiplayer = player2 != null;
         UpdateColorBars();
     }
 
@@ -41,12 +51,23 @@ public class BlindBar : Singleton<BlindBar>
     {
         UpdateCurrentColor();
         UpdateScore();
+        UpdateColorBars();
+        UpdateHealth();
+    }
+
+    public void UpdateHealth()
+    {
+        healthSliderP1.UpdatePercentage(player1.health);
+        if(isMultiplayer)
+        {
+            healthSliderP2.UpdatePercentage(player2.health);
+        }
     }
 
     public void UpdateCurrentColor()
     {
-        ShipColor color = MainCharacterDriver.currentForm.shipColor;
-        colorText.UpdateText(color.ToString());
+     /*   ShipColor color = player1.shipColor;
+        colorText.UpdateText(color.ToString());*/
     }
 
     public void UpdateScore()
