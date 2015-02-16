@@ -41,6 +41,7 @@ public class PurpleForm : SecondaryForm {
 		reflectBall.transform.localScale = new Vector3(baseRadius, baseRadius, baseRadius);
 		reflectBall.renderer.material.color = new Color(1, 0, 1, 0.1f);
 		reflectBall.transform.position = transform.position;
+		reflectBall.AddComponent<PurpleWeapon>();
 		//gameObject.GetComponent<SphereCollider>().radius *= 3;
 	}
 	
@@ -52,8 +53,8 @@ public class PurpleForm : SecondaryForm {
 		else
 			reflectBall.transform.localScale = new Vector3 (maxRadius, maxRadius, maxRadius);
 		growValue = growValue + 1f;
-		foreach(Collider collider in Physics.OverlapSphere(reflectBall.transform.position, baseRadius + growValue)){
-			if((collider.gameObject.layer == 10) /*|| (collider.gameObject.layer == 8)*/){
+		/*foreach(Collider collider in Physics.OverlapSphere(reflectBall.transform.position, baseRadius + growValue)){
+			if((collider.gameObject.layer == 10) /*|| (collider.gameObject.layer == 8)){
 				Debug.Log("HIT OBJECT");
 				Vector3 direction = (reflectBall.transform.position - collider.transform.position).normalized;
 				Debug.Log ("VECTOR MADE");
@@ -66,7 +67,7 @@ public class PurpleForm : SecondaryForm {
 				theRigid.velocity = (direction * -20);
 				Debug.Log ("FORCE!!!!");
 			}
-		}
+		}*/
 		if (timeActive <= 0.0f) {
 			isActive = false;
 			growValue = 1;
