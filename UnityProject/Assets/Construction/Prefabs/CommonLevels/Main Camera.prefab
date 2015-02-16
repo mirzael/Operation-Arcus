@@ -2958,7 +2958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &120170
 GameObject:
   m_ObjectHideFlags: 1
@@ -3511,6 +3511,7 @@ GameObject:
   - 114: {fileID: 11436946}
   - 114: {fileID: 11462200}
   - 114: {fileID: 11434482}
+  - 114: {fileID: 11472742}
   m_Layer: 9
   m_Name: dArcus
   m_TagString: Player
@@ -12722,6 +12723,7 @@ GameObject:
   - 114: {fileID: 11452700}
   - 114: {fileID: 11452702}
   - 114: {fileID: 11452704}
+  - 114: {fileID: 11472740}
   m_Layer: 9
   m_Name: oArcus
   m_TagString: Player
@@ -13308,6 +13310,7 @@ GameObject:
   - 114: {fileID: 11476504}
   - 114: {fileID: 11476502}
   - 114: {fileID: 11476500}
+  - 114: {fileID: 11472744}
   m_Layer: 9
   m_Name: Arcus_V2
   m_TagString: Player
@@ -21325,7 +21328,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.0788078, y: -25.9710579, z: -53.7361755}
+  m_LocalPosition: {x: 0, y: 1, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420170}
@@ -35625,6 +35628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
   loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
   winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
   background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
@@ -36373,6 +36378,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singePlayer: {fileID: 120168}
   multiPlayer: {fileID: 117112}
+--- !u!114 &11472740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56d6c4b127ea354e94f08115b14c350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11472742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56d6c4b127ea354e94f08115b14c350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11472744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56d6c4b127ea354e94f08115b14c350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11474318
 MonoBehaviour:
   m_ObjectHideFlags: 1
