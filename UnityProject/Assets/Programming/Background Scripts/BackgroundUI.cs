@@ -4,7 +4,7 @@ using MainCharacter;
 
 public class BackgroundUI : MonoBehaviour {
 	public Material successScreen;
-	private GameObject winScreen, loseScreen;
+	public GameObject winScreen, loseScreen;
 	private bool showingWinLose;
 	private bool win;
 	
@@ -15,8 +15,14 @@ public class BackgroundUI : MonoBehaviour {
 	public Material background;
 
 	public void Start(){
-		winScreen = GameObject.Find("WinScreen");
-		loseScreen = GameObject.Find("LoseScreen");
+        if(winScreen==null)
+        {
+            winScreen = GameObject.Find("WinScreen");
+        }
+        if(loseScreen==null)
+        {
+            loseScreen = GameObject.Find("LoseScreen");
+        }
 		winScreen.SetActive(false);
 		loseScreen.SetActive(false);
 		showingWinLose = false;
@@ -84,7 +90,6 @@ public class BackgroundUI : MonoBehaviour {
 		}
 		showingWinLose = true;
 		win = true;
-		
 	}
 	
 	public void ShowLoseScreen() {

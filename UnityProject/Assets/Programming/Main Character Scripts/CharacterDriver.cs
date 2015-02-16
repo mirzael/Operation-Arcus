@@ -9,4 +9,10 @@ public abstract class CharacterDriver : MonoBehaviour {
 	public abstract void PressGreen();
 	public abstract void PressPurple();
 	public abstract void PressOrange();
+
+    public void WinLevel()
+    {
+        gameOver = true;
+        gameObject.GetComponent<EndAnimation>().PlayWinAnimation();
+    }
 }

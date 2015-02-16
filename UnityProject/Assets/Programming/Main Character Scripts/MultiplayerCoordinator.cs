@@ -30,11 +30,13 @@ public class MultiplayerCoordinator {
 
 	public void GameOver(){
 		if (OArcusDriver.health <= 0 && DarcusDriver.health <= 0) {
-			OArcusDriver.gameOver = true;
-			DarcusDriver.gameOver = true;
+            backgroundUI.ShowLoseScreen();
 		}
-
-		backgroundUI.ShowLoseScreen ();
+        else
+        {
+            OArcusDriver.WinLevel();
+            DarcusDriver.WinLevel();
+        }
 	}
 
 	public void NewLevel(){
