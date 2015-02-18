@@ -331,6 +331,10 @@ namespace Spectrum
         //Switch to PURPLE FORM
         public override void PressPurple()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
             switchForm(purpleForm);
             purpleForm.Activate();
             uiDriver.UpdateBars();
@@ -340,6 +344,10 @@ namespace Spectrum
         //Switch to GREEN FORM
         public override void PressGreen()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
             //For Green form, we just want to heal and not do stuff
             switchForm(greenForm);
             greenForm.Activate();
@@ -350,6 +358,10 @@ namespace Spectrum
         //Switch to ORANGE Form
         public override void PressOrange()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
 	        switchForm(orangeForm);
 	        orangeForm.Activate();
 	        uiDriver.UpdateBars();
@@ -357,6 +369,14 @@ namespace Spectrum
         }
 
 		public override void PressDefensivePurple(){
+			if (isInSecondary) {
+				return;
+			}
+			
+			if (GameObject.Find("oArcus") == null) {
+				PressPurple();
+			}
+			
 			switchForm (defensePurpleForm);
 			defensePurpleForm.Activate ();
 			uiDriver.UpdateBars ();
@@ -364,6 +384,10 @@ namespace Spectrum
 		}
 
 		public override void PressDefensiveGreen(){
+			if (isInSecondary) {
+				return;
+			}
+			
 			switchForm (defenseGreenForm);
 			defenseGreenForm.Activate ();
 			uiDriver.UpdateBars ();
@@ -371,6 +395,10 @@ namespace Spectrum
 		}
 
 		public override void PressDefensiveOrange(){
+			if (isInSecondary) {
+				return;
+			}
+			
 			switchForm (defenseOrangeForm);
 			defenseOrangeForm.Activate ();
 			uiDriver.UpdateBars ();

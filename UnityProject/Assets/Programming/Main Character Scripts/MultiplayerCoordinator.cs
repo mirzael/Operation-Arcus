@@ -24,8 +24,12 @@ public class MultiplayerCoordinator {
 
 
 	public void UpdateUI(){
-		OArcusDriver.uiDriver.UpdateBars ();
-		DarcusDriver.uiDriver.UpdateBars ();
+		if (GameObject.Find("oArcus") != null) {
+			OArcusDriver.uiDriver.UpdateBars ();
+		}
+		if (GameObject.Find("dArcus") != null) {
+			DarcusDriver.uiDriver.UpdateBars ();
+		}
 	}
 
 	public void GameOver(){
@@ -34,8 +38,12 @@ public class MultiplayerCoordinator {
 		}
         else
         {
-            OArcusDriver.WinLevel();
-            DarcusDriver.WinLevel();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.WinLevel();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.WinLevel();
+			}
         }
 	}
 
@@ -48,9 +56,13 @@ public class MultiplayerCoordinator {
 		if (ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
 			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
-
-			OArcusDriver.PressGreen();
-			DarcusDriver.PressGreen();
+			
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressGreen();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressGreen();
+			}
 		}
 	}
 
@@ -59,8 +71,12 @@ public class MultiplayerCoordinator {
 			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
 			
-			OArcusDriver.PressOrange();
-			DarcusDriver.PressOrange();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressOrange();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressOrange();
+			}
 		}
 	}
 
@@ -69,8 +85,12 @@ public class MultiplayerCoordinator {
 			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
 			
-			OArcusDriver.PressPurple();
-			DarcusDriver.PressPurple();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressPurple();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressPurple();
+			}
 		}
 	}
 
@@ -79,8 +99,12 @@ public class MultiplayerCoordinator {
 			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
 			
-			OArcusDriver.PressDefensiveGreen();
-			DarcusDriver.PressDefensiveGreen();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressDefensiveGreen();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressDefensiveGreen();
+			}
 		}
 	}
 	
@@ -89,8 +113,12 @@ public class MultiplayerCoordinator {
 			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
 			
-			OArcusDriver.PressDefensiveOrange();
-			DarcusDriver.PressDefensiveOrange();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressDefensiveOrange();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressDefensiveOrange();
+			}
 		}
 	}
 	
@@ -99,8 +127,12 @@ public class MultiplayerCoordinator {
 			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
 			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
 			
-			OArcusDriver.PressDefensivePurple();
-			DarcusDriver.PressDefensivePurple();
+			if (GameObject.Find("oArcus") != null) {
+				OArcusDriver.PressDefensivePurple();
+			}
+			if (GameObject.Find("dArcus") != null) {
+				DarcusDriver.PressDefensivePurple();
+			}
 		}
 	}
 }
