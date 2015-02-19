@@ -28,8 +28,6 @@ public class BackgroundUI : MonoBehaviour {
 		showingWinLose = false;
 		win = false;
 		
-		GameObject.Find("Background").renderer.material = background;
-		
 		points = Camera.main.gameObject.GetComponent<PointMaster> ();
 	}
 
@@ -46,10 +44,10 @@ public class BackgroundUI : MonoBehaviour {
 			if (win) {
 				spawner.level++;
 				if (spawner.lastLevel) {
+                    Application.LoadLevel("MainMenu");
 					PointMaster.points = 0.0f;
 					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-					GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
-					Application.LoadLevel("Credits");
+					//GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
 					return;
 				}
 				
