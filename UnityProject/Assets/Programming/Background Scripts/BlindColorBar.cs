@@ -20,6 +20,9 @@ public class BlindColorBar : MonoBehaviour
     public void UpdatePercentage(float percent)
     {
         slider.value = percent;
-        text.text = prefix + percent.ToString() + "%";
+        if(text!=null)
+        {
+            text.text = prefix + percent.ToString() + "%";
+        }
     }
 }

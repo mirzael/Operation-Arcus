@@ -492,8 +492,15 @@ namespace Spectrum
         }
 
 		private void GetColorPiecesRecursive(Transform trans){
-			foreach(Transform t in trans.GetComponentInChildren<Transform> ()){
-				if(t.tag == "ArcusColor"){
+            Transform child = trans.GetComponentInChildren<Transform>();
+            if (child == null)
+            {
+                return;
+            }
+            foreach (Transform t in child)
+            {
+                if (t.tag == "ArcusColor")
+                {
 					colorPieces.Add(t.gameObject);
 				}
 				GetColorPiecesRecursive(t);
