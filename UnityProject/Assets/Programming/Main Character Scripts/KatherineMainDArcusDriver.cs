@@ -73,11 +73,6 @@ namespace Spectrum
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
 
-        // List of Available Color Forms
-        private PrimaryForm redForm;
-        private PrimaryForm blueForm;
-        private PrimaryForm yellowForm;
-
         private bool isInSecondary = false;
 
         // Level Constraints

@@ -10,6 +10,7 @@ public abstract class MultiplayerCharacterDriver : CharacterDriver {
 	protected SecondaryForm defensePurpleForm;
 
 	public void Start(){
+		base.Start ();
 		greenForm = GetComponent<GreenForm>();
 		orangeForm = GetComponent<OrangeForm>();
 		purpleForm = GetComponent<PurpleForm>();
