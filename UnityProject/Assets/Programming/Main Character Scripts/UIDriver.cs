@@ -77,7 +77,6 @@ public class UIDriver : MonoBehaviour
 
     private void RotateLeft()
     {
-        Debug.Log("rotate to the left to the left");
         var tmp = barLeft.currentColor;
         barLeft.currentColor = barRight.currentColor;
         barRight.currentColor = barCenter.currentColor;
@@ -86,8 +85,6 @@ public class UIDriver : MonoBehaviour
 
     private void RotateRight()
     {
-        Debug.Log("rotate to the right yeah");
-
         var tmp = barRight.currentColor;
         barRight.currentColor = barLeft.currentColor;
         barLeft.currentColor = barCenter.currentColor;

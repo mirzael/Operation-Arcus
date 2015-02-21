@@ -10,7 +10,7 @@ public class StartGameAction : MenuAction
 
     public override void TakeAction()
     {
-        MultiplayerController.isMultiplayer = isMultiplayer;
+        MultiplayerController.Instance.isMultiplayer = isMultiplayer;
         Application.LoadLevel(Application.loadedLevel + 1);
     }
 }

@@ -54,7 +54,7 @@ public class BackgroundUI : MonoBehaviour {
 				GameObject.Find("Background").renderer.material = background;
 				winScreen.SetActive(false);
 
-				if(MultiplayerController.isMultiplayer){
+				if(MultiplayerController.Instance.isMultiplayer){
 					MultiplayerCoordinator.Instance.NewLevel();
 				}else{
 					var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();

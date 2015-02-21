@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Arcustored
+  m_Name: ArcusV3_Anims
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: Arcus_Animation
@@ -218,7 +218,7 @@ Transition:
   m_TransitionDuration: .206896544
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 5
+  - m_ConditionMode: 7
     m_ConditionEvent: Arcus_Animation
     m_EventTreshold: 1
     m_ExitTime: .790000021

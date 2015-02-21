@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class MultiplayerController : MonoBehaviour {
+public class MultiplayerController : Singleton<MultiplayerController> {
 	public GameObject singePlayer;
 	public GameObject multiPlayer;
 
-    public static bool isMultiplayer = true;
+    public bool isMultiplayer = true;
 	
 	public void Start() {
         singePlayer.SetActive(!isMultiplayer);

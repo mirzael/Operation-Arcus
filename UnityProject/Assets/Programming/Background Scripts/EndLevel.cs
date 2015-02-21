@@ -27,7 +27,7 @@ public class EndLevel : MonoBehaviour {
             return;
         }
         animationPlaying = true;
-        if (MultiplayerController.isMultiplayer)
+        if (MultiplayerController.Instance.isMultiplayer)
         {
             MultiplayerCoordinator.Instance.GameOver();
         }
