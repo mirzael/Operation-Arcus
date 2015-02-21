@@ -7015,6 +7015,7 @@ GameObject:
   - 114: {fileID: 11467446}
   - 82: {fileID: 8261436}
   - 114: {fileID: 11434476}
+  - 45: {fileID: 4598386}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -32162,6 +32163,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197200}
   m_Mesh: {fileID: 4300000, guid: db001d24e308fc44a84aa778da28c92f, type: 3}
+--- !u!45 &4598386
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161768}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 25506e6b9519bd34baa678a0d1828935, type: 2}
 --- !u!81 &8161436
 AudioListener:
   m_ObjectHideFlags: 1
