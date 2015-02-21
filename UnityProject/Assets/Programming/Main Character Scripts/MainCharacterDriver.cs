@@ -46,9 +46,7 @@ public class MainCharacterDriver : CharacterDriver {
 	//Used for returning to the form we were in before switching to secondary
 	public static Form previousForm;
 
-	private PrimaryForm redForm;
-	private PrimaryForm blueForm;
-	private PrimaryForm yellowForm;
+
 	private SecondaryForm greenForm;
 	private SecondaryForm orangeForm;
 	private SecondaryForm purpleForm;

@@ -73,11 +73,6 @@ namespace Spectrum
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
 
-        // List of Available Color Forms
-        private PrimaryForm redForm;
-        private PrimaryForm blueForm;
-        private PrimaryForm yellowForm;
-
         private bool isInSecondary = false;
 
         // Level Constraints
@@ -492,8 +487,15 @@ namespace Spectrum
         }
 
 		private void GetColorPiecesRecursive(Transform trans){
-			foreach(Transform t in trans.GetComponentInChildren<Transform> ()){
-				if(t.tag == "ArcusColor"){
+            Transform child = trans.GetComponentInChildren<Transform>();
+            if (child == null)
+            {
+                return;
+            }
+            foreach (Transform t in child)
+            {
+                if (t.tag == "ArcusColor")
+                {
 					colorPieces.Add(t.gameObject);
 				}
 				GetColorPiecesRecursive(t);

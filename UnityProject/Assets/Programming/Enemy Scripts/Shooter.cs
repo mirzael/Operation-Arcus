@@ -6,7 +6,9 @@ public class Shooter : MonoBehaviour {
 	public GameObject projectile;
 	public bool isBoss;
 	public GameObject bossProjectile;
-	public float bossBulletChance;
+	public GameObject bossBlue;
+	public GameObject bossRed;
+	public GameObject bossYellow;
 	public float bossPattern;
 	public int pattern;
 	float currentCooldown;
@@ -50,6 +52,9 @@ public class Shooter : MonoBehaviour {
 		case 7:
 			bulletWave = gameObject.AddComponent<CircleWave> ();
 			break;
+		case 8:
+			bulletWave = gameObject.AddComponent<LevOneBossWave>();
+			break;
 		}
 	}
 	
@@ -59,11 +64,7 @@ public class Shooter : MonoBehaviour {
 		if (isBoss) {
 			health = death.health;
 			if (health < (maxHealth - 10f)) {
-				if (!(bulletWave is BossBeamWave)) {
-					Destroy (bulletWave);
-					Debug.Log ("DESPERATION!");
-					bulletWave = gameObject.AddComponent<BossBeamWave> ();
-				}
+				bulletWave.triggerDesperation();
 			}
 		}
 		if (currentCooldown == 0) 

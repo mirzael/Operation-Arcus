@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hiscores : Singleton<Hiscores> {
 	private const int MAX_SCORES = 10;
@@ -25,9 +26,9 @@ public class Hiscores : Singleton<Hiscores> {
             PlayerPrefs.SetInt("Score" + i, score);
 			if (score > 0) {
 				string name = PlayerPrefs.GetString("Player" + i);
-				GameObject.Find("Player" + i).GetComponent<TextMesh>().text = name + ": " + score;
+				GameObject.Find("Player" + i).GetComponent<Text>().text = name + ": " + score;
 			} else {
-				GameObject.Find("Player" + i).GetComponent<TextMesh>().text = "";
+				GameObject.Find("Player" + i).GetComponent<Text>().text = "";
 			}
 		}
 	}

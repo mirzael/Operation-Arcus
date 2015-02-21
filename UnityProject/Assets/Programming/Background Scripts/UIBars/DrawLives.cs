@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DrawLives : MonoBehaviour {
 	public GameObject innerHealthBar;
+    public Slider healthSlider;
 
-	public GameObject arcusModel;
 	public Renderer[] healthPortions;
-	private CharacterDriver driver; 
+	private CharacterDriver driver;
+
+    public bool useGUI = true;
 
 	// Use this for initialization
 	void Start () {
 		healthPortions = innerHealthBar.GetComponentsInChildren<Renderer> ();
 		driver = gameObject.GetComponent<CharacterDriver> ();
 	}
-
 
 	void Update(){
 		if (driver.health > 0) {
@@ -23,19 +25,27 @@ public class DrawLives : MonoBehaviour {
 	}
 
 	private void UpdateHealth(){
-		float invisIndex = 10-driver.health / 10;
+        if(useGUI)
+        {
+            healthSlider.value = driver.health;
+        }
+        else
+        {
+            float invisIndex = 10 - driver.health / 10;
 
-		for (int i = healthPortions.Length-1; i >= invisIndex; i--) {
-			var tmp = healthPortions[i].material.color;
-			tmp.a = 0.8f;
-			healthPortions[i].material.color = tmp;
-		}
-		for (int i = 0; i < invisIndex; i++) {
-			var tmp = healthPortions[i].material.color;
-			tmp.a = 0f;
-			healthPortions[i].material.color = tmp;
-		}
-
+            for (int i = healthPortions.Length - 1; i >= invisIndex; i--)
+            {
+                var tmp = healthPortions[i].material.color;
+                tmp.a = 0.8f;
+                healthPortions[i].material.color = tmp;
+            }
+            for (int i = 0; i < invisIndex; i++)
+            {
+                var tmp = healthPortions[i].material.color;
+                tmp.a = 0f;
+                healthPortions[i].material.color = tmp;
+            }
+        }
 	}
 
 	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
