@@ -6134,12 +6134,12 @@ Transform:
   m_PrefabParentObject: {fileID: 414440, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
   m_PrefabInternal: {fileID: 125969782}
   m_GameObject: {fileID: 337929783}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalPosition: {x: 0, y: 0, z: 49}
+  m_LocalScale: {x: 7.38042545, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 569828999}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1001 &341375276
 Prefab:
   m_ObjectHideFlags: 0
@@ -10642,8 +10642,9 @@ Transform:
   m_Children:
   - {fileID: 1757385104}
   - {fileID: 2123052106}
-  - {fileID: 337929787}
+  - {fileID: 707981430}
   - {fileID: 1500830206}
+  - {fileID: 337929787}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1001 &575288273
@@ -13759,6 +13760,113 @@ MeshFilter:
   m_PrefabInternal: {fileID: 544794564}
   m_GameObject: {fileID: 699252526}
   m_Mesh: {fileID: 4300014, guid: c93833801a5b0b843ae2cb1a68a43d11, type: 3}
+--- !u!1 &707981427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100122, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 125969782}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 707981430}
+  - 114: {fileID: 707981429}
+  - 82: {fileID: 707981428}
+  m_Layer: 0
+  m_Name: UIEventSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &707981428
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200122, guid: 4c9545179d7133f4ba2fb9e97de4d6c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 125969782}
+  m_GameObject: {fileID: 707981427}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &707981429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400122, guid: 4c9545179d7133f4ba2fb9e97de4d6c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 125969782}
+  m_GameObject: {fileID: 707981427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0f660b081ec5f48bbce1c94167acc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  orangeReadySound: {fileID: 8300000, guid: f0592cb003451374fa2d27d866c715d1, type: 3}
+  greenReadySound: {fileID: 8300000, guid: a3346a80b34c70044bc5dea480a7de26, type: 3}
+  purpleReadySound: {fileID: 8300000, guid: 136e349645e9ece47a9b26e3390047bd, type: 3}
+  Orange: {r: 1, g: .653448343, b: .25, a: 0}
+  Purple: {r: .618281007, g: .13786763, b: .625, a: 0}
+  Green: {r: .26294598, g: .632352948, b: .2138841, a: 0}
+--- !u!4 &707981430
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400122, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+  m_PrefabInternal: {fileID: 125969782}
+  m_GameObject: {fileID: 707981427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 569828999}
+  m_RootOrder: 2
 --- !u!1 &710996409
 GameObject:
   m_ObjectHideFlags: 0
@@ -22540,7 +22648,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3cb6c946a2136be48bb20d9a62975498, type: 2}
+  - {fileID: 2100000, guid: faa17d55c8e1acc45b930bd81442294f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -23230,9 +23338,6 @@ MonoBehaviour:
   barCenter: {fileID: 2107002027}
   barLeft: {fileID: 1867912008}
   barRight: {fileID: 817309791}
-  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
-  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
-  Green: {r: .0758621693, g: 1, b: 0, a: 1}
   primaryRing: {fileID: 1458361955}
   secondaryRing1: {fileID: 1606066142}
   secondaryRing2: {fileID: 1788233324}
@@ -24939,7 +25044,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2d422a1a594a6f74cbbca1b3ec397e30, type: 2}
+  - {fileID: 2100000, guid: 13a31d3d52a13d044be986de5563c4f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -26237,7 +26342,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5caa05335918c2744a701dd4f0c85a55, type: 2}
+  - {fileID: 2100000, guid: c31cc425599a39d40acc0652603dc9eb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -26960,9 +27065,6 @@ MonoBehaviour:
   barCenter: {fileID: 669598164}
   barLeft: {fileID: 1058931702}
   barRight: {fileID: 786461489}
-  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
-  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
-  Green: {r: .0758621693, g: 1, b: 0, a: 1}
   primaryRing: {fileID: 293359360}
   secondaryRing1: {fileID: 111548973}
   secondaryRing2: {fileID: 1562481788}
@@ -31961,9 +32063,6 @@ MonoBehaviour:
   barCenter: {fileID: 808082968}
   barLeft: {fileID: 768604999}
   barRight: {fileID: 1204101997}
-  Orange: {r: .870588243, g: .529411793, b: .0196078438, a: 1}
-  Purple: {r: .87843138, g: .423529416, b: .807843149, a: 1}
-  Green: {r: .0758621693, g: 1, b: 0, a: 1}
   primaryRing: {fileID: 1775697711}
   secondaryRing1: {fileID: 905696023}
   secondaryRing2: {fileID: 1431072264}
@@ -33359,7 +33458,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2e95798e733b2b04f8392ecfc18fce5c, type: 2}
+  - {fileID: 2100000, guid: 97f67e72c3db71041a1c04bc53baf7aa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -41947,7 +42046,7 @@ AudioSource:
   m_GameObject: {fileID: 2123052104}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 359dff8caeaa97b40a5ce5dc21f77ae8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 30fbc3b5570617744a5611ce604e41bc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
