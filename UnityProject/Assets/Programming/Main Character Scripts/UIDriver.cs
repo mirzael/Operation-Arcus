@@ -1,6 +1,7 @@
 using UnityEngine;
 using MainCharacter;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIDriver : MonoBehaviour
 {
@@ -11,17 +12,19 @@ public class UIDriver : MonoBehaviour
     private ShipColor currentColor; // 1 = red; 2 = blue; 3 = yellow;
     //public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW}
 
-    public Color Orange;
-    public Color Purple;
-    public Color Green;
-
     public GameObject primaryRing;
     public GameObject secondaryRing1;
     public GameObject secondaryRing2;
 
+    //did the colors become visible this frame or previously?
+    protected Dictionary<Color, bool> wasSecondaryReady = new Dictionary<Color,bool>();
+
     protected void Awake()
     {
         currentColor = ShipColor.RED;
+        wasSecondaryReady.Add(UIEvents.Instance.Green, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Orange, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Purple, false);
     }
 
     public void Start()
@@ -130,6 +133,7 @@ public class UIDriver : MonoBehaviour
         }
         else
         {
+            //defaults - this should never happen?  Z.H. 2-21-15
             barLeft.UpdatePercentage(ColorPower.Instance.powerYellow);
             barCenter.UpdatePercentage(ColorPower.Instance.powerRed);
             barRight.UpdatePercentage(ColorPower.Instance.powerBlue);
@@ -138,106 +142,72 @@ public class UIDriver : MonoBehaviour
         float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
         if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
         {
-            if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple)
-            {
-                primaryRing.renderer.material.color = Purple;
-            }
-            else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple)
-            {
-                secondaryRing1.renderer.material.color = Purple;
-            }
-            else
-            {
-                secondaryRing2.renderer.material.color = Purple;
-            }
+            MakeSureRingIsDisplayed(UIEvents.Instance.Purple);
         }
         else
         {
-            if (primaryRing.renderer.material.color == Purple)
-            {
-                var tmp = primaryRing.renderer.material.color;
-                tmp.a = 0;
-                primaryRing.renderer.material.color = tmp;
-            }
-            else if (secondaryRing1.renderer.material.color == Purple)
-            {
-                var tmp = secondaryRing1.renderer.material.color;
-                tmp.a = 0;
-                secondaryRing1.renderer.material.color = tmp;
-            }
-            else if (secondaryRing2.renderer.material.color == Purple)
-            {
-                var tmp = secondaryRing2.renderer.material.color;
-                tmp.a = 0;
-                secondaryRing2.renderer.material.color = tmp;
-            }
+            //make purple ring transparent
+            MakeSureRingIsTransparent(UIEvents.Instance.Purple);
         }
         if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerYellow >= transformAmount)
         {
-            if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange)
-            {
-                primaryRing.renderer.material.color = Orange;
-            }
-            else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange)
-            {
-                secondaryRing1.renderer.material.color = Orange;
-            }
-            else
-            {
-                secondaryRing2.renderer.material.color = Orange;
-            }
+            MakeSureRingIsDisplayed(UIEvents.Instance.Orange);
         }
         else
         {
-            if (primaryRing.renderer.material.color == Orange)
-            {
-                var tmp = primaryRing.renderer.material.color;
-                tmp.a = 0;
-                primaryRing.renderer.material.color = tmp;
-            }
-            else if (secondaryRing1.renderer.material.color == Orange)
-            {
-                var tmp = secondaryRing1.renderer.material.color;
-                tmp.a = 0;
-                secondaryRing1.renderer.material.color = tmp;
-            }
-            else if (secondaryRing2.renderer.material.color == Orange)
-            {
-                var tmp = secondaryRing2.renderer.material.color;
-                tmp.a = 0;
-                secondaryRing2.renderer.material.color = tmp;
-            }
+            //Make UIEvents.Instance.Orange Ring transparent
+            MakeSureRingIsTransparent(UIEvents.Instance.Orange);
         }
         if (ColorPower.Instance.powerYellow >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
         {
-            if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green)
-            {
-                primaryRing.renderer.material.color = Green;
-            }
-            else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green)
-            {
-                secondaryRing1.renderer.material.color = Green;
-            }
-            else
-            {
-                secondaryRing2.renderer.material.color = Green;
-            }
+            MakeSureRingIsDisplayed(UIEvents.Instance.Green);
         }
         else
         {
-            if (primaryRing.renderer.material.color == Green)
+            MakeSureRingIsTransparent(UIEvents.Instance.Green);
+        }
+    }
+
+    protected void MakeSureRingIsDisplayed(Color color)
+    {
+        //only do stuff if just became active
+        if(!wasSecondaryReady[color])
+        {
+            wasSecondaryReady[color] = true;
+            UIEvents.Instance.MakeSecondaryReady(color);
+            if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == color)
+            {
+                primaryRing.renderer.material.color = color;
+            }
+            else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == color)
+            {
+                secondaryRing1.renderer.material.color = color;
+            }
+            else
+            {
+                secondaryRing2.renderer.material.color = color;
+            }
+        }
+    }
+
+    protected void MakeSureRingIsTransparent(Color color)
+    {
+        if(wasSecondaryReady[color])
+        {
+            wasSecondaryReady[color] = false;
+            if (primaryRing.renderer.material.color == color)
             {
                 var tmp = primaryRing.renderer.material.color;
                 tmp.a = 0;
                 primaryRing.renderer.material.color = tmp;
             }
-            else if (secondaryRing1.renderer.material.color == Green)
+            else if (secondaryRing1.renderer.material.color == color)
             {
                 var tmp = secondaryRing1.renderer.material.color;
                 tmp.a = 0;
                 secondaryRing1.renderer.material.color = tmp;
             }
-            else if (secondaryRing2.renderer.material.color == Green)
+            else if (secondaryRing2.renderer.material.color == color)
             {
                 var tmp = secondaryRing2.renderer.material.color;
                 tmp.a = 0;
