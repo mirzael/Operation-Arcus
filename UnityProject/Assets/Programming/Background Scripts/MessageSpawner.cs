@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class TutorialSpawner : MonoBehaviour
+public class MessageSpawner : MonoBehaviour
 {
     //Every time we go to next segment, we'll spawn/turn on all of these objects
     [System.Serializable]
-    public class TutorialSegment
+    public class Message
     {
         public AudioClip voiceOver;
         //GameObjects in the scene to turn on
         public GameObject textMessage;
-        public GameObject enemyToSpawn;
         public float timeToNext = -1;
     }
 
-    public List<TutorialSegment> segments;
+    public List<Message> segments;
 
     //After timeToNext time, go to next segment
     protected float timeToNext
@@ -47,7 +46,6 @@ public class TutorialSpawner : MonoBehaviour
     //random references needed
     protected GameObject curTextMessage;
     protected AudioSource audioSource;
-    public Transform enemySpawnPoint;
 
     protected void Start()
     {
@@ -86,7 +84,7 @@ public class TutorialSpawner : MonoBehaviour
         }
 
         //Get the current segment and play/spawn all of its things
-        TutorialSegment segment = segments[curSegment];
+        Message segment = segments[curSegment];
         if(segment.voiceOver!=null)
         {
             audioSource.PlayOneShot(segment.voiceOver);
@@ -95,10 +93,6 @@ public class TutorialSpawner : MonoBehaviour
         {
             segment.textMessage.SetActive(true);
             curTextMessage = segment.textMessage;
-        }
-        if(segment.enemyToSpawn!=null)
-        {
-            GameObject.Instantiate(segment.enemyToSpawn,enemySpawnPoint.position,Quaternion.identity);
         }
     }
 }
