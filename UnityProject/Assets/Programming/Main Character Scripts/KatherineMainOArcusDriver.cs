@@ -64,7 +64,6 @@ namespace Spectrum
         private string inputFire = "OffFire";
 
         // Arcus Animator
-        Animator anim;
 
         // This is the current form the ship is using
         public static Form currentForm;
@@ -105,8 +104,6 @@ namespace Spectrum
             // Get the name of the GameObject
             arcusName = gameObject.name;
 
-            // Retrieve the Animator
-            anim = GetComponent<Animator>();
 
             // Retrieve the GUI Components
 			GetColorPiecesRecursive (transform);
@@ -415,7 +412,7 @@ namespace Spectrum
                 colorPieces[i].renderer.material = currentForm.material;
             }
             currentCooldown = currentForm.getCooldown();
-            anim.SetInteger("TransformVar", currentForm.animationNum);
+            //anim.SetInteger("TransformVar", currentForm.animationNum);
         }
 
         public void ResetForm()

@@ -16,6 +16,9 @@ public class UIDriver : MonoBehaviour
     public GameObject secondaryRing1;
     public GameObject secondaryRing2;
 
+    public string animationLabel;
+    public Animator shipAnimator;
+
     //did the colors become visible this frame or previously?
     protected Dictionary<Color, bool> wasSecondaryReady = new Dictionary<Color,bool>();
 
@@ -45,6 +48,7 @@ public class UIDriver : MonoBehaviour
         }
 
         currentColor = ShipColor.BLUE;
+
         UpdateBars();
     }
 
@@ -110,8 +114,7 @@ public class UIDriver : MonoBehaviour
 
     public void UpdateBars()
     {
-
-        //BlindBar.Instance.UpdateColorBars();
+        shipAnimator.SetInteger(animationLabel, (int)currentColor);
 
         if (currentColor == ShipColor.RED)
         {
@@ -142,6 +145,7 @@ public class UIDriver : MonoBehaviour
         float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
         if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
         {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.PURPLE);
             MakeSureRingIsDisplayed(UIEvents.Instance.Purple);
         }
         else
@@ -151,6 +155,7 @@ public class UIDriver : MonoBehaviour
         }
         if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerYellow >= transformAmount)
         {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.ORANGE);
             MakeSureRingIsDisplayed(UIEvents.Instance.Orange);
         }
         else
@@ -160,6 +165,7 @@ public class UIDriver : MonoBehaviour
         }
         if (ColorPower.Instance.powerYellow >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
         {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.GREEN);
             MakeSureRingIsDisplayed(UIEvents.Instance.Green);
         }
         else

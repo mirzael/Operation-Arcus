@@ -10411,7 +10411,50 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11476494, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animationLabel
+      value: Arcus_Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476494, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1829401154}
+    - target: {fileID: 11476492, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1339589808}
+    - target: {fileID: 11476492, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animationLabel
+      value: Arcus_Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448786, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1812417139}
+    - target: {fileID: 11448786, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: animationLabel
+      value: Transform_Variable
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476492, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: shipAnimator
+      value: 
+      objectReference: {fileID: 1339589808}
+    - target: {fileID: 11448786, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: secondaryRing2
+      value: 
+      objectReference: {fileID: 1562481788}
+    - target: {fileID: 11448786, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: shipAnimator
+      value: 
+      objectReference: {fileID: 1812417139}
+    - target: {fileID: 11476494, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: shipAnimator
+      value: 
+      objectReference: {fileID: 1829401154}
+    m_RemovedComponents:
+    - {fileID: 9576482, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+    - {fileID: 9576480, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+    - {fileID: 9524832, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_RootGameObject: {fileID: 1846346096}
   m_IsPrefabParent: 0
@@ -22660,7 +22703,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3cb6c946a2136be48bb20d9a62975498, type: 2}
+  - {fileID: 2100000, guid: faa17d55c8e1acc45b930bd81442294f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -22975,7 +23018,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1214261065}
-  - 95: {fileID: 1214261082}
   - 114: {fileID: 1214261081}
   - 114: {fileID: 1214261080}
   - 135: {fileID: 1214261079}
@@ -23353,6 +23395,8 @@ MonoBehaviour:
   primaryRing: {fileID: 1458361955}
   secondaryRing1: {fileID: 1606066142}
   secondaryRing2: {fileID: 1788233324}
+  animationLabel: Arcus_Animation
+  shipAnimator: {fileID: 1339589808}
 --- !u!114 &1214261081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23369,22 +23413,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1682514787}
   healthPortions: []
   useGUI: 1
---- !u!95 &1214261082
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9576480, guid: a6f629fa2d9cae84d87631ab12025342,
-    type: 2}
-  m_PrefabInternal: {fileID: 544794564}
-  m_GameObject: {fileID: 1214261064}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1214261083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25056,7 +25084,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2d422a1a594a6f74cbbca1b3ec397e30, type: 2}
+  - {fileID: 2100000, guid: 13a31d3d52a13d044be986de5563c4f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -26354,7 +26382,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5caa05335918c2744a701dd4f0c85a55, type: 2}
+  - {fileID: 2100000, guid: c31cc425599a39d40acc0652603dc9eb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -26675,7 +26703,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1403180284}
-  - 95: {fileID: 1403180301}
   - 114: {fileID: 1403180300}
   - 114: {fileID: 1403180299}
   - 135: {fileID: 1403180298}
@@ -27080,6 +27107,8 @@ MonoBehaviour:
   primaryRing: {fileID: 293359360}
   secondaryRing1: {fileID: 111548973}
   secondaryRing2: {fileID: 1562481788}
+  animationLabel: Transform_Variable
+  shipAnimator: {fileID: 1812417139}
 --- !u!114 &1403180300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27096,22 +27125,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1304591739}
   healthPortions: []
   useGUI: 1
---- !u!95 &1403180301
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9524832, guid: a6f629fa2d9cae84d87631ab12025342,
-    type: 2}
-  m_PrefabInternal: {fileID: 544794564}
-  m_GameObject: {fileID: 1403180283}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1403180302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31740,7 +31753,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1610735054}
-  - 95: {fileID: 1610735067}
   - 114: {fileID: 1610735055}
   - 114: {fileID: 1610735066}
   - 114: {fileID: 1610735065}
@@ -31804,6 +31816,7 @@ MonoBehaviour:
   inputPurple: OffPurple
   inputHorizontal: Horizontal
   inputVertical: Vertical
+  anim: {fileID: 0}
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
@@ -32078,6 +32091,8 @@ MonoBehaviour:
   primaryRing: {fileID: 1775697711}
   secondaryRing1: {fileID: 905696023}
   secondaryRing2: {fileID: 1431072264}
+  animationLabel: Arcus_Animation
+  shipAnimator: {fileID: 1829401154}
 --- !u!114 &1610735066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32094,22 +32109,6 @@ MonoBehaviour:
   healthSlider: {fileID: 380709039}
   healthPortions: []
   useGUI: 1
---- !u!95 &1610735067
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9576482, guid: a6f629fa2d9cae84d87631ab12025342,
-    type: 2}
-  m_PrefabInternal: {fileID: 544794564}
-  m_GameObject: {fileID: 1610735053}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1610735068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33470,7 +33469,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2e95798e733b2b04f8392ecfc18fce5c, type: 2}
+  - {fileID: 2100000, guid: 97f67e72c3db71041a1c04bc53baf7aa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
