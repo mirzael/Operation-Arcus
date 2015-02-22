@@ -1913,7 +1913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &120170
 GameObject:
   m_ObjectHideFlags: 1
@@ -2004,7 +2004,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424776}
-  - 95: {fileID: 9524832}
   - 114: {fileID: 11448788}
   - 114: {fileID: 11448786}
   - 135: {fileID: 13524832}
@@ -3747,8 +3746,6 @@ GameObject:
   - 114: {fileID: 11461436}
   - 114: {fileID: 11467446}
   - 82: {fileID: 8261436}
-  - 114: {fileID: 11434476}
-  - 45: {fileID: 4598386}
   - 45: {fileID: 4565490}
   m_Layer: 0
   m_Name: Main Camera
@@ -4692,7 +4689,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476682}
-  - 95: {fileID: 9576480}
   - 114: {fileID: 11476490}
   - 114: {fileID: 11476492}
   - 135: {fileID: 13576474}
@@ -4740,7 +4736,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476796}
-  - 95: {fileID: 9576482}
   - 114: {fileID: 11476498}
   - 114: {fileID: 11476496}
   - 114: {fileID: 11476494}
@@ -11045,14 +11040,6 @@ Skybox:
   m_GameObject: {fileID: 161768}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 25506e6b9519bd34baa678a0d1828935, type: 2}
---- !u!45 &4598386
-Skybox:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161768}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 25506e6b9519bd34baa678a0d1828935, type: 2}
 --- !u!81 &8161436
 AudioListener:
   m_ObjectHideFlags: 1
@@ -11344,21 +11331,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9524832
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9536968
 Animator:
   serializedVersion: 3
@@ -11474,36 +11446,6 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: db001d24e308fc44a84aa778da28c92f, type: 3}
   m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9576480
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176682}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9576482
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176796}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 548557b72d2b600428e84f23ff2c52a5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8971fbd9a4ca377469a10655e77474ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -11856,8 +11798,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12458,8 +12400,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12496,8 +12438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redSlider: {fileID: 11412690}
-  blueSlider: {fileID: 0}
-  yellowSlider: {fileID: 0}
+  blueSlider: {fileID: 11412686}
+  yellowSlider: {fileID: 11474332}
   healthSliderP1: {fileID: 11405508}
   healthSliderP2: {fileID: 0}
   player1: {fileID: 11476498}
@@ -12934,8 +12876,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redSlider: {fileID: 11418818}
-  blueSlider: {fileID: 0}
-  yellowSlider: {fileID: 0}
+  blueSlider: {fileID: 11418826}
+  yellowSlider: {fileID: 11418834}
   healthSliderP1: {fileID: 11459846}
   healthSliderP2: {fileID: 0}
   player1: {fileID: 11476498}
@@ -13671,8 +13613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redSlider: {fileID: 11418864}
-  blueSlider: {fileID: 0}
-  yellowSlider: {fileID: 0}
+  blueSlider: {fileID: 11418856}
+  yellowSlider: {fileID: 11418848}
   healthSliderP1: {fileID: 11418882}
   healthSliderP2: {fileID: 0}
   player1: {fileID: 11476498}
@@ -13973,8 +13915,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -14389,8 +14331,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -14581,23 +14523,6 @@ MonoBehaviour:
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
   pauseButton: {fileID: 0}
---- !u!114 &11434476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 780e6364247d1c546ab64f684bc3b298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  successScreen: {fileID: 2100000, guid: b08a932d638221743912fcfa3624e53c, type: 2}
-  winScreen: {fileID: 0}
-  loseScreen: {fileID: 0}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
-  background: {fileID: 2100000, guid: 14260dfa65ca741409340adb39b6f3c1, type: 2}
 --- !u!114 &11434478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14897,8 +14822,8 @@ MonoBehaviour:
   primaryRing: {fileID: 174484}
   secondaryRing1: {fileID: 136926}
   secondaryRing2: {fileID: 136902}
-  animationLabel: 
-  shipAnimator: {fileID: 0}
+  animationLabel: Transform_Variable
+  shipAnimator: {fileID: 9557950}
 --- !u!114 &11448788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15780,8 +15705,8 @@ MonoBehaviour:
   primaryRing: {fileID: 196954}
   secondaryRing1: {fileID: 176812}
   secondaryRing2: {fileID: 197200}
-  animationLabel: 
-  shipAnimator: {fileID: 0}
+  animationLabel: Arcus_Animation
+  shipAnimator: {fileID: 9542678}
 --- !u!114 &11476494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15799,8 +15724,8 @@ MonoBehaviour:
   primaryRing: {fileID: 174742}
   secondaryRing1: {fileID: 105168}
   secondaryRing2: {fileID: 136924}
-  animationLabel: 
-  shipAnimator: {fileID: 0}
+  animationLabel: Arcus_Animation
+  shipAnimator: {fileID: 9565490}
 --- !u!114 &11476496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16278,8 +16203,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295

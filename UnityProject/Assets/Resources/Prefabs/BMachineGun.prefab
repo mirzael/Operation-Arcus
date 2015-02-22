@@ -1882,6 +1882,7 @@ MonoBehaviour:
   isBoss: 0
   bossProjectile: {fileID: 0}
   bossBulletChance: 0
+  bossPattern: 0
   pattern: 4
   bulletWave: {fileID: 0}
 --- !u!114 &11400002

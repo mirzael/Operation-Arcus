@@ -30,7 +30,7 @@ public class BlindBar : MonoBehaviour
         }
         if (colorText==null || scoreText==null)
         {
-            Debug.LogError("Make sure curColor & scoreText are dragged into "+gameObject.name);
+            Debug.Log("Make sure curColor & scoreText are dragged into "+gameObject.name);
         }
         if(healthSliderP1==null || player1==null)
         {
@@ -72,7 +72,10 @@ public class BlindBar : MonoBehaviour
 
     public void UpdateScore()
     {
-        scoreText.UpdateText(Hiscores.latestScore.ToString());
+        if(scoreText!=null)
+        {
+            scoreText.UpdateText(Hiscores.latestScore.ToString());
+        }
     }
 
 }
