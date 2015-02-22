@@ -6,7 +6,7 @@ public class EndLevel : MonoBehaviour {
     public float animTime = 2f;
 
 	public void Start(){
-		ui = Camera.main.GetComponent<BackgroundUI> ();
+		ui = BackgroundUI.Instance;
 	}
 
 	public void Update() {

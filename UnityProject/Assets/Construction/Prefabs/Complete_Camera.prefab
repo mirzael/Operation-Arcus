@@ -12,6 +12,7 @@ GameObject:
   - 124: {fileID: 12488832}
   - 92: {fileID: 9288832}
   - 81: {fileID: 8188832}
+  - 45: {fileID: 4553316}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -28,6 +29,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488832}
   - 95: {fileID: 9588832}
+  - 114: {fileID: 11454628}
   m_Layer: 0
   m_Name: Complete_Camera
   m_TagString: Untagged
@@ -42,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.62502861}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 488832}
@@ -54,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188832}
   m_LocalRotation: {x: .2189769, y: -.477374494, z: .124168813, w: .841869891}
-  m_LocalPosition: {x: 0, y: .689999998, z: 0}
+  m_LocalPosition: {x: -7.66405869, y: 5.41725254, z: 7.5117588}
   m_LocalScale: {x: 1.32828426, y: 1.32828486, z: 1.32828486}
   m_Children:
   - {fileID: 488830}
@@ -92,6 +94,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!45 &4553316
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188830}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 25506e6b9519bd34baa678a0d1828935, type: 2}
 --- !u!81 &8188832
 AudioListener:
   m_ObjectHideFlags: 1
@@ -121,6 +131,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11454628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727cbcb55eb48b45b069ba940b32fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12488832
 Behaviour:
   m_ObjectHideFlags: 1

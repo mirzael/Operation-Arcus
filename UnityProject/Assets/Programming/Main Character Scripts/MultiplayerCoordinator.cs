@@ -19,7 +19,7 @@ public class MultiplayerCoordinator {
 	public BackgroundUI backgroundUI;
 
 	public MultiplayerCoordinator(){
-		backgroundUI = Camera.main.GetComponent<BackgroundUI> ();
+		backgroundUI = BackgroundUI.Instance;
 	}
 
 

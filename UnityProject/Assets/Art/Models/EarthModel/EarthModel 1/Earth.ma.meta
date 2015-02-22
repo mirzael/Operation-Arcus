@@ -2,7 +2,36 @@ fileFormatVersion: 2
 guid: e5757aebc78bf954596e16a6a12dee40
 ModelImporter:
   serializedVersion: 16
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: Atmosphere1
+    100002: camera1
+    100004: Clouds
+    100006: directionalLight1
+    100008: //RootNode
+    100010: Earth
+    100012: Earth 1
+    100014: EarthProxy1
+    400000: Atmosphere1
+    400002: camera1
+    400004: Clouds
+    400006: directionalLight1
+    400008: //RootNode
+    400010: Earth
+    400012: Earth 1
+    400014: EarthProxy1
+    2300000: Atmosphere1
+    2300002: Clouds
+    2300004: Earth 1
+    2300006: EarthProxy1
+    3300000: Atmosphere1
+    3300002: Clouds
+    3300004: Earth 1
+    3300006: EarthProxy1
+    4300000: EarthProxy1
+    4300002: Earth
+    4300004: Clouds
+    4300006: Atmosphere1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -22,7 +51,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
