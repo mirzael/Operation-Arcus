@@ -2,8 +2,8 @@ fileFormatVersion: 2
 guid: 59c4741694d67c94f8bf2bed5f67ab4d
 AudioImporter:
   serializedVersion: 4
-  format: -1
-  quality: .5
+  format: 0
+  quality: .920000017
   stream: 1
   3D: 0
   forceToMono: 0
