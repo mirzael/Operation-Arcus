@@ -6,11 +6,14 @@
 #Vertical screen edge: 1 = top 40 = bottom
 
 # BMachineGun = GOB0
-# YCascade = GOB1
-# RDualPulse = GOB2
-# BBoss = GOB3
-# RBoss = GOB4
-# YBoss = GOB5
+# YMachineGun = GOB1
+# RMachineGun = GOB2
+# BNet = GOB3
+# YNet = GOB4
+# RNet = GOB5
+# BTri = GOB6
+# Y Tri = GOB7
+# R Tri = GOB8
 
 #ship,time,x,y,movement,stop
 
@@ -51,7 +54,29 @@ GOB1,14.4,-18,8,2,0
 GOB0,14.4,18,8,1,0
 
 #2s wait
-#wave3 20-30s (is not possible at this time)
+#wave3 20-30s 
+#add turrets
+GOB3,20,0,1,3,0
+GOB4,20,-4,1,3,0
+GOB5,20,4,1,3,0
+GOB3,20.5,0,1,3,0
+GOB4,20.5,-4,1,3,0
+GOB5,20.5,4,1,3,0
+GOB3,21,0,1,3,0
+GOB4,21,-4,1,3,0
+GOB5,21,4,1,3,0
+GOB3,21.5,0,1,3,0
+GOB4,21.5,-4,1,3,0
+GOB5,21.5,4,1,3,0
+GOB3,22,0,1,3,0
+GOB4,22,-4,1,3,0
+GOB5,22,4,1,3,0
+GOB3,22.5,0,1,3,0
+GOB4,22.5,-4,1,3,0
+GOB5,22.5,4,1,3,0
+GOB3,22.5,0,1,3,0
+GOB4,23,-4,1,3,0
+GOB5,23,4,1,3,0
 
 #wave4
 #30-36s
@@ -73,6 +98,15 @@ GOB0,33.5,18,3,1,0
 GOB2,33.5,-18,3,2,0
 GOB0,34,18,3,1,0
 GOB2,34,-18,3,2,0
+GOB0,34.5,18,3,1,0
+GOB2,34.5,-18,3,2,0
+GOB0,35,18,3,1,0
+GOB2,35,-18,3,2,0
+GOB0,35.5,18,3,1,0
+GOB2,35.5,-18,3,2,0
+GOB0,36,18,3,1,0
+GOB2,36,-18,3,2,0
+
 
 #wave5
 #40-60s
