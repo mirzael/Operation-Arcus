@@ -7,7 +7,6 @@ public class Wave : MonoBehaviour {
 	public GameObject projectile;
 	public GameObject bossProj;
 	public bool isBoss;
-	public float bossBulletChance;
 	public float currentCooldown;
 
 
@@ -17,7 +16,6 @@ public class Wave : MonoBehaviour {
 		projectile = shooter.projectile;
 		bossProj = shooter.bossProjectile;
 		isBoss = shooter.isBoss;
-		bossBulletChance = shooter.bossBulletChance;
 		currentCooldown = 20;
 		cooldown = 100;
 	}
@@ -52,11 +50,12 @@ public class Wave : MonoBehaviour {
 		currentCooldown = 0;
 	}
 
+	public virtual void triggerDesperation()
+	{
+		currentCooldown = 0;
+	}
+
 	public GameObject InstantiateBullet(GameObject projectile, Vector3 location, Quaternion rotation){
-		if (isBoss && Random.Range (0, 100) <= bossBulletChance) {
-			return (GameObject)Instantiate(bossProj, location, rotation);
-		} else {
-			return (GameObject)Instantiate(projectile, location, rotation);
-		}
+		return (GameObject)Instantiate(projectile, location, rotation);
 	}
 }

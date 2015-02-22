@@ -64,18 +64,12 @@ namespace Spectrum
         private string inputFire = "OffFire";
 
         // Arcus Animator
-        Animator anim;
 
         // This is the current form the ship is using
         public static Form currentForm;
 
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
-
-        // List of Available Color Forms
-        private PrimaryForm redForm;
-        private PrimaryForm blueForm;
-        private PrimaryForm yellowForm;
 
         private bool isInSecondary = false;
 
@@ -110,8 +104,6 @@ namespace Spectrum
             // Get the name of the GameObject
             arcusName = gameObject.name;
 
-            // Retrieve the Animator
-            anim = GetComponent<Animator>();
 
             // Retrieve the GUI Components
 			GetColorPiecesRecursive (transform);
@@ -420,7 +412,7 @@ namespace Spectrum
                 colorPieces[i].renderer.material = currentForm.material;
             }
             currentCooldown = currentForm.getCooldown();
-            anim.SetInteger("TransformVar", currentForm.animationNum);
+            //anim.SetInteger("TransformVar", currentForm.animationNum);
         }
 
         public void ResetForm()
@@ -447,7 +439,12 @@ namespace Spectrum
         }
 
 		private void GetColorPiecesRecursive(Transform trans){
-			foreach(Transform t in trans.GetComponentInChildren<Transform> ()){
+            Transform child = trans.GetComponentInChildren<Transform> ();
+            if(child==null)
+            {
+                return;
+            }
+			foreach(Transform t in child){
 				if(t.tag == "ArcusColor"){
 					colorPieces.Add(t.gameObject);
 				}

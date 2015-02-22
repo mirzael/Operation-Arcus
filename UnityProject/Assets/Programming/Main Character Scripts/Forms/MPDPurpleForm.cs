@@ -26,12 +26,14 @@ public class MPDPurpleForm : SecondaryForm {
 		if (!isActive) return;
 		timeActive -= Time.deltaTime;
 		
-		if (numFrames < FRAMES_TO_DOCK) {
-			numFrames++;
-			Vector3 diff = (oArcus.transform.position + Vector3.up * 5) - transform.position;
-			transform.position += (diff * (1.0f / FRAMES_TO_DOCK));
-		} else {
-			transform.position = oArcus.transform.position + Vector3.up * 5;
+		if (oArcus != null) {
+			if (numFrames < FRAMES_TO_DOCK) {
+				Vector3 diff = (oArcus.transform.position + Vector3.up * 5) - transform.position;
+				transform.position += (diff * (1.0f / (FRAMES_TO_DOCK - numFrames)));
+				numFrames++;
+			} else {
+				transform.position = oArcus.transform.position + Vector3.up * 5;
+			}
 		}
 		
 		if (timeActive <= 0.0f) {

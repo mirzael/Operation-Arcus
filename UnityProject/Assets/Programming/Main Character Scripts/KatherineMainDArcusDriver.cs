@@ -65,18 +65,13 @@ namespace Spectrum
         private string inputFire = "DefFire";
 
         // Arcus Animator
-        Animator anim;
+       // Animator anim;
 
         // This is the current form the ship is using
         public static Form currentForm;
 
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
-
-        // List of Available Color Forms
-        private PrimaryForm redForm;
-        private PrimaryForm blueForm;
-        private PrimaryForm yellowForm;
 
         private bool isInSecondary = false;
 
@@ -112,7 +107,7 @@ namespace Spectrum
             arcusName = gameObject.name;
 
             // Retrieve the Animator
-            anim = GetComponent<Animator>();
+            //anim = GetComponent<Animator>();
 
             // Retrieve the GUI Components
 			GetColorPiecesRecursive (transform);
@@ -331,6 +326,10 @@ namespace Spectrum
         //Switch to PURPLE FORM
         public override void PressPurple()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
             switchForm(purpleForm);
             purpleForm.Activate();
             uiDriver.UpdateBars();
@@ -340,6 +339,10 @@ namespace Spectrum
         //Switch to GREEN FORM
         public override void PressGreen()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
             //For Green form, we just want to heal and not do stuff
             switchForm(greenForm);
             greenForm.Activate();
@@ -350,6 +353,10 @@ namespace Spectrum
         //Switch to ORANGE Form
         public override void PressOrange()
         {
+			if (isInSecondary) {
+				return;
+			}
+			
 	        switchForm(orangeForm);
 	        orangeForm.Activate();
 	        uiDriver.UpdateBars();
@@ -357,6 +364,14 @@ namespace Spectrum
         }
 
 		public override void PressDefensivePurple(){
+			if (isInSecondary) {
+				return;
+			}
+			
+			if (GameObject.Find("oArcus") == null) {
+				PressPurple();
+			}
+			
 			switchForm (defensePurpleForm);
 			defensePurpleForm.Activate ();
 			uiDriver.UpdateBars ();
@@ -364,6 +379,10 @@ namespace Spectrum
 		}
 
 		public override void PressDefensiveGreen(){
+			if (isInSecondary) {
+				return;
+			}
+			
 			switchForm (defenseGreenForm);
 			defenseGreenForm.Activate ();
 			uiDriver.UpdateBars ();
@@ -371,6 +390,10 @@ namespace Spectrum
 		}
 
 		public override void PressDefensiveOrange(){
+			if (isInSecondary) {
+				return;
+			}
+			
 			switchForm (defenseOrangeForm);
 			defenseOrangeForm.Activate ();
 			uiDriver.UpdateBars ();
@@ -437,7 +460,7 @@ namespace Spectrum
                 colorPieces[i].renderer.material = currentForm.material;
             }
             currentCooldown = currentForm.getCooldown();
-            anim.SetInteger("TransformVar", currentForm.animationNum);
+            //anim.SetInteger("TransformVar", currentForm.animationNum);
         }
 
         public void ResetForm()
@@ -464,8 +487,15 @@ namespace Spectrum
         }
 
 		private void GetColorPiecesRecursive(Transform trans){
-			foreach(Transform t in trans.GetComponentInChildren<Transform> ()){
-				if(t.tag == "ArcusColor"){
+            Transform child = trans.GetComponentInChildren<Transform>();
+            if (child == null)
+            {
+                return;
+            }
+            foreach (Transform t in child)
+            {
+                if (t.tag == "ArcusColor")
+                {
 					colorPieces.Add(t.gameObject);
 				}
 				GetColorPiecesRecursive(t);

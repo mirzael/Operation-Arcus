@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class EndLevel : MonoBehaviour {
 	private BackgroundUI ui;
+    private bool animationPlaying = false;
+    public float animTime = 2f;
 
 	public void Start(){
-		ui = Camera.main.GetComponent<BackgroundUI> ();
+		ui = BackgroundUI.Instance;
 	}
 
 	public void Update() {
@@ -14,16 +16,32 @@ public class EndLevel : MonoBehaviour {
 				return;
 			}
 		}
-	
-		if (MultiplayerController.isMultiplayer) {
-			MultiplayerCoordinator.Instance.GameOver ();
-		} else {
-			var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
-			driver.gameOver = true;
-		}
 
-		ui.ShowWinScreen ();
-
-		Destroy(this);
+        PlayAnimation();
 	}
+
+    private void PlayAnimation()
+    {
+        if(animationPlaying)
+        {
+            return;
+        }
+        animationPlaying = true;
+        if (MultiplayerController.Instance.isMultiplayer)
+        {
+            MultiplayerCoordinator.Instance.GameOver();
+        }
+        else
+        {
+            var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
+            driver.WinLevel();
+        }
+        Invoke("ShowScreen",animTime);
+    }
+
+    private void ShowScreen()
+    {
+        ui.ShowWinScreen();
+       // Component.Destroy(this);
+    }
 }

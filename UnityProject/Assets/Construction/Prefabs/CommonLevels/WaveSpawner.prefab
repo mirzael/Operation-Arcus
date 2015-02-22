@@ -12,6 +12,7 @@ GameObject:
   - 135: {fileID: 13524696}
   - 23: {fileID: 2324696}
   - 114: {fileID: 11424696}
+  - 114: {fileID: 11459414}
   m_Layer: 0
   m_Name: WaveSpawner
   m_TagString: Untagged
@@ -71,15 +72,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyToSpawn:
   - {fileID: 100000, guid: 93e2ebd253a3d324cbf6ac12bf5858c7, type: 2}
-  - {fileID: 100000, guid: 65b914e2f01e63d4fb4d6fe9bd20357e, type: 2}
-  - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
+  - {fileID: 100000, guid: 56ce901546427c24b87204ffccba90f0, type: 2}
+  - {fileID: 100002, guid: 511b9b9a5e0f6584aba76d890dbb818a, type: 2}
   - {fileID: 100112, guid: 46a08c22b08dd8d44b1ad303fbb69b1d, type: 2}
   - {fileID: 100000, guid: 0432693ee94d71a42b072f66f79166b6, type: 2}
   - {fileID: 100186, guid: 28fa7f18385f6ab48bc2000b3a78574c, type: 2}
+  - {fileID: 100000, guid: 9aa3076264944de42b3892a048ffd082, type: 2}
+  - {fileID: 100000, guid: 0e6e9a3343c2c4845868d3a4b5bc4b1b, type: 2}
+  - {fileID: 100000, guid: 37ba6355ee4010744899000586e5e42e, type: 2}
   spawnRate: 1
-  nextSceneName: Level2
-  level: 1
+  level: 2
   lastLevel: 0
+--- !u!114 &11459414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a66c04ff73f4c4797d28797039f125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealthMultiplier: 1
+  enemyCooldownMultiplier: 1
+  playerDamageMultipler: 1
 --- !u!135 &13524696
 SphereCollider:
   m_ObjectHideFlags: 1

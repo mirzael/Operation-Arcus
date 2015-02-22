@@ -35,7 +35,6 @@ public class MainCharacterDriver : CharacterDriver {
 	 */
 
 	//Arcus Animator
-	Animator anim;
 
 	private const float ALPHA_PER_SEC = 0.1f;
 	static bool lostGame;
@@ -46,9 +45,7 @@ public class MainCharacterDriver : CharacterDriver {
 	//Used for returning to the form we were in before switching to secondary
 	public static Form previousForm;
 
-	private PrimaryForm redForm;
-	private PrimaryForm blueForm;
-	private PrimaryForm yellowForm;
+
 	private SecondaryForm greenForm;
 	private SecondaryForm orangeForm;
 	private SecondaryForm purpleForm;
@@ -75,7 +72,6 @@ public class MainCharacterDriver : CharacterDriver {
 		Application.targetFrameRate = 60;
 		arcusName = gameObject.name;
 		
-		anim = GetComponent<Animator> ();
 		colorPieces = GameObject.FindGameObjectsWithTag ("ArcusColor");
 		
 		redForm = GetComponent<RedForm>();
@@ -432,7 +428,6 @@ public class MainCharacterDriver : CharacterDriver {
 			colorPieces[i].renderer.material = currentForm.material;
 		}
 		currentCooldown = currentForm.getCooldown();
-		anim.SetInteger ("TransformVar", currentForm.animationNum);
 	}
 
 	public void ResetForm(){

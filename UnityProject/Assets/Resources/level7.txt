@@ -1,0 +1,58 @@
+# format: enemyType,whenToAppear,xPos (relative to center of screen), yPos, movementPattern, stop
+# movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
+# 4 = left-to-right, 5 = right-to-left, 6 = diagonal up-left, 7 = diagonal up-right
+# 8 = left-to-right V, 9 = right-to-left V
+#Horizontal screen edge: -18=left 18=right
+#Vertical screen edge: 1=top 40=bot
+
+# BMachineGun = GOB0
+# YCascade = GOB1
+# RDualPulse = GOB2
+# BBoss = GOB3
+# RBoss = GOB4
+# YBoss = GOB5
+
+#ship,time,x,y,movement,stop
+
+#wave1
+#start at 3s
+
+GOB0,3,-18,4,4,0
+GOB1,3,-18,7,4,0
+GOB2,3,-18,10,4,0
+GOB1,3.5,-18,4,4,0
+GOB2,3.5,-18,7,4,0
+GOB0,3.5,-18,10,4,0
+GOB2,4,-18,4,4,0
+GOB0,4,-18,7,4,0
+GOB1,4,-18,10,4,0
+GOB0,4.5,-18,4,4,0
+GOB1,4.5,-18,7,4,0
+GOB2,4.5,-18,10,4,0
+GOB1,5,-18,4,4,0
+GOB2,5,-18,7,4,0
+GOB0,5,-18,10,4,0
+GOB2,5.5,-18,4,4,0
+GOB0,5.5,-18,7,4,0
+GOB1,5.5,-18,10,4,0
+GOB0,6,-18,4,4,0
+GOB1,6,-18,7,4,0
+GOB2,6,-18,10,4,0
+GOB1,6.5,-18,4,4,0
+GOB2,6.5,-18,7,4,0
+GOB0,6.5,-18,10,4,0
+GOB2,7,-18,4,4,0
+GOB0,7,-18,7,4,0
+GOB1,7,-18,10,4,0
+GOB0,7.5,-18,4,4,0
+GOB1,7.5,-18,7,4,0
+GOB2,7.5,-18,10,4,0
+GOB1,8,-18,4,4,0
+GOB2,8,-18,7,4,0
+GOB0,8,-18,10,4,0
+GOB2,8.5,-18,4,4,0
+GOB0,8.5,-18,7,4,0
+GOB1,8.5,-18,10,4,0
+
+#wave2
+#3s wait

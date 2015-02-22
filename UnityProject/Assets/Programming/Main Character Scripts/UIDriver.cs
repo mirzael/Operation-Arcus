@@ -1,259 +1,255 @@
 using UnityEngine;
 using MainCharacter;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class UIDriver : MonoBehaviour {
-	public GameObject barCenter;
-	public GameObject barLeft;
-	public GameObject barRight;
-	
-	public GameObject powerCenter;
-	public GameObject powerLeft;
-	public GameObject powerRight;
-	
-	private ShipColor currentColor; // 1 = red; 2 = blue; 3 = yellow;
+public class UIDriver : MonoBehaviour
+{
+    public OnArcusColorBar barCenter;
+    public OnArcusColorBar barLeft;
+    public OnArcusColorBar barRight;
+
+    private ShipColor currentColor; // 1 = red; 2 = blue; 3 = yellow;
     //public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW}
 
-	private Vector3 origScaleCenter;
-	private Vector3 origScaleLeft;
-	private Vector3 origScaleRight;
+    public GameObject primaryRing;
+    public GameObject secondaryRing1;
+    public GameObject secondaryRing2;
 
-	public Color Orange;
-	public Color Purple;
-	public Color Green;
+    public string animationLabel;
+    public Animator shipAnimator;
 
-	public GameObject primaryRing;
-	public GameObject secondaryRing1;
-	public GameObject secondaryRing2;
-	
-	public void Awake() {
-		currentColor = ShipColor.RED;
-		
-		origScaleCenter = powerCenter.transform.localScale;
-		origScaleLeft = powerLeft.transform.localScale;
-		origScaleRight = powerRight.transform.localScale;
-		
-		ShiftAndScale(powerCenter, origScaleCenter, new Vector3(0, 1, 1));
-		ShiftAndScale(powerLeft, origScaleLeft, new Vector3(0, 1, 1));
-		ShiftAndScale(powerRight, origScaleRight, new Vector3(0, 1, 1));
-	}
+    //did the colors become visible this frame or previously?
+    protected Dictionary<Color, bool> wasSecondaryReady = new Dictionary<Color,bool>();
 
-	public void RotateToBlue(){
-		if (currentColor == ShipColor.RED) {
-			var tmp = barRight.renderer.material;
-			barRight.renderer.material = barLeft.renderer.material;
-			barLeft.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+    protected void Awake()
+    {
+        currentColor = ShipColor.RED;
+        wasSecondaryReady.Add(UIEvents.Instance.Green, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Orange, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Purple, false);
+    }
 
-			tmp = powerRight.renderer.material;
-			powerRight.renderer.material = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
+    public void Start()
+    {
+        UpdateBars();
+    }
 
-		} else if (currentColor == ShipColor.YELLOW) {
-			var tmp = barLeft.renderer.material;
-			barLeft.renderer.material = barRight.renderer.material;
-			barRight.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+    public void RotateToBlue()
+    {
+        if (currentColor == ShipColor.RED)
+        {
+            RotateLeft();
 
-			tmp = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerRight.renderer.material;
-			powerRight.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
-		}
+        }
+        else if (currentColor == ShipColor.YELLOW)
+        {
+            RotateRight();
+        }
 
-		currentColor = ShipColor.BLUE;
-		UpdateBars ();
-	}
+        currentColor = ShipColor.BLUE;
 
-	public void RotateToRed(){
-		if (currentColor == ShipColor.BLUE) {
-			var tmp = barLeft.renderer.material;
-			barLeft.renderer.material = barRight.renderer.material;
-			barRight.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+        UpdateBars();
+    }
 
-			tmp = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerRight.renderer.material;
-			powerRight.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
+    public void RotateToRed()
+    {
+        if (currentColor == ShipColor.BLUE)
+        {
+            RotateRight();
+        }
+        else if (currentColor == ShipColor.YELLOW)
+        {
+            RotateLeft();
+        }
 
-		} else if (currentColor == ShipColor.YELLOW) {
-			var tmp = barRight.renderer.material;
-			barRight.renderer.material = barLeft.renderer.material;
-			barLeft.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+        currentColor = ShipColor.RED;
+        UpdateBars();
+    }
 
-			tmp = powerRight.renderer.material;
-			powerRight.renderer.material = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
-		}
+    public void RotateToYellow()
+    {
+        if (currentColor == ShipColor.RED)
+        {
+            RotateRight();
+        }
+        else if (currentColor == ShipColor.BLUE)
+        {
+            RotateLeft();
+        }
 
-		currentColor = ShipColor.RED;
-		UpdateBars ();
-	}
+        currentColor = ShipColor.YELLOW;
+        UpdateBars();
+    }
 
-	public void RotateToYellow(){
-		if (currentColor == ShipColor.RED) {
-			var tmp = barLeft.renderer.material;
-			barLeft.renderer.material = barRight.renderer.material;
-			barRight.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+    private void RotateLeft()
+    {
+        var tmp = barLeft.currentColor;
+        barLeft.currentColor = barRight.currentColor;
+        barRight.currentColor = barCenter.currentColor;
+        barCenter.currentColor = tmp;
+    }
 
-			tmp = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerRight.renderer.material;
-			powerRight.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
-		} else if (currentColor == ShipColor.BLUE) {
-			var tmp = barRight.renderer.material;
-			barRight.renderer.material = barLeft.renderer.material;
-			barLeft.renderer.material = barCenter.renderer.material;
-			barCenter.renderer.material = tmp;
+    private void RotateRight()
+    {
+        var tmp = barRight.currentColor;
+        barRight.currentColor = barLeft.currentColor;
+        barLeft.currentColor = barCenter.currentColor;
+        barCenter.currentColor = tmp;
+    }
 
-			tmp = powerRight.renderer.material;
-			powerRight.renderer.material = powerLeft.renderer.material;
-			powerLeft.renderer.material = powerCenter.renderer.material;
-			powerCenter.renderer.material = tmp;
+    /* CurrentColor = 1
+     * 	Left = Secondary 1 = Yellow
+     * 	Center = Red
+     *	Right = Secondary 2 = Blue 
+     * CurrentColor = 2
+     * 	Left = Secondary 1 = Red
+     *  Center = Blue
+     *  Right = Secondary 2 = Yellow
+     * CurrentColor = 3
+     *  Left = Secondary 1 = Blue
+     *  Center = Yellow
+     *  Right = Secondary 2 = Red 
+     */
 
-		}
+    public void UpdateBars()
+    {
+        shipAnimator.SetInteger(animationLabel, (int)currentColor);
 
-		currentColor = ShipColor.YELLOW;
-		UpdateBars ();
-	}
+        if (currentColor == ShipColor.RED)
+        {
+            barLeft.UpdatePercentage(ColorPower.Instance.powerYellow);
+            barCenter.UpdatePercentage(ColorPower.Instance.powerRed);
+            barRight.UpdatePercentage(ColorPower.Instance.powerBlue);
+        }
+        else if (currentColor == ShipColor.BLUE)
+        {
+            barLeft.UpdatePercentage(ColorPower.Instance.powerRed);
+            barCenter.UpdatePercentage(ColorPower.Instance.powerBlue);
+            barRight.UpdatePercentage(ColorPower.Instance.powerYellow);
+        }
+        else if (currentColor == ShipColor.YELLOW)
+        {
+            barLeft.UpdatePercentage(ColorPower.Instance.powerBlue);
+            barCenter.UpdatePercentage(ColorPower.Instance.powerYellow);
+            barRight.UpdatePercentage(ColorPower.Instance.powerRed);
+        }
+        else
+        {
+            //defaults - this should never happen?  Z.H. 2-21-15
+            barLeft.UpdatePercentage(ColorPower.Instance.powerYellow);
+            barCenter.UpdatePercentage(ColorPower.Instance.powerRed);
+            barRight.UpdatePercentage(ColorPower.Instance.powerBlue);
+        }
 
-	/* CurrentColor = 1
-	 * 	Left = Secondary 1 = Yellow
-	 * 	Center = Red
-	 *	Right = Secondary 2 = Blue 
-	 * CurrentColor = 2
-	 * 	Left = Secondary 1 = Red
-	 *  Center = Blue
-	 *  Right = Secondary 2 = Yellow
-	 * CurrentColor = 3
-	 *  Left = Secondary 1 = Blue
-	 *  Center = Yellow
-	 *  Right = Secondary 2 = Red 
-	 */
+        float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
+        if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
+        {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.PURPLE);
+            MakeSureRingIsDisplayed(UIEvents.Instance.Purple);
+        }
+        else
+        {
+            //make purple ring transparent
+            MakeSureRingIsTransparent(UIEvents.Instance.Purple);
+        }
+        if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerYellow >= transformAmount)
+        {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.ORANGE);
+            MakeSureRingIsDisplayed(UIEvents.Instance.Orange);
+        }
+        else
+        {
+            //Make UIEvents.Instance.Orange Ring transparent
+            MakeSureRingIsTransparent(UIEvents.Instance.Orange);
+        }
+        if (ColorPower.Instance.powerYellow >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount)
+        {
+            shipAnimator.SetInteger(animationLabel, (int)ShipColor.GREEN);
+            MakeSureRingIsDisplayed(UIEvents.Instance.Green);
+        }
+        else
+        {
+            MakeSureRingIsTransparent(UIEvents.Instance.Green);
+        }
+    }
 
-	public void UpdateBars() {
+    protected void MakeSureRingIsDisplayed(Color color)
+    {
+        //only do stuff if just became active
+        if(!wasSecondaryReady[color])
+        {
+            wasSecondaryReady[color] = true;
+            UIEvents.Instance.MakeSecondaryReady(color);
+            if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == color)
+            {
+                primaryRing.renderer.material.color = color;
+            }
+            else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == color)
+            {
+                secondaryRing1.renderer.material.color = color;
+            }
+            else
+            {
+                secondaryRing2.renderer.material.color = color;
+            }
+        }
+    }
 
-        //BlindBar.Instance.UpdateColorBars();
+    protected void MakeSureRingIsTransparent(Color color)
+    {
+        if(wasSecondaryReady[color])
+        {
+            wasSecondaryReady[color] = false;
+            if (primaryRing.renderer.material.color == color)
+            {
+                var tmp = primaryRing.renderer.material.color;
+                tmp.a = 0;
+                primaryRing.renderer.material.color = tmp;
+            }
+            else if (secondaryRing1.renderer.material.color == color)
+            {
+                var tmp = secondaryRing1.renderer.material.color;
+                tmp.a = 0;
+                secondaryRing1.renderer.material.color = tmp;
+            }
+            else if (secondaryRing2.renderer.material.color == color)
+            {
+                var tmp = secondaryRing2.renderer.material.color;
+                tmp.a = 0;
+                secondaryRing2.renderer.material.color = tmp;
+            }
+        }
+    }
 
-		if (currentColor == ShipColor.RED) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
-		} else if (currentColor == ShipColor.BLUE) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
-		} else if (currentColor == ShipColor.YELLOW) {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
-		} else {
-			ShiftAndScale(powerLeft, origScaleLeft, new Vector3(ColorPower.Instance.powerYellow / 100, 1, 1));
-			ShiftAndScale(powerCenter, origScaleCenter, new Vector3(ColorPower.Instance.powerRed / 100, 1, 1));
-			ShiftAndScale(powerRight, origScaleRight, new Vector3(ColorPower.Instance.powerBlue / 100, 1, 1));
-		}
-		
-		float transformAmount = MainCharacterDriver.TRANSFORM_AMOUNT;
-		if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount) {
-			if (primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
-					primaryRing.renderer.material.color = Purple;
-			} else if (secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Purple) {
-					secondaryRing1.renderer.material.color = Purple;
-			} else {
-					secondaryRing2.renderer.material.color = Purple;
-			}
-		}else{
-			if(primaryRing.renderer.material.color == Purple){
-				var tmp = primaryRing.renderer.material.color;
-				tmp.a = 0;
-				primaryRing.renderer.material.color = tmp;
-			} else if(secondaryRing1.renderer.material.color == Purple){
-				var tmp = secondaryRing1.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing1.renderer.material.color = tmp;
-			} else if(secondaryRing2.renderer.material.color == Purple){
-				var tmp = secondaryRing2.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing2.renderer.material.color = tmp;
-			}
-		}
-		if (ColorPower.Instance.powerRed >= transformAmount && ColorPower.Instance.powerYellow >= transformAmount) {
-			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
-				primaryRing.renderer.material.color = Orange;
-			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Orange){
-				secondaryRing1.renderer.material.color = Orange;
-			} else {
-				secondaryRing2.renderer.material.color = Orange;
-			}
-		}else{
-			if(primaryRing.renderer.material.color == Orange){
-				var tmp = primaryRing.renderer.material.color;
-				tmp.a = 0;
-				primaryRing.renderer.material.color = tmp;
-			} else if(secondaryRing1.renderer.material.color == Orange){
-				var tmp = secondaryRing1.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing1.renderer.material.color = tmp;
-			} else if(secondaryRing2.renderer.material.color == Orange){
-				var tmp = secondaryRing2.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing2.renderer.material.color = tmp;
-			}
-		}
-		if (ColorPower.Instance.powerYellow >= transformAmount && ColorPower.Instance.powerBlue >= transformAmount) {
-			if(primaryRing.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){
-				primaryRing.renderer.material.color = Green;
-			} else if(secondaryRing1.renderer.material.color.a == 0 || primaryRing.renderer.material.color == Green){
-				secondaryRing1.renderer.material.color = Green;
-			} else {
-				secondaryRing2.renderer.material.color = Green;
-			}
-		}else{
-			if(primaryRing.renderer.material.color == Green){
-				var tmp = primaryRing.renderer.material.color;
-				tmp.a = 0;
-				primaryRing.renderer.material.color = tmp;
-			} else if(secondaryRing1.renderer.material.color == Green){
-				var tmp = secondaryRing1.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing1.renderer.material.color = tmp;
-			} else if(secondaryRing2.renderer.material.color == Green){
-				var tmp = secondaryRing2.renderer.material.color;
-				tmp.a = 0;
-				secondaryRing2.renderer.material.color = tmp;
-			}
-		}
-	}
-	
     /// <summary>
     /// Resize bar with relation to its original scale
     /// </summary>
     /// <param name="powerBar"></param>
     /// <param name="origScale"></param>
     /// <param name="newScaleRatio"></param>
-	private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio) {
-		Vector3 curScale = powerBar.transform.localScale;
-		Vector3 newScale = new Vector3(origScale.x * newScaleRatio.x, origScale.y * newScaleRatio.y, origScale.z * newScaleRatio.z);
-		
-		if (newScale.x == curScale.x && newScale.y == curScale.y && newScale.z == curScale.z) {
-			return;
-		}
-		
-		float newX = powerBar.transform.position.x - powerBar.renderer.bounds.extents.x;
-		float curY = powerBar.transform.position.y;
-		float curZ = powerBar.transform.position.z;
-		powerBar.transform.position = new Vector3(newX, curY, curZ);
-		powerBar.transform.localScale = newScale;
-		newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
-		powerBar.transform.position = new Vector3(newX, curY, curZ);
-	}
+/*    private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio)
+    {
+        Vector3 curScale = powerBar.transform.localScale;
+        Vector3 newScale = new Vector3(origScale.x * newScaleRatio.x, origScale.y * newScaleRatio.y, origScale.z * newScaleRatio.z);
 
-	public void ShowLoseScreen(){
-		Camera.main.gameObject.GetComponent<BackgroundUI> ().ShowLoseScreen ();
-	}
+        if (newScale.x == curScale.x && newScale.y == curScale.y && newScale.z == curScale.z)
+        {
+            return;
+        }
+
+        float newX = powerBar.transform.position.x - powerBar.renderer.bounds.extents.x;
+        float curY = powerBar.transform.position.y;
+        float curZ = powerBar.transform.position.z;
+        powerBar.transform.position = new Vector3(newX, curY, curZ);
+        powerBar.transform.localScale = newScale;
+        newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
+        powerBar.transform.position = new Vector3(newX, curY, curZ);
+    }*/
+
+    public void ShowLoseScreen()
+    {
+        BackgroundUI.Instance.ShowLoseScreen();
+    }
 
 }

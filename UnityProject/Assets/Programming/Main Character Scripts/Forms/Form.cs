@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using MainCharacter;
 
-public enum ShipColor{BLUE, RED, YELLOW, ORANGE, GREEN, PURPLE, RAINBOW};
+public enum ShipColor{RED = 1, BLUE, YELLOW, GREEN, ORANGE, PURPLE, RAINBOW};
 
 public abstract class Form : MonoBehaviour {
 	public float damage;

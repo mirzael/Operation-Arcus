@@ -1,0 +1,20 @@
+# format: enemyType,whenToAppear,xPos (relative to center of screen), yPos, movementPattern, stop
+# movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
+# 4 = left-to-right, 5 = right-to-left, 6 = diagonal up-left, 7 = diagonal up-right
+# 8 = left-to-right V, 9 = right-to-left V
+#Horizontal screen edge: +/- 18
+#Vertical screen edge:
+
+# BMachineGun = GOB0
+# RCascade = GOB1
+# YDualPulse = GOB2
+# BBoss = GOB3
+# RBoss = GOB4
+# YBoss = GOB5
+
+
+
+GOB1,0.5,10.0,-2,9,0
+GOB1,0.5,-10.0,-2,8,0
+
+#doo da
