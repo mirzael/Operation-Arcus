@@ -90,13 +90,13 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 	}
 	
 	public void ShowLoseScreen() {
-		
+        Debug.LogError("Woah lose screen showing");
 		points.enabled = false;
 		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
-		audio.volume = 0.1f;
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
 		showingWinLose = true;
 		win = false;
+        Debug.LogError("done showing lose sereen");
 	}
 }
