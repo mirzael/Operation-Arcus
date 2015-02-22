@@ -48,7 +48,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -3.09086232e-08, y: -.707106829, z: .707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: 24.7908516, y: -8.17165565, z: 48.8102226}
+  m_LocalPosition: {x: -173.852417, y: -116.726715, z: -6.0532465}
   m_LocalScale: {x: 45, y: 45, z: 45}
   m_Children:
   - {fileID: 428962}
@@ -78,7 +78,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 39cb47099c7b4ac4d915ce8834a4cd78, type: 2}
+  - {fileID: 2100000, guid: 3fd300e9e7dea4f4fb9de8af51374465, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -211,7 +211,9 @@ MonoBehaviour:
   projectile: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   isBoss: 1
   bossProjectile: {fileID: 100008, guid: 936eca7403c15ad41acc7cf19c7080ea, type: 2}
-  bossBulletChance: 20
+  bossBlue: {fileID: 0}
+  bossRed: {fileID: 0}
+  bossYellow: {fileID: 0}
   bossPattern: 0
   pattern: 7
   bulletWave: {fileID: 0}
