@@ -2,7 +2,7 @@
 using System.Collections;
 using MainCharacter;
 
-public class BackgroundUI : MonoBehaviour {
+public class BackgroundUI : Singleton<BackgroundUI> {
 	public Material successScreen;
 	public GameObject winScreen, loseScreen;
 	private bool showingWinLose;
@@ -76,12 +76,11 @@ public class BackgroundUI : MonoBehaviour {
 	}
 
 	public void ShowWinScreen() {
-		
-		points.enabled = false;
+
+        points.enabled = false;
 		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
 		winScreen.SetActive(true);
 		
-		winScreen.renderer.material = successScreen;
 		if (spawner.lastLevel) {
 			
 			audio.PlayOneShot (winSound);

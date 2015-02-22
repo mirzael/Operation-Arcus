@@ -249,7 +249,7 @@ public class UIDriver : MonoBehaviour
 
     public void ShowLoseScreen()
     {
-        Camera.main.gameObject.GetComponent<BackgroundUI>().ShowLoseScreen();
+        BackgroundUI.Instance.ShowLoseScreen();
     }
 
 }
