@@ -312,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.8151245, y: -4.95744085, z: 55.5615158}
+  m_LocalPosition: {x: 30.3474236, y: 133.47641, z: 80.6669388}
   m_LocalScale: {x: 13, y: 13, z: 13}
   m_Children:
   - {fileID: 400002}
@@ -563,7 +563,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
+  - {fileID: 2100000, guid: 2e7dbce2f19df9a42bb348b4bc6415e9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -583,7 +583,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: ad6a2d1fa98e97347af5d3df1a28bd88, type: 2}
+  - {fileID: 2100000, guid: 2e7dbce2f19df9a42bb348b4bc6415e9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -603,7 +603,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5c6a1995d081f9640997a67669479ee5, type: 2}
+  - {fileID: 2100000, guid: 2e7dbce2f19df9a42bb348b4bc6415e9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -623,7 +623,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: ad6a2d1fa98e97347af5d3df1a28bd88, type: 2}
+  - {fileID: 2100000, guid: 2e7dbce2f19df9a42bb348b4bc6415e9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -643,7 +643,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: ad6a2d1fa98e97347af5d3df1a28bd88, type: 2}
+  - {fileID: 2100000, guid: 2e7dbce2f19df9a42bb348b4bc6415e9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -837,7 +837,10 @@ MonoBehaviour:
   projectile: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
   isBoss: 0
   bossProjectile: {fileID: 0}
-  bossBulletChance: 0
+  bossBlue: {fileID: 0}
+  bossRed: {fileID: 0}
+  bossYellow: {fileID: 0}
+  bossPattern: 0
   pattern: 4
   bulletWave: {fileID: 0}
 --- !u!114 &11400002
