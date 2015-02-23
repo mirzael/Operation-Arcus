@@ -22,7 +22,7 @@ public class TrackNetWave : Wave {
 				var heading = player.transform.position - transform.position;
 				var distance = heading.magnitude;
 				direction = heading / distance;
-				Debug.Log ("DIRECTION: " + direction.ToString());
+				//Debug.Log ("DIRECTION: " + direction.ToString());
 			//}
 			GameObject[] proj = new GameObject[5];
 			switch (aVal) 

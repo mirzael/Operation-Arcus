@@ -1,13 +1,40 @@
-# format: enemyType,whenToAppear,xPos (relative to center of screen), yPos, movementPattern, stop
 # movement patterns: 1 = diagonal left, 2 = diagonal right, 3 = straight down
 # 4 = left-to-right, 5 = right-to-left, 6 = diagonal up-left, 7 = diagonal up-right
 # 8 = left-to-right V, 9 = right-to-left V
+#Horizontal screen edge: -18=left 18=right
+#Vertical screen edge: 1=top 40=bot
+
 # BMachineGun = GOB0
-# RCascade = GOB1
-# YDualPulse = GOB2
-# BBoss = GOB3
-# RBoss = GOB4
-# YBoss = GOB5
+# YMachineGun = GOB1
+# RMachineGun = GOB2
+# BNet = GOB3
+# YNet = GOB4
+# RNet = GOB5
+# BDPulse = 6
+# YDPulse =7
+# RDPulse =8
+# BCascade =9
+# YCascade =10
+# RCascade =11
+# BTrack =12
+# YTrack =13
+# RTrack =14
+# BTrackNet =15
+# YTrackNet =16
+# RTrackNet =17
+# BTri =18
+# YTri =19
+# RTri =20
+# BBoss =21
+# YBoss =22
+# RBoss =23
+# 3Boss =24
+# 4Boss =25
+# 5Boss =26
+# Asteroid =27
+# 28 and 29 are placeholder empty spots.
+
+#ship,time,x,y,movement,stop
 
 
 GOB0,3.5,0.0,2,1,0

@@ -246,10 +246,4 @@ public class UIDriver : MonoBehaviour
         newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
         powerBar.transform.position = new Vector3(newX, curY, curZ);
     }*/
-
-    public void ShowLoseScreen()
-    {
-        BackgroundUI.Instance.ShowLoseScreen();
-    }
-
 }

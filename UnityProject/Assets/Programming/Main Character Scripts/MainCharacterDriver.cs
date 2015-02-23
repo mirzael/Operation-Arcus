@@ -393,7 +393,7 @@ public class MainCharacterDriver : CharacterDriver {
 						if (gameOver) return;
 						Destroy (gameObject);
 						Debug.Log("MISSION FAILED");
-						uiDriver.ShowLoseScreen();
+						BackgroundUI.Instance.ShowLoseScreen();
 						gameOver = true;
 						lostGame = true;
 					}
