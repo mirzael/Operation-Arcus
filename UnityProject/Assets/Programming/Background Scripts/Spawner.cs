@@ -40,10 +40,6 @@ public class Spawner : MonoBehaviour {
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
 	}
 
-	public void NextLevel(){
-		Application.LoadLevel (Application.loadedLevel+1);
-	}
-
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html
 	private bool Load(string fileName) {
 		enemySpawnTimes = new Queue<float>();

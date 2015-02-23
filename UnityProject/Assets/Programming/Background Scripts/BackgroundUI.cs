@@ -44,7 +44,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			if (win) {
 				spawner.level++;
 				if (spawner.lastLevel) {
-                    Application.LoadLevel("MainMenu");
+                    LevelLoader.LoadLevel("MainMenu");
 					PointMaster.points = 0.0f;
 					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
 					//GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
@@ -61,9 +61,9 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 					driver.gameOver = false;
 				}
 				
-				spawner.NextLevel();
+				LevelLoader.LoadNextLevel();
 			} else {
-				Application.LoadLevel(Application.loadedLevel);
+				LevelLoader.RestartLevel();
 				
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -71,7 +71,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
 			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
 			driver.ResetForm();
-			Application.LoadLevel("MainMenu");
+			LevelLoader.LoadLevel("MainMenu");
 		}
 	}
 

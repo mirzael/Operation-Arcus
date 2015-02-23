@@ -49,7 +49,7 @@ public class PlayButton : MonoBehaviour {
         }
 		switch (gameObject.name) {
 		case "btnPlay":
-			Application.LoadLevel(Application.loadedLevel+1);
+			LevelLoader.LoadLevel(Application.loadedLevel+1);
 			break;
 		case "btnIntro":
 			Debug.Log("Displaying Intro");
@@ -90,13 +90,13 @@ public class PlayButton : MonoBehaviour {
 			hiscore.SetActive(true);
 			break;
 		case "btnCredits":
-			Application.LoadLevel("Credits");
+			LevelLoader.LoadLevel("Credits");
 			break;
 		case "btnQuit":
 			Application.Quit();
 			break;
 		case "btnReturn":
-			Application.LoadLevel("MainMenu");
+			LevelLoader.LoadLevel("MainMenu");
 			break;
 		case "btnBack":
 			transform.parent.gameObject.SetActive(false);
