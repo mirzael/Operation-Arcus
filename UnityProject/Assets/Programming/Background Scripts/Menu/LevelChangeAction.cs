@@ -15,8 +15,8 @@ public class LevelChangeAction : MenuAction
 
     public void ChangeLevel()
     {
-		foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
-			Destroy(o);
+		foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>()) {
+			Destroy(go);
 		}
 		
         Application.LoadLevel(nextLevel);
