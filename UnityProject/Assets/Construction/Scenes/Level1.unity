@@ -802,7 +802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &68475119
 Transform:
   m_ObjectHideFlags: 0
@@ -25710,7 +25710,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3cb6c946a2136be48bb20d9a62975498, type: 2}
+  - {fileID: 2100000, guid: faa17d55c8e1acc45b930bd81442294f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -26181,6 +26181,8 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -28027,7 +28029,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2d422a1a594a6f74cbbca1b3ec397e30, type: 2}
+  - {fileID: 2100000, guid: 13a31d3d52a13d044be986de5563c4f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -29646,7 +29648,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5caa05335918c2744a701dd4f0c85a55, type: 2}
+  - {fileID: 2100000, guid: c31cc425599a39d40acc0652603dc9eb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -30057,6 +30059,8 @@ MonoBehaviour:
   timeBeforeExplosion: 0
   explosionSize: 0
   mirv: {fileID: 0}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -35452,6 +35456,8 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -37102,7 +37108,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2e95798e733b2b04f8392ecfc18fce5c, type: 2}
+  - {fileID: 2100000, guid: 97f67e72c3db71041a1c04bc53baf7aa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -38441,6 +38447,10 @@ Prefab:
     - target: {fileID: 22379142, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 159144, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}

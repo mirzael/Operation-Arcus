@@ -11,14 +11,19 @@ public class WinArcusParent : MonoBehaviour
         ParentUnderArcus();
         //kill the main camera
         Transform camTransform = Camera.main.transform;
-        foreach(Transform child in camTransform.GetComponentsInChildren<Transform>(true))
+        AudioListener.Destroy(camTransform.GetComponent<AudioListener>());
+        GUILayer.Destroy(camTransform.GetComponent<GUILayer>());
+        Behaviour.Destroy(camTransform.GetComponent("FlareLayer"));
+        Camera.Destroy(camTransform.GetComponent<Camera>());
+        
+        /*foreach(Transform child in camTransform.GetComponentsInChildren<Transform>(true))
         {
             if(child.parent==camTransform)
             {
                 child.parent = null;
             }
         }
-        GameObject.Destroy(camTransform.gameObject);
+        GameObject.Destroy(camTransform.gameObject);*/
     }
 
     public void ParentUnderArcus()

@@ -4,7 +4,9 @@ public class PurpleForm : SecondaryForm {
 	public float timeBeforeExplosion;
 	public float explosionSize;
 	public GameObject mirv;
+	public Material invisible;
 	GameObject reflectBall;
+	public GameObject sprite;
 	public float baseRadius;
 	public float growValue;
 	public float maxRadius;
@@ -37,12 +39,13 @@ public class PurpleForm : SecondaryForm {
 	public override void Activate() {
 		isActive = true;
 		timeActive = timeActiveOrig;
+		GameObject core = (GameObject)Instantiate(sprite,transform.position, Quaternion.Euler (00,0,0));
 		reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		reflectBall.transform.localScale = new Vector3(baseRadius, baseRadius, baseRadius);
-		reflectBall.renderer.material.color = new Color(1, 0, 1, 0.1f);
+		reflectBall.renderer.material = invisible;
 		reflectBall.transform.position = transform.position;
 		reflectBall.AddComponent<PurpleWeapon>();
-		//gameObject.GetComponent<SphereCollider>().radius *= 3;
+		gameObject.GetComponent<SphereCollider>().radius *= 3;
 	}
 	
 	public void Update() {
