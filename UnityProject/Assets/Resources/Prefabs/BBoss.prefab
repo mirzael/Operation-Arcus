@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 300
   explosion: {fileID: 100000, guid: b5893256158ccd245a11ec172871022e, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
