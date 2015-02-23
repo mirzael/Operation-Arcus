@@ -2388,6 +2388,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 159144, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136244, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1097634cd4defb0458f2c334931a9bc7, type: 2}
   m_RootGameObject: {fileID: 1976743597}
@@ -3684,6 +3692,8 @@ MonoBehaviour:
   timeBeforeExplosion: 0
   explosionSize: 0
   mirv: {fileID: 0}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -5994,6 +6004,8 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -8598,6 +8610,8 @@ MonoBehaviour:
   timeBeforeExplosion: .150000006
   explosionSize: 10
   mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  invisible: {fileID: 0}
+  sprite: {fileID: 0}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
@@ -11189,7 +11203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &585794067
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12701,7 +12715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &690349300
 Transform:
   m_ObjectHideFlags: 0
