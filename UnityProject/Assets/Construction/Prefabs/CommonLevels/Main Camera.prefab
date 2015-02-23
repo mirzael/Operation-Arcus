@@ -15704,7 +15704,7 @@ MonoBehaviour:
   originalSpeed: 50
   material: {fileID: 2100000, guid: 2e5d11e0dccd4a240b0cb3baed1c79b4, type: 2}
   formSpeed: 30
-  shipColor: 6
+  shipColor: 7
   animationNum: 0
   power: 0
 --- !u!114 &11476502
