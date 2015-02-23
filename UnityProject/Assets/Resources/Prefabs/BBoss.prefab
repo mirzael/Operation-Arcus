@@ -14,7 +14,6 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
   m_Layer: 8
   m_Name: BBoss
@@ -705,21 +704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   explosion: {fileID: 100000, guid: b5893256158ccd245a11ec172871022e, type: 2}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e5341033a02814295c7d6f732ea0db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mooks:
-  - {fileID: 100002, guid: e980422c1b5fd8045a39131d2e4a7d4f, type: 2}
-  - {fileID: 100000, guid: a7ce713800983b640aa4ec0a8f91ba0e, type: 2}
-  cooldown: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,15 +715,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3cf0173a832cc4689f5af26101cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 150
+  cooldown: 0
   projectile: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
   isBoss: 1
   bossProjectile: {fileID: 100008, guid: 936eca7403c15ad41acc7cf19c7080ea, type: 2}
-  bossBlue: {fileID: 0}
-  bossRed: {fileID: 0}
-  bossYellow: {fileID: 0}
+  bossBlue: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
+  bossRed: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
+  bossYellow: {fileID: 100000, guid: 2f940a40cfaa8344d9e3da42a3fecd59, type: 2}
+  bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
   bossPattern: 0
-  pattern: 3
+  pattern: 9
   bulletWave: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
