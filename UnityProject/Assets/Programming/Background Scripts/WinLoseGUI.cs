@@ -39,7 +39,7 @@ public class WinLoseGUI : MonoBehaviour {
 			if (win) {
 				spawner.level++;
 				if (spawner.lastLevel) {
-					Application.LoadLevel("Credits");
+					LevelLoader.LoadLevel("Credits");
 					return;
 				}
 				var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
@@ -47,10 +47,10 @@ public class WinLoseGUI : MonoBehaviour {
 				spawner.Start();
 				Destroy(this);
 			} else {
-				Application.LoadLevel(Application.loadedLevel);
+				LevelLoader.RestartLevel();
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
-			Application.LoadLevel("MainMenu");
+			LevelLoader.LoadLevel("MainMenu");
 		}
 	}
 }
