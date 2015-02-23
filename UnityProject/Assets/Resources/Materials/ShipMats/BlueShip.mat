@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BlueShip
-  m_Shader: {fileID: 4800000, guid: 9ce107479d11178d11005b9844295342, type: 3}
+  m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 105936165bc08fa4bbe5d354fa1bd47a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 224141ab8f9d5964e82e7876e2183e75, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -30,13 +37,21 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Shininess
+        second: .243026108
+      data:
+        first:
           name: _Outline
         second: .00499999989
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0, g: .332251608, b: .529411793, a: 1}
+        second: {r: .139705896, g: .216835499, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
           name: _OutlineColor
