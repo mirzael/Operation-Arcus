@@ -32,7 +32,7 @@
 # 4Boss =25
 # 5Boss =26
 # Asteroid =27
-# 28 and 29 are placeholder empty spots.
+# 28-39 are empty
 
 #ship,time,x,y,movement,stop
 
@@ -117,4 +117,6 @@ GOB1,53.0,13.0,5,1,0
 GOB2,53.0,13.0,3.5,9,1
 GOB2,53.0,-13.0,3.5,8,1
 GOB1,53.1,-13.0,5.5,2,0
-GOB3,54,0.0,0.0,9,0
+
+
+GOB21,54,0.0,0.0,9,0
