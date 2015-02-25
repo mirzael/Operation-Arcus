@@ -36,7 +36,7 @@ public class MultiplayerCoordinator {
 		if (OArcusDriver.health <= 0 && DarcusDriver.health <= 0) {
             backgroundUI.ShowLoseScreen();
 		}
-        else
+    /*    else
         {
 			if (GameObject.Find("oArcus") != null) {
 				OArcusDriver.WinLevel();
@@ -44,7 +44,7 @@ public class MultiplayerCoordinator {
 			if (GameObject.Find("dArcus") != null) {
 				DarcusDriver.WinLevel();
 			}
-        }
+        } */
 	}
 
 	public void NewLevel(){

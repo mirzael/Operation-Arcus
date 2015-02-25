@@ -430,6 +430,7 @@ namespace Spectrum
                         Debug.Log("MISSION FAILED");
                         gameOver = true;
                         lostGame = true;
+						MultiplayerCoordinator.Instance.GameOver();
                     }
                 }
 

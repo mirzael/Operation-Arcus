@@ -8,9 +8,19 @@ using UnityEngine.UI;
 public class BossHealthBar : MonoBehaviour
 {
     public Slider slider;
+    public Text text;
+
+    public void SetBossName(string name)
+    {
+        text.text = name;
+    }
 
     public void SetRelativeHealth(float value)
     {
+        if(value < slider.minValue)
+        {
+            value = slider.minValue;
+        }
         slider.value = value;
     }
 
