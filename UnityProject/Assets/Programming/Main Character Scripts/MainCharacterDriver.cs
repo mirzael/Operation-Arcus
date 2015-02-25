@@ -80,8 +80,13 @@ public class MainCharacterDriver : CharacterDriver {
 		greenForm = GetComponent<GreenForm>();
 		orangeForm = GetComponent<OrangeForm>();
 		purpleForm = GetComponent<PurpleForm>();
+
 		rainbowForm = GetComponent<RainbowForm>();
-		
+        //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
+        //InputManager.Setup();
+        //var keyboard = new KeyboardProfile();
+        InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerOneProfile()));
+
 		if (previousForm == null) {
 			previousForm = redForm;
 		} else {
@@ -201,14 +206,13 @@ public class MainCharacterDriver : CharacterDriver {
         var inputDevice = InputManager.ActiveDevice;
 
 		//Get where to move given user input
-        PressMove(Input.GetAxisRaw(inputHorizontal),Input.GetAxisRaw(inputVertical));
         PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (Input.GetKey (KeyCode.Space) || inputDevice.Action1) {
+		if (inputDevice.Action1) {
             PressFire();
         }
 		if (currentForm.shipColor == ShipColor.RAINBOW) {
@@ -243,16 +247,16 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Take input
         //For multiplayer these will need to be exclusive, but for now both can move ship
-        if (Input.GetButtonDown(inputYellow) || inputDevice.Action4)
+        if (inputDevice.Action4)
         {
             PressYellow();		
-		} else if (Input.GetButtonDown(inputBlue) || inputDevice.Action3) {
+		} else if (inputDevice.Action3) {
             PressBlue();		
-		} else if (Input.GetButtonDown(inputRed) || inputDevice.Action2) {
+		} else if (inputDevice.Action2) {
             PressRed();		
-		} else if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper) {
+		} else if (inputDevice.LeftBumper) {
             PressOrange();		
-		} else if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger) {
+		} else if (inputDevice.LeftTrigger) {
             PressPurple();		
 		} else if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper) {
             PressGreen();
