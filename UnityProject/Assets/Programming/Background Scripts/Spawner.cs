@@ -19,7 +19,6 @@ public class Spawner : MonoBehaviour {
 	private float levelTimeCounter;
 	private float lastSpawnTime;
 	public int level = 1;
-	public bool lastLevel = false;
 
 	void OnGUI () {
 		GUI.Label (new Rect (0,0,100,50), levelTimeCounter.ToString());

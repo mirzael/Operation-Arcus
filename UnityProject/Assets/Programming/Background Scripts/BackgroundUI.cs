@@ -43,7 +43,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
 				spawner.level++;
-				if (spawner.lastLevel) {
+				if (LevelLoader.IsLastLevel()) {
                     LevelLoader.LoadLevel("MainMenu");
 					PointMaster.points = 0.0f;
 					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
@@ -81,7 +81,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
 		winScreen.SetActive(true);
 		
-		if (spawner.lastLevel) {
+		if (LevelLoader.IsLastLevel()) {
 			
 			audio.PlayOneShot (winSound);
 		}

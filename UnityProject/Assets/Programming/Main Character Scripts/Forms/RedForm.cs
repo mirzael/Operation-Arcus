@@ -23,7 +23,7 @@ public class RedForm : PrimaryForm {
 		Destroy(col.gameObject);
 		if (tag == "Red") {
 			setPower(power + POWER_INC);
-			Debug.Log("Absorbed red bullet, Red Power at " + power);
+			//Debug.Log("Absorbed red bullet, Red Power at " + power);
 			return false;
 		}
 		return true;

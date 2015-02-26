@@ -17,7 +17,7 @@ public class BlueForm : PrimaryForm {
 		Destroy(col.gameObject);
 		if (tag == "Blue") {
 			setPower(power + POWER_INC);
-			Debug.Log("Absorbed blue bullet, Blue Power at " + power);
+			//Debug.Log("Absorbed blue bullet, Blue Power at " + power);
 			return false;
 		}
 		return true;

@@ -21,4 +21,9 @@ public class LevelLoader: MonoBehaviour{
 		}
 		Application.LoadLevel (sceneName);
 	}
+
+    public static bool IsLastLevel()
+    {
+        return (Application.loadedLevel == Application.levelCount - 1);
+    }
 }

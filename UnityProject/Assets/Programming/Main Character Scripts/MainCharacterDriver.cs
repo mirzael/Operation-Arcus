@@ -154,8 +154,6 @@ public class MainCharacterDriver : CharacterDriver {
 		//Max an min points of the screen at the ship distance from the camera
 		Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
 		Vector3 wrldMin = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, z));
-		Debug.Log (wrldMin);
-		Debug.Log (wrldMax);
 
 		shipXMax = wrldMax.x;
 		shipYMax = wrldMax.y;

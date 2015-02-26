@@ -40,7 +40,7 @@ using InControl;
 		    new InputControlMapping
 		    {
 			    Handle = "Blue",
-			    Target = InputControlType.Action4,
+			    Target = InputControlType.Action3,
 			    Source = KeyCodeButton( KeyCode.U )
 		    },
 		    new InputControlMapping
@@ -53,7 +53,7 @@ using InControl;
 		    new InputControlMapping
 		    {
 			    Handle = "Yellow",
-			    Target = InputControlType.Action3,
+			    Target = InputControlType.Action4,
 			    Source = KeyCodeButton( KeyCode.O )
 		    },
 		    new InputControlMapping
