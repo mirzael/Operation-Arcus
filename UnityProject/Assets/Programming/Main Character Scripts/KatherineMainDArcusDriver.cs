@@ -160,6 +160,12 @@ namespace Spectrum
             levelConstraintMinY = wrldMin.y;
 
 			MultiplayerCoordinator.Instance.DarcusDriver = this;
+
+            InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerTwoProfile()));
+            //foreach(InputDevice device in InputManager.Devices)
+            {
+              //  Debug.Log("device " + device.Name);
+            }
         }
 
         /**********************/
@@ -201,7 +207,7 @@ namespace Spectrum
 
             //Get the most recent input device from incontrol
             //Keyboard controls can be represented as an InputDevice using a CustomController
-            var inputDevice = InputManager.ActiveDevice;
+            var inputDevice = InputManager.Devices[1];
 
             //Get where to move given user input
             PressMove(Input.GetAxisRaw(inputHorizontal), Input.GetAxisRaw(inputVertical));
@@ -226,25 +232,25 @@ namespace Spectrum
             //
             // Will be updated later with Event Delegate and Input Handler
             //
-            if (Input.GetButton(inputFire) || inputDevice.Action1)
+            if (inputDevice.RightTrigger)
             { PressFire(); }
 
-            if (Input.GetButtonDown(inputYellow) || inputDevice.Action4)
+            if (inputDevice.Action4)
             { PressYellow(); }
 
-            if (Input.GetButtonDown(inputBlue) || inputDevice.Action3)
+            if (inputDevice.Action3)
             { PressBlue(); }
 
-            if (Input.GetButtonDown(inputRed) || inputDevice.Action2)
+            if (inputDevice.Action2)
             { PressRed(); }
 
-            if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper)
+            if (inputDevice.LeftBumper)
 			{ MultiplayerCoordinator.Instance.UseDefensiveOrange(); }
 
-            if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger)
+            if (inputDevice.LeftTrigger)
 			{ MultiplayerCoordinator.Instance.UseDefensivePurple(); }
 
-            if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper)
+            if (inputDevice.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseDefensiveGreen(); }
 
             if (Input.GetKeyDown(KeyCode.F))

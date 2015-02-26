@@ -33,7 +33,7 @@ using InControl;
 		    new InputControlMapping
 		    {
 			    Handle = "Fire",
-			    Target = InputControlType.Action1,
+			    Target = InputControlType.RightTrigger,
 			    // KeyCodeButton fires when any of the provided KeyCode params are down.
 			    Source = KeyCodeButton( KeyCode.Space )
 		    },
@@ -54,8 +54,25 @@ using InControl;
 		    {
 			    Handle = "Yellow",
 			    Target = InputControlType.Action3,
-			    // KeyCodeComboButton requires that all KeyCode params are down simultaneously.
 			    Source = KeyCodeButton( KeyCode.Q )
+		    },
+		    new InputControlMapping
+		    {
+			    Handle = "Green",
+			    Target = InputControlType.RightBumper,
+			    Source = KeyCodeButton( KeyCode.Alpha1 )
+		    },
+		    new InputControlMapping
+		    {
+			    Handle = "Purple",
+			    Target = InputControlType.LeftTrigger,
+			    Source = KeyCodeButton( KeyCode.Alpha2 )
+		    },
+		    new InputControlMapping
+		    {
+			    Handle = "Orange",
+			    Target = InputControlType.LeftBumper,
+			    Source = KeyCodeButton( KeyCode.Alpha3 )
 		    }
 	    };
 

@@ -82,12 +82,8 @@ public class MainCharacterDriver : CharacterDriver {
 		purpleForm = GetComponent<PurpleForm>();
 
 		rainbowForm = GetComponent<RainbowForm>();
-        //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
-        //InputManager.Setup();
-        //var keyboard = new KeyboardProfile();
-        InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerOneProfile()));
 
-		if (previousForm == null) {
+        if (previousForm == null) {
 			previousForm = redForm;
 		} else {
 			if (previousForm.shipColor == ShipColor.RED) {
@@ -165,6 +161,11 @@ public class MainCharacterDriver : CharacterDriver {
 		shipYMax = wrldMax.y;
 		shipXMin = wrldMin.x;
 		shipYMin = wrldMin.y;
+
+        //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
+        //InputManager.Setup();
+        //var keyboard = new KeyboardProfile();
+        InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
 	}
 
 	void OnGUI(){
@@ -212,7 +213,7 @@ public class MainCharacterDriver : CharacterDriver {
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (inputDevice.Action1) {
+		if (inputDevice.RightTrigger) {
             PressFire();
         }
 		if (currentForm.shipColor == ShipColor.RAINBOW) {
@@ -258,7 +259,7 @@ public class MainCharacterDriver : CharacterDriver {
             PressOrange();		
 		} else if (inputDevice.LeftTrigger) {
             PressPurple();		
-		} else if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper) {
+		} else if (inputDevice.RightBumper) {
             PressGreen();
         }
         else if (Input.GetKeyDown(KeyCode.PageDown))
