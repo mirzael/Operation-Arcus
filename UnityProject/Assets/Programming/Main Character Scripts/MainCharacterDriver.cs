@@ -52,11 +52,6 @@ public class MainCharacterDriver : CharacterDriver {
 	private RainbowForm rainbowForm;
 	private bool isInSecondary = false;
 
-	private float shipXMin;
-	private float shipXMax;
-	private float shipYMin;
-	private float shipYMax;
-
 	public static string arcusName = "";
 
 	//Sounds
@@ -142,23 +137,6 @@ public class MainCharacterDriver : CharacterDriver {
 		
 		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
 		lostGame = false;
-
-		//Get the distance from the ship to the camera
-		float z = Mathf.Abs(transform.position.z);
-		var tmp = transform;
-		while (tmp.parent != null) {
-			tmp = tmp.parent;
-			z += Mathf.Abs(tmp.position.z);
-		}
-
-		//Max an min points of the screen at the ship distance from the camera
-		Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
-		Vector3 wrldMin = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, z));
-
-		shipXMax = wrldMax.x;
-		shipYMax = wrldMax.y;
-		shipXMin = wrldMin.x;
-		shipYMin = wrldMin.y;
 
         //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
         //InputManager.Setup();

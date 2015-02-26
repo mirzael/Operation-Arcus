@@ -73,13 +73,6 @@ namespace Spectrum
 
         private bool isInSecondary = false;
 
-        // Level Constraints
-        private float levelConstraintMinX;
-        private float levelConstraintMaxX;
-        private float levelConstraintMinY;
-        private float levelConstraintMaxY;
-
-
         public static string arcusName = "";
 
         //Sounds
@@ -134,26 +127,6 @@ namespace Spectrum
 
             // Set Game Loss Flag
             lostGame = false;
-
-            //Get the distance from the ship to the camera
-            float z = Mathf.Abs(transform.position.z);
-            var tmp = transform;
-            while (tmp.parent != null)
-            {
-                tmp = tmp.parent;
-                z += Mathf.Abs(tmp.position.z);
-            }
-
-            // Get World Constraints
-            // Max an min points of the screen at the ship distance from the camera
-            Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
-            Vector3 wrldMin = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, z));
-
-            // Assign World Constraints based on Camera
-            levelConstraintMaxX = wrldMax.x;
-            levelConstraintMaxY = wrldMax.y;
-            levelConstraintMinX = wrldMin.x;
-            levelConstraintMinY = wrldMin.y;
 
 			MultiplayerCoordinator.Instance.OArcusDriver = this;
 
@@ -277,7 +250,7 @@ namespace Spectrum
             float posX = transform.position.x - transform.parent.position.x;
             float posY = transform.position.y - transform.parent.position.y;
 
-            if (posX > levelConstraintMaxX || posX < levelConstraintMinX || posY > levelConstraintMaxY || posY < levelConstraintMinY)
+            if (posX > shipXMax || posX < shipXMin|| posY > shipYMax || posY < shipYMin)
             {
                 transform.position = orig;
             }
