@@ -24,12 +24,12 @@ public class Hiscores : Singleton<Hiscores> {
             int score = scores[i - 1];
 			PlayerPrefs.SetString("Player" + i, names[i - 1]);
             PlayerPrefs.SetInt("Score" + i, score);
-			if (score > 0) {
-				string name = PlayerPrefs.GetString("Player" + i);
+            string name = PlayerPrefs.GetString("Player" + i);
+//			if (score > 0) {
 				GameObject.Find("Player" + i).GetComponent<Text>().text = name + ": " + score;
-			} else {
-				GameObject.Find("Player" + i).GetComponent<Text>().text = "";
-			}
+	//		} else {
+		//		GameObject.Find("Player" + i).GetComponent<Text>().text = name + ": " +score;
+			//}
 		}
 	}
 	

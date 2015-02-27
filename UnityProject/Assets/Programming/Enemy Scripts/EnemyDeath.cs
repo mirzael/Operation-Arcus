@@ -24,29 +24,36 @@ public class EnemyDeath : MonoBehaviour {
 	void OnHit(WeaponDamage wep){
 		points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = wep.tag, shipPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z)});
 		health -= wep.damage;
+        Shooter shooter = gameObject.GetComponent<Shooter>();
 		if (health <= 0) {
-				if (!gameObject.GetComponent<Shooter> ().isBoss) {
-						gameObject.layer = LayerMask.NameToLayer ("Enemy Bullet");
-				}
 				if (animation != null)
 						animation.Stop ();
 				rigidbody.isKinematic = false;
-				GetComponent<Shooter> ().enabled = false;
+                if (shooter != null)
+                {
+                    shooter.enabled = false;
+                    if(!shooter.isBoss)
+                    {
+                        gameObject.layer = LayerMask.NameToLayer("Enemy Bullet");
+                    }
+                    if (shooter.isBoss && bossCheck == false)
+                    {
+                        bossCheck = true;
+                        Invoke("explodeBoss", .5f);
+                        Invoke("explodeBoss", 1f);
+                        Invoke("explodeBoss", 1.5f);
+                        Invoke("explodeBoss", 2f);
+                        Invoke("explodeBoss", 2.5f);
+                        Invoke("explodeBoss", 3f);
+                    }
+                    if (explosion != null && !gameObject.GetComponent<Shooter>().isBoss)
+                    {
+                        Instantiate(explosion, transform.position, transform.rotation);
+                        explosion = null; // make sure it occurs on the first hit
+                    }
+                }
 				GetComponent<Wave> ().enabled = false;
 
-				if (gameObject.GetComponent<Shooter> ().isBoss && bossCheck == false) { 
-						bossCheck = true;
-						Invoke ("explodeBoss", .5f);
-						Invoke ("explodeBoss", 1f);
-						Invoke ("explodeBoss", 1.5f);
-						Invoke ("explodeBoss", 2f);
-						Invoke ("explodeBoss", 2.5f);
-						Invoke ("explodeBoss", 3f);
-				}
-				if (explosion != null && !gameObject.GetComponent<Shooter> ().isBoss) {
-						Instantiate (explosion, transform.position, transform.rotation);
-						explosion = null; // make sure it occurs on the first hit
-				}
 				movement.enabled = false;
 
 				rigidbody.AddForce (new Vector3 (Random.Range (-500, 500), Random.Range (-350, -200), Random.Range (-250, -100)));
@@ -55,7 +62,7 @@ public class EnemyDeath : MonoBehaviour {
 		} 
 		else 
 		{
-			if (gameObject.GetComponent<Shooter> ().isBoss) {
+			if (shooter!=null && shooter.isBoss) {
 				GameObject bossExp = (GameObject)Instantiate(explosion, wep.hitLocation, transform.rotation);
 				if(gameObject.tag == "Red"){
 					bossExp.particleEmitter.minSize = 0.1f;

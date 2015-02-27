@@ -185,7 +185,6 @@ public class MainCharacterDriver : CharacterDriver {
         InputDevice inputDevice = InputManager.ActiveDevice;
 
 		//Get where to move given user input
-        Debug.Log("dir" + inputDevice.Direction.X);
         PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
