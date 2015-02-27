@@ -46,6 +46,8 @@ public abstract class CharacterDriver : MonoBehaviour {
         shipYMax = wrldMax.y;
         shipXMin = wrldMin.x;
         shipYMin = wrldMin.y;
+
+        Debug.Log("Mins ans max" + shipXMax + " " + shipYMax + " " + shipXMin + " " + shipYMin);
 	}
 
 

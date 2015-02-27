@@ -64,6 +64,8 @@ public class MainCharacterDriver : CharacterDriver {
 
 	// Use this for initialization
 	void Start () {
+        base.Start();
+
 		Application.targetFrameRate = 60;
 		arcusName = gameObject.name;
 		
@@ -180,9 +182,10 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Get the most recent input device from incontrol
         //Keyboard controls can be represented as an InputDevice using a CustomController
-        var inputDevice = InputManager.ActiveDevice;
+        InputDevice inputDevice = InputManager.ActiveDevice;
 
 		//Get where to move given user input
+        Debug.Log("dir" + inputDevice.Direction.X);
         PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
@@ -261,8 +264,10 @@ public class MainCharacterDriver : CharacterDriver {
         float posX = transform.position.x - transform.parent.position.x;
         float posY = transform.position.y - transform.parent.position.y;
 
+        Debug.Log("shipXMax" + shipXMax);
         if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
         {
+            Debug.Log("going back to orig");
             transform.position = orig;
         }
     }
