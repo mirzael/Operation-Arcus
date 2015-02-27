@@ -142,7 +142,11 @@ public class Spawner : MonoBehaviour {
 			ship.GetComponent<EnemyMovement>().pattern = movementPattern;
 			ship.GetComponent<EnemyMovement>().stops = stops;
 			var multi = gameObject.GetComponent<MultiplierScript>();
-			ship.GetComponent<EnemyDeath>().health *= multi.enemyHealthMultiplier;
+            EnemyDeath enemyDeath = ship.GetComponent<EnemyDeath>();
+			if(enemyDeath!=null)
+            {
+                enemyDeath.health *= multi.enemyHealthMultiplier;
+            }
             Wave wave = ship.GetComponent<Wave>();
             if(wave!=null)
             {

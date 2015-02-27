@@ -47,7 +47,7 @@ public class GreenWeapon : MonoBehaviour {
 			Destroy(sphere.collider);
 			Destroy (sphere, 0.5f);
 		}
-		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage, hitLocation = col.contacts[0].point});
+        col.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 		Destroy (gameObject);
 	}
 }
