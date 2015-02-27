@@ -42,14 +42,13 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
+                if (LevelLoader.IsLastLevel())
+                {
+                    //They need to enter high score name, so R shouldn't do anything
+                    return;
+                }
+
 				spawner.level++;
-				if (LevelLoader.IsLastLevel()) {
-                    LevelLoader.LoadLevel("MainMenu");
-					PointMaster.points = 0.0f;
-					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-					//GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
-					return;
-				}
 				
 				GameObject.Find("Background").renderer.material = background;
 				winScreen.SetActive(false);
