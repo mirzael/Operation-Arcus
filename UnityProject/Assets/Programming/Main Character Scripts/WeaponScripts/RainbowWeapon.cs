@@ -11,7 +11,7 @@ public class RainbowWeapon : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision col){
-		col.gameObject.BroadcastMessage ("OnHit", new WeaponDamage{tag=tag, damage=damage, hitLocation = col.contacts[0].point});
+        col.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 		Destroy (gameObject);
 	}
 

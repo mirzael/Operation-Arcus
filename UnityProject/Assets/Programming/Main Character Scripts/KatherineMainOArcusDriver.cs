@@ -73,13 +73,6 @@ namespace Spectrum
 
         private bool isInSecondary = false;
 
-        // Level Constraints
-        private float levelConstraintMinX;
-        private float levelConstraintMaxX;
-        private float levelConstraintMinY;
-        private float levelConstraintMaxY;
-
-
         public static string arcusName = "";
 
         //Sounds
@@ -135,27 +128,9 @@ namespace Spectrum
             // Set Game Loss Flag
             lostGame = false;
 
-            //Get the distance from the ship to the camera
-            float z = Mathf.Abs(transform.position.z);
-            var tmp = transform;
-            while (tmp.parent != null)
-            {
-                tmp = tmp.parent;
-                z += Mathf.Abs(tmp.position.z);
-            }
-
-            // Get World Constraints
-            // Max an min points of the screen at the ship distance from the camera
-            Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
-            Vector3 wrldMin = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, z));
-
-            // Assign World Constraints based on Camera
-            levelConstraintMaxX = wrldMax.x;
-            levelConstraintMaxY = wrldMax.y;
-            levelConstraintMinX = wrldMin.x;
-            levelConstraintMinY = wrldMin.y;
-
 			MultiplayerCoordinator.Instance.OArcusDriver = this;
+
+            InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerOneProfile()));
         }
 
         /**********************/
@@ -197,10 +172,9 @@ namespace Spectrum
 
             //Get the most recent input device from incontrol
             //Keyboard controls can be represented as an InputDevice using a CustomController
-            var inputDevice = InputManager.ActiveDevice;
+            InputDevice inputDevice = InputManager.Devices[0];
 
             //Get where to move given user input
-            PressMove(Input.GetAxisRaw(inputHorizontal), Input.GetAxisRaw(inputVertical));
             PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
             //change the cooldown of the main weapon, as one frame has passed
@@ -222,25 +196,25 @@ namespace Spectrum
             //
             // Will be updated later with Event Delegate and Input Handler
             //
-            if (Input.GetButton(inputFire) || inputDevice.Action1)
+            if (inputDevice.RightTrigger)
             { PressFire(); }
 
-            if (Input.GetButtonDown(inputYellow) || inputDevice.Action4)
+            if (inputDevice.Action4)
             { PressYellow(); }
 
-            if (Input.GetButtonDown(inputBlue) || inputDevice.Action3)
+            if (inputDevice.Action3)
             { PressBlue(); }
 
-            if (Input.GetButtonDown(inputRed) || inputDevice.Action2)
+            if (inputDevice.Action2)
             { PressRed(); }
 
-			if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper)
+			if (inputDevice.LeftBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveOrange(); }
 			
-			if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger)
+			if (inputDevice.LeftTrigger)
 			{ MultiplayerCoordinator.Instance.UseOffensivePurple(); }
 			
-			if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper)
+			if (inputDevice.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
             if (Input.GetKeyDown(KeyCode.F))
@@ -276,7 +250,7 @@ namespace Spectrum
             float posX = transform.position.x - transform.parent.position.x;
             float posY = transform.position.y - transform.parent.position.y;
 
-            if (posX > levelConstraintMaxX || posX < levelConstraintMinX || posY > levelConstraintMaxY || posY < levelConstraintMinY)
+            if (posX > shipXMax || posX < shipXMin|| posY > shipYMax || posY < shipYMin)
             {
                 transform.position = orig;
             }
@@ -393,6 +367,7 @@ namespace Spectrum
 					Debug.Log ("MISSION FAILED");
 					gameOver = true;
 					lostGame = true;
+					MultiplayerCoordinator.Instance.GameOver();
 				}
 			}
         }

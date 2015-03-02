@@ -8,6 +8,6 @@ public class NextLevelAction : MenuAction
 {
     public override void TakeAction()
     {
-        Application.LoadLevel(Application.loadedLevel + 1);
+		LevelLoader.LoadNextLevel ();
     }
 }

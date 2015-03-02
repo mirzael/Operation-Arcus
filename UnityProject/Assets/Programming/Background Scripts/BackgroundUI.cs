@@ -42,14 +42,13 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			
 			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
 			if (win) {
+                if (LevelLoader.IsLastLevel())
+                {
+                    //They need to enter high score name, so R shouldn't do anything
+                    return;
+                }
+
 				spawner.level++;
-				if (spawner.lastLevel) {
-                    Application.LoadLevel("MainMenu");
-					PointMaster.points = 0.0f;
-					ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-					//GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>().ResetForm();
-					return;
-				}
 				
 				GameObject.Find("Background").renderer.material = background;
 				winScreen.SetActive(false);
@@ -61,9 +60,9 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 					driver.gameOver = false;
 				}
 				
-				spawner.NextLevel();
+				LevelLoader.LoadNextLevel();
 			} else {
-				Application.LoadLevel(Application.loadedLevel);
+				LevelLoader.RestartLevel();
 				
 			}
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -71,7 +70,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
 			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
 			driver.ResetForm();
-			Application.LoadLevel("MainMenu");
+			LevelLoader.LoadLevel("MainMenu");
 		}
 	}
 
@@ -81,7 +80,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
 		winScreen.SetActive(true);
 		
-		if (spawner.lastLevel) {
+		if (LevelLoader.IsLastLevel()) {
 			
 			audio.PlayOneShot (winSound);
 		}

@@ -19,7 +19,6 @@ public class Spawner : MonoBehaviour {
 	private float levelTimeCounter;
 	private float lastSpawnTime;
 	public int level = 1;
-	public bool lastLevel = false;
 
 	void OnGUI () {
 		GUI.Label (new Rect (0,0,100,50), levelTimeCounter.ToString());
@@ -38,10 +37,6 @@ public class Spawner : MonoBehaviour {
 		GameObject.Find("Background").AddComponent<ScrollBackground>().numSeconds = lastSpawnTime;
 		
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
-	}
-
-	public void NextLevel(){
-		Application.LoadLevel (Application.loadedLevel+1);
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html
@@ -147,7 +142,11 @@ public class Spawner : MonoBehaviour {
 			ship.GetComponent<EnemyMovement>().pattern = movementPattern;
 			ship.GetComponent<EnemyMovement>().stops = stops;
 			var multi = gameObject.GetComponent<MultiplierScript>();
-			ship.GetComponent<EnemyDeath>().health *= multi.enemyHealthMultiplier;
+            EnemyDeath enemyDeath = ship.GetComponent<EnemyDeath>();
+			if(enemyDeath!=null)
+            {
+                enemyDeath.health *= multi.enemyHealthMultiplier;
+            }
             Wave wave = ship.GetComponent<Wave>();
             if(wave!=null)
             {

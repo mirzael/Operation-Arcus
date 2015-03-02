@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour {
 	public float timeStayOnScreen;
 	bool blank;
 
+    private Vector3 fakeVelocity;
+
 	
 	public void Start() {
 		blank = true;
@@ -75,24 +77,43 @@ public class EnemyMovement : MonoBehaviour {
 			dir = Vector3.down * speed;
 			break;
 		}
-		transform.rigidbody.velocity = dir;
+        SetVelocity(dir);
 	}
 	
 	public void Update() {
 		if (stops && timeBeforeStopOnScreen > 0.0f) {
 			timeBeforeStopOnScreen -= Time.deltaTime;
 			if (timeBeforeStopOnScreen <= 0.0f) {
-				transform.rigidbody.velocity = new Vector3(0, 0, 0);
+                SetVelocity(Vector3.zero);
 			}
 		} else if (stops && timeStayOnScreen > 0.0f) {
 			timeStayOnScreen -= Time.deltaTime;
 			if (timeStayOnScreen <= 0.0f) {
 				if (blank == true)
-					transform.rigidbody.velocity = dir;
+					SetVelocity(dir);
 				else
-					transform.rigidbody.velocity = newDir;
+					SetVelocity(newDir);
 			}
 		}
+
+        //asteroids are kinematic
+        if(rigidbody.isKinematic)
+        {
+            rigidbody.MovePosition(transform.position + fakeVelocity*Time.deltaTime);
+        }
 	}
+
+    private void SetVelocity(Vector3 v)
+    {
+        //Check if kinematic for asteroids - we'll need to fake their movement
+        if (rigidbody.isKinematic)
+        {
+            fakeVelocity = v;
+        }
+        else
+        {
+            rigidbody.velocity = v;
+        }
+    }
 
 }

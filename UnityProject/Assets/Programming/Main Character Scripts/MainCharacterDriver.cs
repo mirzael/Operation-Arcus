@@ -52,11 +52,6 @@ public class MainCharacterDriver : CharacterDriver {
 	private RainbowForm rainbowForm;
 	private bool isInSecondary = false;
 
-	private float shipXMin;
-	private float shipXMax;
-	private float shipYMin;
-	private float shipYMax;
-
 	public static string arcusName = "";
 
 	//Sounds
@@ -69,6 +64,8 @@ public class MainCharacterDriver : CharacterDriver {
 
 	// Use this for initialization
 	void Start () {
+        base.Start();
+
 		Application.targetFrameRate = 60;
 		arcusName = gameObject.name;
 		
@@ -80,9 +77,10 @@ public class MainCharacterDriver : CharacterDriver {
 		greenForm = GetComponent<GreenForm>();
 		orangeForm = GetComponent<OrangeForm>();
 		purpleForm = GetComponent<PurpleForm>();
+
 		rainbowForm = GetComponent<RainbowForm>();
-		
-		if (previousForm == null) {
+
+        if (previousForm == null) {
 			previousForm = redForm;
 		} else {
 			if (previousForm.shipColor == ShipColor.RED) {
@@ -142,24 +140,10 @@ public class MainCharacterDriver : CharacterDriver {
 		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
 		lostGame = false;
 
-		//Get the distance from the ship to the camera
-		float z = Mathf.Abs(transform.position.z);
-		var tmp = transform;
-		while (tmp.parent != null) {
-			tmp = tmp.parent;
-			z += Mathf.Abs(tmp.position.z);
-		}
-
-		//Max an min points of the screen at the ship distance from the camera
-		Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
-		Vector3 wrldMin = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, z));
-		Debug.Log (wrldMin);
-		Debug.Log (wrldMax);
-
-		shipXMax = wrldMax.x;
-		shipYMax = wrldMax.y;
-		shipXMin = wrldMin.x;
-		shipYMin = wrldMin.y;
+        //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
+        //InputManager.Setup();
+        //var keyboard = new KeyboardProfile();
+        InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
 	}
 
 	void OnGUI(){
@@ -198,17 +182,16 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Get the most recent input device from incontrol
         //Keyboard controls can be represented as an InputDevice using a CustomController
-        var inputDevice = InputManager.ActiveDevice;
+        InputDevice inputDevice = InputManager.ActiveDevice;
 
 		//Get where to move given user input
-        PressMove(Input.GetAxisRaw(inputHorizontal),Input.GetAxisRaw(inputVertical));
         PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (Input.GetKey (KeyCode.Space) || inputDevice.Action1) {
+		if (inputDevice.RightTrigger) {
             PressFire();
         }
 		if (currentForm.shipColor == ShipColor.RAINBOW) {
@@ -243,18 +226,18 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Take input
         //For multiplayer these will need to be exclusive, but for now both can move ship
-        if (Input.GetButtonDown(inputYellow) || inputDevice.Action4)
+        if (inputDevice.Action4)
         {
             PressYellow();		
-		} else if (Input.GetButtonDown(inputBlue) || inputDevice.Action3) {
+		} else if (inputDevice.Action3) {
             PressBlue();		
-		} else if (Input.GetButtonDown(inputRed) || inputDevice.Action2) {
+		} else if (inputDevice.Action2) {
             PressRed();		
-		} else if (Input.GetButtonDown(inputOrange) || inputDevice.LeftBumper) {
+		} else if (inputDevice.LeftBumper) {
             PressOrange();		
-		} else if (Input.GetButtonDown(inputPurple) || inputDevice.LeftTrigger) {
+		} else if (inputDevice.LeftTrigger) {
             PressPurple();		
-		} else if (Input.GetButtonDown(inputGreen) || inputDevice.RightBumper) {
+		} else if (inputDevice.RightBumper) {
             PressGreen();
         }
         else if (Input.GetKeyDown(KeyCode.PageDown))
@@ -280,8 +263,10 @@ public class MainCharacterDriver : CharacterDriver {
         float posX = transform.position.x - transform.parent.position.x;
         float posY = transform.position.y - transform.parent.position.y;
 
+        Debug.Log("shipXMax" + shipXMax);
         if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
         {
+            Debug.Log("going back to orig");
             transform.position = orig;
         }
     }

@@ -9,8 +9,13 @@ public class Shooter : MonoBehaviour {
 	public GameObject bossBlue;
 	public GameObject bossRed;
 	public GameObject bossYellow;
+
+    //health bar
 	public GameObject bossHealth;
+    public string bossName;
 	private BossHealthBar healthBar;
+
+
 	public float bossPattern;
 	public int pattern;
 	float currentCooldown;
@@ -25,6 +30,7 @@ public class Shooter : MonoBehaviour {
 		{
 			healthBar = ((GameObject)GameObject.Instantiate (bossHealth)).GetComponent<BossHealthBar>();
 			healthBar.SetRelativeHealth (1.0f);
+            healthBar.SetBossName(bossName);
 			death = gameObject.GetComponent<EnemyDeath>();
 			maxHealth = death.health;
 			health = death.health;
@@ -88,4 +94,19 @@ public class Shooter : MonoBehaviour {
 		if (Time.timeScale != 0)
 			currentCooldown = currentCooldown - 1;
 	}
+
+    private bool applicationIsQutting = false;
+
+    protected void OnApplicationQuit()
+    {
+        applicationIsQutting = true;
+    }
+
+    protected void OnDestroy()
+    {
+        if(!applicationIsQutting && healthBar!=null)
+        {
+            GameObject.Destroy(healthBar.gameObject);
+        }
+    }
 }

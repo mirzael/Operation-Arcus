@@ -1,16 +1,29 @@
 using UnityEngine;
 
-public class LevelLoader : MonoBehaviour {
-
-	public void Update() {
-		if (Input.GetKeyDown (KeyCode.R)) {
-			var enemies = GameObject.FindObjectsOfType(typeof(GameObject));
-			foreach (GameObject go in enemies) {
-				if (go.name.StartsWith("Enemy") || go.name.StartsWith("R") || go.name.StartsWith("Y") || go.name.StartsWith("B")) {
-					Destroy(go);
-				}
-			}
-			GameObject.Find("WaveSpawner").GetComponent<Spawner>().Start();
-		}
+public class LevelLoader: MonoBehaviour{
+	public static void LoadNextLevel(){
+		/*foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>()) {
+			Destroy(go);
+		}*/
+		Application.LoadLevel (Application.loadedLevel+1);
 	}
+
+	public static void RestartLevel(){
+		/*foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>()) {
+			Destroy(go);
+		}*/
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
+	public static void LoadLevel(string sceneName){
+		/*foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>()) {
+			Destroy(go);
+		}*/
+		Application.LoadLevel (sceneName);
+	}
+
+    public static bool IsLastLevel()
+    {
+        return (Application.loadedLevel == Application.levelCount - 1);
+    }
 }

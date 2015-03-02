@@ -13,6 +13,11 @@ public abstract class CharacterDriver : MonoBehaviour {
 	public abstract void PressPurple();
 	public abstract void PressOrange();
 
+    protected float shipXMin;
+    protected float shipXMax;
+    protected float shipYMin;
+    protected float shipYMax;
+
 	public void Start(){
 		redForm = GetComponent<RedForm> ();
 		blueForm = GetComponent<BlueForm> ();
@@ -23,6 +28,24 @@ public abstract class CharacterDriver : MonoBehaviour {
 		redForm.damage *= multi.playerDamageMultipler;
 		blueForm.damage *= multi.playerDamageMultipler;
 		yellowForm.damage *= multi.playerDamageMultipler;
+
+        //Get the distance from the ship to the camera
+        float z = Mathf.Abs(transform.position.z);
+        var tmp = transform;
+        while (tmp.parent != null)
+        {
+            tmp = tmp.parent;
+            z += Mathf.Abs(tmp.position.z);
+        }
+
+        //Max an min points of the screen at the ship distance from the camera
+        Vector3 wrldMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
+        Vector3 wrldMin = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, z));
+
+        shipXMax = wrldMax.x;
+        shipYMax = wrldMax.y;
+        shipXMin = wrldMin.x;
+        shipYMin = wrldMin.y;
 	}
 
 
