@@ -78,29 +78,39 @@ public class LevFourBossWave : Wave {
 		} 
 		else //DESPERATION MODE!
 		{
-			GameObject[] proj = new GameObject[11];
-			proj[0] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
+			GameObject[] proj = new GameObject[16];
+			proj[0] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
 			proj[0].rigidbody.velocity = Vector3.down * 9;
-			proj[1] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[1].rigidbody.velocity = Vector3.down * 8.5f + Vector3.left * 1f;
-			proj[2] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[2].rigidbody.velocity = Vector3.down * 8f + Vector3.left * 2f;
-			proj[3] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[3].rigidbody.velocity = Vector3.down * 7.5f + Vector3.left * 3f;
-			proj[4] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[4].rigidbody.velocity = Vector3.down * 7f + Vector3.left * 4f;
-			proj[5] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[5].rigidbody.velocity = Vector3.down * 6.75f + Vector3.left * 5f;
-			proj[6] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[6].rigidbody.velocity = Vector3.down * 6.5f + Vector3.left * 6f;
-			proj[7] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[7].rigidbody.velocity = Vector3.down * 6.25f + Vector3.left * 7f;
-			proj[8] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[8].rigidbody.velocity = Vector3.down * 6f+ Vector3.left * 8f;
-			proj[9] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[9].rigidbody.velocity = Vector3.down * 8.5f + Vector3.right * 1f;
-			proj[10] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f + Vector3.left * 5f, projectile.transform.rotation);
-			proj[10].rigidbody.velocity = Vector3.down * 8f + Vector3.right * 2f;
+			proj[1] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[1].rigidbody.velocity = Vector3.down * 8.31f + Vector3.left * 3.44f;
+			proj[2] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[2].rigidbody.velocity = Vector3.down * 6.36f + Vector3.left * 6.36f;
+			proj[3] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[3].rigidbody.velocity = Vector3.down * 3.44f + Vector3.left * 8.31f;
+			proj[4] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[4].rigidbody.velocity = Vector3.left * 9f;
+			proj[5] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[5].rigidbody.velocity = Vector3.left * 8.31f + Vector3.up * 3.44f;
+			proj[6] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[6].rigidbody.velocity = Vector3.left * 6.36f + Vector3.up * 6.36f;
+			proj[7] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[7].rigidbody.velocity = Vector3.left * 3.44f + Vector3.up * 8.31f;
+			proj[8] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[8].rigidbody.velocity = Vector3.up * 9f;
+			proj[9] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[9].rigidbody.velocity = Vector3.up * 8.31f + Vector3.right * 3.44f;
+			proj[10] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[10].rigidbody.velocity = Vector3.up * 6.36f + Vector3.right * 6.36f;
+			proj[11] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[11].rigidbody.velocity = Vector3.up * 3.44f + Vector3.right * 8.31f;
+			proj[12] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[12].rigidbody.velocity = Vector3.right * 9;
+			proj[13] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[13].rigidbody.velocity = Vector3.right * 8.31f + Vector3.down * 3.44f;
+			proj[14] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[14].rigidbody.velocity = Vector3.right * 6.36f + Vector3.down * 6.36f;
+			proj[15] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 4.5f, projectile.transform.rotation);
+			proj[15].rigidbody.velocity = Vector3.right * 3.44f + Vector3.down * 8.31f;
 		}
 		//}
 		if (currentCooldown % 360 == 0)
