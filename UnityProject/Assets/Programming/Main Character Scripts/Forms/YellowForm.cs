@@ -26,7 +26,7 @@ public class YellowForm : PrimaryForm {
 		Destroy(col.gameObject);
 		if (tag == "Yellow") {
 			setPower(power + POWER_INC);
-			Debug.Log("Absorbed yellow bullet, Yellow Power at " + power);
+			//Debug.Log("Absorbed yellow bullet, Yellow Power at " + power);
 			return false;
 		}
 		return true;

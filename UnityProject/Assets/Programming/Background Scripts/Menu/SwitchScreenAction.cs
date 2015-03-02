@@ -10,8 +10,10 @@ public class SwitchScreenAction : MenuAction
     public GameObject toShow;
 
     public Transform earthModel;
+    public Transform smallerModel;
+    public Transform largerModel;
+
     public bool makeSmaller;
-    private float scaleAmount = 2.5f;
 
     public override void TakeAction()
     {
@@ -20,16 +22,16 @@ public class SwitchScreenAction : MenuAction
 
         if(earthModel!=null)
         {
-            float toScale;
             if(makeSmaller)
             {
-                toScale = 1f / scaleAmount;
+                earthModel.position = smallerModel.position;
+                earthModel.localScale = smallerModel.localScale;
             }
             else
             {
-                toScale = scaleAmount;
+                earthModel.position = largerModel.position;
+                earthModel.localScale = largerModel.localScale;
             }
-            earthModel.localScale *= toScale;
         }
     }
 }

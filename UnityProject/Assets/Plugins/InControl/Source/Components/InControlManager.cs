@@ -7,6 +7,23 @@ using UnityEngine;
 
 namespace InControl
 {
+	public class ZType
+	{
+		public static Type GetType(string typeName)
+        {
+            var type = Type.GetType(typeName);
+            if (type != null) return type;
+            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                type = a.GetType(typeName);
+                if (type != null)
+                    return type;
+            }
+            return null ;
+        }		
+	}
+	
+	
 	public class InControlManager : MonoBehaviour
 	{
 		public bool logDebugInfo = false;
@@ -31,7 +48,7 @@ namespace InControl
 
 			foreach (var className in customProfiles)
 			{
-				var classType = Type.GetType( className );
+				var classType = ZType.GetType( className );
 				if (classType == null)
 				{
 					Debug.LogError( "Cannot find class for custom profile: " + className );

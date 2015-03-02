@@ -45,8 +45,10 @@ public class LevTwoBossWave : Wave {
 	
 	// Update is called once per frame
 	void Update () {
+		currentCooldown = currentCooldown + 1;
 		//if (currentCooldown % 8 == 0) 
 		//{
+		animator.SetInteger ("BasicState",Random.Range (0,2));
 		if (desperation == 0) {
 			//basic attack 1, beam of semi-alternating blue and white
 			if (ability == 0)
@@ -54,7 +56,7 @@ public class LevTwoBossWave : Wave {
 				/*GameObject aProj = new GameObject();
 				aProj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 2f + Vector3.left * 5f, projectile.transform.rotation);
 				aProj.rigidbody.velocity = Vector3.down * 40;*/
-				animator.SetInteger ("BasicState",Random.Range (0,2));
+
 				if (currentCooldown % 3 == 0)
 					activeBullet = bossWhite;
 				else
@@ -90,7 +92,11 @@ public class LevTwoBossWave : Wave {
 						blast[i] = (GameObject)Instantiate(activeBullet, transform.position + Vector3.down * 2, projectile.transform.rotation);
 						blast[i].rigidbody.velocity = transform.TransformDirection(Vector3.back * 12 + Vector3.right * currentAngularVelocity * 12);
 					}
-					if (currentCooldown % 240 >= 120)
+
+					if ((currentCooldown % 240 >= 100) && waves > 1)
+						animator.SetInteger ("BossState", 0);
+
+					if ((currentCooldown % 240 >= 119) && waves > 1)
 						ability = 0;
 				}
 			}
@@ -119,12 +125,13 @@ public class LevTwoBossWave : Wave {
 					offset = offset + 1;
 					if (offset > 3)
 						offset = 0;
-					if (currentCooldown % 720 >= 240)
+					if (currentCooldown % 720 >= 230)
+						animator.SetInteger ("BossState", 0);
+					if (currentCooldown % 720 >= 239)
 					{
 						ability = 0;
 					}
 				}
-				animator.SetInteger ("BossState", 0);
 				startup = startup - 1;
 			}
 
@@ -183,9 +190,9 @@ public class LevTwoBossWave : Wave {
 			}
 		}
 		//}
-		if (currentCooldown % 720 >= 700)
+		if (currentCooldown % 720 >= 710)
 			animator.SetInteger ("BossState", 7);
-		else if (currentCooldown % 240 >= 220)
+		else if (currentCooldown % 240 >= 230)
 			animator.SetInteger ("BossState", 4);
 
 		if (currentCooldown % 720 == 0 && currentCooldown > 0)
@@ -200,7 +207,7 @@ public class LevTwoBossWave : Wave {
 			ability = 1;
 			waves = 0;
 		}
-		currentCooldown = currentCooldown + 1;
+
 	}
 	
 	public override void resetCooldown()
