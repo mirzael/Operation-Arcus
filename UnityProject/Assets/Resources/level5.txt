@@ -279,10 +279,6 @@ GOB5,93,18,0,3,1
 #2s wait
 #95
 
-#wave9
-#4s wait
 
-#wave10
-#no wait
 
 GOB25
