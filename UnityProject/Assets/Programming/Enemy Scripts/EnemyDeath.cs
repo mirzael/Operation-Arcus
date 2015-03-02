@@ -38,6 +38,14 @@ public class EnemyDeath : MonoBehaviour {
                     }
                     if (shooter.isBoss && bossCheck == false)
                     {
+						GameObject[] objs = GameObject.FindObjectsOfType<GameObject>();
+						int bulletLayer = LayerMask.NameToLayer("Enemy Bullet");
+						for(int i = 0; i < objs.Length; i++) {
+							if (objs[i].layer == bulletLayer) {
+								Destroy(objs[i]);
+							}
+						}
+						
                         bossCheck = true;
                         Invoke("explodeBoss", .5f);
                         Invoke("explodeBoss", 1f);
