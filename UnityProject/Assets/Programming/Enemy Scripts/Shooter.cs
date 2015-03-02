@@ -71,6 +71,15 @@ public class Shooter : MonoBehaviour {
 		case 10:
 			bulletWave = gameObject.AddComponent<LevThreeBossWave>();
 			break;
+		case 11:
+			bulletWave = gameObject.AddComponent<LevFourBossWave>();
+			break;
+		case 12:
+			bulletWave = gameObject.AddComponent<LevFiveBossWave>();
+			break;
+		case 13:
+			bulletWave = gameObject.AddComponent<LevSixBossWave>();
+			break;
 		}
 	}
 	

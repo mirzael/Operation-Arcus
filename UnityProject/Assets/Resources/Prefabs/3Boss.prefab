@@ -887,7 +887,7 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b85307bbd06fe0540b224898c05c39d1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 782cde3e3ab78ed4fafffee9d41d4e66, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2bf774969b23e9442b127703bc2bd8c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -927,8 +927,9 @@ MonoBehaviour:
   bossRed: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   bossYellow: {fileID: 100000, guid: 2f940a40cfaa8344d9e3da42a3fecd59, type: 2}
   bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
+  bossName: 
   bossPattern: 0
-  pattern: 8
+  pattern: 11
   bulletWave: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:

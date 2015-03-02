@@ -9,13 +9,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 400186}
   - 114: {fileID: 11400006}
+  - 95: {fileID: 9594996}
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
-  - 95: {fileID: 9594996}
   m_Layer: 8
   m_Name: 5boss
   m_TagString: Yellow
@@ -719,7 +719,7 @@ Transform:
   m_GameObject: {fileID: 100186}
   m_LocalRotation: {x: -3.09086232e-08, y: -.707106829, z: .707106829, w: -3.09086232e-08}
   m_LocalPosition: {x: -4.51381779, y: -12.7014465, z: 7.36831045}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children:
   - {fileID: 446342}
   m_Father: {fileID: 0}
@@ -1579,7 +1579,7 @@ Animator:
   m_GameObject: {fileID: 100186}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c24e59d6b8a6214b961f686214d2fc0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 782cde3e3ab78ed4fafffee9d41d4e66, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1618,8 +1618,9 @@ MonoBehaviour:
   bossRed: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   bossYellow: {fileID: 100000, guid: 2f940a40cfaa8344d9e3da42a3fecd59, type: 2}
   bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
+  bossName: 
   bossPattern: 0
-  pattern: 10
+  pattern: 13
   bulletWave: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
