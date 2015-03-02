@@ -1960,6 +1960,10 @@ Prefab:
       propertyPath: logDebugInfo
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8214440, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
+      propertyPath: m_Volume
+      value: .583000004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c9545179d7133f4ba2fb9e97de4d6c0, type: 2}
   m_RootGameObject: {fileID: 569828995}
@@ -20784,17 +20788,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments:
-  - voiceOver: {fileID: 8300000, guid: d094cabcef3b97747b760b6a32ed0d2f, type: 3}
+  - voiceOver: {fileID: 8300000, guid: 7eceb762b45a7614683fd984bf4a9efe, type: 3}
     textMessage: {fileID: 640043866}
-    timeToNext: 3
-  - voiceOver: {fileID: 8300000, guid: 1bd59bb060b38fa46b601b763122ba7a, type: 3}
+    timeToNext: 8
+  - voiceOver: {fileID: 8300000, guid: 2ccb9391135dfa441a71d2aeacf2677a, type: 3}
     textMessage: {fileID: 1923069198}
-    timeToNext: -1
-  - voiceOver: {fileID: 8300000, guid: 4ef2a7fbd7067d845a00aaa3d9b1dd57, type: 3}
+    timeToNext: 8
+  - voiceOver: {fileID: 8300000, guid: 8c1738089b7f00143bed718ce0f2bd9b, type: 3}
     textMessage: {fileID: 1409896758}
-    timeToNext: -1
-  - voiceOver: {fileID: 8300000, guid: 7e699680a35e79747b0a81855196aa9f, type: 3}
+    timeToNext: 17
+  - voiceOver: {fileID: 8300000, guid: b420580a34c9d8343919f280d3bd62f4, type: 3}
     textMessage: {fileID: 134982792}
+    timeToNext: 10
+  - voiceOver: {fileID: 8300000, guid: 308a7c7f78d5dde4aaf2d69b004c8cc7, type: 3}
+    textMessage: {fileID: 0}
     timeToNext: -1
 --- !u!1 &938403158
 GameObject:
@@ -26786,7 +26793,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: faa17d55c8e1acc45b930bd81442294f, type: 2}
+  - {fileID: 2100000, guid: 3cb6c946a2136be48bb20d9a62975498, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -29335,7 +29342,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 13a31d3d52a13d044be986de5563c4f0, type: 2}
+  - {fileID: 2100000, guid: 2d422a1a594a6f74cbbca1b3ec397e30, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -31057,7 +31064,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: c31cc425599a39d40acc0652603dc9eb, type: 2}
+  - {fileID: 2100000, guid: 5caa05335918c2744a701dd4f0c85a55, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -32448,6 +32455,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 480808, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -32483,19 +32494,47 @@ Prefab:
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[0].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: d094cabcef3b97747b760b6a32ed0d2f, type: 3}
+      objectReference: {fileID: 8300000, guid: 7eceb762b45a7614683fd984bf4a9efe, type: 3}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[1].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1bd59bb060b38fa46b601b763122ba7a, type: 3}
+      objectReference: {fileID: 8300000, guid: 2ccb9391135dfa441a71d2aeacf2677a, type: 3}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[2].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 4ef2a7fbd7067d845a00aaa3d9b1dd57, type: 3}
+      objectReference: {fileID: 8300000, guid: 8c1738089b7f00143bed718ce0f2bd9b, type: 3}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[3].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 7e699680a35e79747b0a81855196aa9f, type: 3}
+      objectReference: {fileID: 8300000, guid: b420580a34c9d8343919f280d3bd62f4, type: 3}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[1].timeToNext
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[0].timeToNext
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[2].timeToNext
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[4].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 308a7c7f78d5dde4aaf2d69b004c8cc7, type: 3}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[4].textMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[4].timeToNext
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
+      propertyPath: segments.Array.data[3].timeToNext
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bde38482694538347a79fbe3b105db67, type: 2}
   m_RootGameObject: {fileID: 934465758}
@@ -39072,7 +39111,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 97f67e72c3db71041a1c04bc53baf7aa, type: 2}
+  - {fileID: 2100000, guid: 2e95798e733b2b04f8392ecfc18fce5c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -49191,7 +49230,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 30fbc3b5570617744a5611ce604e41bc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .583000004
   m_Pitch: 1
   Loop: 1
   Mute: 0
