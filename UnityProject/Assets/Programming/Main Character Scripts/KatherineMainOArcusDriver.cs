@@ -82,6 +82,8 @@ namespace Spectrum
         //Pause screenshot
         public Texture pauseButton;
 
+		private InputDevice device;
+
         /**********************/
         /**   Initializers   **/
         /**********************/
@@ -130,7 +132,8 @@ namespace Spectrum
 
 			MultiplayerCoordinator.Instance.OArcusDriver = this;
 
-            InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerOneProfile()));
+			device = new UnityInputDevice (new KeyboardPlayerOneProfile ());
+            InputManager.AttachDevice(device);
         }
 
         /**********************/
@@ -172,10 +175,9 @@ namespace Spectrum
 
             //Get the most recent input device from incontrol
             //Keyboard controls can be represented as an InputDevice using a CustomController
-            InputDevice inputDevice = InputManager.Devices[0];
 
             //Get where to move given user input
-            PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
+            PressMove(device.Direction.X, device.Direction.Y);
 
             //change the cooldown of the main weapon, as one frame has passed
             currentCooldown -= Time.deltaTime;
@@ -196,25 +198,25 @@ namespace Spectrum
             //
             // Will be updated later with Event Delegate and Input Handler
             //
-            if (inputDevice.RightTrigger)
+            if (device.RightTrigger)
             { PressFire(); }
 
-            if (inputDevice.Action4)
+            if (device.Action4)
             { PressYellow(); }
 
-            if (inputDevice.Action3)
+            if (device.Action3)
             { PressBlue(); }
 
-            if (inputDevice.Action2)
+            if (device.Action2)
             { PressRed(); }
 
-			if (inputDevice.LeftBumper)
+			if (device.LeftBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveOrange(); }
 			
-			if (inputDevice.LeftTrigger)
+			if (device.LeftTrigger)
 			{ MultiplayerCoordinator.Instance.UseOffensivePurple(); }
 			
-			if (inputDevice.RightBumper)
+			if (device.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
             if (Input.GetKeyDown(KeyCode.F))
