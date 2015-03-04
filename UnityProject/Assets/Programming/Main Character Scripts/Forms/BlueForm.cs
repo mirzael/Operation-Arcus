@@ -15,6 +15,11 @@ public class BlueForm : PrimaryForm {
 	public override bool TakeHit(Collision col) {
 		string tag = col.gameObject.tag;
 		Destroy(col.gameObject);
+		
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			return true;
+		}
+		
 		if (tag == "Blue") {
 			setPower(power + POWER_INC);
 			//Debug.Log("Absorbed blue bullet, Blue Power at " + power);
