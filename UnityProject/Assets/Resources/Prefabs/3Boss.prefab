@@ -13,7 +13,6 @@ GameObject:
   - 114: {fileID: 11400002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 82: {fileID: 8200000}
   m_Layer: 8
@@ -268,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -3.09086232e-08, y: -.707106829, z: .707106829, w: -3.09086232e-08}
   m_LocalPosition: {x: -4.83461094, y: -17.6900444, z: 16.2942104}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 401292}
   m_Father: {fileID: 0}
@@ -942,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 600
+  health: 800
   explosion: {fileID: 100000, guid: d0f4aac2d9151e84ab42d47cf966dbd0, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -962,21 +961,6 @@ MonoBehaviour:
   speed: 0
   timeBeforeStopOnScreen: 0
   timeStayOnScreen: 0
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e5341033a02814295c7d6f732ea0db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mooks:
-  - {fileID: 100000, guid: c2cd4181f92793c469543b4f2260b7cf, type: 2}
-  - {fileID: 100000, guid: 211f2f478f101ed468c8b913d972f908, type: 2}
-  cooldown: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
