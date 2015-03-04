@@ -90,7 +90,7 @@ using InControl;
 			    Handle = "Move Y",
 			    Target = InputControlType.LeftStickY,
 			    // Notes that up is positive in Unity, therefore the order of KeyCodes is down, up.
-			    Source = KeyCodeAxis( KeyCode.I, KeyCode.K )
+			    Source = KeyCodeAxis( KeyCode.K, KeyCode.I )
 		    }
 	    };
      }
