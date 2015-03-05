@@ -662,7 +662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "R: \n75%"
+  m_Text: "R: \n100%"
 --- !u!222 &41405800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9674,9 +9674,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1121829818}
   m_RootOrder: 2
-  m_AnchorMin: {x: .100000001, y: .100000001}
-  m_AnchorMax: {x: 1, y: .899999976}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: .247547403, y: .100000001}
+  m_AnchorMax: {x: .802452683, y: .899999976}
+  m_AnchoredPosition: {x: -1.79999995, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &401299373
@@ -9705,7 +9705,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'B: 75%'
+  m_Text: 'Y: 100%'
 --- !u!222 &401299374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10586,9 +10586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press R to Go To Main Menu
-
-'
+  m_Text: Thanks for Playing!
 --- !u!222 &440286502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11418,7 +11416,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HP: 75%'
+  m_Text: 'HP: 100%'
 --- !u!222 &479470194
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14364,7 +14362,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e030f9de89b421b46a8b61e498e2e3aa, type: 3}
-  m_Color: {r: .0344827175, g: 1, b: 0, a: 1}
+  m_Color: {r: .698039234, g: 0, b: 1, a: 1}
 --- !u!1 &641021946
 GameObject:
   m_ObjectHideFlags: 0
@@ -15333,7 +15331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HP: 75%'
+  m_Text: 'HP: 100%'
 --- !u!222 &683132740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15697,7 +15695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: G
+  m_Text: P
 --- !u!222 &697862736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19309,7 +19307,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e030f9de89b421b46a8b61e498e2e3aa, type: 3}
-  m_Color: {r: .737930775, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &864857804
 GameObject:
   m_ObjectHideFlags: 0
@@ -19753,7 +19751,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2cfef2263407c794ea40aa7075b22e1a, type: 3}
-  m_Color: {r: .737930775, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &880836121
 GameObject:
   m_ObjectHideFlags: 0
@@ -20075,7 +20073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "B: \n75%"
+  m_Text: "B: \n100%"
 --- !u!222 &887366680
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20723,7 +20721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912587974
 Transform:
   m_ObjectHideFlags: 0
@@ -22441,7 +22439,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: G
+  m_Text: P
 --- !u!222 &1002758526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23533,7 +23531,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2cfef2263407c794ea40aa7075b22e1a, type: 3}
-  m_Color: {r: .0344827175, g: 1, b: 0, a: 1}
+  m_Color: {r: .698039234, g: 0, b: 1, a: 1}
 --- !u!1 &1070277484
 GameObject:
   m_ObjectHideFlags: 0
@@ -28649,7 +28647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P
+  m_Text: G
 --- !u!222 &1320828100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29401,10 +29399,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 705277887}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: .0757571459}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: -1.5}
-  m_SizeDelta: {x: -6, y: -5}
+  m_AnchorMin: {x: .256496251, y: .100000001}
+  m_AnchorMax: {x: .817248106, y: 1}
+  m_AnchoredPosition: {x: 0, y: -2.20000005}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1375367768
 MonoBehaviour:
@@ -29432,7 +29430,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'B: 75%'
+  m_Text: 'B: 100%'
 --- !u!222 &1375367769
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29800,7 +29798,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: G
+  m_Text: P
 --- !u!222 &1390352543
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29948,7 +29946,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2cfef2263407c794ea40aa7075b22e1a, type: 3}
-  m_Color: {r: .0344827175, g: 1, b: 0, a: 1}
+  m_Color: {r: .6965518, g: 0, b: 1, a: 1}
 --- !u!1 &1400260256
 GameObject:
   m_ObjectHideFlags: 0
@@ -30577,7 +30575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'R: 75%'
+  m_Text: 'R: 100%'
 --- !u!222 &1422404483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31015,7 +31013,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2cfef2263407c794ea40aa7075b22e1a, type: 3}
-  m_Color: {r: .737930775, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1453211729
 GameObject:
   m_ObjectHideFlags: 0
@@ -32225,7 +32223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'R: 75%'
+  m_Text: 'R: 100%'
 --- !u!222 &1513455677
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32470,9 +32468,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 732688940}
   m_RootOrder: 2
-  m_AnchorMin: {x: .100000001, y: .100000001}
-  m_AnchorMax: {x: 1, y: .899999976}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: .262321085, y: .150000006}
+  m_AnchorMax: {x: .802773714, y: .899999976}
+  m_AnchoredPosition: {x: -3.4000001, y: -1.60000002}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1522341688
@@ -32501,7 +32499,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'B: 75%'
+  m_Text: 'Y: 100%'
 --- !u!222 &1522341689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33967,7 +33965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P
+  m_Text: G
 --- !u!222 &1597656547
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37291,10 +37289,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1413888332}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: .0757571459}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: -1.5}
-  m_SizeDelta: {x: -6, y: -5}
+  m_AnchorMin: {x: .256503791, y: .100000001}
+  m_AnchorMax: {x: .802181602, y: 1}
+  m_AnchoredPosition: {x: 0, y: -1.79999995}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1725100026
 MonoBehaviour:
@@ -37322,7 +37320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'B: 75%'
+  m_Text: 'B: 100%'
 --- !u!222 &1725100027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41885,9 +41883,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2137026816}
   m_RootOrder: 2
-  m_AnchorMin: {x: .100000001, y: .100000001}
-  m_AnchorMax: {x: 1, y: .899999976}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: .262321085, y: .100000001}
+  m_AnchorMax: {x: .823000014, y: .899999976}
+  m_AnchoredPosition: {x: -3.0999999, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1894039897
@@ -41916,7 +41914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'B: 75%'
+  m_Text: 'Y: 100%'
 --- !u!222 &1894039898
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42419,6 +42417,79 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1081711161}
   m_GameObject: {fileID: 1914754297}
   m_Mesh: {fileID: 4300030, guid: f4c3c0d0cadbce04d99f3b2a405e2e12, type: 3}
+--- !u!1 &1918452717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1918452721}
+  - 114: {fileID: 1918452720}
+  - 114: {fileID: 1918452719}
+  - 114: {fileID: 1918452718}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1918452718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918452717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowActivationOnStandalone: 0
+--- !u!114 &1918452719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918452717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_AllowActivationOnMobileDevice: 0
+--- !u!114 &1918452720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918452717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1918452721
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918452717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1922678856
 GameObject:
   m_ObjectHideFlags: 0
@@ -43898,7 +43969,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P
+  m_Text: G
 --- !u!222 &1983262099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45844,7 +45915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HP: 75%'
+  m_Text: 'HP: 100%'
 --- !u!222 &2034923649
 CanvasRenderer:
   m_ObjectHideFlags: 0
