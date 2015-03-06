@@ -263,10 +263,8 @@ public class MainCharacterDriver : CharacterDriver {
         float posX = transform.position.x - transform.parent.position.x;
         float posY = transform.position.y - transform.parent.position.y;
 
-        Debug.Log("shipXMax" + shipXMax);
         if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
         {
-            Debug.Log("going back to orig");
             transform.position = orig;
         }
     }
