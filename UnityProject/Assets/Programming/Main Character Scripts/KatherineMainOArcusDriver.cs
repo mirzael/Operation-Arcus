@@ -219,7 +219,7 @@ namespace Spectrum
 			if (device.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause = !pause;
 
