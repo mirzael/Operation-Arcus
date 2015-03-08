@@ -37,6 +37,11 @@ public class Spawner : MonoBehaviour {
 		GameObject.Find("Background").AddComponent<ScrollBackground>().numSeconds = lastSpawnTime;
 		
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
+
+        BackgroundUI.Instance.AddGameEndEvent(delegate()
+        {
+            gameObject.SetActive(false);
+        });
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html

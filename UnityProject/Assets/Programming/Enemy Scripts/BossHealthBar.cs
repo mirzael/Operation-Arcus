@@ -20,9 +20,10 @@ public class BossHealthBar : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    protected void OnDestroy()
+    public void DestroySelf()
     {
         BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+        GameObject.Destroy(gameObject);
     }
 
     public void SetBossName(string name)
