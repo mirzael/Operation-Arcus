@@ -152,7 +152,7 @@ namespace Spectrum
         {
             // Display a dialog for when the game is paused.
             if (pause)
-            { GUI.DrawTexture(new Rect(100, 200, 250, 300), pauseButton, ScaleMode.StretchToFill); }
+			{ GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill); }
         }
 
         /**********************/
@@ -228,7 +228,7 @@ namespace Spectrum
             if (device.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseDefensiveGreen(); }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause = !pause;
 
