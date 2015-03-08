@@ -1350,6 +1350,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418876}
+  - 114: {fileID: 11406592}
   m_Layer: 0
   m_Name: Secondaries
   m_TagString: Untagged
@@ -1396,6 +1397,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418878}
+  - 114: {fileID: 11406594}
   m_Layer: 0
   m_Name: Secondaries
   m_TagString: Untagged
@@ -5182,6 +5184,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482510}
+  - 114: {fileID: 11406596}
   m_Layer: 0
   m_Name: Secondaries
   m_TagString: Untagged
@@ -12909,6 +12912,48 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11406592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974fa8d514dfe854197c44a27a618d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenBar: {fileID: 21218876}
+  purpleBar: {fileID: 21218878}
+  orangeBar: {fileID: 21218876}
+--- !u!114 &11406594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974fa8d514dfe854197c44a27a618d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenBar: {fileID: 21218886}
+  purpleBar: {fileID: 21218884}
+  orangeBar: {fileID: 21218882}
+--- !u!114 &11406596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974fa8d514dfe854197c44a27a618d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenBar: {fileID: 21282510}
+  purpleBar: {fileID: 21297858}
+  orangeBar: {fileID: 21297854}
 --- !u!114 &11412684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15365,6 +15410,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
   invulnCounter: 0
@@ -16325,6 +16371,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
   invulnCounter: 0
@@ -16809,6 +16856,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  healthLossPerHit: 10
   invulnTime: 1
   invulnCounter: 0
   inputRed: OffRed

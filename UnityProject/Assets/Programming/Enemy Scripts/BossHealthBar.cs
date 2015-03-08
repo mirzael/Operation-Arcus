@@ -22,7 +22,11 @@ public class BossHealthBar : MonoBehaviour
 
     public void DestroySelf()
     {
-        BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+        if(gameObject.activeSelf)
+        {
+            //if event has already triggered, don't worry about it
+            BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+        }
         GameObject.Destroy(gameObject);
     }
 

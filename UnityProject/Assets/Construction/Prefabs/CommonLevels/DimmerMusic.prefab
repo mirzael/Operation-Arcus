@@ -60,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 414444}
   - 82: {fileID: 8214440}
+  - 114: {fileID: 11421096}
   m_Layer: 0
   m_Name: BackMusic
   m_TagString: Untagged
@@ -283,7 +284,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 30fbc3b5570617744a5611ce604e41bc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .583000004
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -384,6 +385,17 @@ MonoBehaviour:
   Orange: {r: 1, g: .653448343, b: .25, a: 0}
   Purple: {r: .618281007, g: .13786763, b: .625, a: 0}
   Green: {r: .26294598, g: .632352948, b: .2138841, a: 0}
+--- !u!114 &11421096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fd55c0c11db3a48b0e35a07d3fc38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11439042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logDebugInfo: 0
+  logDebugInfo: 1
   invertYAxis: 0
   enableXInput: 0
   useFixedUpdate: 0
