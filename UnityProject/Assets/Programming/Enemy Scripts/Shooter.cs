@@ -90,7 +90,7 @@ public class Shooter : MonoBehaviour {
 			health = death.health;
 			float percent = (float)health / (float)maxHealth;
 			healthBar.SetRelativeHealth (percent);
-			if (percent < 0.25) {
+			if (percent < 0.33) {
 				bulletWave.triggerDesperation();
 			}
 

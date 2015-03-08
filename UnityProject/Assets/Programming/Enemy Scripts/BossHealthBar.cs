@@ -10,6 +10,21 @@ public class BossHealthBar : MonoBehaviour
     public Slider slider;
     public Text text;
 
+    protected void Start()
+    {
+        BackgroundUI.Instance.AddGameEndEvent(HideSelf);
+    }
+
+    public void HideSelf()
+    {
+        gameObject.SetActive(false);
+    }
+
+    protected void OnDestroy()
+    {
+        BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+    }
+
     public void SetBossName(string name)
     {
         text.text = name;

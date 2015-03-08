@@ -75,7 +75,7 @@ public class PurpleForm : SecondaryForm {
 			isActive = false;
 			growValue = 1;
 			Destroy (reflectBall);
-			//gameObject.GetComponent<SphereCollider>().radius /= 3;
+			gameObject.GetComponent<SphereCollider>().radius /= 3;
 		}
 	}
 	

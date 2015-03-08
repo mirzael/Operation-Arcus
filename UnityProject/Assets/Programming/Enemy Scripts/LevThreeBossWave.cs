@@ -80,7 +80,7 @@ public class LevThreeBossWave : Wave {
 			}
 			else
 			{
-				if (currentCooldown % 720 >= 60)
+				if ((currentCooldown % 720 >= 60) && (currentCooldown % 720 <= 340))
 				{
 					if (currentCooldown % 10 == 0)
 					{

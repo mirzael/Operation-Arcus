@@ -37,7 +37,6 @@ namespace Spectrum
         /**********************/
         /**    Model Data    **/
         /**********************/
-        static bool lostGame;
         public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
 
@@ -84,6 +83,8 @@ namespace Spectrum
 
         //Pause screenshot
         public Texture pauseButton;
+
+		private InputDevice device;
 
         /**********************/
         /**   Initializers   **/
@@ -135,7 +136,8 @@ namespace Spectrum
 
 			MultiplayerCoordinator.Instance.DarcusDriver = this;
 
-            InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerTwoProfile()));
+			device = new UnityInputDevice (new KeyboardPlayerTwoProfile ());
+            InputManager.AttachDevice(device);
             //foreach(InputDevice device in InputManager.Devices)
             {
               //  Debug.Log("device " + device.Name);
@@ -149,7 +151,7 @@ namespace Spectrum
         {
             // Display a dialog for when the game is paused.
             if (pause)
-            { GUI.DrawTexture(new Rect(100, 200, 250, 300), pauseButton, ScaleMode.StretchToFill); }
+			{ GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill); }
         }
 
         /**********************/
@@ -181,10 +183,9 @@ namespace Spectrum
 
             //Get the most recent input device from incontrol
             //Keyboard controls can be represented as an InputDevice using a CustomController
-            var inputDevice = InputManager.Devices[1];
 
             //Get where to move given user input
-            PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
+            PressMove(device.Direction.X, device.Direction.Y);
 
             //change the cooldown of the main weapon, as one frame has passed
             currentCooldown -= Time.deltaTime;
@@ -205,28 +206,28 @@ namespace Spectrum
             //
             // Will be updated later with Event Delegate and Input Handler
             //
-            if (inputDevice.RightTrigger)
+            if (device.RightTrigger)
             { PressFire(); }
 
-            if (inputDevice.Action4)
+            if (device.Action4)
             { PressYellow(); }
 
-            if (inputDevice.Action3)
+            if (device.Action3)
             { PressBlue(); }
 
-            if (inputDevice.Action2)
+            if (device.Action2)
             { PressRed(); }
 
-            if (inputDevice.LeftBumper)
+            if (device.LeftBumper)
 			{ MultiplayerCoordinator.Instance.UseDefensiveOrange(); }
 
-            if (inputDevice.LeftTrigger)
+            if (device.LeftTrigger)
 			{ MultiplayerCoordinator.Instance.UseDefensivePurple(); }
 
-            if (inputDevice.RightBumper)
+            if (device.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseDefensiveGreen(); }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause = !pause;
 
@@ -401,16 +402,7 @@ namespace Spectrum
                     // Only take damage if not in rainbow mode
                     } else */
 
-                    health -= 10;
-                    if (health < 0)
-                    {
-                        if (gameOver) return;
-                        Destroy(gameObject);
-                        Debug.Log("MISSION FAILED");
-                        gameOver = true;
-                        lostGame = true;
-						MultiplayerCoordinator.Instance.GameOver();
-                    }
+                    TakeDamage();
                 }
 
                 // Absorbed the bullet

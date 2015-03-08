@@ -41,38 +41,38 @@ using InControl;
 		    {
 			    Handle = "Blue",
 			    Target = InputControlType.Action3,
-			    Source = KeyCodeButton( KeyCode.U )
+			    Source = KeyCodeButton( KeyCode.Quote )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Red",
 			    Target = InputControlType.Action2,
 			    // KeyCodeComboButton requires that all KeyCode params are down simultaneously.
-			    Source = KeyCodeButton( KeyCode.P )
+			    Source = KeyCodeButton( KeyCode.L )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Yellow",
 			    Target = InputControlType.Action4,
-			    Source = KeyCodeButton( KeyCode.O )
+			    Source = KeyCodeButton( KeyCode.Semicolon )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Green",
 			    Target = InputControlType.RightBumper,
-			    Source = KeyCodeButton( KeyCode.Alpha7 )
+			    Source = KeyCodeButton( KeyCode.P )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Purple",
 			    Target = InputControlType.LeftTrigger,
-			    Source = KeyCodeButton( KeyCode.Alpha8 )
+			    Source = KeyCodeButton( KeyCode.LeftBracket )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Orange",
 			    Target = InputControlType.LeftBumper,
-			    Source = KeyCodeButton( KeyCode.Alpha9 )
+			    Source = KeyCodeButton( KeyCode.O )
 		    }
 	    };
 
@@ -83,14 +83,14 @@ using InControl;
 			    Handle = "Move X",
 			    Target = InputControlType.LeftStickX,
 			    // KeyCodeAxis splits the two KeyCodes over an axis. The first is negative, the second positive.
-			    Source = KeyCodeAxis( KeyCode.J, KeyCode.L )
+			    Source = KeyCodeAxis( KeyCode.LeftArrow, KeyCode.RightArrow )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Move Y",
 			    Target = InputControlType.LeftStickY,
 			    // Notes that up is positive in Unity, therefore the order of KeyCodes is down, up.
-			    Source = KeyCodeAxis( KeyCode.I, KeyCode.K )
+			    Source = KeyCodeAxis( KeyCode.DownArrow, KeyCode.UpArrow )
 		    }
 	    };
      }

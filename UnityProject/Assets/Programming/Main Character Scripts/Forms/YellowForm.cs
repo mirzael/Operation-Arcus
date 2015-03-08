@@ -24,6 +24,11 @@ public class YellowForm : PrimaryForm {
 	public override bool TakeHit(Collision col) {
 		string tag = col.gameObject.tag;
 		Destroy(col.gameObject);
+		
+		if (col.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			return true;
+		}
+		
 		if (tag == "Yellow") {
 			setPower(power + POWER_INC);
 			//Debug.Log("Absorbed yellow bullet, Yellow Power at " + power);

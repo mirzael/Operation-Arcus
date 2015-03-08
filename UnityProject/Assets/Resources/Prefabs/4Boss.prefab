@@ -14,7 +14,6 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
   m_Layer: 8
   m_Name: 4Boss
@@ -1104,21 +1103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 900
   explosion: {fileID: 100000, guid: b5893256158ccd245a11ec172871022e, type: 2}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e5341033a02814295c7d6f732ea0db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mooks:
-  - {fileID: 100002, guid: e980422c1b5fd8045a39131d2e4a7d4f, type: 2}
-  - {fileID: 100000, guid: a7ce713800983b640aa4ec0a8f91ba0e, type: 2}
-  cooldown: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
