@@ -1102,8 +1102,8 @@ MonoBehaviour:
   successScreen: {fileID: 0}
   winScreen: {fileID: 159144}
   loseScreen: {fileID: 176180}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
+  loseSound: {fileID: 8300000, guid: e97325692a53c924da6e36743c592247, type: 3}
+  winSound: {fileID: 8300000, guid: 8531840121cbbdd4b8e66d7d9d19d4d2, type: 3}
   background: {fileID: 0}
 --- !u!114 &11421194
 MonoBehaviour:

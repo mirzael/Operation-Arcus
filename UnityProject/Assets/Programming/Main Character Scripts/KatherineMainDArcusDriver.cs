@@ -37,7 +37,6 @@ namespace Spectrum
         /**********************/
         /**    Model Data    **/
         /**********************/
-        static bool lostGame;
         public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
 
@@ -152,7 +151,7 @@ namespace Spectrum
         {
             // Display a dialog for when the game is paused.
             if (pause)
-            { GUI.DrawTexture(new Rect(100, 200, 250, 300), pauseButton, ScaleMode.StretchToFill); }
+			{ GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill); }
         }
 
         /**********************/
@@ -403,16 +402,7 @@ namespace Spectrum
                     // Only take damage if not in rainbow mode
                     } else */
 
-                    health -= 10;
-                    if (health < 0)
-                    {
-                        if (gameOver) return;
-                        Destroy(gameObject);
-                        Debug.Log("MISSION FAILED");
-                        gameOver = true;
-                        lostGame = true;
-						MultiplayerCoordinator.Instance.GameOver();
-                    }
+                    TakeDamage();
                 }
 
                 // Absorbed the bullet
