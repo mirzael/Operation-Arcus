@@ -37,7 +37,6 @@ public class MainCharacterDriver : CharacterDriver {
 	//Arcus Animator
 
 	private const float ALPHA_PER_SEC = 0.1f;
-	static bool lostGame;
 
 	//This is the current form the ship is using
 	public static Form currentForm;
@@ -371,16 +370,8 @@ public class MainCharacterDriver : CharacterDriver {
 				// Only take damage if not in rainbow mode
 				} else */
 				if (currentForm.shipColor != ShipColor.RAINBOW) {
-					health -= 10;
-					if (health < 0) {
-						if (gameOver) return;
-						Destroy (gameObject);
-						Debug.Log("MISSION FAILED");
-						BackgroundUI.Instance.ShowLoseScreen();
-						gameOver = true;
-						lostGame = true;
-					}
-				}
+                    TakeDamage();
+                }
 			}
 		
 		// Absorbed the bullet
@@ -397,6 +388,12 @@ public class MainCharacterDriver : CharacterDriver {
 			switchForm(rainbowForm);
 		}
 	}
+
+    protected override void GameOver()
+    {
+        base.GameOver();
+        BackgroundUI.Instance.ShowLoseScreen();
+    }
 	
 	void Fire() {
 		audio.PlayOneShot(bulletSound);

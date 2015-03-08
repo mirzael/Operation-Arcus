@@ -37,7 +37,6 @@ namespace Spectrum
         /**********************/
         /**    Model Data    **/
         /**********************/
-        static bool lostGame;
 		public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
 
@@ -356,21 +355,12 @@ namespace Spectrum
 					// Set invulnerability
 					invulnCounter = invulnTime;
 					audio.PlayOneShot (bumpSound);
-					health -= 10;
+					TakeDamage();
 				}
 
 				ColorPower.Instance.powerBlue = bluePow;
 				ColorPower.Instance.powerRed = redPow;
 				ColorPower.Instance.powerYellow = yellowPow;
-				if (health < 0) {
-					if (gameOver)
-						return;
-					Destroy (gameObject);
-					Debug.Log ("MISSION FAILED");
-					gameOver = true;
-					lostGame = true;
-					MultiplayerCoordinator.Instance.GameOver();
-				}
 			}
         }
 
