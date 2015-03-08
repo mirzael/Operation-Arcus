@@ -37,7 +37,6 @@ namespace Spectrum
         /**********************/
         /**    Model Data    **/
         /**********************/
-        static bool lostGame;
         public List<GameObject> colorPieces = new List<GameObject>();
         float currentCooldown = 0;
 
@@ -403,16 +402,7 @@ namespace Spectrum
                     // Only take damage if not in rainbow mode
                     } else */
 
-                    health -= 10;
-                    if (health < 0)
-                    {
-                        if (gameOver) return;
-                        Destroy(gameObject);
-                        Debug.Log("MISSION FAILED");
-                        gameOver = true;
-                        lostGame = true;
-						MultiplayerCoordinator.Instance.GameOver();
-                    }
+                    TakeDamage();
                 }
 
                 // Absorbed the bullet

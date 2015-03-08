@@ -23,4 +23,10 @@ public abstract class MultiplayerCharacterDriver : CharacterDriver {
 	public abstract void PressDefensiveGreen ();
 	public abstract void PressDefensiveOrange();
 	public abstract void PressDefensivePurple();
+
+    protected override void GameOver()
+    {
+        base.GameOver();
+        MultiplayerCoordinator.Instance.GameOver();
+    }
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MainCharacter;
+using System.Collections.Generic;
+using System;
 
 public class BackgroundUI : Singleton<BackgroundUI> {
 	public Material successScreen;
@@ -10,6 +12,17 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 	
 	public AudioClip loseSound;
 	public AudioClip winSound;
+
+    //Let other gameobjects call actions when the game ends
+    private List<Action> gameEndEvents = new List<Action>();
+    public void AddGameEndEvent(Action action)
+    {
+        gameEndEvents.Add(action);
+    }
+    public void RemoveGameEndEvent(Action action)
+    {
+        gameEndEvents.Remove(action);
+    }
 	
 	PointMaster points;
 	public Material background;
@@ -76,24 +89,32 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 
 	public void ShowWinScreen() {
 
-        points.enabled = false;
-		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
+//		var spawner = GameObject.Find ("WaveSpawner").GetComponent<Spawner> ();
 		winScreen.SetActive(true);
 		
 		if (LevelLoader.IsLastLevel()) {
 			
 			audio.PlayOneShot (winSound);
 		}
-		showingWinLose = true;
+        EndGame();
 		win = true;
 	}
 	
 	public void ShowLoseScreen() {
-		points.enabled = false;
 		Destroy (GameObject.FindGameObjectWithTag ("SoundBox"));
 		audio.PlayOneShot (loseSound);
 		loseScreen.SetActive(true);
-		showingWinLose = true;
+        EndGame();
 		win = false;
 	}
+
+    public void EndGame()
+    {
+        showingWinLose = true;
+        points.enabled = false;
+        foreach(Action action in gameEndEvents)
+        {
+            action();
+        }
+    }
 }
