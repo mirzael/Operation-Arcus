@@ -147,13 +147,13 @@ public class MainCharacterDriver : CharacterDriver {
 
 	void OnGUI(){
 		if (pause) {
-			GUI.DrawTexture(new Rect(100,200,250,300), pauseButton, ScaleMode.StretchToFill);
+			GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill);
 		}
 	}
 	
 	// Update is called once per frame
 	public void Update () {
-		if(Input.GetKeyDown(KeyCode.F)){
+		if(Input.GetKeyDown(KeyCode.Escape)){
 			pause = !pause;
 			
 			if (pause) {
@@ -163,7 +163,7 @@ public class MainCharacterDriver : CharacterDriver {
 				Time.timeScale = 1;
 			}
 		}
-		if (gameOver) {
+		if (gameOver || pause) {
 			return;
 		}
 		
@@ -340,7 +340,7 @@ public class MainCharacterDriver : CharacterDriver {
     //Switch to ORANGE Form
     public override void PressOrange()
     {
-        if (Input.GetButtonDown(inputOrange) && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
             setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
             setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);

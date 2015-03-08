@@ -41,38 +41,38 @@ using InControl;
 		    {
 			    Handle = "Blue",
 			    Target = InputControlType.Action3,
-			    Source = KeyCodeButton( KeyCode.E )
+			    Source = KeyCodeButton( KeyCode.B )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Red",
 			    Target = InputControlType.Action2,
 			    // KeyCodeComboButton requires that all KeyCode params are down simultaneously.
-			    Source = KeyCodeButton( KeyCode.R )
+			    Source = KeyCodeButton( KeyCode.C )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Yellow",
 			    Target = InputControlType.Action4,
-			    Source = KeyCodeButton( KeyCode.Q )
+			    Source = KeyCodeButton( KeyCode.V )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Green",
 			    Target = InputControlType.RightBumper,
-			    Source = KeyCodeButton( KeyCode.Alpha1 )
+			    Source = KeyCodeButton( KeyCode.G )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Purple",
 			    Target = InputControlType.LeftTrigger,
-			    Source = KeyCodeButton( KeyCode.Alpha2 )
+			    Source = KeyCodeButton( KeyCode.H )
 		    },
 		    new InputControlMapping
 		    {
 			    Handle = "Orange",
 			    Target = InputControlType.LeftBumper,
-			    Source = KeyCodeButton( KeyCode.Alpha3 )
+			    Source = KeyCodeButton( KeyCode.F )
 		    }
 	    };
 
