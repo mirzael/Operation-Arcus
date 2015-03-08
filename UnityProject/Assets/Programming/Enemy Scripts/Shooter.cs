@@ -115,7 +115,7 @@ public class Shooter : MonoBehaviour {
     {
         if(!applicationIsQutting && healthBar!=null)
         {
-            GameObject.Destroy(healthBar.gameObject);
+            healthBar.DestroySelf();
         }
     }
 }

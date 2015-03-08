@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using UnityEngine;
 namespace MainCharacter
 {
 	public class ColorPower
@@ -27,6 +28,33 @@ namespace MainCharacter
 			get{lock(syncLock) return _powYellow;} 
 			set{lock(syncLock) _powYellow = value;}
 		}
+
+        public float powerPurple
+        {
+            get
+            {
+                //average red & blue
+                return (powerBlue + powerRed) / 2f;
+            }
+        }
+
+        public float powerGreen
+        {
+            get
+            {
+                //average blue & yellow
+                return (powerBlue + powerYellow) / 2f;
+            }
+        }
+
+        public float powerOrange
+        {
+            get
+            {
+                //average red & yellow
+                return (powerYellow + powerRed) / 2f;
+            }
+        }
 
 		private readonly static object syncLock = new object();
 
