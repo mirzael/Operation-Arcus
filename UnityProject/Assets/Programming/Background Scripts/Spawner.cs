@@ -20,8 +20,13 @@ public class Spawner : MonoBehaviour {
 	private float lastSpawnTime;
 	public int level = 1;
 
+    public bool showTimer = false;
+
 	void OnGUI () {
-		GUI.Label (new Rect (0,0,100,50), levelTimeCounter.ToString());
+        if(showTimer)
+        {
+            GUI.Label(new Rect(0, 0, 100, 50), levelTimeCounter.ToString());
+        }
 	}
 
 	// Use this for initialization
