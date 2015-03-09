@@ -20,8 +20,13 @@ public class Spawner : MonoBehaviour {
 	private float lastSpawnTime;
 	public int level = 1;
 
+    public bool showTimer = false;
+
 	void OnGUI () {
-		GUI.Label (new Rect (0,0,100,50), levelTimeCounter.ToString());
+        if(showTimer)
+        {
+            GUI.Label(new Rect(0, 0, 100, 50), levelTimeCounter.ToString());
+        }
 	}
 
 	// Use this for initialization
@@ -37,6 +42,11 @@ public class Spawner : MonoBehaviour {
 		GameObject.Find("Background").AddComponent<ScrollBackground>().numSeconds = lastSpawnTime;
 		
 		Debug.Log("Level has " + enemyDetails.Count + " enemies");
+
+        BackgroundUI.Instance.AddGameEndEvent(delegate()
+        {
+            gameObject.SetActive(false);
+        });
 	}
 
 	// source: http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html

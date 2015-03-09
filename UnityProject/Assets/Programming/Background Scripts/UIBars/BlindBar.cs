@@ -28,16 +28,21 @@ public class BlindBar : MonoBehaviour
         {
             Debug.LogError("Make sure blind bar prefab is in scene and sliders are not null");
         }
-        if (colorText==null || scoreText==null)
+/*        if (colorText==null || scoreText==null)
         {
             Debug.Log("Make sure curColor & scoreText are dragged into "+gameObject.name);
-        }
+        }*/
         if(healthSliderP1==null || player1==null)
         {
             Debug.LogError("Make sure healthSliderP1 & Player1 are dragged into "+gameObject.name);
         }
         isMultiplayer = player2 != null;
         UpdateColorBars();
+
+        BackgroundUI.Instance.AddGameEndEvent(delegate()
+        {
+            this.gameObject.SetActive(false);
+        });
     }
 
     public void UpdateColorBars()
@@ -57,8 +62,11 @@ public class BlindBar : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthSliderP1.UpdatePercentage(player1.health);
-        if(isMultiplayer)
+        if(healthSliderP1!=null)
+        {
+            healthSliderP1.UpdatePercentage(player1.health);
+        }
+        if(isMultiplayer && healthSliderP2!=null)
         {
             healthSliderP2.UpdatePercentage(player2.health);
         }

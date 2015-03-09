@@ -625,6 +625,7 @@ GameObject:
   - 4: {fileID: 479146}
   - 114: {fileID: 11409808}
   - 82: {fileID: 8224752}
+  - 114: {fileID: 11487988}
   m_Layer: 0
   m_Name: LoseScreen
   m_TagString: Untagged
@@ -1102,8 +1103,8 @@ MonoBehaviour:
   successScreen: {fileID: 0}
   winScreen: {fileID: 159144}
   loseScreen: {fileID: 176180}
-  loseSound: {fileID: 8300000, guid: 59c4741694d67c94f8bf2bed5f67ab4d, type: 3}
-  winSound: {fileID: 8300000, guid: 9a8a968fde1155249826397f27cde911, type: 3}
+  loseSound: {fileID: 8300000, guid: d2f6bae2dc01e704cb6b31eb4c9b817e, type: 3}
+  winSound: {fileID: 8300000, guid: 8531840121cbbdd4b8e66d7d9d19d4d2, type: 3}
   background: {fileID: 0}
 --- !u!114 &11421194
 MonoBehaviour:
@@ -2301,6 +2302,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11487988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091209c5137d016419957111291d7394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12459136
 Behaviour:
   m_ObjectHideFlags: 1

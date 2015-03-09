@@ -5,7 +5,7 @@ public abstract class CharacterDriver : MonoBehaviour {
 	protected PrimaryForm redForm;
 	protected PrimaryForm blueForm;
 	protected PrimaryForm yellowForm;
-	public float health = 100;
+	public float health = 100f;
 	public const float TRANSFORM_AMOUNT = 100f;
 	public bool gameOver = false;
 	public UIDriver uiDriver;
@@ -53,5 +53,27 @@ public abstract class CharacterDriver : MonoBehaviour {
     {
         gameOver = true;
         gameObject.GetComponent<EndAnimation>().PlayWinAnimation();
+    }
+
+    /// Handle taking damage and losing the game as shared functionality
+    public float healthLossPerHit = 10f;
+    public static bool lostGame = false;
+
+    protected virtual void TakeDamage()
+    {
+        health -= healthLossPerHit;
+        if (health <= 0)
+        {
+            GameOver();
+        }
+    }
+    protected virtual void GameOver() 
+    {
+        if (gameOver)
+            return;
+        Destroy(gameObject);
+        Debug.Log("MISSION FAILED");
+        gameOver = true;
+        lostGame = true;
     }
 }

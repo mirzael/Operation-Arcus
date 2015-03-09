@@ -18,9 +18,11 @@ public class LevFourBossWave : Wave {
 	GameObject bossYellow;
 	GameObject bossWhite;
 	GameObject activeBullet;
+	Animator animator;
 	
 	// Use this for initialization
 	public override void Start () {
+		animator = gameObject.GetComponent<Animator> ();
 		desperation = 0;
 		ability = 0;
 		activeRed = 0;
@@ -42,16 +44,19 @@ public class LevFourBossWave : Wave {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		//if (currentCooldown % 8 == 0) 
 		//{
 		if (desperation == 0) {
-			//basic attack 1, beam of semi-alternating blue and white
+			//basic attack 1, beam of semi-alternating red and white
 			if (ability == 0)
 			{
-				if (currentCooldown % 10 == 0 && (currentCooldown % 180 % 80) >= 20)
+				/*GameObject test = new GameObject();
+				test = (GameObject)InstantiateBullet (bossBlue, transform.position + Vector3.down * 2, projectile.transform.rotation);
+				test.rigidbody.velocity = Vector3.down * (15);*/
+				if (currentCooldown % 10 == 0 && currentCooldown % 180 < 161)
 				{
-					if (currentCooldown % 90 == 0)
+					if (currentCooldown % 30 == 0)
 						activeBullet = bossWhite;
 					else
 						activeBullet = bossRed;
@@ -65,21 +70,32 @@ public class LevFourBossWave : Wave {
 			}
 			else //ability activate!
 			{
-				if (currentCooldown % 30 == 0)
+				/*GameObject test = new GameObject();
+				test = (GameObject)InstantiateBullet (bossRed, transform.position + Vector3.down * 2, projectile.transform.rotation);
+				test.rigidbody.velocity = Vector3.down * (15);*/
+				if (currentCooldown % 10 == 0)
 				{
 					GameObject[] proj = new GameObject[2];
-					proj[0] = (GameObject)InstantiateBullet (bossWhite, transform.position, projectile.transform.rotation);
+					proj[0] = (GameObject)InstantiateBullet (bossWhite, transform.position + Vector3.left * 5, projectile.transform.rotation);
 					proj[0].rigidbody.velocity = Vector3.left * 20;
-					proj[1] = (GameObject)InstantiateBullet (bossWhite, transform.position, projectile.transform.rotation);
+					proj[1] = (GameObject)InstantiateBullet (bossWhite, transform.position + Vector3.right * 5, projectile.transform.rotation);
 					proj[1].rigidbody.velocity = Vector3.right * 20;
 				}
-				if (currentCooldown % 240 == 0)
+				if (currentCooldown % 900 >= 290)
+					animator.SetInteger("BossState", 0);
+				if (currentCooldown % 900 >= 300)
+				{
+					currentCooldown = 0;
 					ability = 0;
+				}
 			}
 			
 		} 
 		else //DESPERATION MODE!
 		{
+			/*GameObject test = new GameObject();
+			test = (GameObject)InstantiateBullet (bossYellow, transform.position + Vector3.down * 2, projectile.transform.rotation);
+			test.rigidbody.velocity = Vector3.down * (15);*/
 			if (currentCooldown % 30 == 0)
 			{
 				GameObject[] proj = new GameObject[16];
@@ -118,7 +134,9 @@ public class LevFourBossWave : Wave {
 			}
 		}
 		//}
-		if (currentCooldown % 900 == 0)
+		if (currentCooldown % 900 >= 890)
+			animator.SetInteger("BossState", 5);
+		if (currentCooldown % 900 == 0 && currentCooldown > 40)
 		{
 			ability = 1;
 			waves = 0;
@@ -132,6 +150,7 @@ public class LevFourBossWave : Wave {
 	
 	public override void triggerDesperation()
 	{
+		animator.SetInteger("BossState", 10);
 		desperation = 1;
 		waves = 0;
 	}
