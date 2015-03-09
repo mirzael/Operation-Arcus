@@ -1980,7 +1980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &120170
 GameObject:
   m_ObjectHideFlags: 1
@@ -12883,7 +12883,7 @@ MonoBehaviour:
   blueSlider: {fileID: 11412686}
   yellowSlider: {fileID: 11474332}
   healthSliderP1: {fileID: 11405508}
-  healthSliderP2: {fileID: 0}
+  healthSliderP2: {fileID: 11405508}
   player1: {fileID: 11476498}
   player2: {fileID: 0}
   colorText: {fileID: 0}
@@ -14060,9 +14060,9 @@ MonoBehaviour:
   blueSlider: {fileID: 11418856}
   yellowSlider: {fileID: 11418848}
   healthSliderP1: {fileID: 11418882}
-  healthSliderP2: {fileID: 0}
-  player1: {fileID: 11476498}
-  player2: {fileID: 0}
+  healthSliderP2: {fileID: 11405508}
+  player1: {fileID: 11474318}
+  player2: {fileID: 11434472}
   colorText: {fileID: 0}
   colorTextP2: {fileID: 0}
   scoreText: {fileID: 0}
@@ -16299,7 +16299,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 120168}
   multiPlayer: {fileID: 117112}
-  isMultiplayer: 0
+  isMultiplayer: 1
 --- !u!114 &11472740
 MonoBehaviour:
   m_ObjectHideFlags: 1

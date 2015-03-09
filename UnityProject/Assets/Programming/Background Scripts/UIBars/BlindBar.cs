@@ -62,8 +62,11 @@ public class BlindBar : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthSliderP1.UpdatePercentage(player1.health);
-        if(isMultiplayer)
+        if(healthSliderP1!=null)
+        {
+            healthSliderP1.UpdatePercentage(player1.health);
+        }
+        if(isMultiplayer && healthSliderP2!=null)
         {
             healthSliderP2.UpdatePercentage(player2.health);
         }
