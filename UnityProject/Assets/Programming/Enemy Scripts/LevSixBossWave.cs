@@ -19,6 +19,7 @@ public class LevSixBossWave : Wave {
 	GameObject bossWhite;
 	GameObject activeLeft;
 	GameObject activeRight;
+	GameObject inactive;
 	Animator animator;
 	
 	// Use this for initialization
@@ -42,6 +43,7 @@ public class LevSixBossWave : Wave {
 		bossWhite = gameObject.GetComponent<Shooter> ().bossProjectile;
 		activeLeft = bossBlue;
 		activeRight = bossYellow;
+		inactive = bossRed;
 		currentCooldown = 0;
 	}
 	
@@ -128,7 +130,7 @@ public class LevSixBossWave : Wave {
 			//Second basic attack: sphere's bullet colors move in waves
 			if (ability == 1)
 			{
-				if (currentCooldown % 10 == 0)
+				if (currentCooldown % 2 == 0)
 				{
 					GameObject proj = new GameObject();
 					int checkVal = (int)currentCooldown % 120;
@@ -138,53 +140,256 @@ public class LevSixBossWave : Wave {
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 4 + Vector3.left * 6f;
 						break;
+					case 2:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.2f + Vector3.left * 5.8f;
+						break;
+					case 4:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.4f + Vector3.left * 5.6f;
+						break;
+					case 6:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.6f + Vector3.left * 5.4f;
+						break;
+					case 8:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.8f + Vector3.left * 5.2f;
+						break;
+
 					case 10:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 5f + Vector3.left * 5f;
 						break;
+					case 12:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.2f + Vector3.left * 4.8f;
+						break;
+					case 14:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.4f + Vector3.left * 4.6f;
+						break;
+					case 16:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.6f + Vector3.left * 4.4f;
+						break;
+					case 18:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.8f + Vector3.left * 4.2f;
+						break;
+
 					case 20:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 6f + Vector3.left * 4f;
 						break;
+					case 22:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.2f + Vector3.left * 3.8f;
+						break;
+					case 24:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.4f + Vector3.left * 3.6f;
+						break;
+					case 26:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.6f + Vector3.left * 3.4f;
+						break;
+					case 28:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.8f + Vector3.left * 3.2f;
+						break;
+
 					case 30:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 7f + Vector3.left * 3f;
 						break;
+					case 32:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.2f + Vector3.left * 2.8f;
+						break;
+					case 34:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.4f + Vector3.left * 2.6f;
+						break;
+					case 36:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.6f + Vector3.left * 2.4f;
+						break;
+					case 38:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.8f + Vector3.left * 2.2f;
+						break;
+
 					case 40:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 8f + Vector3.right * 2f;
 						break;
+					case 42:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.2f + Vector3.left * 1.8f;
+						break;
+					case 44:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.4f + Vector3.left * 1.6f;
+						break;
+					case 46:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.6f + Vector3.left * 1.4f;
+						break;
+					case 48:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.8f + Vector3.left * 1.2f;
+						break;
+
 					case 50:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 9f + Vector3.right * 1f;
 						break;
+					case 52:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 9.5f + Vector3.left * 0.5f;
+						break;
+					case 54:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 10f + Vector3.left * 0.1f;
+						break;
+					case 56:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 10f + Vector3.left * 0.1f;
+						break;
+					case 58:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 9.5f + Vector3.left * 0.5f;
+						break;
+
 					case 60:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 9f + Vector3.right * 1f;
 						break;
+					case 62:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.8f + Vector3.right * 1.2f;
+						break;
+					case 64:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.6f + Vector3.right * 1.4f;
+						break;
+					case 66:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.4f + Vector3.right * 1.6f;
+						break;
+					case 68:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 8.2f + Vector3.right * 1.8f;
+						break;
+
 					case 70:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 8f + Vector3.right * 2f;
 						break;
+					case 72:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.8f + Vector3.right * 2.2f;
+						break;
+					case 74:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.6f + Vector3.right * 2.4f;
+						break;
+					case 76:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.4f + Vector3.right * 2.6f;
+						break;
+					case 78:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 7.2f + Vector3.right * 2.8f;
+						break;
+
 					case 80:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 7f + Vector3.right * 3f;
 						break;
+					case 82:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.8f + Vector3.right * 3.2f;
+						break;
+					case 84:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.6f + Vector3.right * 3.4f;
+						break;
+					case 86:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.4f + Vector3.right * 3.6f;
+						break;
+					case 88:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 6.2f + Vector3.right * 3.8f;
+						break;
+
 					case 90:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 6f + Vector3.right * 4f;
 						break;
+					case 92:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.8f + Vector3.right * 4.2f;
+						break;
+					case 94:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.6f + Vector3.right * 4.4f;
+						break;
+					case 96:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.4f + Vector3.right * 4.6f;
+						break;
+					case 98:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 5.2f + Vector3.right * 4.8f;
+						break;
+
 					case 100:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 5f + Vector3.right * 5f;
 						break;
+					case 102:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.8f + Vector3.right * 5.2f;
+						break;
+					case 104:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.6f + Vector3.right * 5.4f;
+						break;
+					case 106:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.4f + Vector3.right * 5.6f;
+						break;
+					case 108:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 4.2f + Vector3.right * 5.8f;
+						break;
+
 					case 110:
 						proj = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 						proj.rigidbody.velocity = Vector3.down * 4f + Vector3.right * 6f;
 						break;
+					case 112:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 3.8f + Vector3.right * 6.2f;
+						break;
+					case 114:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 3.6f + Vector3.right * 6.4f;
+						break;
+					case 116:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 3.6f + Vector3.left * 6.4f;
+						break;
+					case 118:
+						proj = (GameObject)Instantiate (inactive, transform.position + Vector3.down * 7f, projectile.transform.rotation);
+						proj.rigidbody.velocity = Vector3.down * 3.8f + Vector3.left * 6.4f;
+						break;
 					}
 				}
-				if (currentCooldown % 360 == 0)
+				if (currentCooldown % 120 == 0)
 				{
 					ability = 0;
 					int bullets = Random.Range(0,6);
@@ -193,26 +398,32 @@ public class LevSixBossWave : Wave {
 					case 0:
 						activeLeft = bossRed;
 						activeRight = bossBlue;
+						inactive = bossYellow;
 						break;
 					case 1:
 						activeLeft = bossRed;
 						activeRight = bossYellow;
+						inactive = bossBlue;
 						break;
 					case 2:
 						activeLeft = bossBlue;
 						activeRight = bossRed;
+						inactive = bossYellow;
 						break;
 					case 3:
 						activeLeft = bossBlue;
 						activeRight = bossYellow;
+						inactive = bossRed;
 						break;
 					case 4:
 						activeLeft = bossYellow;
 						activeRight = bossBlue;
+						inactive = bossRed;
 						break;
 					case 5:
 						activeLeft = bossYellow;
-						activeRight = bossBlue;
+						activeRight = bossRed;
+						inactive = bossBlue;
 						break;
 					}
 				}
@@ -296,9 +507,47 @@ public class LevSixBossWave : Wave {
 				proj[7] = (GameObject)Instantiate (bossWhite, transform.position + Vector3.down * 7f, projectile.transform.rotation);
 				proj[7].rigidbody.velocity = Vector3.down * 6f + Vector3.right * 4f;
 			}
+
+			if (currentCooldown % 120 == 0)
+			{
+				int bullets = Random.Range(0,6);
+				switch (bullets)
+				{
+				case 0:
+					activeLeft = bossRed;
+					activeRight = bossBlue;
+					inactive = bossYellow;
+					break;
+				case 1:
+					activeLeft = bossRed;
+					activeRight = bossYellow;
+					inactive = bossBlue;
+					break;
+				case 2:
+					activeLeft = bossBlue;
+					activeRight = bossRed;
+					inactive = bossYellow;
+					break;
+				case 3:
+					activeLeft = bossBlue;
+					activeRight = bossYellow;
+					inactive = bossRed;
+					break;
+				case 4:
+					activeLeft = bossYellow;
+					activeRight = bossBlue;
+					inactive = bossRed;
+					break;
+				case 5:
+					activeLeft = bossYellow;
+					activeRight = bossRed;
+					inactive = bossBlue;
+					break;
+				}
+			}
 		}
 
-		if (currentCooldown % 360 == 0 && currentCooldown > 0)
+		if (currentCooldown % 240 == 0 && currentCooldown > 0)
 		{
 			ability = 1;
 			waves = 0;
