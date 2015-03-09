@@ -2080,7 +2080,6 @@ GameObject:
   - 114: {fileID: 11424822}
   - 114: {fileID: 11424824}
   - 114: {fileID: 11424826}
-  - 114: {fileID: 11424830}
   - 114: {fileID: 11434472}
   - 114: {fileID: 11434478}
   - 114: {fileID: 11434480}
@@ -4819,7 +4818,6 @@ GameObject:
   - 114: {fileID: 11476480}
   - 114: {fileID: 11476482}
   - 114: {fileID: 11476484}
-  - 114: {fileID: 11476486}
   - 114: {fileID: 11474318}
   - 114: {fileID: 11452702}
   - 114: {fileID: 11452704}
@@ -12885,7 +12883,7 @@ MonoBehaviour:
   blueSlider: {fileID: 11412686}
   yellowSlider: {fileID: 11474332}
   healthSliderP1: {fileID: 11405508}
-  healthSliderP2: {fileID: 0}
+  healthSliderP2: {fileID: 11405508}
   player1: {fileID: 11476498}
   player2: {fileID: 0}
   colorText: {fileID: 0}
@@ -14062,9 +14060,9 @@ MonoBehaviour:
   blueSlider: {fileID: 11418856}
   yellowSlider: {fileID: 11418848}
   healthSliderP1: {fileID: 11418882}
-  healthSliderP2: {fileID: 0}
-  player1: {fileID: 11476498}
-  player2: {fileID: 0}
+  healthSliderP2: {fileID: 11405508}
+  player1: {fileID: 11474318}
+  player2: {fileID: 11434472}
   colorText: {fileID: 0}
   colorTextP2: {fileID: 0}
   scoreText: {fileID: 0}
@@ -14616,28 +14614,6 @@ MonoBehaviour:
   gravityForce: 1500
   gravityRadius: 35
   rotationSpeed: 15
---- !u!114 &11424830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e675ae195e92ae74d84c7b1139efbe04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 7
-  cooldown: .0500000007
-  originalCooldown: .0500000007
-  projectile: {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
-  projectileSpeed: 50
-  originalSpeed: 50
-  material: {fileID: 2100000, guid: 2e5d11e0dccd4a240b0cb3baed1c79b4, type: 2}
-  formSpeed: 30
-  shipColor: 6
-  animationNum: 0
-  power: 0
 --- !u!114 &11429042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16323,7 +16299,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 120168}
   multiPlayer: {fileID: 117112}
-  isMultiplayer: 0
+  isMultiplayer: 1
 --- !u!114 &11472740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16752,28 +16728,6 @@ MonoBehaviour:
   baseRadius: 0
   growValue: 0
   maxRadius: 0
---- !u!114 &11476486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e675ae195e92ae74d84c7b1139efbe04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 7
-  cooldown: .0500000007
-  originalCooldown: .0500000007
-  projectile: {fileID: 100000, guid: 6d58f399b40b37d4ea8de580790957a4, type: 2}
-  projectileSpeed: 50
-  originalSpeed: 50
-  material: {fileID: 2100000, guid: 2e5d11e0dccd4a240b0cb3baed1c79b4, type: 2}
-  formSpeed: 30
-  shipColor: 6
-  animationNum: 0
-  power: 0
 --- !u!114 &11476490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17584,9 +17538,9 @@ MonoBehaviour:
   power: 0
   timeBeforeExplosion: 0
   explosionSize: 0
-  mirv: {fileID: 0}
-  invisible: {fileID: 0}
-  sprite: {fileID: 0}
+  mirv: {fileID: 100000, guid: aa2b13e0bbef8914f9d55384bf333f3b, type: 2}
+  invisible: {fileID: 2100000, guid: c9eae03afb61da547bab98c62f720df2, type: 2}
+  sprite: {fileID: 190254, guid: dcccbd15ab173a74aa461d8c396dd897, type: 2}
   baseRadius: 0
   growValue: 0
   maxRadius: 0
