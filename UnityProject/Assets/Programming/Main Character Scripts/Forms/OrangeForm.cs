@@ -5,6 +5,7 @@ public class OrangeForm : SecondaryForm {
 	public float gravityForce;
 	public float gravityRadius;
 	public float rotationSpeed;
+	public GameObject orangeProjectile;
 	
 	public void Start() {
 		timeActiveOrig = 0.5f;
@@ -28,11 +29,15 @@ public class OrangeForm : SecondaryForm {
 	public override void Activate() {
 		isActive = true;
 		timeActive = timeActiveOrig;
-		GameObject reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		/*GameObject reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		reflectBall.transform.localScale = new Vector3(10, 10, 10);
 		reflectBall.renderer.material.color = new Color(1, 0.5f, 0);
 		reflectBall.transform.position = transform.position + Vector3.up * 7;
 		Rigidbody rb = reflectBall.AddComponent<Rigidbody>();
+		*/
+		GameObject reflectBall = (GameObject)Instantiate(orangeProjectile);
+		reflectBall.transform.position = transform.position + Vector3.up * 7;
+		Rigidbody rb = reflectBall.GetComponent<Rigidbody>();
 		rb.isKinematic = true;
 		reflectBall.AddComponent<OrangeWeapon>();
 		Destroy(reflectBall, 4);
