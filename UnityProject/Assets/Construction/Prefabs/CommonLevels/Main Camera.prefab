@@ -12885,7 +12885,7 @@ MonoBehaviour:
   healthSliderP1: {fileID: 11405508}
   healthSliderP2: {fileID: 11405508}
   player1: {fileID: 11476498}
-  player2: {fileID: 0}
+  player2: {fileID: 11434472}
   colorText: {fileID: 0}
   colorTextP2: {fileID: 0}
   scoreText: {fileID: 0}
@@ -16300,7 +16300,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 120168}
   multiPlayer: {fileID: 117112}
-  isMultiplayer: 0
+  isMultiplayer: 1
 --- !u!114 &11472740
 MonoBehaviour:
   m_ObjectHideFlags: 1
