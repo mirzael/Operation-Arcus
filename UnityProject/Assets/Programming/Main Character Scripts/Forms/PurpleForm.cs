@@ -39,7 +39,6 @@ public class PurpleForm : SecondaryForm {
 	public override void Activate() {
 		isActive = true;
 		timeActive = timeActiveOrig;
-		GameObject core = (GameObject)Instantiate(sprite,transform.position, Quaternion.Euler (00,0,0));
 		reflectBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		reflectBall.transform.localScale = new Vector3(baseRadius, baseRadius, baseRadius);
 		reflectBall.renderer.material = invisible;

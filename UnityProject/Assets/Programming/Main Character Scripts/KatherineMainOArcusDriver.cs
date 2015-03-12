@@ -44,24 +44,6 @@ namespace Spectrum
         public float invulnCounter = 0;
         bool pause = false;
 
-        /**********************/
-        /**  Arcus Keybinds  **/
-        /**********************/
-        // Keybindings for Color Switching
-        private string inputRed = "OffRed";
-        private string inputBlue = "OffBlue";
-        private string inputYellow = "OffYellow";
-        private string inputGreen = "OffGreen";
-        private string inputOrange = "OffOrange";
-        private string inputPurple = "OffPurple";
-
-        // Keybinds for Ship Movement
-        private string inputHorizontal = "OffHorizontal";
-        private string inputVertical = "OffVertical";
-
-        // Keybind for Firing Weapon
-        private string inputFire = "OffFire";
-
         // Arcus Animator
 
         // This is the current form the ship is using
@@ -131,7 +113,12 @@ namespace Spectrum
 
 			MultiplayerCoordinator.Instance.OArcusDriver = this;
 
-			device = new UnityInputDevice (new KeyboardPlayerOneProfile ());
+			if (ControlScheme.isOneHanded) {
+				device = new UnityInputDevice (new KeyboardPlayerOneAlternateProfile ());
+			} else {
+				device = new UnityInputDevice(new KeyboardPlayerOneProfile());
+			}
+
             InputManager.AttachDevice(device);
         }
 

@@ -62,7 +62,7 @@ public class MainCharacterDriver : CharacterDriver {
 	public Texture pauseButton;
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
         base.Start();
 
 		Application.targetFrameRate = 60;
@@ -139,10 +139,11 @@ public class MainCharacterDriver : CharacterDriver {
 		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
 		lostGame = false;
 
-        //InputManager.AttachDevice(new UnityInputDevice("KeyboardProfile"));
-        //InputManager.Setup();
-        //var keyboard = new KeyboardProfile();
-        InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
+		if(ControlScheme.isOneHanded){
+			InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloAlternateProfile()));
+		}else{
+    	    InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
+		}
 	}
 
 	void OnGUI(){

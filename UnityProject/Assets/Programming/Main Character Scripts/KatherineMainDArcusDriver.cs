@@ -45,24 +45,6 @@ namespace Spectrum
         bool pause = false;
 		public bool canMove = true;
 
-        /**********************/
-        /**  Arcus Keybinds  **/
-        /**********************/
-        // Keybindings for Color Switching
-        private string inputRed = "DefRed";
-        private string inputBlue = "DefBlue";
-        private string inputYellow = "DefYellow";
-        private string inputGreen = "DefGreen";
-        private string inputOrange = "DefOrange";
-        private string inputPurple = "DefPurple";
-
-        // Keybinds for Ship Movement
-        private string inputHorizontal = "DefHorizontal";
-        private string inputVertical = "DefVertical";
-
-        // Keybind for Firing Weapon
-        private string inputFire = "DefFire";
-
         // Arcus Animator
        // Animator anim;
 
@@ -136,7 +118,12 @@ namespace Spectrum
 
 			MultiplayerCoordinator.Instance.DarcusDriver = this;
 
-			device = new UnityInputDevice (new KeyboardPlayerTwoProfile ());
+			if (ControlScheme.isOneHanded) {
+				device = new UnityInputDevice (new KeyboardPlayerTwoAlternateProfile ());
+			}else{
+				device = new UnityInputDevice (new KeyboardPlayerTwoProfile ());
+			}
+
             InputManager.AttachDevice(device);
             //foreach(InputDevice device in InputManager.Devices)
             {

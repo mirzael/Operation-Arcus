@@ -24,20 +24,14 @@ public class RedWeapon : MonoBehaviour {
 		var exp = (GameObject)Instantiate(explosion, transform.position, transform.rotation);
 		exp.particleEmitter.minSize = (ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
 		exp.particleEmitter.maxSize = ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius;
-		CreateAoe (col.contacts[0].point, ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius, 1f, false);
-		if (gameObject.renderer.material != redBlast) {
-            col.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage + ColorPower.Instance.powerRed / 10, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
+		//Send damage to the ship that was hit
+		col.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage + ColorPower.Instance.powerRed / 10, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
+
+		//Send damage to the ships around the ship that was hit
+		foreach(RaycastHit hit in Physics.SphereCastAll(transform.position-transform.up*(ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius), ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius, transform.up)){
+			hit.collider.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage + ColorPower.Instance.powerRed / 10, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 		}
-	}
 
-	void CreateAoe(Vector3 center, float radius, float duration, bool gravity){
-
-		var sphere = (GameObject)Instantiate (redBlast, transform.position, redBlast.transform.rotation);
-		sphere.transform.localScale = new Vector3(radius, radius, radius);
-		sphere.layer = LayerMask.NameToLayer("Character Bullet");
-		sphere.tag = "Red";
-		sphere.AddComponent<RedWeapon> ().damage = damage;
-		Destroy (sphere, duration);
-		Destroy(gameObject);
+		Destroy (gameObject);
 	}
 }
