@@ -20,7 +20,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if (applicationIsQuitting)
+            if (alreadyDestroyed)
             {
                 Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
                     "' already destroyed on application quit." +
@@ -63,7 +63,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    protected static bool applicationIsQuitting = false;
+    protected static bool alreadyDestroyed = false;
     public bool dontDestroyOnLoad = false;
     /// <summary>
     /// When Unity quits, it destroys objects in a random order.
@@ -75,16 +75,18 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     /// </summary>
     public void OnApplicationQuit()
     {
-        applicationIsQuitting = true;
+        //ZH 3-13 changed onApplicationQuit to alreadyDestroyed, so works for changing/restarting levels (without DontDestroyOnLoad) as well as quitting game
+        alreadyDestroyed = true;
     }
 
     public void OnDestroy()
     {
+        alreadyDestroyed = true;
     }
 
     protected virtual void OnLevelWasLoaded(int level)
     {
-        applicationIsQuitting = false;
+        alreadyDestroyed = false;
     }
 
     /// <summary>
@@ -94,7 +96,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     /// </summary>
     public virtual void Awake()
     {
-        applicationIsQuitting = false;
+        alreadyDestroyed = false;
         if(Instance!=null)
         {
             //There are multiple of this singleton!  Panic and kill self (as I am the new one)

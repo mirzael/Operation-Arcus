@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 6
   explosion: {fileID: 100000, guid: 6db6cacb62ca26b4e9636e7df9b5ca2a, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -549,6 +549,8 @@ MonoBehaviour:
   bossBlue: {fileID: 0}
   bossRed: {fileID: 0}
   bossYellow: {fileID: 0}
+  bossHealth: {fileID: 0}
+  bossName: 
   bossPattern: 0
   pattern: 1
   bulletWave: {fileID: 0}

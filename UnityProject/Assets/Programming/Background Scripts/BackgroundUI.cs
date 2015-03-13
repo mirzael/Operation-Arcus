@@ -50,34 +50,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 		}
 		
 		if (Input.GetKeyDown(KeyCode.R)) {
-			points.enabled = true;
-			showingWinLose = false;
-			
-			var spawner = GameObject.Find("WaveSpawner").GetComponent<Spawner>();
-			if (win) {
-                if (LevelLoader.IsLastLevel())
-                {
-                    //They need to enter high score name, so R shouldn't do anything
-                    return;
-                }
-
-				spawner.level++;
-				
-				GameObject.Find("Background").renderer.material = background;
-				winScreen.SetActive(false);
-
-				if(MultiplayerController.Instance.isMultiplayer){
-					MultiplayerCoordinator.Instance.NewLevel();
-				}else{
-					var driver = GameObject.Find(MainCharacterDriver.arcusName).GetComponent<MainCharacterDriver>();
-					driver.gameOver = false;
-				}
-				
-				LevelLoader.LoadNextLevel();
-			} else {
-				LevelLoader.RestartLevel();
-				
-			}
+            //ZH 3-13 Should be handled by simply chaging level and by menus
 		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			PointMaster.points = 0;
 			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
