@@ -5,4 +5,10 @@ public class MultiplierScript : MonoBehaviour {
 	public float enemyHealthMultiplier;
 	public float enemyCooldownMultiplier;
 	public float playerDamageMultipler;
+
+	public void Start(){
+		if (MultiplayerController.globalIsMultiplayer.Value) {
+			enemyHealthMultiplier *= 2;
+		}
+	}
 }
