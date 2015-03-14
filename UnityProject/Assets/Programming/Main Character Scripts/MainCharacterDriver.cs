@@ -59,7 +59,7 @@ public class MainCharacterDriver : CharacterDriver {
 	public AudioClip absorbSound;
 
 	//Pause screenshot
-	public Texture pauseButton;
+	public GameObject pauseScreen;
 
 	// Use this for initialization
 	new void Start () {
@@ -135,8 +135,7 @@ public class MainCharacterDriver : CharacterDriver {
 			uiDriver.RotateToYellow();
 		}
 		uiDriver.UpdateBars();
-		
-		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
+
 		lostGame = false;
 
 		if(ControlScheme.isOneHanded){
@@ -148,7 +147,9 @@ public class MainCharacterDriver : CharacterDriver {
 
 	void OnGUI(){
 		if (pause) {
-			GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill);
+			pauseScreen.SetActive (true);
+		} else {
+			pauseScreen.SetActive (false);
 		}
 	}
 	
