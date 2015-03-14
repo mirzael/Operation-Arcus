@@ -194,6 +194,7 @@ namespace Spectrum
 				setYellowPower (100);
 				MultiplayerCoordinator.Instance.UpdateUI();
 			}
+            base.Update();
         }
 
         public void PressMove(float horizontal, float vertical)

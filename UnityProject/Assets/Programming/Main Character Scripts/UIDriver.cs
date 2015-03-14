@@ -25,13 +25,13 @@ public class UIDriver : MonoBehaviour
     protected void Awake()
     {
         currentColor = ShipColor.RED;
+        wasSecondaryReady.Add(UIEvents.Instance.Green, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Orange, false);
+        wasSecondaryReady.Add(UIEvents.Instance.Purple, false);
     }
 
     public void Start()
     {
-        wasSecondaryReady.Add(UIEvents.Instance.Green, false);
-        wasSecondaryReady.Add(UIEvents.Instance.Orange, false);
-        wasSecondaryReady.Add(UIEvents.Instance.Purple, false);
         UpdateBars();
     }
 

@@ -196,6 +196,7 @@ namespace Spectrum
             {
                 pause = !pause;
             }
+            base.Update();
         }
 
         public void PressMove(float horizontal, float vertical)
