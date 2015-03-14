@@ -385,6 +385,9 @@ MonoBehaviour:
   Orange: {r: 1, g: .653448343, b: .25, a: 0}
   Purple: {r: .618281007, g: .13786763, b: .625, a: 0}
   Green: {r: .26294598, g: .632352948, b: .2138841, a: 0}
+  orangeUseSound: {fileID: 8300000, guid: 547a2538962a5844f9de9f0e3c4e8eda, type: 3}
+  greenUseSound: {fileID: 8300000, guid: 61226b3cde43aa446921841ba6f01978, type: 3}
+  purpleUseSound: {fileID: 8300000, guid: c04bebcb5b8c0974aa6749fafdfac064, type: 3}
 --- !u!114 &11421096
 MonoBehaviour:
   m_ObjectHideFlags: 1

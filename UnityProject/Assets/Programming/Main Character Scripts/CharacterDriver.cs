@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MainCharacter;
+using InControl;
 
 public abstract class CharacterDriver : MonoBehaviour {
 	protected PrimaryForm redForm;
@@ -9,9 +11,8 @@ public abstract class CharacterDriver : MonoBehaviour {
 	public const float TRANSFORM_AMOUNT = 100f;
 	public bool gameOver = false;
 	public UIDriver uiDriver;
-	public abstract void PressGreen();
-	public abstract void PressPurple();
-	public abstract void PressOrange();
+
+    protected InputDevice device;
 
     protected float shipXMin;
     protected float shipXMax;
@@ -48,6 +49,18 @@ public abstract class CharacterDriver : MonoBehaviour {
         shipYMin = wrldMin.y;
 	}
 
+    protected virtual void Update()
+    {
+        //ZH Added checking for secondaries
+        if (device.LeftBumper) {
+            PressOrange();		
+		} else if (device.LeftTrigger) {
+            PressPurple();		
+		} else if (device.RightBumper) {
+            PressGreen();
+        }
+    }
+
 
     public void WinLevel()
     {
@@ -76,4 +89,46 @@ public abstract class CharacterDriver : MonoBehaviour {
         gameOver = true;
         lostGame = true;
     }
+
+    //ZH 3-14 Refactored to separate pressing & using since the code for pressing is the same in all drivers
+    public virtual void PressGreen()
+    {
+        Debug.Log("Pressing Green D!!!!!");
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
+            UseGreen();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Green);
+        }
+    }
+    public virtual void PressPurple()
+    {
+        Debug.Log("Presin purple!!!!!");
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
+            UsePurple();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Purple);
+        }
+    }
+    public virtual void PressOrange()
+    {
+        Debug.Log("Presisng pornage!!!!!");
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
+            UseOrange();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Orange);
+        }
+    }
+    public abstract void UseGreen();
+    public abstract void UsePurple();
+    public abstract void UseOrange();
+
 }

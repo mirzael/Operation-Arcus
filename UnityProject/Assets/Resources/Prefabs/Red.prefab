@@ -97,7 +97,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1.00000001e-07
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseExplosionRadius: 2.5
-  radiusPerPoint: .100000001
+  radiusPerPoint: .200000003
   damage: 10
 --- !u!136 &13600000
 CapsuleCollider:

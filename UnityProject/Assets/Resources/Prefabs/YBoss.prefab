@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 700
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: 6876a5e863405fb4cb8047aaa016f465, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

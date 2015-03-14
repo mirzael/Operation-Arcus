@@ -840,6 +840,8 @@ MonoBehaviour:
   bossBlue: {fileID: 0}
   bossRed: {fileID: 0}
   bossYellow: {fileID: 0}
+  bossHealth: {fileID: 0}
+  bossName: 
   bossPattern: 0
   pattern: 4
   bulletWave: {fileID: 0}
@@ -854,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 6
   explosion: {fileID: 100000, guid: b5893256158ccd245a11ec172871022e, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
