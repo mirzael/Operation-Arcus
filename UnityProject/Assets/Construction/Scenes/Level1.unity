@@ -18548,10 +18548,10 @@ MonoBehaviour:
   segments:
   - voiceOver: {fileID: 8300000, guid: 7eceb762b45a7614683fd984bf4a9efe, type: 3}
     textMessage: {fileID: 640043866}
-    timeToNext: 8
+    timeToNext: 10
   - voiceOver: {fileID: 8300000, guid: 2ccb9391135dfa441a71d2aeacf2677a, type: 3}
     textMessage: {fileID: 1923069198}
-    timeToNext: 8
+    timeToNext: 10
   - voiceOver: {fileID: 8300000, guid: 8c1738089b7f00143bed718ce0f2bd9b, type: 3}
     textMessage: {fileID: 1409896758}
     timeToNext: 17
@@ -29666,11 +29666,11 @@ Prefab:
       objectReference: {fileID: 8300000, guid: b420580a34c9d8343919f280d3bd62f4, type: 3}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[1].timeToNext
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[0].timeToNext
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11480802, guid: bde38482694538347a79fbe3b105db67, type: 2}
       propertyPath: segments.Array.data[2].timeToNext

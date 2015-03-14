@@ -262,19 +262,16 @@ namespace Spectrum
 
         public override void UseGreen()
         {
-            Debug.Log("Using Green D!!!!!");
             MultiplayerCoordinator.Instance.UseDefensiveGreen();
         }
 
         public override void UseOrange()
         {
-            Debug.Log("Using Orange D!!!!!");
             MultiplayerCoordinator.Instance.UseDefensiveOrange();
         }
 
         public override void UsePurple()
         {
-            Debug.Log("Using Purple D!!!!!");
             MultiplayerCoordinator.Instance.UseDefensivePurple();
         }
 

@@ -93,7 +93,6 @@ public abstract class CharacterDriver : MonoBehaviour {
     //ZH 3-14 Refactored to separate pressing & using since the code for pressing is the same in all drivers
     public virtual void PressGreen()
     {
-        Debug.Log("Pressing Green D!!!!!");
         if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
             //ZH MainCharacterDriver does more in decreasing power
@@ -105,7 +104,6 @@ public abstract class CharacterDriver : MonoBehaviour {
     }
     public virtual void PressPurple()
     {
-        Debug.Log("Presin purple!!!!!");
         if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT)
         {
             //ZH MainCharacterDriver does more in decreasing power
@@ -117,7 +115,6 @@ public abstract class CharacterDriver : MonoBehaviour {
     }
     public virtual void PressOrange()
     {
-        Debug.Log("Presisng pornage!!!!!");
         if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
             //ZH MainCharacterDriver does more in decreasing power
