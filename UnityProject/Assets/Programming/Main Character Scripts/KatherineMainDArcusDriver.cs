@@ -63,8 +63,6 @@ namespace Spectrum
         public AudioClip bumpSound;
         public AudioClip absorbSound;
 
-		private InputDevice device;
-
         /**********************/
         /**   Initializers   **/
         /**********************/
@@ -118,7 +116,10 @@ namespace Spectrum
 				device = new UnityInputDevice (new KeyboardPlayerTwoProfile ());
 			}
 
-            InputManager.AttachDevice(device);
+            if(!CheckForController(2))
+            {
+                InputManager.AttachDevice(device);
+            }
             //foreach(InputDevice device in InputManager.Devices)
             {
               //  Debug.Log("device " + device.Name);
@@ -188,15 +189,6 @@ namespace Spectrum
 
             if (device.Action2)
             { PressRed(); }
-
-            if (device.LeftBumper)
-			{ MultiplayerCoordinator.Instance.UseDefensiveOrange(); }
-
-            if (device.LeftTrigger)
-			{ MultiplayerCoordinator.Instance.UseDefensivePurple(); }
-
-            if (device.RightBumper)
-			{ MultiplayerCoordinator.Instance.UseDefensiveGreen(); }
 
             //ZH 3-14: Moved code to actually pause to BackGround UI
             //Not sure what this does though, leaving it
@@ -268,8 +260,26 @@ namespace Spectrum
             }
         }
 
+        public override void UseGreen()
+        {
+            Debug.Log("Using Green D!!!!!");
+            MultiplayerCoordinator.Instance.UseDefensiveGreen();
+        }
+
+        public override void UseOrange()
+        {
+            Debug.Log("Using Orange D!!!!!");
+            MultiplayerCoordinator.Instance.UseDefensiveOrange();
+        }
+
+        public override void UsePurple()
+        {
+            Debug.Log("Using Purple D!!!!!");
+            MultiplayerCoordinator.Instance.UseDefensivePurple();
+        }
+
         //Switch to PURPLE FORM
-        public override void PressPurple()
+        public override void ActivatePurple()
         {
 			if (isInSecondary) {
 				return;
@@ -282,7 +292,7 @@ namespace Spectrum
         }
 
         //Switch to GREEN FORM
-        public override void PressGreen()
+        public override void ActivateGreen()
         {
 			if (isInSecondary) {
 				return;
@@ -296,7 +306,7 @@ namespace Spectrum
         }
 
         //Switch to ORANGE Form
-        public override void PressOrange()
+        public override void ActivateOrange()
         {
 			if (isInSecondary) {
 				return;

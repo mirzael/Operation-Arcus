@@ -60,8 +60,6 @@ namespace Spectrum
         public AudioClip bulletSound;
         public AudioClip bumpSound;
 
-		private InputDevice device;
-
         /**********************/
         /**   Initializers   **/
         /**********************/
@@ -113,7 +111,10 @@ namespace Spectrum
 				device = new UnityInputDevice(new KeyboardPlayerOneProfile());
 			}
 
-            InputManager.AttachDevice(device);
+            if(!CheckForController(1))
+            {
+                InputManager.AttachDevice(device);
+            }
         }
 
         /**********************/
@@ -179,15 +180,6 @@ namespace Spectrum
 
             if (device.Action2)
             { PressRed(); }
-
-			if (device.LeftBumper)
-			{ MultiplayerCoordinator.Instance.UseOffensiveOrange(); }
-			
-			if (device.LeftTrigger)
-			{ MultiplayerCoordinator.Instance.UseOffensivePurple(); }
-			
-			if (device.RightBumper)
-			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
             //ZH 3-14: Moved code to actually pause to BackGround UI
             //Not sure what this does though, leaving it
@@ -262,8 +254,23 @@ namespace Spectrum
             }
         }
 
+        public override void UseGreen()
+        {
+            MultiplayerCoordinator.Instance.UseOffensiveGreen();
+        }
+
+        public override void UseOrange()
+        {
+            MultiplayerCoordinator.Instance.UseOffensiveOrange();
+        }
+
+        public override void UsePurple()
+        {
+            MultiplayerCoordinator.Instance.UseOffensivePurple();
+        }
+
         //Switch to PURPLE FORM
-        public override void PressPurple()
+        public override void ActivatePurple()
         {
             switchForm(purpleForm);
             purpleForm.Activate();
@@ -272,7 +279,7 @@ namespace Spectrum
         }
 
         //Switch to GREEN FORM
-        public override void PressGreen()
+        public override void ActivateGreen()
         {
             switchForm(greenForm);
             greenForm.Activate();
@@ -281,7 +288,7 @@ namespace Spectrum
         }
 
         //Switch to ORANGE Form
-        public override void PressOrange()
+        public override void ActivateOrange()
         {
             switchForm(orangeForm);
             orangeForm.Activate();
