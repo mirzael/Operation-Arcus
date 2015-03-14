@@ -30,10 +30,9 @@ GameObject:
   - 198: {fileID: 19877686}
   - 199: {fileID: 19977686}
   - 114: {fileID: 11477688}
-  - 114: {fileID: 11477686}
   - 135: {fileID: 13539766}
   - 95: {fileID: 9539766}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Orange(Clone)
   m_TagString: Orange
   m_Icon: {fileID: 0}
@@ -122,23 +121,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11477686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe2730d0b7fe194cb68b66126ec357b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 0
-  explosionRadius: 0
-  gravityRadius: 0
-  gravityForce: 0
-  damage: 0
 --- !u!114 &11477688
 MonoBehaviour:
   m_ObjectHideFlags: 1
