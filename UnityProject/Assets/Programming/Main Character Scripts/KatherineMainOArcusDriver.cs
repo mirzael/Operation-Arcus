@@ -60,9 +60,6 @@ namespace Spectrum
         public AudioClip bulletSound;
         public AudioClip bumpSound;
 
-        //Pause screenshot
-        public Texture pauseButton;
-
 		private InputDevice device;
 
         /**********************/
@@ -105,9 +102,6 @@ namespace Spectrum
             uiDriver.RotateToRed();
             uiDriver.UpdateBars();
 
-            // Retrieve the Pause Button Texture
-            pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
-
             // Set Game Loss Flag
             lostGame = false;
 
@@ -120,16 +114,6 @@ namespace Spectrum
 			}
 
             InputManager.AttachDevice(device);
-        }
-
-        /**********************/
-        /**       Draw       **/
-        /**********************/
-        void OnGUI()
-        {
-            // Display a dialog for when the game is paused.
-            if (pause)
-			{ GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill); }
         }
 
         /**********************/
@@ -205,17 +189,11 @@ namespace Spectrum
 			if (device.RightBumper)
 			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
 
+            //ZH 3-14: Moved code to actually pause to BackGround UI
+            //Not sure what this does though, leaving it
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause = !pause;
-
-                if (pause)
-                {
-                    Time.timeScale = 0;
-                    return;
-                }
-                else
-                { Time.timeScale = 1; }
             }
 
 			if (Input.GetKeyDown (KeyCode.PageDown)) {

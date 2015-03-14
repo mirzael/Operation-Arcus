@@ -13,6 +13,9 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 	public AudioClip loseSound;
 	public AudioClip winSound;
 
+    protected bool pause = false;
+    public GameObject pauseScreen;
+
     //Let other gameobjects call actions when the game ends
     private List<Action> gameEndEvents = new List<Action>();
     public void AddGameEndEvent(Action action)
@@ -38,26 +41,53 @@ public class BackgroundUI : Singleton<BackgroundUI> {
         }
 		winScreen.SetActive(false);
 		loseScreen.SetActive(false);
+        pauseScreen.SetActive(false);
 		showingWinLose = false;
 		win = false;
+        pause = false;
 		
 		points = Camera.main.gameObject.GetComponent<PointMaster> ();
 	}
+	
+	// Update is called once per frame
+	public void Update () {
 
-	public void Update() {
-		if (!showingWinLose) {
-			return;
-		}
-		
-		if (Input.GetKeyDown(KeyCode.R)) {
-            //ZH 3-13 Should be handled by simply chaging level and by menus
-		} else if (Input.GetKeyDown(KeyCode.Escape)) {
-			PointMaster.points = 0;
-			ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
-			var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
-			driver.ResetForm();
-			LevelLoader.LoadLevel("MainMenu");
-		}
+        if (!showingWinLose)
+        {
+            //main game, not menu yet
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pause = !pause;
+
+                pauseScreen.SetActive(pause);
+
+                if (pause)
+                {
+                    Time.timeScale = 0;
+                    return;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+            }
+        }
+        else
+        {
+            //Game ended, in menus
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                //ZH 3-13 Should be handled by simply chaging level and by menus
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PointMaster.points = 0;
+                ColorPower.Instance.powerRed = ColorPower.Instance.powerBlue = ColorPower.Instance.powerYellow = 0;
+                var driver = GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterDriver>();
+                driver.ResetForm();
+                LevelLoader.LoadLevel("MainMenu");
+            }
+        }		
 	}
 
 	public void ShowWinScreen() {

@@ -144,26 +144,13 @@ public class MainCharacterDriver : CharacterDriver {
     	    InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
 		}
 	}
-
-	void OnGUI(){
-		if (pause) {
-			pauseScreen.SetActive (true);
-		} else {
-			pauseScreen.SetActive (false);
-		}
-	}
 	
 	// Update is called once per frame
 	public void Update () {
+        //ZH 3-14: Moved code to actually pause to BackGround UI
+        //Not sure what this does though, leaving it
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			pause = !pause;
-			
-			if (pause) {
-				Time.timeScale = 0;
-				return;
-			} else {
-				Time.timeScale = 1;
-			}
 		}
 		if (gameOver || pause) {
 			return;
