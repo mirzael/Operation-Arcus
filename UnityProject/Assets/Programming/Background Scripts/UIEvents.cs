@@ -26,7 +26,7 @@ public class UIEvents : Singleton<UIEvents>
 
     private Dictionary<Color, AudioClip> soundForColorUse;
 
-    protected void Awake()
+    public override void Awake()
     {
         soundForColorReady = new Dictionary<Color, AudioClip>();
         soundForColorReady[Orange] = orangeReadySound;
@@ -41,6 +41,8 @@ public class UIEvents : Singleton<UIEvents>
         colorReadyAction[Orange] = new List<Action>();
         colorReadyAction[Purple] = new List<Action>();
         colorReadyAction[Green] = new List<Action>();
+
+        base.Awake();
     }
 
     public void AddActionOnColorActivation(Color color, Action action)
