@@ -11115,6 +11115,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11476504, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: orangeProjectile
+      value: 
+      objectReference: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
   m_RootGameObject: {fileID: 1846346096}
@@ -22945,7 +22949,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: faa17d55c8e1acc45b930bd81442294f, type: 2}
+  - {fileID: 2100000, guid: 3cb6c946a2136be48bb20d9a62975498, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -27277,7 +27281,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 13a31d3d52a13d044be986de5563c4f0, type: 2}
+  - {fileID: 2100000, guid: 2d422a1a594a6f74cbbca1b3ec397e30, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -28630,7 +28634,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: c31cc425599a39d40acc0652603dc9eb, type: 2}
+  - {fileID: 2100000, guid: 5caa05335918c2744a701dd4f0c85a55, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -32350,7 +32354,7 @@ MonoBehaviour:
   gravityForce: 1500
   gravityRadius: 35
   rotationSpeed: 15
-  orangeProjectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  orangeProjectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
 --- !u!114 &1610735059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33627,7 +33631,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 97f67e72c3db71041a1c04bc53baf7aa, type: 2}
+  - {fileID: 2100000, guid: 2e95798e733b2b04f8392ecfc18fce5c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
