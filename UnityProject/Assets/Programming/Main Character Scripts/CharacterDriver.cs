@@ -19,6 +19,9 @@ public abstract class CharacterDriver : MonoBehaviour {
     protected float shipYMin;
     protected float shipYMax;
 
+    //This is the current form the ship is using
+    public Form currentForm;
+
 	public void Start(){
 		redForm = GetComponent<RedForm> ();
 		blueForm = GetComponent<BlueForm> ();
@@ -61,6 +64,38 @@ public abstract class CharacterDriver : MonoBehaviour {
         }
     }
 
+    public virtual void PressMove(float horizontal, float vertical)
+    {
+        float hspeed = horizontal * -(Time.deltaTime);
+        float vspeed = vertical * Time.deltaTime;
+
+        //ZH Moved code into CharacterDriver so I could add these uiDriver references
+        float small = 0.001f;
+        if(hspeed<-small)
+        {
+            uiDriver.MoveLeft();
+        }
+        else if(hspeed>small)
+        {
+            uiDriver.MoveRight();
+        }
+        else
+        {
+            uiDriver.StopMoving();
+        }
+
+        var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
+        Vector3 orig = transform.position;
+        transform.Translate(toMoveVector);
+
+        float posX = transform.position.x - transform.parent.position.x;
+        float posY = transform.position.y - transform.parent.position.y;
+
+        if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
+        {
+            transform.position = orig;
+        }
+    }
 
     public void WinLevel()
     {
