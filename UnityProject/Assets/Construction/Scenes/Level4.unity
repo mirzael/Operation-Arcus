@@ -7264,7 +7264,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 190249086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -7286,7 +7286,7 @@ BoxCollider:
   m_GameObject: {fileID: 190249086}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8521,6 +8521,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
@@ -8781,6 +8782,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 116283964}
   animationLabel: Transform_Variable
   shipAnimator: {fileID: 228471556}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &238384803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12416,6 +12418,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 204147095}
   animationLabel: Arcus_Animation
   shipAnimator: {fileID: 694164293}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &323341931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12447,6 +12450,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
@@ -15713,6 +15717,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 1729551121}
   animationLabel: Arcus_Animation
   shipAnimator: {fileID: 1409753673}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &448776043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15744,6 +15749,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 448776042}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   invulnTime: 1
   invulnCounter: 0
@@ -33494,7 +33500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11467446, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
       propertyPath: isMultiplayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
@@ -34523,15 +34529,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments:
-  - voiceOver: {fileID: 8300000, guid: 6b45634bb81927d48914985164030b0b, type: 3}
+  - voiceOver: {fileID: 8300000, guid: df520f818cef24b4185b869a03915cc0, type: 3}
     textMessage: {fileID: 0}
-    timeToNext: 10
-  - voiceOver: {fileID: 8300000, guid: 2a56e1539d85bcb489d252bc55a09bae, type: 3}
+    timeToNext: 50
+  - voiceOver: {fileID: 8300000, guid: 6e3a379335fac2343863a2520919a792, type: 3}
     textMessage: {fileID: 0}
     timeToNext: 40
-  - voiceOver: {fileID: 8300000, guid: f1408e0337c6e5f449ab985836f88464, type: 3}
-    textMessage: {fileID: 0}
-    timeToNext: -1
 --- !u!1 &1114512178
 GameObject:
   m_ObjectHideFlags: 0
@@ -36827,6 +36830,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11459628, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: segments.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 459630, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.02955532
@@ -36859,6 +36866,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11459628, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: segments.Array.data[0].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: df520f818cef24b4185b869a03915cc0, type: 3}
+    - target: {fileID: 11459628, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: segments.Array.data[0].timeToNext
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459628, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: segments.Array.data[1].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e3a379335fac2343863a2520919a792, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
   m_RootGameObject: {fileID: 1106429570}
@@ -55289,7 +55308,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 515891533}
   multiPlayer: {fileID: 912587973}
-  isMultiplayer: 1
+  isMultiplayer: 0
 --- !u!45 &1951599143
 Skybox:
   m_ObjectHideFlags: 0
