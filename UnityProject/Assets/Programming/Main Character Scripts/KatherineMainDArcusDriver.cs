@@ -48,9 +48,6 @@ namespace Spectrum
         // Arcus Animator
        // Animator anim;
 
-        // This is the current form the ship is using
-        public static Form currentForm;
-
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
 
@@ -199,26 +196,12 @@ namespace Spectrum
             base.Update();
         }
 
-        public void PressMove(float horizontal, float vertical)
+        public override void PressMove(float horizontal, float vertical)
         {
 			if (!canMove) {
 				return;
 			}
-
-            float hspeed = horizontal * -(Time.deltaTime);
-            float vspeed = vertical * Time.deltaTime;
-
-            var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
-            Vector3 orig = transform.position;
-            transform.Translate(toMoveVector);
-
-            float posX = transform.position.x - transform.parent.position.x;
-            float posY = transform.position.y - transform.parent.position.y;
-
-            if (posX > shipXMax || posX < shipXMin|| posY > shipYMax || posY < shipYMin)
-            {
-                transform.position = orig;
-            }
+            base.PressMove(horizontal, vertical);
         }
 
         public void PressFire()
