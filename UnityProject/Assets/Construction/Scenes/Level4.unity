@@ -17108,7 +17108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &515891534
 Transform:
   m_ObjectHideFlags: 0
@@ -27432,7 +27432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &912587974
 Transform:
   m_ObjectHideFlags: 0
@@ -33483,6 +33483,18 @@ Prefab:
     - target: {fileID: 11476498, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
       propertyPath: inputPurple
       value: OffPurple
+      objectReference: {fileID: 0}
+    - target: {fileID: 120168, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117112, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467446, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
+      propertyPath: isMultiplayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6f629fa2d9cae84d87631ab12025342, type: 2}
@@ -55277,7 +55289,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 515891533}
   multiPlayer: {fileID: 912587973}
-  isMultiplayer: 0
+  isMultiplayer: 1
 --- !u!45 &1951599143
 Skybox:
   m_ObjectHideFlags: 0
