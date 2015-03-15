@@ -14602,7 +14602,7 @@ MonoBehaviour:
   damage: 20
   cooldown: .600000024
   originalCooldown: .600000024
-  projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  projectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
   projectileSpeed: 30
   originalSpeed: 30
   material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
@@ -15395,7 +15395,6 @@ MonoBehaviour:
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
-  pauseButton: {fileID: 0}
 --- !u!114 &11434478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16300,7 +16299,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   singePlayer: {fileID: 120168}
   multiPlayer: {fileID: 117112}
-  isMultiplayer: 1
+  isMultiplayer: 0
 --- !u!114 &11472740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16354,7 +16353,6 @@ MonoBehaviour:
   invulnCounter: 0
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
-  pauseButton: {fileID: 0}
 --- !u!114 &11474324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16687,7 +16685,7 @@ MonoBehaviour:
   damage: 20
   cooldown: .600000024
   originalCooldown: .600000024
-  projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  projectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
   projectileSpeed: 30
   originalSpeed: 30
   material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
@@ -16699,7 +16697,7 @@ MonoBehaviour:
   gravityForce: 1500
   gravityRadius: 35
   rotationSpeed: 15
-  orangeProjectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  orangeProjectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
 --- !u!114 &11476484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16811,7 +16809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   gameOver: 0
-  uiDriver: {fileID: 0}
+  uiDriver: {fileID: 11476494}
   healthLossPerHit: 10
   invulnTime: 1
   invulnCounter: 0
@@ -16826,7 +16824,7 @@ MonoBehaviour:
   bulletSound: {fileID: 8300000, guid: e7d5872f9ebcad249b556ba24c8a4b02, type: 3}
   bumpSound: {fileID: 8300000, guid: 4c1a1f68242df4f4c8380e0c93456161, type: 3}
   absorbSound: {fileID: 8300000, guid: af03475bf65607444928d73c716a2dfd, type: 3}
-  pauseButton: {fileID: 0}
+  pauseScreen: {fileID: 0}
 --- !u!114 &11476500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16893,7 +16891,7 @@ MonoBehaviour:
   damage: 20
   cooldown: .600000024
   originalCooldown: .600000024
-  projectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  projectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
   projectileSpeed: 30
   originalSpeed: 30
   material: {fileID: 2100000, guid: 8a2ea90448c6450488b2702c93899ff7, type: 2}
@@ -16905,7 +16903,7 @@ MonoBehaviour:
   gravityForce: 1500
   gravityRadius: 35
   rotationSpeed: 15
-  orangeProjectile: {fileID: 100000, guid: 797e6c2cf5006cd43a32c4b5a46d1db6, type: 2}
+  orangeProjectile: {fileID: 177692, guid: 2351a50275c8303408d87eb0e743b337, type: 2}
 --- !u!114 &11476506
 MonoBehaviour:
   m_ObjectHideFlags: 1

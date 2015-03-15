@@ -10,18 +10,18 @@ public class MultiplayerCoordinator {
 			if(_instance == null){
 				_instance = new MultiplayerCoordinator();
 			}
+			backgroundUI = BackgroundUI.Instance;
 			return _instance;
 		}
 	}
 	
 	public MultiplayerCharacterDriver OArcusDriver{ private get; set; }
 	public MultiplayerCharacterDriver DarcusDriver{ private get; set; }
-	public BackgroundUI backgroundUI;
+	public static BackgroundUI backgroundUI;
 
 	public MultiplayerCoordinator(){
 		backgroundUI = BackgroundUI.Instance;
 	}
-
 
 	public void UpdateUI(){
 		if (GameObject.Find("oArcus") != null) {
@@ -53,86 +53,57 @@ public class MultiplayerCoordinator {
 	}
 
 	public void UseOffensiveGreen(){
-		if (ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
 			
 			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressGreen();
+				OArcusDriver.ActivateGreen();
 			}
 			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressGreen();
+				DarcusDriver.ActivateGreen();
 			}
-		}
 	}
 
-	public void UseOffensiveOrange(){
-		if (ColorPower.Instance.powerRed >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
-			
+	public void UseOffensiveOrange(){			
 			if (GameObject.Find("oArcus") != null) {
 				OArcusDriver.PressOrange();
 			}
 			if (GameObject.Find("dArcus") != null) {
 				DarcusDriver.PressOrange();
 			}
-		}
 	}
 
 	public void UseOffensivePurple(){
-		if (ColorPower.Instance.powerRed >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
-			
-			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressPurple();
-			}
-			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressPurple();
-			}
-		}
+	    if (GameObject.Find("oArcus") != null) {
+	    	OArcusDriver.PressPurple();
+	    }
+	    if (GameObject.Find("dArcus") != null) {
+	    	DarcusDriver.PressPurple();
+	    }
 	}
 
-	public void UseDefensiveGreen(){
-		if (ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
-			
-			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressDefensiveGreen();
-			}
-			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressDefensiveGreen();
-			}
-		}
+	public void UseDefensiveGreen(){			
+	    if (GameObject.Find("oArcus") != null) {
+	    	OArcusDriver.PressDefensiveGreen();
+	    }
+	    if (GameObject.Find("dArcus") != null) {
+	    	DarcusDriver.PressDefensiveGreen();
+	    }
 	}
 	
 	public void UseDefensiveOrange(){
-		if (ColorPower.Instance.powerRed >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
-			
-			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressDefensiveOrange();
-			}
-			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressDefensiveOrange();
-			}
-		}
+	    if (GameObject.Find("oArcus") != null) {
+	    	OArcusDriver.PressDefensiveOrange();
+	    }
+	    if (GameObject.Find("dArcus") != null) {
+	    	DarcusDriver.PressDefensiveOrange();
+	    }
 	}
 	
-	public void UseDefensivePurple(){
-		if (ColorPower.Instance.powerRed >= CharacterDriver.TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= CharacterDriver.TRANSFORM_AMOUNT) {
-			ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
-			ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
-			
-			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressDefensivePurple();
-			}
-			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressDefensivePurple();
-			}
-		}
+	public void UseDefensivePurple(){			
+	    if (GameObject.Find("oArcus") != null) {
+	    	OArcusDriver.PressDefensivePurple();
+	    }
+	    if (GameObject.Find("dArcus") != null) {
+	    	DarcusDriver.PressDefensivePurple();
+	    }
 	}
 }

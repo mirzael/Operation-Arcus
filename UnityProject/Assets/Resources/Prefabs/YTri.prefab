@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 135: {fileID: 13500000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11447970}
   m_Layer: 8
   m_Name: YTri
   m_TagString: Yellow
@@ -562,6 +563,8 @@ MonoBehaviour:
   bossBlue: {fileID: 0}
   bossRed: {fileID: 0}
   bossYellow: {fileID: 0}
+  bossHealth: {fileID: 0}
+  bossName: 
   bossPattern: 0
   pattern: 0
   bulletWave: {fileID: 0}
@@ -576,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc96aea446ea947a91eaeb208d9997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 6
   explosion: {fileID: 100000, guid: 6876a5e863405fb4cb8047aaa016f465, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -596,6 +599,19 @@ MonoBehaviour:
   speed: 0
   timeBeforeStopOnScreen: 0
   timeStayOnScreen: 0
+--- !u!114 &11447970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67801112cdd5b2f45bc5101772bb383b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeChildren: 0
+  timeToKill: 12
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

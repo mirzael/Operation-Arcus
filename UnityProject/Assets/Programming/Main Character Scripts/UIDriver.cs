@@ -19,6 +19,8 @@ public class UIDriver : MonoBehaviour
     public string animationLabel;
     public Animator shipAnimator;
 
+    public string tiltAnimationLabel = "Arcus_Tilt";
+
     //did the colors become visible this frame or previously?
     protected Dictionary<Color, bool> wasSecondaryReady = new Dictionary<Color,bool>();
 
@@ -33,6 +35,30 @@ public class UIDriver : MonoBehaviour
     public void Start()
     {
         UpdateBars();
+    }
+
+    public void MoveLeft()
+    {
+        if(shipAnimator!=null)
+        {
+            shipAnimator.SetInteger(tiltAnimationLabel, 1);
+        }
+    }
+
+    public void MoveRight()
+    {
+        if(shipAnimator!=null)
+        {
+            shipAnimator.SetInteger(tiltAnimationLabel, 2);
+        }
+    }
+
+    public void StopMoving()
+    {
+        if(shipAnimator!=null)
+        {
+            shipAnimator.SetInteger(tiltAnimationLabel, 0);
+        }
     }
 
     public void RotateToBlue()

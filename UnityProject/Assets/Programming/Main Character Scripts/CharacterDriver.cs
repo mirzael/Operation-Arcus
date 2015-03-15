@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MainCharacter;
+using InControl;
 
 public abstract class CharacterDriver : MonoBehaviour {
 	protected PrimaryForm redForm;
@@ -9,14 +11,16 @@ public abstract class CharacterDriver : MonoBehaviour {
 	public const float TRANSFORM_AMOUNT = 100f;
 	public bool gameOver = false;
 	public UIDriver uiDriver;
-	public abstract void PressGreen();
-	public abstract void PressPurple();
-	public abstract void PressOrange();
+
+    protected InputDevice device;
 
     protected float shipXMin;
     protected float shipXMax;
     protected float shipYMin;
     protected float shipYMax;
+
+    //This is the current form the ship is using
+    public Form currentForm;
 
 	public void Start(){
 		redForm = GetComponent<RedForm> ();
@@ -48,6 +52,50 @@ public abstract class CharacterDriver : MonoBehaviour {
         shipYMin = wrldMin.y;
 	}
 
+    protected virtual void Update()
+    {
+        //ZH Added checking for secondaries
+        if (device.LeftBumper) {
+            PressOrange();		
+		} else if (device.LeftTrigger) {
+            PressPurple();		
+		} else if (device.RightBumper) {
+            PressGreen();
+        }
+    }
+
+    public virtual void PressMove(float horizontal, float vertical)
+    {
+        float hspeed = horizontal * -(Time.deltaTime);
+        float vspeed = vertical * Time.deltaTime;
+
+        //ZH Moved code into CharacterDriver so I could add these uiDriver references
+        float small = 0.001f;
+        if(hspeed<-small)
+        {
+            uiDriver.MoveLeft();
+        }
+        else if(hspeed>small)
+        {
+            uiDriver.MoveRight();
+        }
+        else
+        {
+            uiDriver.StopMoving();
+        }
+
+        var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
+        Vector3 orig = transform.position;
+        transform.Translate(toMoveVector);
+
+        float posX = transform.position.x - transform.parent.position.x;
+        float posY = transform.position.y - transform.parent.position.y;
+
+        if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
+        {
+            transform.position = orig;
+        }
+    }
 
     public void WinLevel()
     {
@@ -76,4 +124,43 @@ public abstract class CharacterDriver : MonoBehaviour {
         gameOver = true;
         lostGame = true;
     }
+
+    //ZH 3-14 Refactored to separate pressing & using since the code for pressing is the same in all drivers
+    public virtual void PressGreen()
+    {
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
+            UseGreen();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Green);
+        }
+    }
+    public virtual void PressPurple()
+    {
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerBlue -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
+            UsePurple();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Purple);
+        }
+    }
+    public virtual void PressOrange()
+    {
+        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        {
+            //ZH MainCharacterDriver does more in decreasing power
+            ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;
+            ColorPower.Instance.powerYellow -= CharacterDriver.TRANSFORM_AMOUNT;
+            UseOrange();
+            UIEvents.Instance.UseSecondary(UIEvents.Instance.Orange);
+        }
+    }
+    public abstract void UseGreen();
+    public abstract void UsePurple();
+    public abstract void UseOrange();
+
 }

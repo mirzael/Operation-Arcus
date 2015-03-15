@@ -38,9 +38,6 @@ public class MainCharacterDriver : CharacterDriver {
 
 	private const float ALPHA_PER_SEC = 0.1f;
 
-	//This is the current form the ship is using
-	public static Form currentForm;
-
 	//Used for returning to the form we were in before switching to secondary
 	public static Form previousForm;
 
@@ -59,7 +56,7 @@ public class MainCharacterDriver : CharacterDriver {
 	public AudioClip absorbSound;
 
 	//Pause screenshot
-	public Texture pauseButton;
+	public GameObject pauseScreen;
 
 	// Use this for initialization
 	new void Start () {
@@ -135,8 +132,7 @@ public class MainCharacterDriver : CharacterDriver {
 			uiDriver.RotateToYellow();
 		}
 		uiDriver.UpdateBars();
-		
-		pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
+
 		lostGame = false;
 
 		if(ControlScheme.isOneHanded){
@@ -145,24 +141,13 @@ public class MainCharacterDriver : CharacterDriver {
     	    InputManager.AttachDevice(new UnityInputDevice(new KeyboardPlayerSoloProfile()));
 		}
 	}
-
-	void OnGUI(){
-		if (pause) {
-			GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill);
-		}
-	}
 	
 	// Update is called once per frame
-	public void Update () {
+	protected override void Update () {
+        //ZH 3-14: Moved code to actually pause to BackGround UI
+        //Not sure what this does though, leaving it
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			pause = !pause;
-			
-			if (pause) {
-				Time.timeScale = 0;
-				return;
-			} else {
-				Time.timeScale = 1;
-			}
 		}
 		if (gameOver || pause) {
 			return;
@@ -182,16 +167,16 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Get the most recent input device from incontrol
         //Keyboard controls can be represented as an InputDevice using a CustomController
-        InputDevice inputDevice = InputManager.ActiveDevice;
+        device = InputManager.ActiveDevice;
 
 		//Get where to move given user input
-        PressMove(inputDevice.Direction.X, inputDevice.Direction.Y);
+        PressMove(device.Direction.X, device.Direction.Y);
 
 		//change the cooldown of the main weapon, as one frame has passed
 		currentCooldown -= Time.deltaTime;
 
 		//FIRE!!!
-		if (inputDevice.RightTrigger) {
+		if (device.RightTrigger) {
             PressFire();
         }
 		if (currentForm.shipColor == ShipColor.RAINBOW) {
@@ -226,21 +211,14 @@ public class MainCharacterDriver : CharacterDriver {
 
         //Take input
         //For multiplayer these will need to be exclusive, but for now both can move ship
-        if (inputDevice.Action4)
+        if (device.Action4)
         {
             PressYellow();		
-		} else if (inputDevice.Action3) {
+		} else if (device.Action3) {
             PressBlue();		
-		} else if (inputDevice.Action2) {
+		} else if (device.Action2) {
             PressRed();		
-		} else if (inputDevice.LeftBumper) {
-            PressOrange();		
-		} else if (inputDevice.LeftTrigger) {
-            PressPurple();		
-		} else if (inputDevice.RightBumper) {
-            PressGreen();
-        }
-        else if (Input.GetKeyDown(KeyCode.PageDown))
+		} else if (Input.GetKeyDown(KeyCode.PageDown))
         {
 			setRedPower(100);
 			setBluePower(100);
@@ -249,25 +227,8 @@ public class MainCharacterDriver : CharacterDriver {
 			blueForm.setCooldown (blueForm.getCooldown () - 0.15f);
 			uiDriver.UpdateBars();
 		}
+        base.Update();
 	}
-
-    public void PressMove(float horizontal, float vertical)
-    {
-        float hspeed = horizontal * -(Time.deltaTime);
-        float vspeed = vertical * Time.deltaTime;
-
-        var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
-        Vector3 orig = transform.position;
-        transform.Translate(toMoveVector);
-
-        float posX = transform.position.x - transform.parent.position.x;
-        float posY = transform.position.y - transform.parent.position.y;
-
-        if (posX > shipXMax || posX < shipXMin || posY > shipYMax || posY < shipYMin)
-        {
-            transform.position = orig;
-        }
-    }
 
     public void PressFire()
     {
@@ -310,46 +271,37 @@ public class MainCharacterDriver : CharacterDriver {
     }
 
     //Switch to PURPLE FORM
-    public override void PressPurple()
+    public override void UsePurple()
     {
-        if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT)
-        {
-            setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-            setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-            switchForm(purpleForm);
-            purpleForm.Activate();
-            uiDriver.UpdateBars();
-            isInSecondary = true;
-        }
+        setRedPower(ColorPower.Instance.powerRed);
+        setBluePower(ColorPower.Instance.powerBlue);
+        switchForm(purpleForm);
+        purpleForm.Activate();
+        uiDriver.UpdateBars();
+        isInSecondary = true;
     }
 
     //Switch to GREEN FORM
-    public override void PressGreen()
+    public override void UseGreen()
     {
-        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-        {
-            setBluePower(ColorPower.Instance.powerBlue - TRANSFORM_AMOUNT);
-            setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-            //For Green form, we just want to heal and not do stuff
-			//switchForm(greenForm);
-            greenForm.Activate();
-            uiDriver.UpdateBars();
-            //isInSecondary = true;
-        }
+        setBluePower(ColorPower.Instance.powerBlue);
+        setYellowPower(ColorPower.Instance.powerYellow);
+        //For Green form, we just want to heal and not do stuff
+	    //switchForm(greenForm);
+        greenForm.Activate();
+        uiDriver.UpdateBars();
+        //isInSecondary = true;
     }
 
     //Switch to ORANGE Form
-    public override void PressOrange()
+    public override void UseOrange()
     {
-        if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
-        {
-            setRedPower(ColorPower.Instance.powerRed - TRANSFORM_AMOUNT);
-            setYellowPower(ColorPower.Instance.powerYellow - TRANSFORM_AMOUNT);
-            switchForm(orangeForm);
-            orangeForm.Activate();
-            uiDriver.UpdateBars();
-            isInSecondary = true;
-        }
+        setRedPower(ColorPower.Instance.powerRed);
+        setYellowPower(ColorPower.Instance.powerYellow);
+        switchForm(orangeForm);
+        orangeForm.Activate();
+        uiDriver.UpdateBars();
+        isInSecondary = true;
     }
 
 	public void OnCollisionEnter(Collision col) {

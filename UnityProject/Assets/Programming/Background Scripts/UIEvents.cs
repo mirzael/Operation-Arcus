@@ -20,16 +20,29 @@ public class UIEvents : Singleton<UIEvents>
     public Color Purple;
     public Color Green;
 
-    protected void Awake()
+    public AudioClip orangeUseSound;
+    public AudioClip greenUseSound;
+    public AudioClip purpleUseSound;
+
+    private Dictionary<Color, AudioClip> soundForColorUse;
+
+    public override void Awake()
     {
         soundForColorReady = new Dictionary<Color, AudioClip>();
         soundForColorReady[Orange] = orangeReadySound;
         soundForColorReady[Green] = greenReadySound;
         soundForColorReady[Purple] = purpleReadySound;
 
+        soundForColorUse = new Dictionary<Color, AudioClip>();
+        soundForColorUse[Orange] = orangeUseSound;
+        soundForColorUse[Green] = greenUseSound;
+        soundForColorUse[Purple] = purpleUseSound;
+
         colorReadyAction[Orange] = new List<Action>();
         colorReadyAction[Purple] = new List<Action>();
         colorReadyAction[Green] = new List<Action>();
+
+        base.Awake();
     }
 
     public void AddActionOnColorActivation(Color color, Action action)
@@ -39,11 +52,17 @@ public class UIEvents : Singleton<UIEvents>
 
     public void MakeSecondaryReady(Color color)
     {
+        //Debug.Log("secondary ready, sound play" + soundForColorReady[color].name);
         audio.PlayOneShot(soundForColorReady[color]);
         foreach(Action action in colorReadyAction[color])
         {
             action();
         }
+    }
+
+    public void UseSecondary(Color color)
+    {
+        audio.PlayOneShot(soundForColorUse[color]);
     }
 }
 

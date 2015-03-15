@@ -44,11 +44,6 @@ namespace Spectrum
         public float invulnCounter = 0;
         bool pause = false;
 
-        // Arcus Animator
-
-        // This is the current form the ship is using
-        public static Form currentForm;
-
         // Used for returning to the form we were in before switching to secondary
         public static Form lastPrimaryForm;
 
@@ -59,11 +54,6 @@ namespace Spectrum
         //Sounds
         public AudioClip bulletSound;
         public AudioClip bumpSound;
-
-        //Pause screenshot
-        public Texture pauseButton;
-
-		private InputDevice device;
 
         /**********************/
         /**   Initializers   **/
@@ -105,9 +95,6 @@ namespace Spectrum
             uiDriver.RotateToRed();
             uiDriver.UpdateBars();
 
-            // Retrieve the Pause Button Texture
-            pauseButton = (Texture)Resources.Load("Textures/PauseButton", typeof(Texture));
-
             // Set Game Loss Flag
             lostGame = false;
 
@@ -119,17 +106,10 @@ namespace Spectrum
 				device = new UnityInputDevice(new KeyboardPlayerOneProfile());
 			}
 
-            InputManager.AttachDevice(device);
-        }
-
-        /**********************/
-        /**       Draw       **/
-        /**********************/
-        void OnGUI()
-        {
-            // Display a dialog for when the game is paused.
-            if (pause)
-			{ GUI.DrawTexture(new Rect((Screen.width/2f)-(250f/2),(Screen.height/2f)-(300f/2),250,300), pauseButton, ScaleMode.StretchToFill); }
+            if(!CheckForController(1))
+            {
+                InputManager.AttachDevice(device);
+            }
         }
 
         /**********************/
@@ -196,26 +176,11 @@ namespace Spectrum
             if (device.Action2)
             { PressRed(); }
 
-			if (device.LeftBumper)
-			{ MultiplayerCoordinator.Instance.UseOffensiveOrange(); }
-			
-			if (device.LeftTrigger)
-			{ MultiplayerCoordinator.Instance.UseOffensivePurple(); }
-			
-			if (device.RightBumper)
-			{ MultiplayerCoordinator.Instance.UseOffensiveGreen(); }
-
+            //ZH 3-14: Moved code to actually pause to BackGround UI
+            //Not sure what this does though, leaving it
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause = !pause;
-
-                if (pause)
-                {
-                    Time.timeScale = 0;
-                    return;
-                }
-                else
-                { Time.timeScale = 1; }
             }
 
 			if (Input.GetKeyDown (KeyCode.PageDown)) {
@@ -224,24 +189,7 @@ namespace Spectrum
 				setYellowPower (100);
 				MultiplayerCoordinator.Instance.UpdateUI();
 			}
-        }
-
-        public void PressMove(float horizontal, float vertical)
-        {
-            float hspeed = horizontal * -(Time.deltaTime);
-            float vspeed = vertical * Time.deltaTime;
-
-            var toMoveVector = Vector3.right * hspeed * currentForm.formSpeed + Vector3.back * vspeed * currentForm.formSpeed;
-            Vector3 orig = transform.position;
-            transform.Translate(toMoveVector);
-
-            float posX = transform.position.x - transform.parent.position.x;
-            float posY = transform.position.y - transform.parent.position.y;
-
-            if (posX > shipXMax || posX < shipXMin|| posY > shipYMax || posY < shipYMin)
-            {
-                transform.position = orig;
-            }
+            base.Update();
         }
 
         public void PressFire()
@@ -284,8 +232,23 @@ namespace Spectrum
             }
         }
 
+        public override void UseGreen()
+        {
+            MultiplayerCoordinator.Instance.UseOffensiveGreen();
+        }
+
+        public override void UseOrange()
+        {
+            MultiplayerCoordinator.Instance.UseOffensiveOrange();
+        }
+
+        public override void UsePurple()
+        {
+            MultiplayerCoordinator.Instance.UseOffensivePurple();
+        }
+
         //Switch to PURPLE FORM
-        public override void PressPurple()
+        public override void ActivatePurple()
         {
             switchForm(purpleForm);
             purpleForm.Activate();
@@ -294,7 +257,7 @@ namespace Spectrum
         }
 
         //Switch to GREEN FORM
-        public override void PressGreen()
+        public override void ActivateGreen()
         {
             switchForm(greenForm);
             greenForm.Activate();
@@ -303,7 +266,7 @@ namespace Spectrum
         }
 
         //Switch to ORANGE Form
-        public override void PressOrange()
+        public override void ActivateOrange()
         {
             switchForm(orangeForm);
             orangeForm.Activate();
