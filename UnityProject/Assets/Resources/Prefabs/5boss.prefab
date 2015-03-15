@@ -1602,11 +1602,11 @@ MonoBehaviour:
   bossBlue: {fileID: 100000, guid: 06eb9cb21a657314892a2ab151413e1a, type: 2}
   bossRed: {fileID: 100000, guid: 2895f81ba2d87094dbb928f006fde339, type: 2}
   bossYellow: {fileID: 100000, guid: 2f940a40cfaa8344d9e3da42a3fecd59, type: 2}
-  bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
-  bossName: Primocreatus
   bossPattern: 0
   pattern: 13
   bulletWave: {fileID: 0}
+  bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
+  bossName: 
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,6 +1638,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1500
   explosion: {fileID: 0}
+  bossHealth: {fileID: 189884, guid: 93ebf0a90ca917b459ba229fa45252e2, type: 2}
+  bossName: Primocreatus
+  isBoss: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -10,12 +10,6 @@ public class Shooter : MonoBehaviour {
 	public GameObject bossRed;
 	public GameObject bossYellow;
 
-    //health bar
-	public GameObject bossHealth;
-    public string bossName;
-	private BossHealthBar healthBar;
-
-
 	public float bossPattern;
 	public int pattern;
 	float currentCooldown;
@@ -24,13 +18,18 @@ public class Shooter : MonoBehaviour {
 	float maxHealth;
 	float health;
 
+	//health bar
+	public GameObject bossHealth;
+	public string bossName;
+	private BossHealthBar healthBar;
+
 	// Use this for initialization
 	void Start () {
 		if (isBoss == true) 
 		{
-			healthBar = ((GameObject)GameObject.Instantiate (bossHealth)).GetComponent<BossHealthBar>();
+			/*healthBar = ((GameObject)GameObject.Instantiate (bossHealth)).GetComponent<BossHealthBar>();
 			healthBar.SetRelativeHealth (1.0f);
-            healthBar.SetBossName(bossName);
+            healthBar.SetBossName(bossName);*/
 			death = gameObject.GetComponent<EnemyDeath>();
 			maxHealth = death.health;
 			health = death.health;
@@ -89,7 +88,6 @@ public class Shooter : MonoBehaviour {
 		if (isBoss) {
 			health = death.health;
 			float percent = (float)health / (float)maxHealth;
-			healthBar.SetRelativeHealth (percent);
 			if (percent < 0.33) {
 				bulletWave.triggerDesperation();
 			}
