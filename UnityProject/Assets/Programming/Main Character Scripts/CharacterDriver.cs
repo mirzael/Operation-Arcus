@@ -150,7 +150,7 @@ public abstract class CharacterDriver : MonoBehaviour {
     }
     public virtual void PressOrange()
     {
-        if (ColorPower.Instance.powerBlue >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
+        if (ColorPower.Instance.powerRed >= TRANSFORM_AMOUNT && ColorPower.Instance.powerYellow >= TRANSFORM_AMOUNT)
         {
             //ZH MainCharacterDriver does more in decreasing power
             ColorPower.Instance.powerRed -= CharacterDriver.TRANSFORM_AMOUNT;

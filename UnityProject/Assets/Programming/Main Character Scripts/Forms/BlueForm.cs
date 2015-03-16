@@ -1,4 +1,6 @@
 using UnityEngine;
+using MainCharacter;
+
 
 public class BlueForm : PrimaryForm {
 	public float cooldownOffsetPerPower = 0.00015f;
@@ -21,7 +23,7 @@ public class BlueForm : PrimaryForm {
 		}
 		
 		if (tag == "Blue") {
-			setPower(power + POWER_INC);
+			setPower(ColorPower.Instance.powerBlue + POWER_INC);
 			//Debug.Log("Absorbed blue bullet, Blue Power at " + power);
 			return false;
 		}

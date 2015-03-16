@@ -367,7 +367,7 @@ namespace Spectrum
             {
                 ColorPower.Instance.powerBlue = blueForm.power;
                 ColorPower.Instance.powerRed = redForm.power;
-                ColorPower.Instance.powerYellow = yellowForm.power;
+                ColorPower.Instance.powerYellow = yellowForm.power; 
 				MultiplayerCoordinator.Instance.UpdateUI();
                 audio.PlayOneShot(absorbSound);
             }

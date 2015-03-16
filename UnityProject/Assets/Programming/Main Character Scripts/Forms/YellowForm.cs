@@ -1,4 +1,5 @@
 using UnityEngine;
+using MainCharacter;
 
 public class YellowForm : PrimaryForm {
 	public float pointsPerBullet;
@@ -30,7 +31,7 @@ public class YellowForm : PrimaryForm {
 		}
 		
 		if (tag == "Yellow") {
-			setPower(power + POWER_INC);
+			setPower(ColorPower.Instance.powerYellow + POWER_INC);
 			//Debug.Log("Absorbed yellow bullet, Yellow Power at " + power);
 			return false;
 		}

@@ -1,4 +1,6 @@
 using UnityEngine;
+using MainCharacter;
+
 
 public class RedForm : PrimaryForm {
 	public float explosionRadius;
@@ -27,7 +29,7 @@ public class RedForm : PrimaryForm {
 		}
 		
 		if (tag == "Red") {
-			setPower(power + POWER_INC);
+			setPower(ColorPower.Instance.powerRed + POWER_INC);
 			//Debug.Log("Absorbed red bullet, Red Power at " + power);
 			return false;
 		}
