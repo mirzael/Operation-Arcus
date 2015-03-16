@@ -66,7 +66,6 @@ public class UIDriver : MonoBehaviour
         if (currentColor == ShipColor.RED)
         {
             RotateLeft();
-
         }
         else if (currentColor == ShipColor.YELLOW)
         {
@@ -150,15 +149,15 @@ public class UIDriver : MonoBehaviour
         }
         else if (currentColor == ShipColor.BLUE)
         {
-            barLeft.UpdatePercentage(ColorPower.Instance.powerRed);
+            barLeft.UpdatePercentage(ColorPower.Instance.powerYellow);
             barCenter.UpdatePercentage(ColorPower.Instance.powerBlue);
-            barRight.UpdatePercentage(ColorPower.Instance.powerYellow);
+            barRight.UpdatePercentage(ColorPower.Instance.powerRed);
         }
         else if (currentColor == ShipColor.YELLOW)
         {
-            barLeft.UpdatePercentage(ColorPower.Instance.powerBlue);
+            barLeft.UpdatePercentage(ColorPower.Instance.powerRed);
             barCenter.UpdatePercentage(ColorPower.Instance.powerYellow);
-            barRight.UpdatePercentage(ColorPower.Instance.powerRed);
+            barRight.UpdatePercentage(ColorPower.Instance.powerBlue);
         }
         else
         {
@@ -248,28 +247,4 @@ public class UIDriver : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Resize bar with relation to its original scale
-    /// </summary>
-    /// <param name="powerBar"></param>
-    /// <param name="origScale"></param>
-    /// <param name="newScaleRatio"></param>
-/*    private void ShiftAndScale(GameObject powerBar, Vector3 origScale, Vector3 newScaleRatio)
-    {
-        Vector3 curScale = powerBar.transform.localScale;
-        Vector3 newScale = new Vector3(origScale.x * newScaleRatio.x, origScale.y * newScaleRatio.y, origScale.z * newScaleRatio.z);
-
-        if (newScale.x == curScale.x && newScale.y == curScale.y && newScale.z == curScale.z)
-        {
-            return;
-        }
-
-        float newX = powerBar.transform.position.x - powerBar.renderer.bounds.extents.x;
-        float curY = powerBar.transform.position.y;
-        float curZ = powerBar.transform.position.z;
-        powerBar.transform.position = new Vector3(newX, curY, curZ);
-        powerBar.transform.localScale = newScale;
-        newX = powerBar.transform.position.x + powerBar.renderer.bounds.extents.x;
-        powerBar.transform.position = new Vector3(newX, curY, curZ);
-    }*/
 }
