@@ -10,18 +10,18 @@ public class MultiplayerCoordinator {
 			if(_instance == null){
 				_instance = new MultiplayerCoordinator();
 			}
+			backgroundUI = BackgroundUI.Instance;
 			return _instance;
 		}
 	}
 	
 	public MultiplayerCharacterDriver OArcusDriver{ private get; set; }
 	public MultiplayerCharacterDriver DarcusDriver{ private get; set; }
-	public BackgroundUI backgroundUI;
+	public static BackgroundUI backgroundUI;
 
 	public MultiplayerCoordinator(){
 		backgroundUI = BackgroundUI.Instance;
 	}
-
 
 	public void UpdateUI(){
 		if (GameObject.Find("oArcus") != null) {

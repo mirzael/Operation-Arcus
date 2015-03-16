@@ -13,18 +13,47 @@ public class EnemyDeath : MonoBehaviour {
 	static AudioClip boomSound;
 	bool bossCheck = false;
 
+	//health bar
+	public GameObject bossHealth;
+	public string bossName;
+	public bool isBoss;
+	float maxHealth;
+	private BossHealthBar healthBar;
+	float percent;
+	
 	// Use this for initialization
 	void Start () {
+		percent = 0;
 		points = Component.FindObjectOfType<PointMaster> ();
 		movement = gameObject.GetComponent<EnemyMovement> ();
 		boomSound = (AudioClip)Resources.Load ("Sounds/Enemyboom", typeof(AudioClip));
+		if (isBoss == true) 
+		{
+			healthBar = ((GameObject)GameObject.Instantiate (bossHealth)).GetComponent<BossHealthBar>();
+			healthBar.SetRelativeHealth (1.0f);
+			healthBar.SetBossName(bossName);
+			maxHealth = health;
+		}
+	}
 
+	void Update() {
+		if (isBoss == true)
+		{
+			Debug.Log ("SETTING!");
+			percent = health / maxHealth;
+			healthBar.SetRelativeHealth(percent);
+		}
 	}
 
 	void OnHit(WeaponDamage wep){
 		points.Notify (new DeathInfo{ shipTag = gameObject.tag, bulletTag = wep.tag, shipPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z)});
 		health -= wep.damage;
-        Shooter shooter = gameObject.GetComponent<Shooter>();
+		if (isBoss == true)
+		{
+			percent = health / maxHealth;
+			healthBar.SetRelativeHealth(percent);
+		}
+		Shooter shooter = gameObject.GetComponent<Shooter>();
 		if (health <= 0) {
 				if (animation != null)
 						animation.Stop ();
@@ -88,5 +117,20 @@ public class EnemyDeath : MonoBehaviour {
 		bossExp.particleEmitter.minSize = 2f;
 		bossExp.particleEmitter.maxSize = 15f;
 		audio.PlayOneShot (boomSound);
+	}
+
+	private bool applicationIsQutting = false;
+	
+	protected void OnApplicationQuit()
+	{
+		applicationIsQutting = true;
+	}
+	
+	protected void OnDestroy()
+	{
+		if(!applicationIsQutting && healthBar!=null)
+		{
+			healthBar.DestroySelf();
+		}
 	}
 }
