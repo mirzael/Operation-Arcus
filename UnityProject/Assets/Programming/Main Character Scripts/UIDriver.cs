@@ -143,9 +143,9 @@ public class UIDriver : MonoBehaviour
 
         if (currentColor == ShipColor.RED)
         {
-            barLeft.UpdatePercentage(ColorPower.Instance.powerYellow);
+            barLeft.UpdatePercentage(ColorPower.Instance.powerBlue);
             barCenter.UpdatePercentage(ColorPower.Instance.powerRed);
-            barRight.UpdatePercentage(ColorPower.Instance.powerBlue);
+            barRight.UpdatePercentage(ColorPower.Instance.powerYellow);
         }
         else if (currentColor == ShipColor.BLUE)
         {
