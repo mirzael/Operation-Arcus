@@ -6,6 +6,7 @@ public class LevelLoader: MonoBehaviour{
 			Destroy(go);
 		}*/
 		Application.LoadLevel (Application.loadedLevel+1);
+        Time.timeScale = 1.0f;
 	}
 
 	public static void RestartLevel(){
@@ -13,6 +14,7 @@ public class LevelLoader: MonoBehaviour{
 			Destroy(go);
 		}*/
 		Application.LoadLevel (Application.loadedLevel);
+        Time.timeScale = 1.0f;
 	}
 
 	public static void LoadLevel(string sceneName){
@@ -20,6 +22,7 @@ public class LevelLoader: MonoBehaviour{
 			Destroy(go);
 		}*/
 		Application.LoadLevel (sceneName);
+        Time.timeScale = 1.0f;
 	}
 
     public static bool IsLastLevel()
