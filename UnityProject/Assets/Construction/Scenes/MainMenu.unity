@@ -3447,7 +3447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 1a8f816f623da4e49916785062668c6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9aab8df2b6f87148818e7d18a0032f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3469,8 +3469,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 49, y: -25}
-  m_SizeDelta: {x: 125, y: 100}
+  m_AnchoredPosition: {x: 70, y: -25}
+  m_SizeDelta: {x: 150, y: 70}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &156515802
 CanvasRenderer:
@@ -15927,7 +15927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInGUI: 1
   image: {fileID: 1997391968}
-  spriteToChange: {fileID: 21300000, guid: c9aab8df2b6f87148818e7d18a0032f0, type: 3}
+  spriteToChange: {fileID: 21300000, guid: 1a8f816f623da4e49916785062668c6d, type: 3}
 --- !u!114 &1034709123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20082,7 +20082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInGUI: 1
   image: {fileID: 156515800}
-  spriteToChange: {fileID: 21300000, guid: 1a8f816f623da4e49916785062668c6d, type: 3}
+  spriteToChange: {fileID: 21300000, guid: c9aab8df2b6f87148818e7d18a0032f0, type: 3}
 --- !u!114 &1365334038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29989,8 +29989,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 59, y: -25}
-  m_SizeDelta: {x: 125, y: 100}
+  m_AnchoredPosition: {x: 151, y: -25}
+  m_SizeDelta: {x: 180, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1997391968
 MonoBehaviour:
@@ -30005,7 +30005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: c9aab8df2b6f87148818e7d18a0032f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a8f816f623da4e49916785062668c6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
