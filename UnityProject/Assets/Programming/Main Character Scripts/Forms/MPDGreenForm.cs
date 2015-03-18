@@ -24,6 +24,7 @@ public class MPDGreenForm : SecondaryForm {
 		//If driver health > 100, set it to 100. Else, keep it as it is.
 		driver.health = driver.health > 100 ? 100 : driver.health;
 		if (timeActive <= 0.0f) {
+			driver.health = Mathf.Floor(driver.health);
 			isActive = false;
 		}
 	}

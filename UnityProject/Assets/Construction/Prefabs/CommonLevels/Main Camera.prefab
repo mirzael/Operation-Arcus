@@ -223,6 +223,7 @@ GameObject:
   - 223: {fileID: 22300360}
   - 114: {fileID: 11400352}
   - 114: {fileID: 11400354}
+  - 114: {fileID: 11407878}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -1980,7 +1981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &120170
 GameObject:
   m_ObjectHideFlags: 1
@@ -2301,6 +2302,7 @@ GameObject:
   - 223: {fileID: 22329074}
   - 114: {fileID: 11429064}
   - 114: {fileID: 11429066}
+  - 114: {fileID: 11407880}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -5367,6 +5369,7 @@ GameObject:
   - 223: {fileID: 22393144}
   - 114: {fileID: 11493158}
   - 114: {fileID: 11493156}
+  - 114: {fileID: 11407876}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -12952,6 +12955,39 @@ MonoBehaviour:
   greenBar: {fileID: 21282510}
   purpleBar: {fileID: 21297858}
   orangeBar: {fileID: 21297854}
+--- !u!114 &11407876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11407878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11407880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11412684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15387,6 +15423,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
@@ -15760,6 +15797,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 136902}
   animationLabel: Transform_Variable
   shipAnimator: {fileID: 9557950}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &11448788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16347,6 +16385,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 0}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   colorPieces: []
   invulnTime: 1
@@ -16762,6 +16801,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 197200}
   animationLabel: Arcus_Animation
   shipAnimator: {fileID: 9542678}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &11476494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16781,6 +16821,7 @@ MonoBehaviour:
   secondaryRing2: {fileID: 136924}
   animationLabel: Arcus_Animation
   shipAnimator: {fileID: 9565490}
+  tiltAnimationLabel: Arcus_Tilt
 --- !u!114 &11476496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16810,6 +16851,7 @@ MonoBehaviour:
   health: 100
   gameOver: 0
   uiDriver: {fileID: 11476494}
+  currentForm: {fileID: 0}
   healthLossPerHit: 10
   invulnTime: 1
   invulnCounter: 0
