@@ -36,7 +36,7 @@ public class OrangeForm : SecondaryForm {
 		Rigidbody rb = reflectBall.AddComponent<Rigidbody>();
 		*/
 		GameObject reflectBall = (GameObject)Instantiate(orangeProjectile);
-		reflectBall.transform.position = transform.position + Vector3.up * 7;
+		reflectBall.transform.position = transform.position + Vector3.up * 2;
 		Destroy(reflectBall, 4);
 	}
 	
