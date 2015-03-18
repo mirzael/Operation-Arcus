@@ -112,6 +112,7 @@ public abstract class CharacterDriver : MonoBehaviour {
         health -= healthLossPerHit;
         if (health <= 0)
         {
+			health = 0;
             GameOver();
         }
     }
