@@ -64,19 +64,19 @@ public class MultiplayerCoordinator {
 
 	public void UseOffensiveOrange(){			
 			if (GameObject.Find("oArcus") != null) {
-				OArcusDriver.PressOrange();
+				OArcusDriver.ActivateOrange();
 			}
 			if (GameObject.Find("dArcus") != null) {
-				DarcusDriver.PressOrange();
+				DarcusDriver.ActivateOrange();
 			}
 	}
 
 	public void UseOffensivePurple(){
 	    if (GameObject.Find("oArcus") != null) {
-	    	OArcusDriver.PressPurple();
+	    	OArcusDriver.ActivatePurple();
 	    }
 	    if (GameObject.Find("dArcus") != null) {
-	    	DarcusDriver.PressPurple();
+	    	DarcusDriver.ActivatePurple();
 	    }
 	}
 
