@@ -13,6 +13,7 @@ public class MessageSpawner : MonoBehaviour
         public AudioClip voiceOver;
         //GameObjects in the scene to turn on
         public GameObject textMessage;
+        public GameObject oneHandedControlMessage;
         public float timeToNext = -1;
     }
 
@@ -89,7 +90,12 @@ public class MessageSpawner : MonoBehaviour
         {
             audioSource.PlayOneShot(segment.voiceOver);
         }
-        if(segment.textMessage!=null)
+        if(segment.oneHandedControlMessage!=null && ControlScheme.isOneHanded)
+        {
+            segment.oneHandedControlMessage.SetActive(true);
+            curTextMessage = segment.oneHandedControlMessage;
+        }
+        else if(segment.textMessage!=null)
         {
             segment.textMessage.SetActive(true);
             curTextMessage = segment.textMessage;
