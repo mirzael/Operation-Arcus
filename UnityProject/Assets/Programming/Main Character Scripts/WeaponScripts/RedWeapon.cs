@@ -24,12 +24,11 @@ public class RedWeapon : MonoBehaviour {
 		var exp = (GameObject)Instantiate(explosion, transform.position, transform.rotation);
 		exp.particleEmitter.minSize = (ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius) * 0.8f;
 		exp.particleEmitter.maxSize = ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius;
-		//Send damage to the ship that was hit
-		col.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage + ColorPower.Instance.powerRed / 10, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 
 		//Send damage to the ships around the ship that was hit
-		foreach(RaycastHit hit in Physics.SphereCastAll(transform.position-transform.up*(ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius), ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius, transform.up)){
-			hit.collider.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = damage + ColorPower.Instance.powerRed / 10, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
+		foreach(RaycastHit hit in Physics.SphereCastAll(transform.position-transform.up*(ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius)*1.1f, (ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius)*1.2f, transform.up)){
+			Debug.Log("Hitting: " + hit.collider.gameObject.name);
+			hit.collider.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = this.damage, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 		}
 
 		Destroy (gameObject);
