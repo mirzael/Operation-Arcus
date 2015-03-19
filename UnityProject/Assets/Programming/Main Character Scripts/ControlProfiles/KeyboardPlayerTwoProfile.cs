@@ -35,7 +35,7 @@ using InControl;
 			    Handle = "Fire",
 			    Target = InputControlType.RightTrigger,
 			    // KeyCodeButton fires when any of the provided KeyCode params are down.
-			    Source = KeyCodeButton( KeyCode.Space )
+			    Source = KeyCodeButton( KeyCode.RightControl )
 		    },
 		    new InputControlMapping
 		    {
