@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System;
 
 public class BackgroundUI : Singleton<BackgroundUI> {
-	public Material successScreen;
 	public GameObject winScreen, loseScreen;
 	private bool showingWinLose;
 	private bool win;
@@ -99,6 +98,7 @@ public class BackgroundUI : Singleton<BackgroundUI> {
 			
 			audio.PlayOneShot (winSound);
 		}
+        audio.PlayOneShot(winSound);
         EndGame();
 		win = true;
 	}
