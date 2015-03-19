@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 135: {fileID: 13500000}
   - 82: {fileID: 8200000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Asteroid
   m_TagString: White
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 33: {fileID: 3336438}
   - 23: {fileID: 2336438}
   - 95: {fileID: 9536438}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: asteroid2_smooth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 7.09000015
