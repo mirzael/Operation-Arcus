@@ -6,14 +6,29 @@ public class MultiplayerController : Singleton<MultiplayerController> {
 	public GameObject multiPlayer;
 
     public bool isMultiplayer = true;
-    public static bool? globalIsMultiplayer = null;
+    private static bool? globalIsMultiplayer = null;
 	
-	public void Start() {
+    public static void SetMultiplayer(bool isMultiplayer)
+    {
+        //this.isMultiplayer = isMultiplayer;
+        globalIsMultiplayer = isMultiplayer;
+    }
+
+    public static bool GetMultiplayer()
+    {
+        return globalIsMultiplayer ?? true;
+    }
+
+	public void Awake() {
         if(globalIsMultiplayer!=null)
         {
             isMultiplayer = (bool) globalIsMultiplayer;
         }
+	}
+
+    public void Start()
+    {
         singePlayer.SetActive(!isMultiplayer);
         multiPlayer.SetActive(isMultiplayer);
-	}
+    }
 }

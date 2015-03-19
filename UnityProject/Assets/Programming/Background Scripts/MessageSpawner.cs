@@ -14,6 +14,8 @@ public class MessageSpawner : MonoBehaviour
         //GameObjects in the scene to turn on
         public GameObject textMessage;
         public GameObject oneHandedControlMessage;
+        public GameObject multiplayerTwoHandedControlMessage;
+        public GameObject multiplayerOneHandedControlMessage;
         public float timeToNext = -1;
     }
 
@@ -90,15 +92,27 @@ public class MessageSpawner : MonoBehaviour
         {
             audioSource.PlayOneShot(segment.voiceOver);
         }
-        if(segment.oneHandedControlMessage!=null && ControlScheme.isOneHanded)
+        if(segment.oneHandedControlMessage!=null && ControlScheme.isOneHanded && !MultiplayerController.GetMultiplayer())
         {
-            segment.oneHandedControlMessage.SetActive(true);
-            curTextMessage = segment.oneHandedControlMessage;
+            DisplayMessage(segment.oneHandedControlMessage);
+        }
+        else if(segment.multiplayerOneHandedControlMessage!=null && ControlScheme.isOneHanded && MultiplayerController.GetMultiplayer())
+        {
+            DisplayMessage(segment.multiplayerOneHandedControlMessage);
+        }
+        else if(segment.multiplayerTwoHandedControlMessage!=null && !ControlScheme.isOneHanded && MultiplayerController.GetMultiplayer())
+        {
+            DisplayMessage(segment.multiplayerTwoHandedControlMessage);
         }
         else if(segment.textMessage!=null)
         {
-            segment.textMessage.SetActive(true);
-            curTextMessage = segment.textMessage;
+            DisplayMessage(segment.textMessage);
         }
+    }
+
+    protected void DisplayMessage(GameObject message)
+    {
+        message.SetActive(true);
+        curTextMessage = message;
     }
 }
