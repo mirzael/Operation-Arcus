@@ -14,7 +14,7 @@ public class MultiplayerController : Singleton<MultiplayerController> {
         globalIsMultiplayer = isMultiplayer;
     }
 
-    public static bool GetMultiplayer()
+    public static bool GetIsMultiplayer()
     {
         return globalIsMultiplayer ?? true;
     }
@@ -23,6 +23,10 @@ public class MultiplayerController : Singleton<MultiplayerController> {
         if(globalIsMultiplayer!=null)
         {
             isMultiplayer = (bool) globalIsMultiplayer;
+        }
+        else
+        {
+            globalIsMultiplayer = isMultiplayer;
         }
 	}
 

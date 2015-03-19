@@ -16,10 +16,10 @@ public class TutorialMessageChooser : MonoBehaviour
         onePlayerOneHandedControlMessage.SetActive(false);
         onePlayerTwoHandedControlMessage.SetActive(false);
         multiplayerOneHandedControlMessage.SetActive(false);
-        multiplayerOneHandedControlMessage.SetActive(false);
+        multiplayerTwoHandedControlMessage.SetActive(false);
 
         bool isOneHanded = ControlScheme.isOneHanded;
-        bool isMultiplayer = MultiplayerController.GetMultiplayer();
+        bool isMultiplayer = MultiplayerController.GetIsMultiplayer();
 
         if(onePlayerOneHandedControlMessage!=null && isOneHanded && !isMultiplayer)
         {
