@@ -26,9 +26,9 @@ public class RedWeapon : MonoBehaviour {
 		exp.particleEmitter.maxSize = ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius;
 
 		//Send damage to the ships around the ship that was hit
-		foreach(RaycastHit hit in Physics.SphereCastAll(transform.position-transform.up*(ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius)*1.1f, (ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius)*1.2f, transform.up)){
-			Debug.Log("Hitting: " + hit.collider.gameObject.name);
-			hit.collider.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = this.damage, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
+		var radius = ColorPower.Instance.powerRed * radiusPerPoint + baseExplosionRadius;
+		foreach(Collider collider in Physics.OverlapSphere(col.gameObject.transform.position, radius)){
+			collider.gameObject.BroadcastMessage("OnHit", new WeaponDamage { tag = tag, damage = this.damage, hitLocation = col.contacts[0].point }, SendMessageOptions.DontRequireReceiver);
 		}
 
 		Destroy (gameObject);
