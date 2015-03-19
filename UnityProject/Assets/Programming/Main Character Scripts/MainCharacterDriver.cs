@@ -304,6 +304,22 @@ public class MainCharacterDriver : CharacterDriver {
         isInSecondary = true;
     }
 
+	public void OnTriggerEnter(Collider col){
+		if(col.gameObject.layer == LayerMask.NameToLayer("Asteroid")){
+			// Only handle hit if not invulnerable
+			if (invulnCounter <= 0) {
+				
+				// Set invulnerability
+				invulnCounter = currentForm.shipColor == ShipColor.RAINBOW ? 0 : invulnTime;
+				audio.PlayOneShot(bumpSound);
+
+				if (currentForm.shipColor != ShipColor.RAINBOW) {
+					TakeDamage();
+				}
+			}
+		}
+	}
+
 	public void OnCollisionEnter(Collision col) {
 		
 		// Form.TakeHit() returns true if the bullet cannot be absorbed, else it returns false

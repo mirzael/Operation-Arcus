@@ -336,6 +336,19 @@ namespace Spectrum
 			isInSecondary = true;
 		}
 
+		public void OnTriggerEnter(Collider col){
+			if(col.gameObject.layer == LayerMask.NameToLayer("Asteroid")){
+				// Only handle hit if not invulnerable
+				if (invulnCounter <= 0) {
+					
+					// Set invulnerability
+					invulnCounter = invulnTime;
+					audio.PlayOneShot(bumpSound);
+					TakeDamage();
+				}
+			}
+		}
+
         public void OnCollisionEnter(Collision col)
         {
 

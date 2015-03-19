@@ -7,7 +7,7 @@ public class MultiplierScript : MonoBehaviour {
 	public float playerDamageMultipler;
 
 	public void Start(){
-		if (MultiplayerController.globalIsMultiplayer.Value) {
+		if (MultiplayerController.Instance.isMultiplayer) {
 			enemyHealthMultiplier *= 2;
 		}
 	}
