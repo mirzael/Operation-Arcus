@@ -231,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 983429778}
   m_GameObject: {fileID: 14673905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.02021027, y: .983271122, z: -7.41842699}
+  m_LocalPosition: {x: -.699999988, y: 24.8999996, z: 43.2000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2075636996}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segments:
   - voiceOver: {fileID: 8300000, guid: 1e3bc1dd3bf043d4a9873f2efbd55946, type: 3}
-    textMessage: {fileID: 0}
+    textMessage: {fileID: 1426299930}
     timeToNext: 20
   - voiceOver: {fileID: 8300000, guid: d5a245a2cc2bf3c4c88db1d77a8a1d76, type: 3}
     textMessage: {fileID: 0}
@@ -2784,6 +2784,7 @@ GameObject:
   - 223: {fileID: 169643469}
   - 114: {fileID: 169643468}
   - 114: {fileID: 169643467}
+  - 114: {fileID: 169643470}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -2870,6 +2871,18 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &169643470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11407876, guid: a6f629fa2d9cae84d87631ab12025342,
+    type: 2}
+  m_PrefabInternal: {fileID: 583745669}
+  m_GameObject: {fileID: 169643465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &172282364
 GameObject:
   m_ObjectHideFlags: 0
@@ -19738,15 +19751,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459630, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.02021027
+      value: -.699999988
       objectReference: {fileID: 0}
     - target: {fileID: 459630, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .983271122
+      value: 24.8999996
       objectReference: {fileID: 0}
     - target: {fileID: 459630, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.41842699
+      value: 43.2000008
       objectReference: {fileID: 0}
     - target: {fileID: 459630, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -19892,6 +19905,15 @@ Prefab:
       propertyPath: segments.Array.data[14].timeToNext
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 21259632, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d2a3a1f03c2eed47bbe18fe027c6a12,
+        type: 3}
+    - target: {fileID: 11459628, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
+      propertyPath: segments.Array.data[0].textMessage
+      value: 
+      objectReference: {fileID: 1426299930}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bcc8b7e478a45248911a6d32c00ff5d, type: 2}
   m_RootGameObject: {fileID: 14673905}
@@ -21909,6 +21931,7 @@ GameObject:
   - 223: {fileID: 1097067730}
   - 114: {fileID: 1097067729}
   - 114: {fileID: 1097067728}
+  - 114: {fileID: 1097067731}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -21995,6 +22018,18 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1097067731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11407880, guid: a6f629fa2d9cae84d87631ab12025342,
+    type: 2}
+  m_PrefabInternal: {fileID: 583745669}
+  m_GameObject: {fileID: 1097067726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097645248
 GameObject:
   m_ObjectHideFlags: 0
@@ -30275,6 +30310,7 @@ GameObject:
   - 223: {fileID: 1318326426}
   - 114: {fileID: 1318326425}
   - 114: {fileID: 1318326424}
+  - 114: {fileID: 1318326427}
   m_Layer: 5
   m_Name: Canvas Bars
   m_TagString: Untagged
@@ -30361,6 +30397,18 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1318326427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11407878, guid: a6f629fa2d9cae84d87631ab12025342,
+    type: 2}
+  m_PrefabInternal: {fileID: 583745669}
+  m_GameObject: {fileID: 1318326422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9e486064c06b54a8f67bd3385f2e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321647610
 GameObject:
   m_ObjectHideFlags: 0
@@ -32856,7 +32904,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ec35bd3fd09cea4c9a4d30f2cbc4aef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d2a3a1f03c2eed47bbe18fe027c6a12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1432530651
 GameObject:

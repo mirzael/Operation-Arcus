@@ -21,7 +21,11 @@ public class HideInMenus : MonoBehaviour
         if(gameObject.activeSelf)
         {
             //if event has already triggered, don't worry about it
-            BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+            BackgroundUI UI = BackgroundUI.Instance;
+            if(UI!=null)
+            {
+                BackgroundUI.Instance.RemoveGameEndEvent(HideSelf);
+            }
         }
         GameObject.Destroy(gameObject);
     }
