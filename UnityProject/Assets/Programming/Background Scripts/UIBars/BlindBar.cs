@@ -39,10 +39,7 @@ public class BlindBar : MonoBehaviour
         isMultiplayer = player2 != null;
         UpdateColorBars();
 
-        BackgroundUI.Instance.AddGameEndEvent(delegate()
-        {
-            this.gameObject.SetActive(false);
-        });
+        gameObject.AddComponent<HideInMenus>();
     }
 
     public void UpdateColorBars()
