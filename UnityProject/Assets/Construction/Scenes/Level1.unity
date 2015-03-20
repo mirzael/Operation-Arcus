@@ -20931,7 +20931,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  successScreen: {fileID: 0}
   winScreen: {fileID: 68475118}
   loseScreen: {fileID: 1932966429}
   loseSound: {fileID: 8300000, guid: d2f6bae2dc01e704cb6b31eb4c9b817e, type: 3}
@@ -40939,7 +40938,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d98a37b0deff0a44a86007c95b62752a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b344b9598b88b2d4999ab3e273a91b5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1923069200
 Transform:
@@ -40949,7 +40948,7 @@ Transform:
   m_GameObject: {fileID: 1923069198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .400000006, z: .430000007}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 44.2869949, y: 44.2869759, z: 44.2869759}
   m_Children: []
   m_Father: {fileID: 934465759}
   m_RootOrder: 3

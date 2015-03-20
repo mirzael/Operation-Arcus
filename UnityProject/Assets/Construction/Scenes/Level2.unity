@@ -1809,8 +1809,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 63942362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.20000029, z: 0}
-  m_LocalScale: {x: 1.51650286, y: 1.51650214, z: 1.51650214}
+  m_LocalPosition: {x: 0, y: -.0299999993, z: 0}
+  m_LocalScale: {x: 4.95500183, y: 4.95499945, z: 4.95499945}
   m_Children: []
   m_Father: {fileID: 1500511362}
   m_RootOrder: 0
@@ -1834,7 +1834,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7bd425e90f9acfb40bf0fdb96526b844, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c97d8b7dd6a38b498fb059b9913a232, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &67185731
 GameObject:
@@ -20924,7 +20924,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  successScreen: {fileID: 0}
   winScreen: {fileID: 1405741867}
   loseScreen: {fileID: 1641971037}
   loseSound: {fileID: 8300000, guid: d2f6bae2dc01e704cb6b31eb4c9b817e, type: 3}
@@ -32186,7 +32185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1662502682
 Transform:
   m_ObjectHideFlags: 0
@@ -32195,7 +32194,7 @@ Transform:
   m_GameObject: {fileID: 1662502681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 6.22518826, y: 6.22518444, z: 4.15012312}
   m_Children: []
   m_Father: {fileID: 329381921}
   m_RootOrder: 0
@@ -32219,7 +32218,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1d0044ea806e91348a0950b02a991680, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1f0f83e0378fcb4db4cf234a4849104, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1668959712
 GameObject:
