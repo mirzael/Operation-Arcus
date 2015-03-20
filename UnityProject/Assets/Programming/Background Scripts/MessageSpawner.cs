@@ -18,6 +18,8 @@ public class MessageSpawner : MonoBehaviour
 
     public List<Message> segments;
 
+    public static bool playVoices = true;
+
     //After timeToNext time, go to next segment
     protected float timeToNext
     {
@@ -65,6 +67,11 @@ public class MessageSpawner : MonoBehaviour
             GoToNext();
             timeSoFar = 0;
         }
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            playVoices = !playVoices;
+        }
     }
 
     protected void GoToNext()
@@ -85,7 +92,7 @@ public class MessageSpawner : MonoBehaviour
 
         //Get the current segment and play/spawn all of its things
         Message segment = segments[curSegment];
-        if(segment.voiceOver!=null)
+        if(segment.voiceOver!=null && playVoices)
         {
             audioSource.PlayOneShot(segment.voiceOver);
         }

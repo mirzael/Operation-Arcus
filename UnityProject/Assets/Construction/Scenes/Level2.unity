@@ -8319,6 +8319,7 @@ MonoBehaviour:
   - voiceOver: {fileID: 8300000, guid: e1dd5cb703f93934a9b79e09f52c34c8, type: 3}
     textMessage: {fileID: 0}
     timeToNext: 10
+  playVoices: 1
 --- !u!4 &329381921
 Transform:
   m_ObjectHideFlags: 0
@@ -32185,7 +32186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1662502682
 Transform:
   m_ObjectHideFlags: 0
